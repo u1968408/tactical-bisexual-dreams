@@ -1,0 +1,17 @@
+extends CameraComponent
+class_name CameraMovement
+
+@export
+var speed: float = 1
+
+func move(movement: Vector2) -> void:
+	if movement == Vector2.ZERO:
+		return
+	var move_value: Vector3 = Vector3(
+		-movement.x,
+		0,
+		-movement.y
+	)
+	move_value = move_value.rotated(Vector3.UP, camera.rotation.y)
+	move_value *= speed
+	camera.global_position += move_value

@@ -1,0 +1,326 @@
+[gd_scene format=3 uid="uid://d1hk6crbwsluj"]
+
+[ext_resource type="PackedScene" uid="uid://cx8x3dxk8ydag" path="res://Assets/3D/pixeltown_models_only/models/terrain_v2.gltf" id="1_vkc55"]
+[ext_resource type="Material" uid="uid://bapyqyw30ml62" path="res://Assets/3D/pixeltown_models_only/models/TerrainMaterialTransparent.material" id="2_s6xxv"]
+
+[node name="terrain_v2" unique_id=1432712583 instance=ExtResource("1_vkc55")]
+
+[node name="ShortVase" parent="." index="0" unique_id=1302213464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9585223, 2.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="Bush" parent="." index="1" unique_id=2141728233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9585223, 3.0683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="Parkbench" parent="." index="2" unique_id=1588212516]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, -6.4585223, 2.5683522, -2.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WidePot" parent="." index="3" unique_id=2064478513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9585223, 2.5683522, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="TallVase" parent="." index="4" unique_id=1814956640]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9585223, 2.5683522, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="BalconyFenceCorner" parent="." index="5" unique_id=1249545687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9585223, 2.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="BalconyFenceSide" parent="." index="6" unique_id=1477473890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9585223, 2.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="SteelroofCornerInward" parent="." index="7" unique_id=1868579400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9585223, 0.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="SteelroofCorner" parent="." index="8" unique_id=712785470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.958523, 1.5683522, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="SteelroofSide" parent="." index="9" unique_id=1719392509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9585223, 1.5683522, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="SteelroofFloor" parent="." index="10" unique_id=1715157190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9585223, 1.5683522, -2.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="SteelroofCornerBottom" parent="." index="11" unique_id=1386924890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.958523, 0.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="SteelroofSideBottom" parent="." index="12" unique_id=663649900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.958523, 0.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="GlassPane" parent="." index="13" unique_id=899665786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9585223, -1.4316478, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="BalconyFloor" parent="." index="14" unique_id=1460860343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9585223, 1.5683522, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="BalconyCorner" parent="." index="15" unique_id=710135110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9585223, 1.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallSideWithSmallWindowBottomNight" parent="." index="16" unique_id=1304500936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9585223, -1.4316478, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="BalconySide" parent="." index="17" unique_id=1041505560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9585223, 1.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallSideWithSmallWindowNight" parent="." index="18" unique_id=1547557601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9585223, 0.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallSideWithSmallWindowDay" parent="." index="19" unique_id=1532216137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9585223, 0.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallSideWithSmallWindowBottomDay" parent="." index="20" unique_id=1903517309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9585223, -1.4316478, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofSideBottomPipe" parent="." index="21" unique_id=1194437306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9585223, 2.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofSideFlatBottom" parent="." index="22" unique_id=1925296794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9585223, 2.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofSideFlat" parent="." index="23" unique_id=1478921192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9585223, 4.568352, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="FloorSidewalkSlightSlope" parent="." index="24" unique_id=1336468407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0414777, -1.4316478, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="FloorSidewalkSlope" parent="." index="25" unique_id=769380892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0414777, -2.4316478, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="StreetlampNight" parent="." index="26" unique_id=367409323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0414777, 0.5683522, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="FloorSidewalkCornerInward" parent="." index="27" unique_id=78509080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9585223, -2.4316478, 1.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofTopGlassDay" parent="." index="28" unique_id=779308768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9585223, 6.568352, -4.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofTopGlassSideDay" parent="." index="29" unique_id=773323544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9585223, 6.568352, -3.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofTopGlassCornerDay" parent="." index="30" unique_id=1620026309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9585223, 6.568352, -3.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofWithWindowBottomDay" parent="." index="31" unique_id=2087575328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9585223, 2.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofWithWindowNight" parent="." index="32" unique_id=1930618619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9585223, 4.568352, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallWithWindowDay" parent="." index="33" unique_id=1005466974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9585223, 0.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallWithWindowBottomDay" parent="." index="34" unique_id=1977418026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9585223, -1.4316478, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="LampYellowDay" parent="." index="35" unique_id=405041982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9585223, 0.5683522, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="StreetlampDay" parent="." index="36" unique_id=816057014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0414777, 0.5683522, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="LampYellowNight" parent="." index="37" unique_id=1497760145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9585223, 0.5683522, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="FloorSidewalk" parent="." index="38" unique_id=290711660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04147768, -2.4316478, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="FloorSidewalkCorner" parent="." index="39" unique_id=858033693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9585223, -2.4316478, 3.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="ShortWall" parent="." index="40" unique_id=845531277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9585223, -0.43164778, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="ShortWallCorner" parent="." index="41" unique_id=908866619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9585223, -0.43164778, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="Flags" parent="." index="42" unique_id=1434421271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04147768, 0.5683522, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="Stairs" parent="." index="43" unique_id=9527100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9585223, -2.4316478, 1.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallSideDoorBottom" parent="." index="44" unique_id=920935668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9585223, -1.4316478, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallSideDoor" parent="." index="45" unique_id=1966089288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9585223, 0.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallWithWindowBottomNight" parent="." index="46" unique_id=922184358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9585223, -1.4316478, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallSideBottom" parent="." index="47" unique_id=942653668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9585223, -1.4316478, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallCornerBottom" parent="." index="48" unique_id=1801229589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04147768, -1.4316478, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallSidePipeBottom" parent="." index="49" unique_id=1622567595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9585223, -1.4316478, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofChimney" parent="." index="50" unique_id=1567486311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9585223, 6.568352, -2.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallSidePipe" parent="." index="51" unique_id=1627945966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9585223, 0.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofTopGlassCornerNight" parent="." index="52" unique_id=675931919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9585223, 6.568352, -2.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofTopGlassSideNight" parent="." index="53" unique_id=1171779070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9585223, 6.568352, -2.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofCornerInwardBottom" parent="." index="54" unique_id=606639801]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04147768, 2.5683522, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofCornerBottom" parent="." index="55" unique_id=264889206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04147768, 2.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofWithWindowDay" parent="." index="56" unique_id=1659048749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9585223, 4.568352, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofSideBottom" parent="." index="57" unique_id=1563400999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9585223, 2.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofSide" parent="." index="58" unique_id=291191998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9585223, 4.568352, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallCorner" parent="." index="59" unique_id=1910561238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04147768, 0.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallWithWindowNight" parent="." index="60" unique_id=161610057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9585223, 0.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofWithWindowBottomNight" parent="." index="61" unique_id=1558322918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9585223, 2.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="WallSide" parent="." index="62" unique_id=1461244208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9585223, 0.5683522, -0.48392153)
+material_override = ExtResource("2_s6xxv")
+
+[node name="Floor" parent="." index="63" unique_id=1308437803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9585223, -2.4316478, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofTopGlassNight" parent="." index="64" unique_id=894073889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9585223, 6.568352, -3.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofTop" parent="." index="65" unique_id=370440250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9585223, 4.568352, -2.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofCornerInward" parent="." index="66" unique_id=2126543680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9585223, 4.568352, -2.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="RoofCorner" parent="." index="67" unique_id=2025524417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9585223, 4.568352, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="FenceCorner" parent="." index="68" unique_id=1058197408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9585223, -1.4316478, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="FenceSide" parent="." index="69" unique_id=293254212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9585223, -1.4316478, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="FloorSidewalkSlightSlopeHigher" parent="." index="70" unique_id=759953732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0414777, -1.4316478, 0.5160785)
+material_override = ExtResource("2_s6xxv")
+
+[node name="ShortWallCollider" parent="." index="71" unique_id=409550115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0414777, 3.5683522, -5.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="HalfSlopeCollider" parent="." index="72" unique_id=306232504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0414777, 4.568352, -5.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="HalfSlopeCornerCollider" parent="." index="73" unique_id=442803897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0414777, 4.568352, -5.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="TallSlopeCollider" parent="." index="74" unique_id=2108456468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0414777, 2.5683522, -3.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="TallSlopeCornerCollider" parent="." index="75" unique_id=1764885166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0414777, 2.5683522, -3.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="TallSlopeCornerInwardCollider" parent="." index="76" unique_id=1323975927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0414777, 2.5683522, -5.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="SlopeCornerInwardCollider" parent="." index="77" unique_id=1456838964]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0414777, 2.5683522, -3.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="SlopeCornerCollider" parent="." index="78" unique_id=713353107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0414777, 2.5683522, -1.4839215)
+material_override = ExtResource("2_s6xxv")
+
+[node name="SlopeCollider" parent="." index="79" unique_id=1828507435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0414777, 2.5683522, -1.4839215)
+material_override = ExtResource("2_s6xxv")
