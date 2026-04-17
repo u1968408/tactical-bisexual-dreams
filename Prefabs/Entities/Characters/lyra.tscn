@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://on4fn7kuuxsh"]
+
+[ext_resource type="Texture2D" uid="uid://bqi0j1suo1ec3" path="res://Assets/Sprites/PlaceholderLyra.png" id="1_g1sep"]
+[ext_resource type="Script" uid="uid://c18oq240k11se" path="res://Scripts/Gameplay/Entities/Characters/Character.gd" id="1_riiya"]
+[ext_resource type="Script" uid="uid://c0f744ec8kdw5" path="res://Scripts/Sprites/GeneralSprite.gd" id="2_riiya"]
+[ext_resource type="PackedScene" uid="uid://6rmftfncs2aq" path="res://Prefabs/Entities/entity_collision.tscn" id="4_lml3t"]
+[ext_resource type="Script" uid="uid://3eg3vuyo47a3" path="res://Scripts/Gameplay/Entities/Stats/Stats.gd" id="5_ie3kb"]
+[ext_resource type="Resource" uid="uid://cgikgus3gg281" path="res://Resources/Characters/Stats/LyraStats.tres" id="6_hw56i"]
+
+[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("stats")]
+collision_layer = 4
+script = ExtResource("1_riiya")
+stats = NodePath("Stats")
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=1617225657]
+transform = Transform3D(2.9999998, 0, 0, 0, 3, 0, 0, 0, 2.9999998, 0, 0.9, 0)
+texture_filter = 0
+texture = ExtResource("1_g1sep")
+script = ExtResource("2_riiya")
+
+[node name="CharacterCollision" parent="." unique_id=285415630 instance=ExtResource("4_lml3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="Stats" type="Node" parent="." unique_id=740003460]
+script = ExtResource("5_ie3kb")
+base_stats = ExtResource("6_hw56i")

@@ -2,6 +2,16 @@
 class_name State
 extends Node
 
+@onready
+var state_machine := __get_state_machine()
+
+func __get_state_machine() -> StateMachine:
+	var parent := get_parent()
+	if parent is StateMachine:
+		return parent
+	push_error("El pare de %s no és una StateMachine (parent: %s)." % [name, parent.name])
+	return null
+
 func Enter():
 	AddListeners()
 
@@ -11,8 +21,8 @@ func Exit():
 func _exit_tree():
 	RemoveListeners()
 
-@abstract
-func AddListeners()
+func AddListeners():
+	pass
 
-@abstract
-func RemoveListeners()
+func RemoveListeners():
+	pass

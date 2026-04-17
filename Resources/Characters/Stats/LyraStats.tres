@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BaseStats" format=3 uid="uid://cgikgus3gg281"]
+
+[ext_resource type="Script" uid="uid://b221r2nol8ung" path="res://Scripts/Gameplay/Entities/Stats/BaseStats.gd" id="1_fbvye"]
+
+[resource]
+script = ExtResource("1_fbvye")
+attack = 50
+metadata/_custom_type_script = "uid://b221r2nol8ung"

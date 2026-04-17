@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://3g26356lwewc"]
+
+[ext_resource type="Script" uid="uid://5djhemtk4yfj" path="res://Scripts/Gameplay/Board/Indicator.gd" id="1_jktb1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_remhu"]
+transparency = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_jktb1"]
+material = SubResource("StandardMaterial3D_remhu")
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f70pg"]
+size = Vector3(1, 0.1, 1)
+
+[node name="Indicator" type="Area3D" unique_id=887881050 node_paths=PackedStringArray("mesh")]
+collision_layer = 256
+collision_mask = 12
+script = ExtResource("1_jktb1")
+mesh = NodePath("MeshInstance3D")
+selected_enemy = Color(1, 0, 0, 0.5882353)
+selected_ally = Color(0, 1, 0.7882353, 0.5882353)
+selected_empty_tile = Color(1, 1, 0, 0.5882353)
+selected_colliding_terrain = Color(0.39308554, 0.3930855, 0.39308548, 0.23529412)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=349201083]
+mesh = SubResource("BoxMesh_jktb1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=590925293]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+shape = SubResource("BoxShape3D_f70pg")

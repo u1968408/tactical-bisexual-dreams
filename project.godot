@@ -15,10 +15,6 @@ run/main_scene="uid://bq17dmqps7w6c"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-Draw3D="*uid://disrxhsoxeige"
-
 [debug_draw_3d]
 
 settings/addon_root_folder="res://addons/debug_draw_3d"
@@ -31,9 +27,17 @@ window/stretch/mode="viewport"
 
 project/assembly_name="Tactical Bisexual Dreams"
 
+[editor]
+
+script/templates_search_path="res://Scripts/Templates"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
+
+[global_group]
+
+Entity="Characters and Enemies"
 
 [input]
 
@@ -67,6 +71,14 @@ camera_move_left={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_2="enemies"
+3d_physics/layer_3="characters"
+3d_physics/layer_4="terrain"
+3d_physics/layer_9="indicator"
+3d_physics/layer_10="Tile"
 
 [physics]
 

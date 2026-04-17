@@ -13,15 +13,13 @@ enum OrbitDirection {
 	RIGHT= 1,
 }
 
-func orbit_left():
-	_orbit_camera(OrbitDirection.LEFT)
+func OrbitLeft():
+	OrbitCamera(OrbitDirection.LEFT)
 
-func orbit_right():
-	_orbit_camera(OrbitDirection.RIGHT)
+func OrbitRight():
+	OrbitCamera(OrbitDirection.RIGHT)
 
-
-
-func _orbit_camera(direction: OrbitDirection) -> void:
+func OrbitCamera(direction: OrbitDirection) -> void:
 	if _rotating:
 		return
 	_rotating = true

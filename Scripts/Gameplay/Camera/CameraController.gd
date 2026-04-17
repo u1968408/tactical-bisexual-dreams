@@ -5,6 +5,21 @@ class_name CameraController
 @export var orbit: CameraOrbit
 @export var movement: CameraMovement
 
+@onready var input_controller: InputController = %InputController
+
+func _ready() -> void:
+	input_controller.camera_orbit.connect(orbit.OrbitCamera)
+	input_controller.camera_moved.connect(movement.Move)
+	
+func _exit_tree() -> void:
+	input_controller.camera_orbit.disconnect(orbit.OrbitCamera)
+	input_controller.camera_moved.disconnect(movement.Move)
+
+var viewport_aspect: Vector2:
+	get:
+		var viewport_rect := get_viewport().get_visible_rect()
+		return Vector2(viewport_rect.size.x, viewport_rect.size.y).normalized()
+
 var look_direction: Vector3:
 	get:
 		return (global_basis * Vector3.FORWARD).normalized()
@@ -15,22 +30,8 @@ var look_point: Vector3:
 		var k_value: float = global_position.y / look_dir.y 
 		return global_position - k_value * look_dir
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		DebugDraw3D.draw_line(global_position, look_point)
 		return
-	_handler_input(delta)
 
-func _handler_input(delta: float) -> void:
-	if Input.is_action_pressed("camera_orbit_left"):
-		orbit.orbit_left()
-	if Input.is_action_pressed("camera_orbit_right"):
-		orbit.orbit_right()
-	var move_vector: Vector2 = Input.get_vector(
-		"camera_move_left",
-		"camera_move_right",
-		"camera_move_down",
-		"camera_move_up"
-	)
-	movement.move(move_vector)
-	

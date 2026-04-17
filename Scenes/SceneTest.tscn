@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://bq17dmqps7w6c"]
 
 [ext_resource type="Script" uid="uid://cnld0ts52m8nq" path="res://Scripts/Gameplay/Camera/CameraMovement.gd" id="1_7odli"]
-[ext_resource type="Texture2D" uid="uid://bqi0j1suo1ec3" path="res://Assets/Sprites/PlaceholderLyra.png" id="1_740v5"]
 [ext_resource type="Script" uid="uid://7rt6q1ax1ok3" path="res://Scripts/Gameplay/Camera/CameraController.gd" id="1_fh13u"]
 [ext_resource type="Script" uid="uid://bayflys76kf3u" path="res://Scripts/Gameplay/Camera/CameraOrbit.gd" id="2_ef7dr"]
-[ext_resource type="Script" uid="uid://c0f744ec8kdw5" path="res://Scripts/Sprites/GeneralSprite.gd" id="2_px57j"]
-[ext_resource type="PackedScene" uid="uid://d1hk6crbwsluj" path="res://Assets/3D/pixeltown_models_only/terrain_v_2.tscn" id="3_38cb2"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_740v5"]
-size = Vector3(1, 2, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px57j"]
-albedo_color = Color(0.76480716, 0.46910483, 0.8749433, 1)
+[ext_resource type="PackedScene" uid="uid://c86f5ayqtp8vm" path="res://Prefabs/Gameplay/board.tscn" id="4_ef7dr"]
+[ext_resource type="PackedScene" uid="uid://on4fn7kuuxsh" path="res://Prefabs/Entities/Characters/lyra.tscn" id="5_ef7dr"]
+[ext_resource type="Script" uid="uid://8dkrt7ju5ecf" path="res://Scripts/Gameplay/Player/PlayerController.gd" id="6_1i6e8"]
+[ext_resource type="Script" uid="uid://wtf1oixmwnkx" path="res://Scripts/Gameplay/GameManager/GameManager.gd" id="6_wt016"]
+[ext_resource type="Script" uid="uid://c6jingcvddxsk" path="res://Scripts/Common/State Machine/StateMachine.gd" id="7_rwmut"]
+[ext_resource type="Script" uid="uid://f6xptvqwsdhu" path="res://Scripts/Gameplay/Player/States/FreeSelectPlayerState.gd" id="8_hnlv6"]
+[ext_resource type="Script" uid="uid://bi03m5l68reow" path="res://Scripts/Gameplay/GameManager/States/PlayerTurnState.gd" id="8_rwmut"]
+[ext_resource type="Script" uid="uid://b1np0wydmnee" path="res://Scripts/Gameplay/Player/States/UnitSelectedState.gd" id="9_0raw2"]
+[ext_resource type="Script" uid="uid://cxuv302r8ibwt" path="res://Scripts/Gameplay/Player/InputController.gd" id="10_oo7tc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_38cb2"]
 size = Vector3(5, 5, 5)
@@ -22,19 +22,31 @@ albedo_color = Color(0.6785527, 0.20890164, 0.13959864, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_gtfm6"]
 size = Vector2(100, 100)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fh13u"]
-size = Vector3(100, 100, 0.001)
+[sub_resource type="BoxMesh" id="BoxMesh_740v5"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px57j"]
+albedo_color = Color(0.76480716, 0.46910483, 0.8749433, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wt016"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ef7dr"]
+size = Vector3(0.15, 2.5, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7odli"]
+size = Vector3(0.15, 2.5, 0.15)
 
 [sub_resource type="Environment" id="Environment_gtfm6"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_740v5"]
 
-[node name="Node3D" type="Node3D" unique_id=1096462511]
+[node name="TestScene" type="Node3D" unique_id=1096462511]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1751747485 node_paths=PackedStringArray("orbit", "movement")]
 transform = Transform3D(0.7071068, -0.29883626, 0.6408564, 0, 0.9063078, 0.42261827, -0.7071068, -0.29883626, 0.6408564, 50, 35, 50)
 projection = 1
-size = 19.224
+size = 8.0
 near = 0.003
 script = ExtResource("1_fh13u")
 orbit = NodePath("OrbitCamera")
@@ -42,42 +54,51 @@ movement = NodePath("CameraMovement")
 
 [node name="CameraMovement" type="Node" parent="Camera3D" unique_id=1425471049]
 script = ExtResource("1_7odli")
+speed = 0.3
 
 [node name="OrbitCamera" type="Node" parent="Camera3D" unique_id=1827563547]
 script = ExtResource("2_ef7dr")
 
 [node name="Meshes" type="Node3D" parent="." unique_id=1868508758]
 
-[node name="Person reference" type="MeshInstance3D" parent="Meshes" unique_id=1149459635]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.083972, -0.053477287)
-mesh = SubResource("BoxMesh_740v5")
-surface_material_override/0 = SubResource("StandardMaterial3D_px57j")
+[node name="Person reference3" type="MeshInstance3D" parent="Meshes" unique_id=2077624160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4770412, 2.5976124, -14.676348)
+mesh = SubResource("BoxMesh_38cb2")
+surface_material_override/0 = SubResource("StandardMaterial3D_fh13u")
 
 [node name="Person reference2" type="MeshInstance3D" parent="Meshes" unique_id=1305652278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.921789, 2.167944, 4.018577)
 mesh = SubResource("BoxMesh_38cb2")
 surface_material_override/0 = SubResource("StandardMaterial3D_fh13u")
 
-[node name="Person reference2" type="MeshInstance3D" parent="Meshes/Person reference2" unique_id=2077624160]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.444748, 0.42966843, -18.694925)
-mesh = SubResource("BoxMesh_38cb2")
-surface_material_override/0 = SubResource("StandardMaterial3D_fh13u")
-
-[node name="Node3D" type="StaticBody3D" parent="Meshes" unique_id=763406045]
-
-[node name="Floor" type="MeshInstance3D" parent="Meshes/Node3D" unique_id=2131388196]
-transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 0, 0)
+[node name="Floor" type="MeshInstance3D" parent="Meshes" unique_id=2131388196]
+transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0.025152206, 9.536743e-07, -0.014681339)
 mesh = SubResource("QuadMesh_gtfm6")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Meshes/Node3D" unique_id=1079215647]
-transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0, 0, 0)
-shape = SubResource("BoxShape3D_fh13u")
+[node name="Terrain" type="Area3D" parent="Meshes" unique_id=368414097]
+collision_layer = 8
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1396764381]
-transform = Transform3D(2.87462, -1.2135957, 2.5027475, 0, 3.5991762, 1.7452598, -2.7814672, -1.2542397, 2.586566, 1.6202636, 1.2629914, 0)
-texture_filter = 0
-texture = ExtResource("1_740v5")
-script = ExtResource("2_px57j")
+[node name="Person reference" type="MeshInstance3D" parent="Meshes/Terrain" unique_id=1149459635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_740v5")
+surface_material_override/0 = SubResource("StandardMaterial3D_px57j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Meshes/Terrain" unique_id=1590528450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_wt016")
+
+[node name="Faro" type="Area3D" parent="Meshes" unique_id=1898156167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+collision_layer = 8
+
+[node name="Person reference" type="MeshInstance3D" parent="Meshes/Faro" unique_id=507157059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+mesh = SubResource("BoxMesh_ef7dr")
+surface_material_override/0 = SubResource("StandardMaterial3D_px57j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Meshes/Faro" unique_id=500001055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_7odli")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1808289651]
 transform = Transform3D(0.58183485, -0.7643366, 0.2779535, 0.40187597, 0.56730926, 0.71878797, -0.70708144, -0.30651307, 0.63724864, 0, 28.713509, -1.0001659)
@@ -87,5 +108,41 @@ directional_shadow_mode = 0
 environment = SubResource("Environment_gtfm6")
 camera_attributes = SubResource("CameraAttributesPractical_740v5")
 
-[node name="terrain_v2" parent="." unique_id=1432712583 instance=ExtResource("3_38cb2")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.1623573, 2.6606169, -9.560322)
+[node name="Board" parent="." unique_id=1831510831 instance=ExtResource("4_ef7dr")]
+unique_name_in_owner = true
+
+[node name="Lyra" parent="." unique_id=309159948 groups=["Entity"] instance=ExtResource("5_ef7dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="PlayerController" type="Node" parent="." unique_id=1527753692 node_paths=PackedStringArray("state_machine", "initial_state")]
+script = ExtResource("6_1i6e8")
+state_machine = NodePath("StateMachine")
+initial_state = NodePath("StateMachine/FreeSelect")
+
+[node name="StateMachine" type="Node" parent="PlayerController" unique_id=573513746]
+script = ExtResource("7_rwmut")
+
+[node name="FreeSelect" type="Node" parent="PlayerController/StateMachine" unique_id=1298106777 node_paths=PackedStringArray("pick_entity_state")]
+script = ExtResource("8_hnlv6")
+pick_entity_state = NodePath("../UnitSelected")
+
+[node name="UnitSelected" type="Node" parent="PlayerController/StateMachine" unique_id=248801109]
+script = ExtResource("9_0raw2")
+
+[node name="GameManager" type="Node" parent="." unique_id=303842425 node_paths=PackedStringArray("state_machine", "initial_state", "player_controller")]
+script = ExtResource("6_wt016")
+state_machine = NodePath("StateMachine")
+initial_state = NodePath("StateMachine/PlayerTurnState")
+player_controller = NodePath("../PlayerController")
+
+[node name="StateMachine" type="Node" parent="GameManager" unique_id=839341672]
+script = ExtResource("7_rwmut")
+
+[node name="PlayerTurnState" type="Node" parent="GameManager/StateMachine" unique_id=2130421802]
+script = ExtResource("8_rwmut")
+
+[node name="EnemyTurn" type="Node" parent="GameManager/StateMachine" unique_id=231899746]
+
+[node name="InputController" type="Node" parent="." unique_id=325693303]
+unique_name_in_owner = true
+script = ExtResource("10_oo7tc")

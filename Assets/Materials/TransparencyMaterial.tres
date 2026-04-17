@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://fieup2tw4snw"]
+
+[ext_resource type="Shader" uid="uid://daj4ql3xgeuqm" path="res://Scripts/Shaders/ApplyTransparency.gdshader" id="1_qy2so"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qy2so")
+shader_parameter/alpha_multiplier = 0.4130000196175
