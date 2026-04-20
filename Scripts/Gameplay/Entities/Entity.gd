@@ -6,4 +6,4 @@ class_name Entity
 
 var board_position: Vector2i:
 	get:
-		return Board.PositionOnBoard(global_position)
+		return Board.WorldToTileID(global_position)

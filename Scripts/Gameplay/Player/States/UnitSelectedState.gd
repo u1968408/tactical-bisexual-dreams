@@ -2,28 +2,62 @@ extends PlayerBaseState
 class_name UnitSelectedState
 
 @export var free_select_state: FreeSelectPlayerState
+@export var selected_tile_color: Color
+@export_flags_3d_physics var tile_collision_layer: int
 
-var current_entity: Entity = null
+@onready var _camera: CameraController = get_viewport().get_camera_3d()
+
+var current_character: Character
 var generator: Generator
+
+var _current_selected_tile: Tile:
+	get:
+		return _current_selected_tile
+	set(value):
+		if value == _current_selected_tile:
+			return
+		if _current_selected_tile:
+			_current_selected_tile.ChangeColor()
+		_current_selected_tile = value
+		if _current_selected_tile:
+			_current_selected_tile.ChangeColor(selected_tile_color)
+		
 
 func Enter() -> void:
 	super()
 	generator = Generator.new(board)
-	if current_entity == null:
+	if current_character == null:
 		push_error("S'ha entrat al estat de unitat seleccionada sense seleccionar unitat.")
 		state_machine.setCurrentState(free_select_state)
 		return
-	if current_entity is Character:
-		print("Creating characters")
-		generator.GenerateTilesArroundPosition(
-			current_entity.board_position,
-			current_entity.stats.movement
-		)
+	generator.GenerateTilesArroundPosition(
+		current_character.board_position,
+		current_character.stats.movement
+	)
 		
+func _create_ray(from: Vector3, to: Vector3) -> void:
+	var space_state := _camera.get_world_3d().direct_space_state
+	var query := PhysicsRayQueryParameters3D.create(
+		from,
+		to,
+		tile_collision_layer
+	)
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	var result := space_state.intersect_ray(query)
+	if result.is_empty():
+		_current_selected_tile = null
+		return
+	var collider: Node3D = result.collider
+	if collider is not Tile:
+		print("Loking from %s to %s and colliding with %s" % [from, to, result.collider])
+	else:
+		_current_selected_tile = collider
 
 func Exit():
 	super()
 	generator = null
+	current_character = null
 
 func AddListeners():
 	super()
@@ -32,7 +66,15 @@ func RemoveListeners():
 	super()
 
 func on_mouse_move(_screen_position: Vector2, _tile_position: Vector3):
-	pass
+	_create_ray(
+		_camera.mouse_world_position,
+		_camera.mouse_look_position
+	)
 
 func on_mouse_click() -> void:
-	pass
+	if _current_selected_tile == null:
+		return 
+	print(_current_selected_tile.current_entity)
+	
+func on_mouse_secondary_click() -> void:
+	state_machine.setCurrentState(free_select_state)

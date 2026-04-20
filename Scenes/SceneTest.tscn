@@ -54,7 +54,7 @@ movement = NodePath("CameraMovement")
 
 [node name="CameraMovement" type="Node" parent="Camera3D" unique_id=1425471049]
 script = ExtResource("1_7odli")
-speed = 0.3
+speed = 35.0
 
 [node name="OrbitCamera" type="Node" parent="Camera3D" unique_id=1827563547]
 script = ExtResource("2_ef7dr")
@@ -76,6 +76,7 @@ transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0.02
 mesh = SubResource("QuadMesh_gtfm6")
 
 [node name="Terrain" type="Area3D" parent="Meshes" unique_id=368414097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 collision_layer = 8
 
 [node name="Person reference" type="MeshInstance3D" parent="Meshes/Terrain" unique_id=1149459635]
@@ -110,6 +111,7 @@ camera_attributes = SubResource("CameraAttributesPractical_740v5")
 
 [node name="Board" parent="." unique_id=1831510831 instance=ExtResource("4_ef7dr")]
 unique_name_in_owner = true
+terrain_collision_layer = 8
 
 [node name="Lyra" parent="." unique_id=309159948 groups=["Entity"] instance=ExtResource("5_ef7dr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
@@ -122,12 +124,15 @@ initial_state = NodePath("StateMachine/FreeSelect")
 [node name="StateMachine" type="Node" parent="PlayerController" unique_id=573513746]
 script = ExtResource("7_rwmut")
 
-[node name="FreeSelect" type="Node" parent="PlayerController/StateMachine" unique_id=1298106777 node_paths=PackedStringArray("pick_entity_state")]
+[node name="FreeSelect" type="Node" parent="PlayerController/StateMachine" unique_id=1298106777 node_paths=PackedStringArray("pick_character_state")]
 script = ExtResource("8_hnlv6")
-pick_entity_state = NodePath("../UnitSelected")
+pick_character_state = NodePath("../UnitSelected")
 
-[node name="UnitSelected" type="Node" parent="PlayerController/StateMachine" unique_id=248801109]
+[node name="UnitSelected" type="Node" parent="PlayerController/StateMachine" unique_id=248801109 node_paths=PackedStringArray("free_select_state")]
 script = ExtResource("9_0raw2")
+free_select_state = NodePath("../FreeSelect")
+selected_tile_color = Color(0.77888036, 0.87298, 0.1661934, 1)
+tile_collision_layer = 512
 
 [node name="GameManager" type="Node" parent="." unique_id=303842425 node_paths=PackedStringArray("state_machine", "initial_state", "player_controller")]
 script = ExtResource("6_wt016")

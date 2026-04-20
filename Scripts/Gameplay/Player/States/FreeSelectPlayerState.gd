@@ -1,7 +1,7 @@
 extends PlayerBaseState
 class_name FreeSelectPlayerState
 
-@export var pick_entity_state: UnitSelectedState
+@export var pick_character_state: UnitSelectedState
 
 var _indicator_scene: PackedScene = load("uid://3g26356lwewc")
 var _indicator: Indicator
@@ -24,6 +24,9 @@ func on_mouse_move(_screen_position: Vector2, tile_position: Vector3):
 
 func on_mouse_click() -> void:
 	var entity := _indicator._current_entity
-	if entity != null:
-		pick_entity_state.current_entity = entity
-		state_machine.setCurrentState(pick_entity_state)
+	print("Clicked on %s" % _indicator.target_tile_id)
+	if entity == null:
+		return
+	if entity is Character:
+		pick_character_state.current_character = entity
+		state_machine.setCurrentState(pick_character_state)

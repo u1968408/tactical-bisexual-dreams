@@ -16,11 +16,11 @@ size = Vector3(1, 0.1, 1)
 collision_layer = 256
 collision_mask = 12
 script = ExtResource("1_jktb1")
-mesh = NodePath("MeshInstance3D")
 selected_enemy = Color(1, 0, 0, 0.5882353)
 selected_ally = Color(0, 1, 0.7882353, 0.5882353)
 selected_empty_tile = Color(1, 1, 0, 0.5882353)
 selected_colliding_terrain = Color(0.39308554, 0.3930855, 0.39308548, 0.23529412)
+mesh = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=349201083]
 mesh = SubResource("BoxMesh_jktb1")
