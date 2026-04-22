@@ -10,6 +10,8 @@ class_name UnitSelectedState
 var current_character: Character
 var generator: Generator
 
+var _entity_moving: bool = false
+
 var _current_selected_tile: Tile:
 	get:
 		return _current_selected_tile
@@ -61,20 +63,41 @@ func Exit():
 
 func AddListeners():
 	super()
+	current_character.movement.movement_ended.connect(
+		_OnMovementEnded
+	)
 
 func RemoveListeners():
 	super()
+	current_character.movement.movement_ended.disconnect(
+		_OnMovementEnded
+	)
 
-func on_mouse_move(_screen_position: Vector2, _tile_position: Vector3):
+func on_mouse_move(_screen_position: Vector2, _tile_position: Vector3) -> void:
+	if _entity_moving:
+		return
 	_create_ray(
 		_camera.mouse_world_position,
 		_camera.mouse_look_position
 	)
 
 func on_mouse_click() -> void:
+	if _entity_moving:
+		return
 	if _current_selected_tile == null:
 		return 
-	print(_current_selected_tile.current_entity)
+	if _current_selected_tile.current_entity != null:
+		push_error("Encara no he programat aixo")
+		return
+	
+	var path := generator.GetPathForTile(_current_selected_tile)
+	current_character.Move(path)
+	generator = null
 	
 func on_mouse_secondary_click() -> void:
+	if _entity_moving:
+		return
+	state_machine.setCurrentState(free_select_state)
+
+func _OnMovementEnded():
 	state_machine.setCurrentState(free_select_state)

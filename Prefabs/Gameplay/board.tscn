@@ -4,3 +4,5 @@
 
 [node name="Board" type="Node3D" unique_id=1831510831]
 script = ExtResource("1_fui6p")
+terrain_collision_layer = 8
+entities_collision_layer = 6

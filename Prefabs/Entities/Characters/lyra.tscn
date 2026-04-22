@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://6rmftfncs2aq" path="res://Prefabs/Entities/entity_collision.tscn" id="4_lml3t"]
 [ext_resource type="Script" uid="uid://3eg3vuyo47a3" path="res://Scripts/Gameplay/Entities/Stats/Stats.gd" id="5_ie3kb"]
 [ext_resource type="Resource" uid="uid://cgikgus3gg281" path="res://Resources/Characters/Stats/LyraStats.tres" id="6_hw56i"]
+[ext_resource type="Script" uid="uid://b43tkeosjs6ca" path="res://Scripts/Gameplay/Entities/Components/EntityMovementController.gd" id="7_hw56i"]
 
-[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("stats")]
+[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("stats", "movement")]
 collision_layer = 4
 script = ExtResource("1_riiya")
 stats = NodePath("Stats")
+movement = NodePath("Movement")
 
 [node name="Sprite" type="Sprite3D" parent="." unique_id=1617225657]
 transform = Transform3D(2.9999998, 0, 0, 0, 3, 0, 0, 0, 2.9999998, 0, 0.9, 0)
@@ -24,3 +26,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 [node name="Stats" type="Node" parent="." unique_id=740003460]
 script = ExtResource("5_ie3kb")
 base_stats = ExtResource("6_hw56i")
+
+[node name="Movement" type="Node" parent="." unique_id=436469242]
+script = ExtResource("7_hw56i")

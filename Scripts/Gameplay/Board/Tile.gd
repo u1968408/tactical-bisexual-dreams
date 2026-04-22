@@ -2,7 +2,6 @@ extends Area3D
 class_name Tile
 
 @export var mesh: MeshInstance3D
-
 var _current_entity: Entity
 signal entity_changed
 
@@ -13,8 +12,12 @@ var base_color: Color = Color(1.0, 1.0, 1.0):
 		base_color = value
 		ChangeColor(base_color)
 
-static func ManhathanDistance(pos1: Vector2i, pos2: Vector2i) -> int:
-	return absi(pos1.x - pos2.x) + absi(pos1.y - pos2.y)
+var _board: Board:
+	get:
+		if Board.instance == null:
+			push_error("Tile: No hi ha cap Board actiu en la escena.")
+			return null
+		return Board.instance
 
 func _ready() -> void:
 	area_entered.connect(_OnAreaEnter)
@@ -74,8 +77,9 @@ func Move(new_position: Vector3) -> void:
 		return
 	position = new_position
 	
-func MoveToTile(new_position: Vector2) -> void:
-	Move(Vector3(new_position.x, 0, new_position.y))
+func MoveToTile(new_position: Vector2i) -> void:
+	var world_position := _board.GetWorldPosition(new_position)
+	Move(world_position)
 
 func ChangeAlpha(new_alpha: float):
 	for mat in materials:

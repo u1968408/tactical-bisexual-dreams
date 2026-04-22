@@ -9,7 +9,11 @@ class_name Board
 const TILE_SIZE: Vector2 = Vector2(1, 1)
 const TILE_HEIGHT: float = 0.1
 
+static var instance: Board
+
 @export_flags_3d_physics var terrain_collision_layer: int
+@export_flags_3d_physics var entities_collision_layer: int
+
 
 var _min := Vector2i(-10, -10)
 var _max := Vector2i(10, 10)
@@ -33,6 +37,7 @@ var max_tile: Vector2i:
 		return _max
 
 func _ready() -> void:
+	instance = self
 	_initializeTerrain()
 	_setTerrainTiles()
 
@@ -52,6 +57,26 @@ static func WorldToTileID(world_pos: Vector3) -> Vector2i:
 	var local_x := world_pos.x
 	var local_z := world_pos.z
 	return Vector2i(floor(local_x / TILE_SIZE.x), floor(local_z / TILE_SIZE.y))
+
+static func ManhathanDistance(pos1: Vector2i, pos2: Vector2i) -> int:
+	return absi(pos1.x - pos2.x) + absi(pos1.y - pos2.y)
+
+func SetSolid(tile_id: Vector2i, solid: bool):
+	_astar.set_point_solid(tile_id, solid)
+
+func IsTileWalkable(tile_id: Vector2i) -> bool:
+	return _astar.is_in_boundsv(tile_id) and not _astar.is_point_solid(tile_id)
+
+func FindPath(origin: Vector2i, destination: Vector2i, max_distance: int = -1) -> PackedVector2Array:
+	if not _astar.is_in_boundsv(origin) or not IsTileWalkable(destination):
+		print("Not walkable path (origin_in_bounds=%s, is_destination_walkable=%s)" % [_astar.is_in_boundsv(origin), IsTileWalkable(destination)])
+		return PackedVector2Array()
+	var _path := _astar.get_point_path(origin, destination)
+	if _path.size() < 2:
+		return PackedVector2Array()
+	if max_distance > 0 and len(_path) - 1 > max_distance:
+		return PackedVector2Array()
+	return _path
 
 ## Obté la posició en el món 3D d'una cel·la específica de la graella AStar.
 ## [br][br][b]Paràmetres:[/b]
@@ -112,9 +137,11 @@ func _DebugDrawTile(tile_id: Vector2i) -> void:
 		0
 	)
 	
-func _GetCollisionsInArea(query_id: Vector2i) -> Array[Node3D]:
+func _GetCollisionsInArea(query_id: Vector2i, include_entities: bool = true) -> Array[Node3D]:
 	var query := PhysicsShapeQueryParameters3D.new()
 	query.collision_mask = terrain_collision_layer
+	if include_entities:
+		query.collision_mask += entities_collision_layer
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	query.shape_rid = _tile_shape_rid
