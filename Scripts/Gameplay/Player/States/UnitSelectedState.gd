@@ -61,14 +61,15 @@ func Exit():
 	generator = null
 	current_character = null
 
-func AddListeners():
+func AddListeners() -> void:
 	super()
 	current_character.movement.movement_ended.connect(
 		_OnMovementEnded
 	)
 
-func RemoveListeners():
+func RemoveListeners() -> void:
 	super()
+	if current_character == null: return
 	current_character.movement.movement_ended.disconnect(
 		_OnMovementEnded
 	)

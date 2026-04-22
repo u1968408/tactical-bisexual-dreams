@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bvegrdtpjml7q"]
+
+[ext_resource type="Texture2D" uid="uid://3uqa5i2xbitb" path="res://Assets/Sprites/PlaceholderWeaponsSprites.png" id="1_ivjuw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivjuw"]
+atlas = ExtResource("1_ivjuw")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cqln"]
+atlas = ExtResource("1_ivjuw")
+region = Rect2(128, 64, 128, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivjuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cqln")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]

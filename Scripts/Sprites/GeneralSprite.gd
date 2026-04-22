@@ -1,4 +1,4 @@
-extends Sprite3D
+extends AnimatedSprite3D
 
 @onready var _camera: Camera3D = get_viewport().get_camera_3d()
 

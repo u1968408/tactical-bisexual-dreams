@@ -1,24 +1,120 @@
 [gd_scene format=3 uid="uid://on4fn7kuuxsh"]
 
-[ext_resource type="Texture2D" uid="uid://bqi0j1suo1ec3" path="res://Assets/Sprites/PlaceholderLyra.png" id="1_g1sep"]
 [ext_resource type="Script" uid="uid://c18oq240k11se" path="res://Scripts/Gameplay/Entities/Characters/Character.gd" id="1_riiya"]
 [ext_resource type="Script" uid="uid://c0f744ec8kdw5" path="res://Scripts/Sprites/GeneralSprite.gd" id="2_riiya"]
+[ext_resource type="Texture2D" uid="uid://b67e1gvgbaryf" path="res://Assets/Sprites/PlaceholderLyraSprites.png" id="2_xuocx"]
 [ext_resource type="PackedScene" uid="uid://6rmftfncs2aq" path="res://Prefabs/Entities/entity_collision.tscn" id="4_lml3t"]
 [ext_resource type="Script" uid="uid://3eg3vuyo47a3" path="res://Scripts/Gameplay/Entities/Stats/Stats.gd" id="5_ie3kb"]
 [ext_resource type="Resource" uid="uid://cgikgus3gg281" path="res://Resources/Characters/Stats/LyraStats.tres" id="6_hw56i"]
 [ext_resource type="Script" uid="uid://b43tkeosjs6ca" path="res://Scripts/Gameplay/Entities/Components/EntityMovementController.gd" id="7_hw56i"]
+[ext_resource type="Script" uid="uid://ccjwa58wtd00e" path="res://Prefabs/Entities/AnimationController.gd" id="7_xcnmv"]
+[ext_resource type="SpriteFrames" uid="uid://t5bxoaf5br0t" path="res://Assets/Sprites/Weapons/TomfaSpriteFrames.tres" id="8_wcmsd"]
+[ext_resource type="Script" uid="uid://wrc6rds4h67q" path="res://Prefabs/Entities/Characters/Weapons.gd" id="9_wcmsd"]
 
-[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("stats", "movement")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcnmv"]
+atlas = ExtResource("2_xuocx")
+region = Rect2(128, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sbcw"]
+atlas = ExtResource("2_xuocx")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfyuw"]
+atlas = ExtResource("2_xuocx")
+region = Rect2(256, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o54hl"]
+atlas = ExtResource("2_xuocx")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l738"]
+atlas = ExtResource("2_xuocx")
+region = Rect2(256, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gplbv"]
+atlas = ExtResource("2_xuocx")
+region = Rect2(0, 128, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po2ih"]
+atlas = ExtResource("2_xuocx")
+region = Rect2(128, 128, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45nm5"]
+atlas = ExtResource("2_xuocx")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htbop"]
+atlas = ExtResource("2_xuocx")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnmbj"]
+atlas = ExtResource("2_xuocx")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfyuw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcnmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sbcw")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfyuw")
+}],
+"loop": true,
+"name": &"idle_b",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o54hl")
+}],
+"loop": true,
+"name": &"idle_f",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l738")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gplbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po2ih")
+}],
+"loop": true,
+"name": &"walk_b",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45nm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htbop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnmbj")
+}],
+"loop": true,
+"name": &"walk_f",
+"speed": 5.0
+}]
+
+[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("stats", "animation", "movement")]
 collision_layer = 4
 script = ExtResource("1_riiya")
 stats = NodePath("Stats")
+animation = NodePath("AnimationController")
 movement = NodePath("Movement")
-
-[node name="Sprite" type="Sprite3D" parent="." unique_id=1617225657]
-transform = Transform3D(2.9999998, 0, 0, 0, 3, 0, 0, 0, 2.9999998, 0, 0.9, 0)
-texture_filter = 0
-texture = ExtResource("1_g1sep")
-script = ExtResource("2_riiya")
 
 [node name="CharacterCollision" parent="." unique_id=285415630 instance=ExtResource("4_lml3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -27,5 +123,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 script = ExtResource("5_ie3kb")
 base_stats = ExtResource("6_hw56i")
 
+[node name="AnimationController" type="Node" parent="." unique_id=1505571047 node_paths=PackedStringArray("sprite")]
+script = ExtResource("7_xcnmv")
+sprite = NodePath("../AnimatedSprite3D")
+
 [node name="Movement" type="Node" parent="." unique_id=436469242]
 script = ExtResource("7_hw56i")
+slow_radius = 0.5
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1146477554]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.9, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_nfyuw")
+animation = &"idle_f"
+script = ExtResource("2_riiya")
+
+[node name="Weapons" type="Node3D" parent="." unique_id=234906197]
+script = ExtResource("9_wcmsd")
+
+[node name="WeaponSprite" type="AnimatedSprite3D" parent="Weapons" unique_id=1151264967]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.9, 0)
+visible = false
+texture_filter = 0
+sprite_frames = ExtResource("8_wcmsd")
+animation = &"attack"
+script = ExtResource("2_riiya")

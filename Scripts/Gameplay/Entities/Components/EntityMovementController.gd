@@ -3,6 +3,7 @@ class_name EntityMovementController
 
 enum MoveState { IDLE, FOLLOW }
 
+signal movement_started
 signal movement_ended
 
 @export var speed: float = 8.0
@@ -26,6 +27,7 @@ func SetNewPath(path: PackedVector2Array) -> void:
 		_path.append(_board.GetWorldPosition(tile_id))
 	_next_point = _path[0]
 	_state = MoveState.FOLLOW
+	movement_started.emit()
 
 func _process(delta: float) -> void:
 	if _state != MoveState.FOLLOW:
@@ -60,6 +62,18 @@ func _move_logic(target: Vector3, delta: float, decelerate: bool) -> bool:
 	var steering := desired_velocity - _velocity
 	_velocity += (steering / mass)
 	
+	if _velocity.length() > 0.1:
+		_update_snapped_rotation(direction)
+	
 	_entity.global_position += _velocity * delta
 	
 	return distance < _arrive_distance
+
+func _update_snapped_rotation(direction: Vector3) -> void:
+	var target_look_dir := Vector3.ZERO
+	if absf(direction.x) > absf(direction.z):
+		target_look_dir = Vector3(signf(direction.x), 0, 0)
+	else:
+		target_look_dir = Vector3(0, 0, signf(direction.z))
+	if target_look_dir != Vector3.ZERO:
+		_entity.look_at(_entity.global_position + target_look_dir, Vector3.UP)
