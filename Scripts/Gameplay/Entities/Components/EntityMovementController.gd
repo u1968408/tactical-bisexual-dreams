@@ -62,7 +62,7 @@ func _move_logic(target: Vector3, delta: float, decelerate: bool) -> bool:
 	var steering := desired_velocity - _velocity
 	_velocity += (steering / mass)
 	
-	if _velocity.length() > 0.1:
+	if distance > 0.1 and _velocity.length() > 0.2:
 		_update_snapped_rotation(direction)
 	
 	_entity.global_position += _velocity * delta

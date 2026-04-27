@@ -11,7 +11,14 @@
 [ext_resource type="Script" uid="uid://f6xptvqwsdhu" path="res://Scripts/Gameplay/Player/States/FreeSelectPlayerState.gd" id="8_hnlv6"]
 [ext_resource type="Script" uid="uid://bi03m5l68reow" path="res://Scripts/Gameplay/GameManager/States/PlayerTurnState.gd" id="8_rwmut"]
 [ext_resource type="Script" uid="uid://b1np0wydmnee" path="res://Scripts/Gameplay/Player/States/UnitSelectedState.gd" id="9_0raw2"]
+[ext_resource type="Script" uid="uid://creph5k0ip82m" path="res://Scripts/Gameplay/Player/UnitSelectedStates/MoveSubState.gd" id="10_3mb6f"]
 [ext_resource type="Script" uid="uid://cxuv302r8ibwt" path="res://Scripts/Gameplay/Player/InputController.gd" id="10_oo7tc"]
+[ext_resource type="Script" uid="uid://0f0qkhhw1e00" path="res://Scripts/Gameplay/Player/UnitSelectedStates/AttackSubState.gd" id="11_vpa4f"]
+[ext_resource type="Script" uid="uid://c6tbqligdghm4" path="res://Scripts/UI/UIController.gd" id="13_bswdm"]
+[ext_resource type="Texture2D" uid="uid://dsqdpic1titk2" path="res://Assets/UI/UI_PLACEHOLDER.png" id="14_4gdn3"]
+[ext_resource type="Theme" uid="uid://c5148txguwoog" path="res://Resources/UI/Theme.tres" id="15_nd2tj"]
+[ext_resource type="Texture2D" uid="uid://42kypsjsnutv" path="res://Assets/UI/UI_Combat.png" id="16_61ssm"]
+[ext_resource type="Script" uid="uid://bbbk4plp4befm" path="res://Scripts/UI/CombatUI.gd" id="17_27m4o"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_38cb2"]
 size = Vector3(5, 5, 5)
@@ -40,6 +47,101 @@ size = Vector3(0.15, 2.5, 0.15)
 [sub_resource type="Environment" id="Environment_gtfm6"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_740v5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27m4o"]
+atlas = ExtResource("16_61ssm")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2bkh"]
+atlas = ExtResource("16_61ssm")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mb6f"]
+atlas = ExtResource("16_61ssm")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpa4f"]
+atlas = ExtResource("16_61ssm")
+region = Rect2(0, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su6wu"]
+atlas = ExtResource("16_61ssm")
+region = Rect2(200, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x74u"]
+atlas = ExtResource("16_61ssm")
+region = Rect2(400, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_are4x"]
+atlas = ExtResource("16_61ssm")
+region = Rect2(600, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu7w3"]
+atlas = ExtResource("16_61ssm")
+region = Rect2(0, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_785m0"]
+atlas = ExtResource("16_61ssm")
+region = Rect2(200, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axkv8"]
+atlas = ExtResource("16_61ssm")
+region = Rect2(400, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cbq7"]
+atlas = ExtResource("16_61ssm")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mhl4e"]
+animations = [{
+"frames": [{
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_27m4o")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_i2bkh")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_3mb6f")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_vpa4f")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_su6wu")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_5x74u")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_are4x")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_xu7w3")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_785m0")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_axkv8")
+}],
+"loop": false,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cbq7")
+}],
+"loop": false,
+"name": &"none",
+"speed": 5.0
+}]
 
 [node name="TestScene" type="Node3D" unique_id=1096462511]
 
@@ -111,7 +213,6 @@ camera_attributes = SubResource("CameraAttributesPractical_740v5")
 
 [node name="Board" parent="." unique_id=1831510831 instance=ExtResource("4_ef7dr")]
 unique_name_in_owner = true
-terrain_collision_layer = 8
 
 [node name="Lyra" parent="." unique_id=309159948 groups=["Entity"] instance=ExtResource("5_ef7dr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
@@ -128,11 +229,26 @@ script = ExtResource("7_rwmut")
 script = ExtResource("8_hnlv6")
 pick_character_state = NodePath("../UnitSelected")
 
-[node name="UnitSelected" type="Node" parent="PlayerController/StateMachine" unique_id=248801109 node_paths=PackedStringArray("free_select_state")]
+[node name="UnitSelected" type="Node" parent="PlayerController/StateMachine" unique_id=248801109 node_paths=PackedStringArray("free_select_state", "combat_ui", "internal_state_machine", "move_sub_state", "attack_sub_state")]
 script = ExtResource("9_0raw2")
 free_select_state = NodePath("../FreeSelect")
 selected_tile_color = Color(0.77888036, 0.87298, 0.1661934, 1)
+combat_ui = NodePath("../../../CanvasLayer/Interface/ContainerCombatUI/CombatUI")
 tile_collision_layer = 512
+internal_state_machine = NodePath("UnitStateMachine")
+move_sub_state = NodePath("UnitStateMachine/UnitMoveState")
+attack_sub_state = NodePath("UnitStateMachine/UnitAttackState")
+
+[node name="UnitStateMachine" type="Node" parent="PlayerController/StateMachine/UnitSelected" unique_id=542945428]
+script = ExtResource("7_rwmut")
+
+[node name="UnitMoveState" type="Node" parent="PlayerController/StateMachine/UnitSelected/UnitStateMachine" unique_id=682598189]
+script = ExtResource("10_3mb6f")
+base_tile_color = Color(0, 0.5529412, 0.7607843, 0.7058824)
+
+[node name="UnitAttackState" type="Node" parent="PlayerController/StateMachine/UnitSelected/UnitStateMachine" unique_id=657233247]
+script = ExtResource("11_vpa4f")
+base_tile_color = Color(0.84313726, 0, 0.2, 0.6862745)
 
 [node name="GameManager" type="Node" parent="." unique_id=303842425 node_paths=PackedStringArray("state_machine", "initial_state", "player_controller")]
 script = ExtResource("6_wt016")
@@ -148,6 +264,62 @@ script = ExtResource("8_rwmut")
 
 [node name="EnemyTurn" type="Node" parent="GameManager/StateMachine" unique_id=231899746]
 
-[node name="InputController" type="Node" parent="." unique_id=325693303]
+[node name="InputController" type="Node3D" parent="." unique_id=1420336860]
 unique_name_in_owner = true
 script = ExtResource("10_oo7tc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1735667097]
+
+[node name="Interface" type="Control" parent="CanvasLayer" unique_id=160410756]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("13_bswdm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Interface" unique_id=2145346862]
+visible = false
+layout_mode = 0
+offset_left = 17.0
+offset_top = 534.0
+offset_right = 245.0
+offset_bottom = 577.0
+texture = ExtResource("14_4gdn3")
+region_rect = Rect2(1, 1, 108, 21)
+patch_margin_left = 2
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Interface" unique_id=207198784]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -114.0
+offset_right = 236.25
+offset_bottom = -76.16998
+grow_vertical = 0
+theme = ExtResource("15_nd2tj")
+text = "Move"
+
+[node name="ContainerCombatUI" type="Control" parent="CanvasLayer/Interface" unique_id=1687180784]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="CombatUI" type="AnimatedSprite2D" parent="CanvasLayer/Interface/ContainerCombatUI" unique_id=255258106]
+position = Vector2(100, -100)
+sprite_frames = SubResource("SpriteFrames_mhl4e")
+animation = &"none"
+script = ExtResource("17_27m4o")
+
+[connection signal="pressed" from="CanvasLayer/Interface/Button" to="CanvasLayer/Interface" method="_on_button_pressed"]

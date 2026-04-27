@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 class_name InputController
 
 @onready
@@ -12,19 +12,31 @@ signal camera_orbit(direction: CameraOrbit.OrbitDirection)
 signal mouse_hover(screen_position: Vector2, tile_position: Vector3)
 signal mouse_click
 signal mouse_secondary_click
+
+signal combat_ui_direction(direction: int)
+signal combat_ui_by_id(id: int)
 #endregion
 
 #region Overrides
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		_last_mouse_screen_pos = event.position
-		_update_mouse_hover()
+#		_update_mouse_hover()
 	elif event is InputEventMouseButton and not event.pressed:
-		var btn_evt: InputEventMouseButton = event 
+		var btn_evt: InputEventMouseButton = event
 		if btn_evt.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 			mouse_click.emit()
 		elif btn_evt.button_index == MouseButton.MOUSE_BUTTON_RIGHT:
 			mouse_secondary_click.emit()
+	elif event.is_action_pressed("combat_select_up"):
+		combat_ui_direction.emit(1)
+	elif event.is_action_pressed("combat_select_down"):
+		combat_ui_direction.emit(-1)
+	elif event.is_action_pressed("combat_select_1"):
+		combat_ui_by_id.emit(1)
+	elif event.is_action_pressed("combat_select_2"):
+		combat_ui_by_id.emit(2)
+	
 
 func _process(delta: float) -> void:
 	_handler_input_camera(delta)

@@ -5,8 +5,7 @@ var _board: Board
 var _center: Vector2i
 
 var _tile_scn: PackedScene = preload("uid://c5kr64xyc0spt")
-var _tile_base_color: Color = Color(0.34901962, 0.7411765, 0.8980392, 0.4862745)
-var _tile_character_color: Color = Color(0.57254905, 0.25882354, 0.93333334, 1)
+var tile_base_color: Color = Color(0.34901962, 0.7411765, 0.8980392, 0.4862745)
 
 var _movement_paths: Array[MovementPath] = []
 
@@ -50,10 +49,9 @@ func GenerateTilesArroundPosition(center: Vector2i, radius: int) -> void:
 		if path.is_empty():
 			continue
 		var tile: Tile = _tile_scn.instantiate()
-		tile.base_color = _tile_base_color
+		tile.base_color = tile_base_color
 		tile.MoveToTile(tile_candidate)
 		_board.add_child(tile)
 		var mov_p := MovementPath.new(tile, path)
 		_movement_paths.append(mov_p)
 	_board.SetSolid(_center, true)
-	print(len(_movement_paths))

@@ -109,12 +109,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("stats", "animation", "movement")]
+[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("animation", "movement", "weapons", "stats")]
 collision_layer = 4
 script = ExtResource("1_riiya")
-stats = NodePath("Stats")
 animation = NodePath("AnimationController")
 movement = NodePath("Movement")
+weapons = NodePath("Weapons")
+stats = NodePath("Stats")
 
 [node name="CharacterCollision" parent="." unique_id=285415630 instance=ExtResource("4_lml3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -138,12 +139,13 @@ sprite_frames = SubResource("SpriteFrames_nfyuw")
 animation = &"idle_f"
 script = ExtResource("2_riiya")
 
-[node name="Weapons" type="Node3D" parent="." unique_id=234906197]
+[node name="Weapons" type="Node3D" parent="." unique_id=234906197 node_paths=PackedStringArray("weapon_sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.83103204)
 script = ExtResource("9_wcmsd")
+weapon_sprite = NodePath("WeaponSprite")
 
 [node name="WeaponSprite" type="AnimatedSprite3D" parent="Weapons" unique_id=1151264967]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.9, 0)
-visible = false
 texture_filter = 0
 sprite_frames = ExtResource("8_wcmsd")
 animation = &"attack"

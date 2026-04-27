@@ -69,7 +69,6 @@ func IsTileWalkable(tile_id: Vector2i) -> bool:
 
 func FindPath(origin: Vector2i, destination: Vector2i, max_distance: int = -1) -> PackedVector2Array:
 	if not _astar.is_in_boundsv(origin) or not IsTileWalkable(destination):
-		print("Not walkable path (origin_in_bounds=%s, is_destination_walkable=%s)" % [_astar.is_in_boundsv(origin), IsTileWalkable(destination)])
 		return PackedVector2Array()
 	var _path := _astar.get_point_path(origin, destination)
 	if _path.size() < 2:

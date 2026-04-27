@@ -6,8 +6,11 @@ signal state_changed(state: EntityState)
 
 @export var animation: AnimationController
 @export var movement: EntityMovementController
+@export var weapons: Weapons
+@export var stats: Stats
 
 @onready var _camera: CameraController = get_viewport().get_camera_3d()
+
 var current_state: EntityState = EntityState.Idle:
 	get:
 		return current_state
@@ -30,26 +33,14 @@ enum EntityState {
 
 var look_direction_along_camera: LookDirection:
 	get:
-# 1. Obtenemos la dirección hacia la que mira la entidad en el mundo (Global)
-		# En Godot, el frente suele ser el eje -Z de su base
 		var global_forward: Vector3 = -global_transform.basis.z
-		
-		# 2. Transformamos esa dirección al espacio local de la cámara
-		# Esto nos dice cómo se ve ese "frente" desde los ojos de la cámara
 		var local_dir: Vector3 = _camera.global_transform.basis.orthonormalized().inverse() * global_forward
-		
-		# 3. Analizamos los ejes X y Z locales de la cámara
-		# local_dir.x > 0 -> Derecha de la pantalla
-		# local_dir.x < 0 -> Izquierda de la pantalla
-		# local_dir.z > 0 -> Hacia la cámara (Abajo en pantalla)
-		# local_dir.z < 0 -> Lejos de la cámara (Arriba en pantalla)
-		
-		if local_dir.z < 0: # Caso UP
+		if local_dir.z < 0:
 			if local_dir.x > 0:
 				return LookDirection.UP_RIGHT
 			else:
 				return LookDirection.UP_LEFT
-		else: # Caso DOWN
+		else:
 			if local_dir.x > 0:
 				return LookDirection.DOWN_RIGHT
 			else:

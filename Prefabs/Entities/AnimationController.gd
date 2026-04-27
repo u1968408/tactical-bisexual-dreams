@@ -35,7 +35,7 @@ func _OnStateChanged(state: Entity.EntityState):
 			_current_anim = AnimationNames.IDLE
 	sprite.play(animation)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _direction != _entity.look_direction_along_camera:
 		_direction = _entity.look_direction_along_camera
 		_set_flip()

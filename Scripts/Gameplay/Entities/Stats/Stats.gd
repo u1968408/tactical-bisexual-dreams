@@ -3,6 +3,7 @@ class_name Stats
 
 const DEX_FOR_TILE: int = 20
 @export var base_stats: BaseStats
+@onready var _entity: Entity = get_parent()
 
 signal life_damaged(damage: int, new_health: int)
 signal life_gained(cure: int, new_health: int)
@@ -54,3 +55,17 @@ var movement: int:
 	get:
 		var mov_f: float = float(dexterity) / DEX_FOR_TILE
 		return int(mov_f)
+
+var attack_range: int:
+	get:
+		var wpn : Weapon = _entity.weapons.equiped
+		if wpn == null:
+			return 1
+		return wpn.attack_range
+
+var damage: int:
+	get:
+		var wpn : Weapon = _entity.weapons.equiped
+		if wpn == null:
+			return attack
+		return wpn.damage + attack

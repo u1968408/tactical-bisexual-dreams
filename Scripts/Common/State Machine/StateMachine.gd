@@ -4,7 +4,7 @@ extends Node
 var _currentState: State
 
 ## Getter for the current State in the State machine. Change it via [method setCurrentState].
-var currentState: State:
+var state: State:
 	get:
 		return _currentState
 
