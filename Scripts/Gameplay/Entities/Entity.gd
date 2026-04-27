@@ -31,9 +31,12 @@ enum EntityState {
 	Attacking,
 }
 
+var global_forward: Vector3:
+	get:
+		return -global_transform.basis.z
+
 var look_direction_along_camera: LookDirection:
 	get:
-		var global_forward: Vector3 = -global_transform.basis.z
 		var local_dir: Vector3 = _camera.global_transform.basis.orthonormalized().inverse() * global_forward
 		if local_dir.z < 0:
 			if local_dir.x > 0:
@@ -45,6 +48,18 @@ var look_direction_along_camera: LookDirection:
 				return LookDirection.DOWN_RIGHT
 			else:
 				return LookDirection.DOWN_LEFT
+
+var look_direction: LookDirection:
+	set(value):
+		match value:
+			LookDirection.UP_RIGHT:
+				rotation.y = 0
+			LookDirection.UP_LEFT:
+				rotation.y = PI / 2
+			LookDirection.DOWN_LEFT:
+				rotation.y = PI
+			LookDirection.DOWN_RIGHT:
+				rotation.y = PI * 3 / 2
 
 var board: Board:
 	get: return Board.instance

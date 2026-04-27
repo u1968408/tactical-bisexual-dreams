@@ -40,7 +40,7 @@ func Enter() -> void:
 
 func Exit():
 	super()
-	combat_ui.state = CombatUI.CombatState.None
+#	combat_ui.state = CombatUI.CombatState.None
 	internal_state_machine.setCurrentState(null)
 	combat_ui.active = false
 	current_character = null

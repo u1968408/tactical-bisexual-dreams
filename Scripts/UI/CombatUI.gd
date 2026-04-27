@@ -85,6 +85,9 @@ func _OnAnimationFinished() -> void:
 		play(current_animation.anim_name)
 
 func _SafeQueueDelete() -> void:
+	
+	if _animation_queue.is_empty():
+		return
 	var next: CustomAnim = _animation_queue[0]
 	if next.play_backwards:
 		# El deixem perque aixi torna a l'estat base

@@ -109,6 +109,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xcnmv"]
+radius = 0.1
+height = 0.2
+
 [node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("animation", "movement", "weapons", "stats")]
 collision_layer = 4
 script = ExtResource("1_riiya")
@@ -150,3 +154,8 @@ texture_filter = 0
 sprite_frames = ExtResource("8_wcmsd")
 animation = &"attack"
 script = ExtResource("2_riiya")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=711148975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6645608, -1.6104562)
+visible = false
+mesh = SubResource("CapsuleMesh_xcnmv")
