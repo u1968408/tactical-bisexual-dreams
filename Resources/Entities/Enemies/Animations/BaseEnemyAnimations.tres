@@ -1,0 +1,68 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bwuo8ohvvkbay"]
+
+[ext_resource type="Texture2D" uid="uid://b67e1gvgbaryf" path="res://Assets/Sprites/Character/PlaceholderLyraSprites.png" id="1_eko3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcnmv"]
+atlas = ExtResource("1_eko3y")
+region = Rect2(128, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sbcw"]
+atlas = ExtResource("1_eko3y")
+region = Rect2(0, 64, 128, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcnmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sbcw")
+}],
+"loop": false,
+"name": &"attack_b",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcnmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sbcw")
+}],
+"loop": false,
+"name": &"attack_f",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcnmv")
+}],
+"loop": true,
+"name": &"idle_b",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcnmv")
+}],
+"loop": true,
+"name": &"idle_f",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcnmv")
+}],
+"loop": true,
+"name": &"walk_b",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcnmv")
+}],
+"loop": true,
+"name": &"walk_f",
+"speed": 5.0
+}]

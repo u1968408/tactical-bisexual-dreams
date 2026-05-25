@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bvegrdtpjml7q"]
 
-[ext_resource type="Texture2D" uid="uid://3uqa5i2xbitb" path="res://Assets/Sprites/PlaceholderWeaponsSprites.png" id="1_ivjuw"]
+[ext_resource type="Texture2D" uid="uid://bpcbt8524spdu" path="res://Assets/Sprites/Weapons/PlaceholderWeaponsSprites.png" id="1_ivjuw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivjuw"]
 atlas = ExtResource("1_ivjuw")
@@ -12,6 +12,11 @@ region = Rect2(128, 64, 128, 64)
 
 [resource]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack_b",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ivjuw")
@@ -20,6 +25,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_3cqln")
 }],
 "loop": true,
-"name": &"attack",
+"name": &"attack_f",
 "speed": 5.0
 }]

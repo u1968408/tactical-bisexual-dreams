@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cry8xil11bh4d"]
+
+[ext_resource type="Script" uid="uid://cs5s5cpeix3gb" path="res://Scripts/Gameplay/Entities/Enemies/Enemy.gd" id="1_8ld4j"]
+[ext_resource type="PackedScene" uid="uid://6rmftfncs2aq" path="res://Prefabs/Entities/entity_collision.tscn" id="2_u2hdm"]
+[ext_resource type="Script" uid="uid://3eg3vuyo47a3" path="res://Scripts/Gameplay/Entities/Stats/Stats.gd" id="3_3yomg"]
+[ext_resource type="Resource" uid="uid://cgikgus3gg281" path="res://Resources/Entities/Characters/Stats/LyraStats.tres" id="4_j64mu"]
+[ext_resource type="Script" uid="uid://ccjwa58wtd00e" path="res://Scripts/Gameplay/Entities/Components/AnimationController.gd" id="5_te7ac"]
+[ext_resource type="Script" uid="uid://q04sdv4u4m31" path="res://Scripts/Gameplay/Entities/Components/AttackController.gd" id="6_mps0a"]
+[ext_resource type="Script" uid="uid://b43tkeosjs6ca" path="res://Scripts/Gameplay/Entities/Components/EntityMovementController.gd" id="7_el8pn"]
+[ext_resource type="Script" uid="uid://c0f744ec8kdw5" path="res://Scripts/Sprites/GeneralSprite.gd" id="9_g3fso"]
+[ext_resource type="SpriteFrames" uid="uid://bvegrdtpjml7q" path="res://Resources/Combat/Weapons/BatSpriteFrames.tres" id="10_2ynqj"]
+[ext_resource type="Script" uid="uid://wrc6rds4h67q" path="res://Scripts/Gameplay/Entities/Components/Weapons.gd" id="10_sv84x"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xcnmv"]
+radius = 0.1
+height = 0.2
+
+[node name="BaseEnemy" type="Area3D" unique_id=216388398 node_paths=PackedStringArray("animation", "movement", "weapons", "stats", "attack")]
+collision_layer = 4
+script = ExtResource("1_8ld4j")
+animation = NodePath("AnimationController")
+movement = NodePath("Movement")
+weapons = NodePath("Weapons")
+stats = NodePath("Stats")
+attack = NodePath("Attack")
+metadata/_custom_type_script = "uid://cs5s5cpeix3gb"
+
+[node name="CharacterCollision" parent="." unique_id=285415630 instance=ExtResource("2_u2hdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="Stats" type="Node" parent="." unique_id=740003460]
+script = ExtResource("3_3yomg")
+base_stats = ExtResource("4_j64mu")
+
+[node name="AnimationController" type="Node" parent="." unique_id=1505571047 node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_te7ac")
+sprite = NodePath("../AnimatedSprite3D")
+avaible_animations = 7
+
+[node name="Attack" type="Node" parent="." unique_id=808434641]
+script = ExtResource("6_mps0a")
+
+[node name="Movement" type="Node" parent="." unique_id=436469242]
+script = ExtResource("7_el8pn")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1146477554]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.9, 0)
+modulate = Color(1, 0.22352941, 0.40784314, 1)
+texture_filter = 0
+script = ExtResource("9_g3fso")
+
+[node name="Weapons" type="Node3D" parent="." unique_id=234906197 node_paths=PackedStringArray("weapon_sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+script = ExtResource("10_sv84x")
+weapon_sprite = NodePath("WeaponSprite")
+
+[node name="AnimationController" type="Node" parent="Weapons" unique_id=1431912696 node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_te7ac")
+sprite = NodePath("../WeaponSprite")
+avaible_animations = 2
+
+[node name="WeaponSprite" type="AnimatedSprite3D" parent="Weapons" unique_id=1151264967]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.9, 0)
+texture_filter = 0
+sprite_frames = ExtResource("10_2ynqj")
+animation = &"attack_b"
+script = ExtResource("9_g3fso")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=711148975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6645608, -1.6104562)
+visible = false
+mesh = SubResource("CapsuleMesh_xcnmv")

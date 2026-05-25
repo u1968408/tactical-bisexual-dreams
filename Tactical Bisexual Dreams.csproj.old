@@ -1,0 +1,12 @@
+<Project Sdk="Godot.NET.Sdk/4.6.1">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RootNamespace>TacticalBisexualDreams</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Gameplay\Player\UnitSelectedStates\AttackSubState.gd" />
+    <Content Include="Scripts\Gameplay\Player\UnitSelectedStates\MoveSubState.gd" />
+  </ItemGroup>
+</Project>

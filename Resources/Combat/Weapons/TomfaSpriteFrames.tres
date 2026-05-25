@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://t5bxoaf5br0t"]
+
+[ext_resource type="Texture2D" uid="uid://b02wr64gvddkw" path="res://Assets/Sprites/Weapons/TomfaPHAttackB.png" id="1_mj6ic"]
+[ext_resource type="Texture2D" uid="uid://bpcbt8524spdu" path="res://Assets/Sprites/Weapons/PlaceholderWeaponsSprites.png" id="1_ovl15"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qtfr"]
+atlas = ExtResource("1_mj6ic")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mab4"]
+atlas = ExtResource("1_mj6ic")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3aka"]
+atlas = ExtResource("1_ovl15")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1fkf"]
+atlas = ExtResource("1_ovl15")
+region = Rect2(128, 0, 128, 64)
+
+[resource]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qtfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mab4")
+}],
+"loop": false,
+"name": &"attack_b",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3aka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1fkf")
+}],
+"loop": false,
+"name": &"attack_f",
+"speed": 5.0
+}]

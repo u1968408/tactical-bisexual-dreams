@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_fbvye")
-attack = 50
+morale = 20
 metadata/_custom_type_script = "uid://b221r2nol8ung"
