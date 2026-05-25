@@ -50,7 +50,7 @@ func _init() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
-		RenderingServer.call_on_render_thread(_free_compute_resources)
+		_free_compute_resources()
 
 
 func _initialize_compute() -> void:

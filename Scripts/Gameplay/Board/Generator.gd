@@ -6,7 +6,7 @@ var _center: Vector2i
 var _radius: int
 
 var _tile_scn: PackedScene = preload("uid://c5kr64xyc0spt")
-var tile_base_color: Color = Color(0.34901962, 0.7411765, 0.8980392, 0.4862745)
+var tile_base_color: Color = Color(0.34901962, 0.7411765, 0.8980392, 1)
 var use_astar: bool = true
 
 var _movement_paths: Array[MovementPath] = []

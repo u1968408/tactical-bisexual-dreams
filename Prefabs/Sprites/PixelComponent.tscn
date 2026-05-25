@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dtv5k568chibw"]
+
+[ext_resource type="Script" uid="uid://bjkyx1wmow4yy" path="res://Shaders/hd_pixel_occlusion_component.gd" id="1_wgfu4"]
+
+[node name="PixelComponent" type="Node" unique_id=1377589984]
+script = ExtResource("1_wgfu4")

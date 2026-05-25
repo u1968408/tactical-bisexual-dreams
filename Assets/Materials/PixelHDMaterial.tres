@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://175fxtajyqlu"]
+
+[ext_resource type="Shader" uid="uid://1blkmdfquc5k" path="res://Shaders/shader_sprite.gdshader" id="1_pm7ry"]
+[ext_resource type="Texture2D" uid="uid://b02wr64gvddkw" path="res://Assets/Sprites/Weapons/TomfaPHAttackB.png" id="2_3xvyu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_pm7ry")
+shader_parameter/sprite_texture = ExtResource("2_3xvyu")
+shader_parameter/pixel_size = 4
+shader_parameter/alpha_cutoff = 0.01
+shader_parameter/depth_bias = 0.001
+shader_parameter/debug_mode = 0

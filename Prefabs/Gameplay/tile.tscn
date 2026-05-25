@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b8ijs273r24oo" path="res://Scripts/Gameplay/Board/Tile.gd" id="1_5fq8l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_remhu"]
-transparency = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_jktb1"]
 material = SubResource("StandardMaterial3D_remhu")

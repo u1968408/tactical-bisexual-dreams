@@ -73,16 +73,13 @@ access_resolved_depth = false
 needs_motion_vectors = false
 needs_normal_roughness = true
 script = ExtResource("4_su6wu")
-pixelization_enabled = false
-depth_edges_enabled = false
-normal_edges_enabled = false
 cel_shading_enabled = true
-shadow_strength = 0.61
+shadow_strength = 0.59
 highlight_strength = 0.07
-cel_bands = 5
+cel_bands = 10
 cel_strength = 1.0
-depth_edge_threshold = 0.039
-depth_edge_scale = 2484.0
+depth_edge_threshold = 0.17
+depth_edge_scale = 1869.0
 normal_edge_threshold = 0.627
 metadata/_custom_type_script = "uid://hpd080a38nd5"
 
@@ -252,6 +249,7 @@ transform = Transform3D(0.58183485, -0.7643366, 0.2779535, 0.40187597, 0.5673092
 directional_shadow_mode = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1083971455]
+unique_name_in_owner = true
 environment = SubResource("Environment_gtfm6")
 camera_attributes = SubResource("CameraAttributesPractical_740v5")
 compositor = SubResource("Compositor_are4x")
@@ -292,11 +290,11 @@ script = ExtResource("7_rwmut")
 
 [node name="UnitMoveState" type="Node" parent="PlayerController/StateMachine/UnitSelected/UnitStateMachine" unique_id=682598189]
 script = ExtResource("10_3mb6f")
-base_tile_color = Color(0, 0.5529412, 0.7607843, 0.7058824)
+base_tile_color = Color(0, 0.5529412, 0.7607843, 1)
 
 [node name="UnitAttackState" type="Node" parent="PlayerController/StateMachine/UnitSelected/UnitStateMachine" unique_id=657233247]
 script = ExtResource("11_vpa4f")
-base_tile_color = Color(0.84313726, 0, 0.2, 0.6862745)
+base_tile_color = Color(0.84313726, 0, 0.2, 1)
 
 [node name="GameManager" type="Node" parent="." unique_id=303842425 node_paths=PackedStringArray("state_machine", "initial_state", "player_controller")]
 script = ExtResource("6_wt016")
