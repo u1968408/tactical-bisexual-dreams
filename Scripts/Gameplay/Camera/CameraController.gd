@@ -41,6 +41,8 @@ var mouse_look_position: Vector3:
 #region Overrides
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	input_controller.camera_orbit.connect(orbit.OrbitCamera)
 	input_controller.camera_moved.connect(movement.OnCameraMoveDirectionChanged)
 
@@ -51,6 +53,8 @@ func _process(_delta: float) -> void:
 		return
 
 func _exit_tree() -> void:
+	if Engine.is_editor_hint():
+		return
 	if is_instance_valid(input_controller):
 		if input_controller.camera_orbit.is_connected(orbit.OrbitCamera):
 			input_controller.camera_orbit.disconnect(orbit.OrbitCamera)

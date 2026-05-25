@@ -1,22 +1,32 @@
 extends Node
 class_name Stats
 
-const DEX_FOR_TILE: int = 20
+const DEX_FOR_TILE: int = 2
+const VIT_FOR_HP: int = 5
 @export var base_stats: BaseStats
 @onready var _entity: Entity = get_parent()
 
 signal life_damaged(damage: int, new_health: int)
 signal life_gained(cure: int, new_health: int)
 
+enum StatType {
+	Morale,
+	Dexterity,
+	Force,
+	Vitality,
+	Precision,
+	Resistance,
+}
+
 var _current_health: int
+var _modifiers: Array[Modifier] = []
+
 
 func _ready() -> void:
 	_current_health = max_health
+	var mod := Modifier.new(StatType.Dexterity, 50)
+	_modifiers.append(mod)
 
-var morale: float:
-	get:
-		return base_stats.morale
-	
 var health: int:
 	get:
 		return health
@@ -31,25 +41,47 @@ var health: int:
 		elif change > 0:
 			life_gained.emit(change, health)
 
+var morale: int:
+	get:
+		return _ApplyModifiers(
+			StatType.Morale,
+			base_stats.morale
+		)
+
 var max_health: int:
 	get:
-		return base_stats.health
+		return base_stats.vitality * 10
 
 var resistance: int:
 	get:
-		return base_stats.resistance
+		return _ApplyModifiers(
+			StatType.Resistance,
+			base_stats.resistance
+		)
 
-var attack: int:
+var force: int:
 	get:
-		return base_stats.attack
+		var base := _ApplyModifiers(
+			StatType.Force,
+			base_stats.force
+		)
+		return CalculateMultiplier(base, morale)
 
 var dexterity: int:
 	get:
-		return base_stats.dexterity
+		var base := _ApplyModifiers(
+			StatType.Dexterity,
+			base_stats.dexterity
+		)
+		return CalculateMultiplier(base, morale)
 
 var precision: int:
 	get:
-		return base_stats.precision
+		var base := _ApplyModifiers(
+			StatType.Precision,
+			base_stats.precision
+		)
+		return CalculateMultiplier(base, morale)
 
 var movement: int:
 	get:
@@ -66,6 +98,42 @@ var attack_range: int:
 var damage: int:
 	get:
 		var wpn : Weapon = _entity.weapons.equiped
-		if wpn == null:
-			return attack
-		return wpn.damage + attack
+		var base_damage: int = force
+		if wpn != null:
+			base_damage += wpn.damage
+		return base_damage
+
+static func CalculateAdd(base: int, modifier: int) -> int:
+	return base + modifier
+
+static func CalculateMultiplier(base: int, modifier: int) -> int:
+	var multiplier := GetMultiplier(modifier)
+	return int(base * multiplier)
+
+static func GetMultiplier(modifier: int) -> float:
+	var multiplier := (50 + 5.0 * modifier) / 100
+	return multiplier
+
+func AddModifier(modifier: Modifier) -> void:
+	_modifiers.append(modifier)
+
+func DeleteModifier(modifier: Modifier) -> void:
+	var idx := _modifiers.find(modifier)
+	if idx >= 0:
+		_modifiers.remove_at(idx)
+
+func _GetModifiersOfType(type: StatType) -> Array[Modifier]:
+	return _modifiers.filter(
+		func (mod: Modifier): return mod.type == type
+	)
+
+func _ApplyModifiers(type: StatType, base_value: int) -> int:
+	if type == StatType.Vitality:
+		push_error("vitality should not be recalculated.")
+		return base_value
+	var mods := _GetModifiersOfType(type)
+	return mods.reduce(
+		func (accum: int, mod: Modifier):
+			return accum + mod.value,
+		base_value
+	)

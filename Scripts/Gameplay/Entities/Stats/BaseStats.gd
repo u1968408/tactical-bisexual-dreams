@@ -8,19 +8,19 @@ class_name BaseStats
 
 ## [b]Moral[/b]: Afecta l'efectivitat dels atacs. 
 ## Augmenta la [member dexterity], la [member attack] i la [member precision].
-@export var morale: float = 1.0
+@export var morale: int = 10
 
 ## [b]Vida[/b]: Punts de salut actuals del jugador.
-@export var health: int = 100
+@export var vitality: int = 10
 
 ## [b]Resistència[/b]: Capacitat per disminuir el dany rebut.
 @export var resistance: int = 10
 
 ## [b]Força[/b]: Determina el dany realitzat en atacs cos a cos.
-@export var attack: int = 15
+@export var force: int = 10
 
 ## [b]Destresa[/b]: Influeix en la velocitat de moviment i la probabilitat d'esquivar atacs.
-@export var dexterity: int = 100
+@export var dexterity: int = 10
 
 ## [b]Precisió[/b]: Probabilitat d'encertar i fer dany amb atacs a distància.
-@export var precision: int = 50
+@export var precision: int = 10

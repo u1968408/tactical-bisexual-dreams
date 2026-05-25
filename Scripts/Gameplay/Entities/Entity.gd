@@ -8,6 +8,7 @@ signal state_changed(state: EntityState)
 @export var movement: EntityMovementController
 @export var weapons: Weapons
 @export var stats: Stats
+@export var attack: AttackController
 
 @onready var _camera: CameraController = get_viewport().get_camera_3d()
 

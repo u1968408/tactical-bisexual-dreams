@@ -22,7 +22,7 @@ func Enter() -> void:
 	super()
 	generator = Generator.new(master_state.board)
 	generator.tile_base_color = base_tile_color
-	_prepare_range()
+	_PrepareRange()
 
 func Exit() -> void:
 	super()
@@ -30,9 +30,9 @@ func Exit() -> void:
 	hoovered_tile = null
 
 @abstract
-func _prepare_range() -> void
+func _PrepareRange() -> void
 @abstract
-func on_mouse_click() -> void
+func OnMouseClick() -> void
 
-func on_mouse_move(_p, _wp) -> void:
+func OnMouseMove(_p, _wp) -> void:
 	pass

@@ -1,13 +1,12 @@
 [gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://cl5rrcf53k7g4"]
 
 [ext_resource type="Script" uid="uid://qwgjm4qg73lk" path="res://Scripts/Weapon.gd" id="1_5fpto"]
-[ext_resource type="SpriteFrames" uid="uid://t5bxoaf5br0t" path="res://Assets/Sprites/Weapons/TomfaSpriteFrames.tres" id="2_wx3ne"]
+[ext_resource type="SpriteFrames" uid="uid://t5bxoaf5br0t" path="res://Resources/Combat/Weapons/TomfaSpriteFrames.tres" id="2_wx3ne"]
 
 [resource]
 script = ExtResource("1_5fpto")
 name = "Tomfa"
 sprite = ExtResource("2_wx3ne")
-attack_range = 1
-damage = 15
+attack_range = 2
 type = 1
 metadata/_custom_type_script = "uid://qwgjm4qg73lk"

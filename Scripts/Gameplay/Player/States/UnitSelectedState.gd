@@ -67,7 +67,7 @@ func on_mouse_click() -> void:
 		return
 	if current_tile == null:
 		return
-	_current_internal_state.on_mouse_click()
+	_current_internal_state.OnMouseClick()
 
 func on_mouse_secondary_click() -> void:
 	if not can_interact:

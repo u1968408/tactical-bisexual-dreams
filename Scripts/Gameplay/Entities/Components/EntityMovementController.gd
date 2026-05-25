@@ -1,4 +1,4 @@
-extends Node
+extends EntityNode
 class_name EntityMovementController
 
 enum MoveState { IDLE, FOLLOW }
@@ -8,8 +8,6 @@ signal movement_ended
 
 @export var speed: float = 8.0
 @export var arrive_distance: float = 0.05
-
-@onready var _entity: Entity = get_parent()
 
 var _state: MoveState = MoveState.IDLE
 var _path: PackedVector3Array
@@ -37,10 +35,10 @@ func _physics_process(delta: float) -> void:
 	
 	var target := _path[0]
 	
-	var current := _entity.global_position
+	var current := entity.global_position
 	var next := current.move_toward(target, speed * delta)
 	
-	_entity.global_position = next
+	entity.global_position = next
 	
 	var direction := target - current
 	direction.y = 0
@@ -49,7 +47,7 @@ func _physics_process(delta: float) -> void:
 		_update_snapped_rotation(direction.normalized())
 	
 	if next.distance_to(target) <= arrive_distance:
-		_entity.global_position = target
+		entity.global_position = target
 		_path.remove_at(0)
 		
 		if _path.is_empty():
@@ -73,4 +71,4 @@ func _update_snapped_rotation(direction: Vector3) -> void:
 			look_dir = Entity.LookDirection.UP_RIGHT
 		if signf(direction.z) == 1:
 			look_dir = Entity.LookDirection.DOWN_LEFT
-	_entity.look_direction = look_dir
+	entity.look_direction = look_dir
