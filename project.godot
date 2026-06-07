@@ -40,6 +40,7 @@ enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
 [global_group]
 
 Entity="Characters and Enemies"
+world_environment="World Environment"
 
 [input]
 

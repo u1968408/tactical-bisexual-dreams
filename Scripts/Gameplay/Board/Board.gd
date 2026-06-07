@@ -20,7 +20,7 @@ var _max := Vector2i(10, 10)
 var _astar := AStarGrid2D.new()
 var _tile_shape_rid: RID = _CreateTileRID()
 var _tile_extents := Vector3(
-		(TILE_SIZE.x * 0.9), 
+		(TILE_SIZE.x * 0.9),
 		TILE_HEIGHT,
 		(TILE_SIZE.y * 0.9)
 )
@@ -152,14 +152,14 @@ func _GetCollisionsInArea(query_id: Vector2i, include_entities: bool = true) -> 
 		return colliders
 	for result in results:
 		var collider: Node3D = result.collider
-		print("Casting area on %s (%s) and colliding with %s" % [query_id,query.transform.origin, collider.name])
+		print("Casting area on %s (%s) and colliding with %s" % [query_id, query.transform.origin, collider.name])
 		colliders.append(collider)
 	return colliders
 
 func _CreateTileRID() -> RID:
-	var box_rid :RID = PhysicsServer3D.box_shape_create()
+	var box_rid: RID = PhysicsServer3D.box_shape_create()
 	var half_extents := Vector3(
-		(TILE_SIZE.x * 0.9) / 2.0, 
+		(TILE_SIZE.x * 0.9) / 2.0,
 		TILE_HEIGHT / 2.0,
 		(TILE_SIZE.y * 0.9) / 2.0
 	)

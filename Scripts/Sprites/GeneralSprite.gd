@@ -51,11 +51,14 @@ func _apply_environment_values_to_component(component: Node) -> void:
 		component.depth_bias = 0.001
 
 func _get_edge_pixel_compositor_effect() -> Object:
-	var environment := %WorldEnvironment
+	var environment := get_tree().get_first_node_in_group("world_environment") as WorldEnvironment
+
 	if environment == null:
+		push_error("No s'ha trobat WorldEnv en %s" % [name])
 		return null
 
 	if environment.compositor == null:
+		push_error("No s'ha trobat compositor al WorldEnv en %s" % [name])
 		return null
 
 	for effect in environment.compositor.compositor_effects:

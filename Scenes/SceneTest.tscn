@@ -248,8 +248,7 @@ shape = SubResource("BoxShape3D_7odli")
 transform = Transform3D(0.58183485, -0.7643366, 0.2779535, 0.40187597, 0.56730926, 0.71878797, -0.70708144, -0.30651307, 0.63724864, 0, 28.713509, -1.0001659)
 directional_shadow_mode = 0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1083971455]
-unique_name_in_owner = true
+[node name="WorldEnv" type="WorldEnvironment" parent="." unique_id=1083971455 groups=["world_environment"]]
 environment = SubResource("Environment_gtfm6")
 camera_attributes = SubResource("CameraAttributesPractical_740v5")
 compositor = SubResource("Compositor_are4x")
@@ -363,8 +362,8 @@ grow_vertical = 0
 mouse_filter = 2
 
 [node name="CombatUI" type="AnimatedSprite2D" parent="CanvasLayer/Interface/ContainerCombatUI" unique_id=255258106]
-position = Vector2(152, -152)
-scale = Vector2(1.52, 1.52)
+position = Vector2(200, -200)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_mhl4e")
 animation = &"none"
 script = ExtResource("17_27m4o")
