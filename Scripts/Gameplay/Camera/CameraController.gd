@@ -1,11 +1,9 @@
 @tool
-extends Camera3D
 class_name CameraController
+extends Camera3D
 
 @export var orbit: CameraOrbit
 @export var movement: CameraMovement
-
-@onready var input_controller: InputController = %InputController
 
 #region Properties
 
@@ -21,7 +19,7 @@ var look_direction: Vector3:
 var look_point: Vector3:
 	get:
 		var look_dir: Vector3 = look_direction
-		var k_value: float = global_position.y / look_dir.y 
+		var k_value: float = global_position.y / look_dir.y
 		return global_position - k_value * look_dir
 
 var mouse_world_position: Vector3:
@@ -33,18 +31,19 @@ var mouse_look_position: Vector3:
 	get:
 		var mousepos := get_viewport().get_mouse_position()
 		var look_dir: Vector3 = project_ray_normal(mousepos)
-		var k_value: float = mouse_world_position.y / look_dir.y 
+		var k_value: float = mouse_world_position.y / look_dir.y
 		return mouse_world_position - k_value * look_dir
 
 #endregion
 
-#region Overrides
 
+
+#region Overrides
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
-	input_controller.camera_orbit.connect(orbit.OrbitCamera)
-	input_controller.camera_moved.connect(movement.OnCameraMoveDirectionChanged)
+	InputController.camera_orbit.connect(orbit.orbit_camera)
+	InputController.camera_moved.connect(movement.on_camera_direction_changed)
 
 
 func _process(_delta: float) -> void:
@@ -52,12 +51,13 @@ func _process(_delta: float) -> void:
 		DebugDraw3D.draw_line(global_position, look_point)
 		return
 
+
 func _exit_tree() -> void:
 	if Engine.is_editor_hint():
 		return
-	if is_instance_valid(input_controller):
-		if input_controller.camera_orbit.is_connected(orbit.OrbitCamera):
-			input_controller.camera_orbit.disconnect(orbit.OrbitCamera)
-		if input_controller.camera_moved.is_connected(movement.OnCameraMoveDirectionChanged):
-			input_controller.camera_moved.disconnect(movement.OnCameraMoveDirectionChanged)
+	if is_instance_valid(InputController):
+		if InputController.camera_orbit.is_connected(orbit.orbit_camera):
+			InputController.camera_orbit.disconnect(orbit.orbit_camera)
+		if InputController.camera_moved.is_connected(movement.on_camera_direction_changed):
+			InputController.camera_moved.disconnect(movement.on_camera_direction_changed)
 #endregion

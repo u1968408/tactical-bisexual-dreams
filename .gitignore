@@ -10,3 +10,6 @@ __MACOSX/
 # IDE
 .vscode/
 .idea/
+
+# Build
+Export/

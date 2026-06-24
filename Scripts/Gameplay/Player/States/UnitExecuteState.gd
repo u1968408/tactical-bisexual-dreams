@@ -1,21 +1,21 @@
-extends PlayerBaseState
 class_name UnitExecuteState
+extends PlayerBaseState
 
 var current_entity: Entity = null
 
-func Enter():
+func enter():
 	super()
 
-func Exit():
+func exit():
 	super()
 
-func AddListeners():
+func add_listeners():
 	super()
 
-func RemoveListeners():
+func remove_listeners():
 	super()
 
-func on_mouse_move(_screen_position: Vector2, tile_position: Vector3):
+func on_mouse_move(_screen_position: Vector2, _tile_position: Vector3):
 	pass
 
 func on_mouse_click() -> void:

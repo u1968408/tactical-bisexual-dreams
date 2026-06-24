@@ -1,8 +1,5 @@
-@abstract
+@abstract class_name UnitSubState
 extends State
-class_name UnitSubState
-
-@onready var master_state: UnitSelectedState = get_parent().get_parent()
 
 @export var base_tile_color: Color
 
@@ -18,21 +15,25 @@ var hoovered_tile: Tile:
 	set(value):
 		master_state.current_tile = value
 
-func Enter() -> void:
+@onready var master_state: UnitSelectedState = get_parent().get_parent()
+
+
+func enter() -> void:
 	super()
 	generator = Generator.new(master_state.board)
 	generator.tile_base_color = base_tile_color
-	_PrepareRange()
+	prepare_range()
 
-func Exit() -> void:
+
+func exit() -> void:
 	super()
 	generator = null
 	hoovered_tile = null
 
-@abstract
-func _PrepareRange() -> void
-@abstract
-func OnMouseClick() -> void
 
-func OnMouseMove(_p, _wp) -> void:
+@abstract func prepare_range() -> void
+
+@abstract func on_mouse_click() -> void
+
+func on_mouse_move(_p, _wp) -> void:
 	pass

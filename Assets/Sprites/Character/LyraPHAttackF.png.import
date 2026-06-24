@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlxkfrx3vpaqv"
 path.s3tc="res://.godot/imported/LyraPHAttackF.png-855d57bf9c00a93b88ae71810430ccc4.s3tc.ctex"
+path.etc2="res://.godot/imported/LyraPHAttackF.png-855d57bf9c00a93b88ae71810430ccc4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Sprites/Character/LyraPHAttackF.png"
-dest_files=["res://.godot/imported/LyraPHAttackF.png-855d57bf9c00a93b88ae71810430ccc4.s3tc.ctex"]
+dest_files=["res://.godot/imported/LyraPHAttackF.png-855d57bf9c00a93b88ae71810430ccc4.s3tc.ctex", "res://.godot/imported/LyraPHAttackF.png-855d57bf9c00a93b88ae71810430ccc4.etc2.ctex"]
 
 [params]
 

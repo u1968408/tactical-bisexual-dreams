@@ -16,9 +16,9 @@ func setCurrentState(newState: State) -> void:
 		return
 
 	if _currentState:
-		await _currentState.Exit()
+		await _currentState.exit()
 
 	_currentState = newState
 	
 	if _currentState:
-		await _currentState.Enter()
+		await _currentState.enter()

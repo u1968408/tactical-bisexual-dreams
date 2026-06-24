@@ -1,5 +1,5 @@
-extends CameraComponent
 class_name CameraMovement
+extends CameraComponent
 
 ## La velocitat màxima que pot assolir la càmera.
 @export var speed: float = 100
@@ -18,5 +18,5 @@ func _process(delta: float) -> void:
 	move_value = move_value.rotated(Vector3.UP, camera.rotation.y)
 	camera.global_position += move_value * speed * delta
 
-func OnCameraMoveDirectionChanged(new_direction: Vector2) -> void:
+func on_camera_direction_changed(new_direction: Vector2) -> void:
 	_direction = new_direction

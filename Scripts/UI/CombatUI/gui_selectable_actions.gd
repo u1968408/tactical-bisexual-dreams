@@ -1,0 +1,96 @@
+class_name SelectableActions
+extends Control
+
+@export var action_attack: SelectableAction
+@export var action_habilites: SelectableAction
+@export var action_move: SelectableAction
+
+var actions: Array[SelectableAction]:
+	get:
+		return [
+			action_habilites,
+			action_attack,
+			action_move,
+		]
+
+var current_index: int:
+	get:
+		return actions.find_custom(func(act: SelectableAction): return act.is_selected)
+
+
+func _ready() -> void:
+	for action in actions:
+		if action == null:
+			continue
+		action.selected.connect(_on_select)
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is not InputEventMouseButton:
+		return
+
+	var evt := event as InputEventMouseButton
+	if evt.button_index != MOUSE_BUTTON_LEFT or not evt.is_released():
+		return
+
+	var viewport_mouse := get_viewport().get_mouse_position()
+	var action := _get_action_at_viewport_point(viewport_mouse)
+
+	if action == null:
+		return
+
+	action.trigger_selected()
+	accept_event()
+	get_viewport().set_input_as_handled()
+
+
+func select_action(type: CombatUtils.Actions):
+	_on_select(type)
+
+
+func _on_select(type: CombatUtils.Actions):
+	var others: Array[SelectableAction] = _get_others(type)
+
+	for other in others:
+		other.unselect()
+
+	if type == CombatUtils.Actions.NONE:
+		return
+
+	var current: SelectableAction = _get_from_type(type)
+	current.select()
+
+
+func _get_action_at_viewport_point(viewport_point: Vector2) -> SelectableAction:
+	var best: SelectableAction = null
+
+	for action in actions:
+		if action == null:
+			continue
+
+		if not action.contains_viewport_point(viewport_point):
+			continue
+
+		# La última acción del array tiene prioridad si hay solape real.
+		best = action
+
+	return best
+
+
+func _get_from_type(type: CombatUtils.Actions):
+	var found = actions.find_custom(func(x: SelectableAction): return x.type == type)
+
+	if found < 0:
+		push_error(
+			(
+				"No s'ha trobat action %s[%s] a selectable_actions :("
+				% [CombatUtils.Actions.keys()[type], type]
+			)
+		)
+		return null
+
+	return actions[found]
+
+
+func _get_others(type: CombatUtils.Actions) -> Array[SelectableAction]:
+	return actions.filter(func(x: SelectableAction): return x != null and x.type != type)

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b67e1gvgbaryf"
 path.s3tc="res://.godot/imported/PlaceholderLyraSprites.png-0321cc51508267b9e992f7960a202c54.s3tc.ctex"
+path.etc2="res://.godot/imported/PlaceholderLyraSprites.png-0321cc51508267b9e992f7960a202c54.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Sprites/Character/PlaceholderLyraSprites.png"
-dest_files=["res://.godot/imported/PlaceholderLyraSprites.png-0321cc51508267b9e992f7960a202c54.s3tc.ctex"]
+dest_files=["res://.godot/imported/PlaceholderLyraSprites.png-0321cc51508267b9e992f7960a202c54.s3tc.ctex", "res://.godot/imported/PlaceholderLyraSprites.png-0321cc51508267b9e992f7960a202c54.etc2.ctex"]
 
 [params]
 

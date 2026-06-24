@@ -1,8 +1,8 @@
-extends Node
 class_name CameraComponent
+extends Node
 
-@onready 
-var camera: CameraController = get_parent()
+@onready var camera: CameraController = get_parent()
+
 
 func _enter_tree() -> void:
 	var parent: Node = get_parent()

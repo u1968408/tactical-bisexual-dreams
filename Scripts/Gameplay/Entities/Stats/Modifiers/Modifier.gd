@@ -1,15 +1,5 @@
-extends RefCounted
 class_name Modifier
-
-var _type: Stats.StatType
-var _value: int
-
-func _init(
-	mod_type: Stats.StatType,
-	mod_value: int,
-) -> void:
-	_type = mod_type
-	_value = mod_value
+extends RefCounted
 
 var type: Stats.StatType:
 	get:
@@ -18,3 +8,14 @@ var type: Stats.StatType:
 var value: int:
 	get:
 		return _value
+
+var _type: Stats.StatType
+var _value: int
+
+
+func _init(
+	mod_type: Stats.StatType,
+	mod_value: int,
+) -> void:
+	_type = mod_type
+	_value = mod_value

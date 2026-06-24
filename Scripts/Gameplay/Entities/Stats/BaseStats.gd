@@ -1,12 +1,12 @@
-extends Resource
 class_name BaseStats
+extends Resource
 
 ## Gestiona les estadístiques base dels personatges.
 ##
 ## Aquest recurs defineix els atributs principals com la moral, la salut,
 ## la resistència i les capacitats ofensives o defensives.
 
-## [b]Moral[/b]: Afecta l'efectivitat dels atacs. 
+## [b]Moral[/b]: Afecta l'efectivitat dels atacs.
 ## Augmenta la [member dexterity], la [member attack] i la [member precision].
 @export var morale: int = 10
 

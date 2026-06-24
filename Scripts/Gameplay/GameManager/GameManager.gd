@@ -1,17 +1,16 @@
-extends Node
 class_name GameManager
+extends Node
 
-@export
-var state_machine: StateMachine
+@export var state_machine: StateMachine
 
-@export
-var initial_state: State
+@export var initial_state: State
 
-@export
-var player_controller: PlayerController
+@export var player_controller: PlayerController
+
 
 func _ready() -> void:
-	StartRound()
-	
-func StartRound() -> void:
+	start_round()
+
+
+func start_round() -> void:
 	state_machine.setCurrentState(initial_state)

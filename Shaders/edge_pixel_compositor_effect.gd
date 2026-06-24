@@ -35,6 +35,15 @@ var pipeline: RID
 var sampler: RID
 var parameter_buffer: RID
 
+var all_filters_disabled: bool:
+	get:
+		return (
+			not pixelization_enabled
+			and not depth_edges_enabled
+			and not normal_edges_enabled
+			and not cel_shading_enabled
+		)
+
 
 func _init() -> void:
 	# The effect runs before transparent objects, so transparent Sprite3D nodes
@@ -50,7 +59,8 @@ func _init() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
-		_free_compute_resources()
+		if self != null:
+			_free_compute_resources()
 
 
 func _initialize_compute() -> void:
@@ -115,17 +125,21 @@ func _free_compute_resources() -> void:
 		parameter_buffer = RID()
 
 
-func _render_callback(p_callback_type: EffectCallbackType, p_render_data: RenderData) -> void:
+func _is_valid(p_callback_type: EffectCallbackType) -> bool:
 	if rd == null:
-		return
+		return false
 
 	if p_callback_type != effect_callback_type:
-		return
+		return false
 
 	if not pipeline.is_valid() or not parameter_buffer.is_valid() or not sampler.is_valid():
-		return
+		return false
 
-	if not pixelization_enabled and not depth_edges_enabled and not normal_edges_enabled and not cel_shading_enabled:
+	return true
+
+
+func _render_callback(p_callback_type: EffectCallbackType, p_render_data: RenderData) -> void:
+	if not _is_valid(p_callback_type) or all_filters_disabled:
 		return
 
 	var render_scene_buffers := p_render_data.get_render_scene_buffers()
@@ -141,12 +155,11 @@ func _render_callback(p_callback_type: EffectCallbackType, p_render_data: Render
 		return
 
 	var normal_texture: RID = render_scene_buffers.get_texture(
-		"forward_clustered",
-		"normal_roughness"
+		"forward_clustered", "normal_roughness"
 	)
 	var effective_normal_edges_enabled := normal_edges_enabled and normal_texture.is_valid()
 
-	if not pixelization_enabled and not depth_edges_enabled and not effective_normal_edges_enabled and not cel_shading_enabled:
+	if not effective_normal_edges_enabled:
 		return
 
 	_update_parameter_buffer(size, effective_normal_edges_enabled)

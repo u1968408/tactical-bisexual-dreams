@@ -1,12 +1,12 @@
-extends Node
 class_name EntityNode
+extends Node
 
-@onready var entity: Entity = __get_entity()
+@onready var entity: Entity = _get_entity()
 
-func __get_entity(parent: Node = get_parent()) -> Entity:
+func _get_entity(parent: Node = get_parent()) -> Entity:
 	if parent == null:
 		push_error("No s'ha trobat una Entity entre els pares de %s." % self)
 		return null
 	if parent is Entity:
 		return parent
-	return __get_entity(parent.get_parent())
+	return _get_entity(parent.get_parent())

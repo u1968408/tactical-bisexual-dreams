@@ -1,12 +1,10 @@
 @abstract
-extends State
-class_name PlayerBaseState
+class_name PlayerBaseState extends State
 
-@onready var player: PlayerController = __get_player()
-@onready var input_controller: InputController = %InputController
+@onready var player: PlayerController = _get_player()
 @onready var board: Board = %Board
 
-func __get_player() -> PlayerController:
+func _get_player() -> PlayerController:
 	var parent := state_machine.get_parent()
 	if parent is not PlayerController:
 		push_error("El pare de la StateMachine de l'estat %s no és un PlayerController (parent: %s)." \
@@ -14,21 +12,21 @@ func __get_player() -> PlayerController:
 		return null
 	return parent
 
-func AddListeners() -> void:
+func add_listeners() -> void:
 	super()
-	input_controller.mouse_hover.connect(on_mouse_move)
-	input_controller.mouse_click.connect(on_mouse_click)
-	input_controller.mouse_secondary_click.connect(on_mouse_secondary_click)
+	InputController.mouse_hover.connect(on_mouse_move)
+	InputController.mouse_click.connect(on_mouse_click)
+	InputController.mouse_secondary_click.connect(on_mouse_secondary_click)
 
-func RemoveListeners() -> void:
+func remove_listeners() -> void:
 	super()
-	if input_controller == null:
+	if InputController == null:
 		return
-	__safe_disconnect(on_mouse_move, input_controller.mouse_hover)
-	__safe_disconnect(on_mouse_click, input_controller.mouse_click)
-	__safe_disconnect(on_mouse_secondary_click, input_controller.mouse_secondary_click)
+	_safe_disconnect(on_mouse_move, InputController.mouse_hover)
+	_safe_disconnect(on_mouse_click, InputController.mouse_click)
+	_safe_disconnect(on_mouse_secondary_click, InputController.mouse_secondary_click)
 
-func __safe_disconnect(callable: Callable, target_signal: Signal):
+func _safe_disconnect(callable: Callable, target_signal: Signal):
 	if target_signal.is_connected(callable):
 		target_signal.disconnect(callable)
 

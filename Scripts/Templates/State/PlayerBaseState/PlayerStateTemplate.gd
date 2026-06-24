@@ -1,15 +1,15 @@
 extends PlayerBaseState
 
-func Enter() -> void:
+func enter() -> void:
 	super()
 
-func Exit() -> void:
+func exit() -> void:
 	super()
 
-func AddListeners() -> void:
+func add_listeners() -> void:
 	super()
 
-func RemoveListeners() -> void:
+func remove_listeners() -> void:
 	super()
 
 func on_mouse_move(_screen_position: Vector2, tile_position: Vector3):

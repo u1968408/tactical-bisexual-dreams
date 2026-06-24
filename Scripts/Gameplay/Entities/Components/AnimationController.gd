@@ -1,19 +1,24 @@
-extends EntityNode
 class_name AnimationController
+extends EntityNode
 
 signal animation_fliped(fliped: bool, direction: String)
 
+const ANIM_IDLE := 1
+const ANIM_ATTACK := 2
+const ANIM_MOVE := 4
+
 @export var sprite: AnimatedSprite3D
 @export_flags("Idle", "Attack", "Move") var avaible_animations := 0
+
+var animation:
+	get:
+		return _current_anim + _current_dir
 
 var _direction: Entity.LookDirection
 
 var _current_anim: String = AnimationNames.IDLE
 var _current_dir: String = AnimationNames.FRONT
 
-var animation:
-	get:
-		return _current_anim + _current_dir
 
 class AnimationNames:
 	const BACK: String = "_b"
@@ -23,32 +28,31 @@ class AnimationNames:
 	const MOVE: String = "walk"
 	const ATTACK: String = "attack"
 
-const ANIM_IDLE := 1
-const ANIM_ATTACK := 2
-const ANIM_MOVE := 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	entity.state_changed.connect(_OnStateChanged)
-	sprite.animation_finished.connect(_OnAnimationfinished)
+	entity.state_changed.connect(_on_state_changed)
+	sprite.animation_finished.connect(_on_animation_finished)
 
-func _OnAnimationfinished() -> void:
-	entity.current_state = Entity.EntityState.Idle
 
-func _OnStateChanged(state: Entity.EntityState) -> void:
+func _on_animation_finished() -> void:
+	entity.current_state = Entity.EntityState.IDLE
+
+
+func _on_state_changed(state: Entity.EntityState) -> void:
 	var flag := 0
 	var anim := ""
 
 	match state:
-		Entity.EntityState.Moving:
+		Entity.EntityState.MOVING:
 			flag = ANIM_MOVE
 			anim = AnimationNames.MOVE
 
-		Entity.EntityState.Idle:
+		Entity.EntityState.IDLE:
 			flag = ANIM_IDLE
 			anim = AnimationNames.IDLE
 
-		Entity.EntityState.Attacking:
+		Entity.EntityState.ATTACKING:
 			flag = ANIM_ATTACK
 			anim = AnimationNames.ATTACK
 
@@ -59,13 +63,16 @@ func _OnStateChanged(state: Entity.EntityState) -> void:
 	if sprite.sprite_frames != null:
 		sprite.play(animation)
 
+
 func _process(_delta: float) -> void:
 	if _direction != entity.look_direction_along_camera:
 		_direction = entity.look_direction_along_camera
 		_set_flip()
 
+
 func _has_animation_flag(flag: int) -> bool:
 	return (avaible_animations & flag) != 0
+
 
 func _set_flip() -> void:
 	match _direction:
@@ -82,4 +89,4 @@ func _set_flip() -> void:
 			_current_dir = AnimationNames.FRONT
 			sprite.flip_h = false
 	animation_fliped.emit(sprite.flip_h, _current_dir)
-	_OnStateChanged(entity.current_state)
+	_on_state_changed(entity.current_state)

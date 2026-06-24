@@ -1,10 +1,14 @@
-extends EntityNode
 class_name AttackController
+extends EntityNode
 
 
-func Attack(other: Entity):
-	entity.current_state = Entity.EntityState.Attacking
+func attack(other: Entity):
+	entity.current_state = Entity.EntityState.ATTACKING
 	other.stats.health -= entity.stats.damage
-	entity.weapons.PlayAttackAnimation()
-	print("Attacking by %s damage to %s. Health: %s" % [entity.stats.damage, other.name, other.stats.health])
-
+	entity.weapons.play_attack_animation()
+	print(
+		(
+			"Attacking by %s damage to %s. Health: %s"
+			% [entity.stats.damage, other.name, other.stats.health]
+		)
+	)

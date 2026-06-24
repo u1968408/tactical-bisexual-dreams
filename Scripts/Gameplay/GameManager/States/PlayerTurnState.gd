@@ -1,8 +1,8 @@
 extends State
 
-@onready
-var game_manager: GameManager = get_parent().get_parent()
+@onready var game_manager: GameManager = get_parent().get_parent()
 
-func Enter():
+
+func enter():
 	super()
-	game_manager.player_controller.StartTurn()
+	game_manager.player_controller.start_turn()

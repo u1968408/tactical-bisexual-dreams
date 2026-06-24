@@ -1,14 +1,14 @@
 extends State
 
 
-func Enter():
+func enter():
 	super()
 
-func Exit():
+func exit():
 	super()
 
-func AddListeners():
+func add_listeners():
 	pass
 
-func RemoveListeners():
+func remove_listeners():
 	pass

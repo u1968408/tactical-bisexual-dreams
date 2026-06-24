@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://on4fn7kuuxsh"]
 
 [ext_resource type="Script" uid="uid://c18oq240k11se" path="res://Scripts/Gameplay/Entities/Characters/Character.gd" id="1_riiya"]
+[ext_resource type="Texture2D" uid="uid://c71lvi7n0hryc" path="res://Assets/UI/CombatUI/GUI_LyraPortrait.png" id="2_gplbv"]
 [ext_resource type="Script" uid="uid://c0f744ec8kdw5" path="res://Scripts/Sprites/GeneralSprite.gd" id="2_riiya"]
+[ext_resource type="Script" uid="uid://4dtjtfrhk46r" path="res://Scripts/Gameplay/Entities/Resources/SelectableCharacterData.gd" id="3_po2ih"]
 [ext_resource type="PackedScene" uid="uid://6rmftfncs2aq" path="res://Prefabs/Entities/entity_collision.tscn" id="4_lml3t"]
 [ext_resource type="Script" uid="uid://3eg3vuyo47a3" path="res://Scripts/Gameplay/Entities/Stats/Stats.gd" id="5_ie3kb"]
 [ext_resource type="Script" uid="uid://q04sdv4u4m31" path="res://Scripts/Gameplay/Entities/Components/AttackController.gd" id="6_4sbcw"]
@@ -9,16 +11,24 @@
 [ext_resource type="Script" uid="uid://b43tkeosjs6ca" path="res://Scripts/Gameplay/Entities/Components/EntityMovementController.gd" id="7_hw56i"]
 [ext_resource type="Script" uid="uid://ccjwa58wtd00e" path="res://Scripts/Gameplay/Entities/Components/AnimationController.gd" id="7_xcnmv"]
 [ext_resource type="SpriteFrames" uid="uid://kuh3l3eu425h" path="res://Resources/Entities/Characters/Animations/LyraSpriteFrames.tres" id="8_4sbcw"]
+[ext_resource type="Script" uid="uid://cjjkmjuptrrp8" path="res://Scripts/Gameplay/Entities/Characters/HabilityHandler.gd" id="8_po2ih"]
 [ext_resource type="Script" uid="uid://wrc6rds4h67q" path="res://Scripts/Gameplay/Entities/Components/Weapons.gd" id="9_wcmsd"]
 [ext_resource type="Resource" uid="uid://cl5rrcf53k7g4" path="res://Resources/Combat/Weapons/Tomfa.tres" id="11_4l738"]
+
+[sub_resource type="Resource" id="Resource_45nm5"]
+script = ExtResource("3_po2ih")
+portrait = ExtResource("2_gplbv")
+metadata/_custom_type_script = "uid://4dtjtfrhk46r"
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xcnmv"]
 radius = 0.1
 height = 0.2
 
-[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("animation", "movement", "weapons", "stats", "attack")]
+[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("habilities", "animation", "movement", "weapons", "stats", "attack")]
 collision_layer = 4
 script = ExtResource("1_riiya")
+character_data = SubResource("Resource_45nm5")
+habilities = NodePath("Habilities")
 animation = NodePath("AnimationController")
 movement = NodePath("Movement")
 weapons = NodePath("Weapons")
@@ -36,6 +46,9 @@ base_stats = ExtResource("6_hw56i")
 script = ExtResource("7_xcnmv")
 sprite = NodePath("../AnimatedSprite3D")
 avaible_animations = 7
+
+[node name="Habilities" type="Node" parent="." unique_id=516948897]
+script = ExtResource("8_po2ih")
 
 [node name="Attack" type="Node" parent="." unique_id=808434641]
 script = ExtResource("6_4sbcw")

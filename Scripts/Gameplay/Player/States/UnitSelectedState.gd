@@ -1,24 +1,24 @@
-extends PlayerBaseState
 class_name UnitSelectedState
+extends PlayerBaseState
 
 @export var free_select_state: FreeSelectPlayerState
 @export var selected_tile_color: Color
-@export var combat_ui: CombatUI
+@export var ui_controller: UIController
 @export_flags_3d_physics var tile_collision_layer: int
 @export_category("Sub State machine")
 @export var internal_state_machine: StateMachine
 @export_group("Sub States")
 @export var move_sub_state: MoveSubState
 @export var attack_sub_state: AttackSubState
+@export var habilities_sub_state: HabilitiesSubState
 
-@onready var _camera: CameraController = get_viewport().get_camera_3d()
 
 var current_character: Character
 var can_interact: bool = true
 
-var _current_internal_state: UnitSubState:
+var combat_ui: CombatUI:
 	get:
-		return internal_state_machine.state
+		return ui_controller.combat_ui
 
 var current_tile: Tile:
 	get:
@@ -27,60 +27,65 @@ var current_tile: Tile:
 		if value == current_tile:
 			return
 		if current_tile:
-			current_tile.ChangeColor()
+			current_tile.change_color()
 		current_tile = value
 		if current_tile:
-			current_tile.ChangeColor(selected_tile_color)
+			current_tile.change_color(selected_tile_color)
 
-func Enter() -> void:
+var _current_internal_state: UnitSubState:
+	get:
+		return internal_state_machine.state
+
+@onready var _camera: CameraController = get_viewport().get_camera_3d()
+
+
+func enter() -> void:
 	super()
 	combat_ui.active = true
-	combat_ui.state = CombatUI.CombatState.Move
+	combat_ui.current_action = CombatUtils.Actions.MOVE
 	can_interact = true
 
-func Exit():
+
+func exit():
 	super()
-#	combat_ui.state = CombatUI.CombatState.None
 	internal_state_machine.setCurrentState(null)
 	combat_ui.active = false
 	current_character = null
 
-func AddListeners() -> void:
-	super()
-	combat_ui.state_changed.connect(_OnCombatStateChanged)
 
-func RemoveListeners() -> void:
+func add_listeners() -> void:
 	super()
-	combat_ui.state_changed.disconnect(_OnCombatStateChanged)
+	combat_ui.action_changed.connect(_on_combat_state_changed)
+
+
+func remove_listeners() -> void:
+	super()
+	combat_ui.action_changed.disconnect(_on_combat_state_changed)
 
 
 func on_mouse_move(_screen_position: Vector2, _tile_position: Vector3) -> void:
 	if not can_interact:
 		return
-	_CreateRay(
-		_camera.mouse_world_position,
-		_camera.mouse_look_position
-	)
+	_create_ray(_camera.mouse_world_position, _camera.mouse_look_position)
+
 
 func on_mouse_click() -> void:
 	if not can_interact:
 		return
 	if current_tile == null:
 		return
-	_current_internal_state.OnMouseClick()
+	_current_internal_state.on_mouse_click()
+
 
 func on_mouse_secondary_click() -> void:
 	if not can_interact:
 		return
-	ReturnToSelectState()
+	return_to_select_state()
 
-func _CreateRay(from: Vector3, to: Vector3) -> void:
+
+func _create_ray(from: Vector3, to: Vector3) -> void:
 	var space_state := _camera.get_world_3d().direct_space_state
-	var query := PhysicsRayQueryParameters3D.create(
-		from,
-		to,
-		tile_collision_layer
-	)
+	var query := PhysicsRayQueryParameters3D.create(from, to, tile_collision_layer)
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	var result := space_state.intersect_ray(query)
@@ -93,14 +98,18 @@ func _CreateRay(from: Vector3, to: Vector3) -> void:
 	else:
 		current_tile = collider
 
-func ReturnToSelectState():
+
+func return_to_select_state():
 	state_machine.setCurrentState(free_select_state)
 
-func _OnCombatStateChanged(state: CombatUI.CombatState):
+
+func _on_combat_state_changed(state: CombatUtils.Actions):
 	match state:
-		CombatUI.CombatState.Move:
+		CombatUtils.Actions.MOVE:
 			internal_state_machine.setCurrentState(move_sub_state)
-		CombatUI.CombatState.Attack:
+		CombatUtils.Actions.ATTACK:
 			internal_state_machine.setCurrentState(attack_sub_state)
-		CombatUI.CombatState.None:
+		CombatUtils.Actions.HABILITIES:
+			internal_state_machine.setCurrentState(habilities_sub_state)
+		CombatUtils.Actions.NONE:
 			internal_state_machine.setCurrentState(null)
