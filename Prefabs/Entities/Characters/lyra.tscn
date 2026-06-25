@@ -17,6 +17,7 @@
 
 [sub_resource type="Resource" id="Resource_45nm5"]
 script = ExtResource("3_po2ih")
+character_name = &"Lyra"
 portrait = ExtResource("2_gplbv")
 metadata/_custom_type_script = "uid://4dtjtfrhk46r"
 

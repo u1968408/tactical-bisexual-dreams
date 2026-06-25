@@ -1,15 +1,19 @@
 class_name Weapons
 extends Node3D
 
+signal weapon_changed(weapon: Weapon)
+
 @export var weapon_sprite: AnimatedSprite3D
 
 @export var equiped: Weapon:
 	get:
-		return equiped
+		return _equiped
 	set(value):
-		equiped = value
+		_equiped = value
+		weapon_changed.emit(value)
 		_set_weapon_sprite()
 
+var _equiped: Weapon
 
 func _ready() -> void:
 	weapon_sprite.visible = false

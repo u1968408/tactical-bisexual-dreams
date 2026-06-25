@@ -1,8 +1,7 @@
 class_name Stats
 extends Node
 
-signal life_damaged(damage: int, new_health: int)
-signal life_gained(cure: int, new_health: int)
+signal health_changed(change_value: int, new_health: int)
 
 enum StatType {
 	MORALE,
@@ -19,17 +18,14 @@ const VIT_FOR_HP: int = 5
 
 var health: int:
 	get:
-		return health
+		return _current_health
 	set(value):
 		var new_health := clampi(health + value, 0, max_health)
-		var change: int = new_health - health
+		var change: int = new_health - _current_health
 		if change == 0:
 			return
-		health = new_health
-		if change < 0:
-			life_damaged.emit(change, health)
-		elif change > 0:
-			life_gained.emit(change, health)
+		_current_health = new_health
+		health_changed.emit(change, _current_health)
 
 var morale: int:
 	get:

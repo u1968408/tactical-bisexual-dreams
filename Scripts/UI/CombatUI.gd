@@ -2,10 +2,22 @@ class_name CombatUI
 extends Control
 
 signal action_changed(new: CombatUtils.Actions)
+signal character_changed(character: Character)
 
 @export var portrait: TextureRect
-@export var character_name: TextureRect
-@export var actions_container: SelectableActions
+@export var character_name: GuiNameContainer
+@export var selectable_actions: SelectableActions
+@export var actions_container: GuiActionsContainer
+
+var character: Character:
+	get:
+		return _character
+	set(value):
+		_character = value
+		character_changed.emit(value)
+		if value != null:
+			portrait.texture = value.character_data.portrait
+			print("Emited changed to character %s" % [value.name])
 
 var active: bool = false:
 	get:
@@ -24,18 +36,34 @@ var current_action: CombatUtils.Actions = CombatUtils.Actions.NONE:
 	set(value):
 		if value == current_action:
 			return
-		actions_container.select_action(value)
+		selectable_actions.select_action(value)
 		print("Seting action %s [%s]" % [value, CombatUtils.Actions.find_key(value)])
 		current_action = value
 		action_changed.emit(value)
+
+var _character: Character
 
 @onready var _character_name_pos: Vector2 = character_name.position
 
 
 func _ready() -> void:
-	InputController.combat_ui_direction.connect(on_change_direction)
-	InputController.combat_ui_by_id.connect(on_change_by_id)
+	InputController.combat_ui_direction.connect(_on_change_direction)
+	InputController.combat_ui_by_id.connect(_on_change_by_id)
 	visible = false
+
+
+## Activa la UI i mostra la info del personatge
+func character_selected(selected_character: Character):
+	if selected_character == null:
+		character_unselected()
+		return
+	active = true
+	character = selected_character
+
+
+func character_unselected():
+	active = false
+	character = null
 
 
 func _animate_in():
@@ -45,30 +73,30 @@ func _animate_in():
 	tween.set_parallel(false)
 	tween.tween_property(character_name, "position", _character_name_pos, 0.15)
 	tween.tween_property(portrait, "scale", Vector2.ONE, 0.15)
-	tween.tween_property(actions_container, "scale", Vector2.ONE, 0.15)
+	tween.tween_property(selectable_actions, "scale", Vector2.ONE, 0.15)
 
 
 func _animate_out():
 	var tween: Tween = create_tween()
 	tween.set_parallel(false)
 	var new_pos_name = Vector2(-character_name.size.x, character_name.global_position.y)
-	tween.tween_property(actions_container, "scale", Vector2.ZERO, 0.15)
+	tween.tween_property(selectable_actions, "scale", Vector2.ZERO, 0.15)
 	tween.tween_property(portrait, "scale", Vector2.ZERO, 0.15)
 	tween.tween_property(character_name, "global_position", new_pos_name, 0.15)
 	tween.finished.connect(func(): visible = false)
 
 
-func on_change_direction(direction: int) -> void:
+func _on_change_direction(direction: int) -> void:
 	if not active:
 		return
 	var new_index := wrapi(
-		actions_container.current_index + direction, 0, len(actions_container.actions)
+		selectable_actions.current_index + direction, 0, len(selectable_actions.actions)
 	)
-	current_action = actions_container.actions[new_index].type
+	current_action = selectable_actions.actions[new_index].type
 	print("Changed to %s" % current_action)
 
 
-func on_change_by_id(id: int) -> void:
+func _on_change_by_id(id: int) -> void:
 	if not active or id == 0:
 		return
 	if not id in CombatUtils.Actions.values():

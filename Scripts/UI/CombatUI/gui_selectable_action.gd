@@ -48,7 +48,7 @@ func trigger_selected() -> void:
 
 func select():
 	_selected = true
-	_on_mouse_entered()
+	modulate = Color.WHITE
 	label.dance()
 	label.inverted_color()
 

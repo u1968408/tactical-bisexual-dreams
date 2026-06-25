@@ -1,6 +1,6 @@
 @tool
-extends Node
 class_name HDPixelOcclusionComponent
+extends Node
 
 @export var base_material: ShaderMaterial
 @export var auto_apply_on_ready := true

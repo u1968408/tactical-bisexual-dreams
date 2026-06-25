@@ -14,17 +14,33 @@ var _all_sprites: Array[Sprite2D]:
 			sprite_bat,
 		]
 
+var _character: Character
+
+
+func on_character_changed(character: Character) -> void:
+	if _character != null and _character.weapons.weapon_changed.is_connected(_change_weapon):
+		_character.weapons.weapon_changed.disconnect(_change_weapon)
+	_character = character
+	if _character == null:
+		return
+	_change_weapon(_character.weapons.equiped)
+	if not _character.weapons.weapon_changed.is_connected(_change_weapon):
+		_character.actions_changed.connect(_change_weapon)
+
 
 func _ready() -> void:
-	change_weapon(Weapon.WTypes.NONE)
+	_change_weapon(null)
 
 
-func change_weapon(weapon_type: Weapon.WTypes):
+func _change_weapon(weapon: Weapon):
 	_disable_all()
+	var weapon_type = weapon.type if weapon != null else Weapon.WTypes.NONE
 	var sprite: Sprite2D = _get_sprite(weapon_type)
+	print("Changed weapon to %s with sprite %s" %[ weapon, sprite])
 	if sprite == null:
 		visible = false
 		return
+	visible = true
 	sprite.visible = true
 
 

@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c6tbqligdghm4" path="res://Scripts/UI/UIController.gd" id="1_ph7c8"]
 [ext_resource type="Script" uid="uid://bbbk4plp4befm" path="res://Scripts/UI/CombatUI.gd" id="2_5cljy"]
-[ext_resource type="Texture2D" uid="uid://f347tj06o3we" path="res://Resources/UI/Portraits/LyraPortrait.tres" id="2_nyw6a"]
+[ext_resource type="Script" uid="uid://ff36knh1cr4m" path="res://Scripts/UI/CombatUI/GuiNameContainer.gd" id="4_4g40y"]
 [ext_resource type="Texture2D" uid="uid://dxwi78adso4po" path="res://Assets/UI/CombatUI/GUI_HealthContainer.png" id="6_7gata"]
+[ext_resource type="Texture2D" uid="uid://c71lvi7n0hryc" path="res://Assets/UI/CombatUI/GUI_LyraPortrait.png" id="7_0j7ox"]
 [ext_resource type="Texture2D" uid="uid://dmflgdr7lskp4" path="res://Assets/UI/CombatUI/GUI_HealthBar.png" id="7_3kp74"]
+[ext_resource type="Script" uid="uid://dk0b6rampq3oc" path="res://Scripts/UI/CombatUI/GuiHealthContainer.gd" id="8_0j7ox"]
 [ext_resource type="Script" uid="uid://dnh3y3fnob4yq" path="res://Scripts/UI/CombatUI/gui_selectable_actions.gd" id="8_mho2v"]
 [ext_resource type="FontFile" uid="uid://cqxoffgr1prfi" path="res://Assets/UI/Fonts/arial_narrow_7.ttf" id="8_pdhxs"]
 [ext_resource type="Texture2D" uid="uid://bfwq1j5yc38t7" path="res://Assets/UI/CombatUI/GUI_CharacterNameCombat.png" id="9_5pdpn"]
@@ -35,7 +37,7 @@ RichTextLabel/fonts/normal_font = ExtResource("13_pdhxs")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5pdpn"]
 font = ExtResource("13_pdhxs")
-font_size = 22
+font_size = 38
 font_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tsda7"]
@@ -72,7 +74,7 @@ layer = 1025
 script = ExtResource("1_ph7c8")
 combat_ui = NodePath("CombatUI")
 
-[node name="CombatUI" type="Control" parent="." unique_id=1911590417 node_paths=PackedStringArray("portrait", "character_name", "actions_container")]
+[node name="CombatUI" type="Control" parent="." unique_id=1911590417 node_paths=PackedStringArray("portrait", "character_name", "selectable_actions", "actions_container")]
 texture_filter = 3
 layout_mode = 3
 anchors_preset = 2
@@ -86,9 +88,10 @@ mouse_filter = 2
 script = ExtResource("2_5cljy")
 portrait = NodePath("Portrait")
 character_name = NodePath("NameContainer")
-actions_container = NodePath("Portrait/SelectableActions")
+selectable_actions = NodePath("Portrait/SelectableActions")
+actions_container = NodePath("Portrait/Control3/GuiActionsContainer")
 
-[node name="NameContainer" type="TextureRect" parent="CombatUI" unique_id=1721106819]
+[node name="NameContainer" type="TextureRect" parent="CombatUI" unique_id=1721106819 node_paths=PackedStringArray("label")]
 z_index = 5
 layout_mode = 1
 anchors_preset = -1
@@ -96,32 +99,33 @@ anchor_left = -0.16071443
 anchor_top = 0.9250008
 anchor_right = 1.1214296
 anchor_bottom = 1.2310723
-offset_left = 335.99832
-offset_top = -18.01184
-offset_right = -1850.1448
-offset_bottom = -299.5581
+offset_left = 347.57172
+offset_top = -39.000854
+offset_right = -1853.1448
+offset_bottom = -294.5581
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 texture = ExtResource("9_5pdpn")
 expand_mode = 2
-stretch_mode = 5
+script = ExtResource("4_4g40y")
+label = NodePath("Label")
 
-[node name="Label2" type="Label" parent="CombatUI/NameContainer" unique_id=461878881]
+[node name="Label" type="Label" parent="CombatUI/NameContainer" unique_id=461878881]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -165.2133
-offset_top = -29.494507
-offset_right = 146.42949
-offset_bottom = 25.505493
+offset_left = -143.2133
+offset_top = -24.494507
+offset_right = 147.42949
+offset_bottom = 30.505493
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_bh3rc")
-text = "Lyra"
+text = "PLACEHOLDER"
 label_settings = SubResource("LabelSettings_5pdpn")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -133,27 +137,37 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 37.0
-offset_top = -357.0
-offset_right = 316.99976
-offset_bottom = -77.000244
+offset_left = 61.0
+offset_top = -342.0
+offset_right = 309.5734
+offset_bottom = -93.999756
 grow_vertical = 0
-scale = Vector2(0.7682974, 0.7682974)
 pivot_offset_ratio = Vector2(0.5, 1)
 mouse_filter = 2
-texture = ExtResource("2_nyw6a")
+texture = ExtResource("7_0j7ox")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CombatUI/Portrait" unique_id=1620850154]
+[node name="HealthContainer" type="Control" parent="CombatUI/Portrait" unique_id=1876253941 node_paths=PackedStringArray("health_label", "health_bar")]
+anchors_preset = 0
+offset_left = 18.42685
+offset_top = -147.0
+offset_right = 246.20322
+offset_bottom = -20.746826
+mouse_filter = 2
+script = ExtResource("8_0j7ox")
+health_label = NodePath("Label")
+health_bar = NodePath("HealthProgressBar")
+
+[node name="HealthProgressBar" type="TextureProgressBar" parent="CombatUI/Portrait/HealthContainer" unique_id=1620850154]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -89.23828
-offset_top = -118.44368
-offset_right = 668.7617
-offset_bottom = 230.55632
+offset_left = -92.492386
+offset_top = 19.36316
+offset_right = 665.5076
+offset_bottom = 368.36316
 grow_horizontal = 2
 scale = Vector2(0.2528489, 0.2528489)
 max_value = 1.0
@@ -167,19 +181,19 @@ texture_under = ExtResource("6_7gata")
 texture_progress = ExtResource("7_3kp74")
 texture_progress_offset = Vector2(34.87, 184.69)
 
-[node name="Label" type="Label" parent="CombatUI/Portrait" unique_id=1377939786]
+[node name="Label" type="Label" parent="CombatUI/Portrait/HealthContainer" unique_id=1377939786]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -48.889313
-offset_top = -111.93582
-offset_right = -2.8893127
-offset_bottom = -70.93582
+offset_left = -52.143402
+offset_top = 25.871033
+offset_right = -6.143402
+offset_bottom = 66.87103
 grow_horizontal = 2
 rotation = -0.076519966
 theme = SubResource("Theme_bh3rc")
-text = "125"
+text = "999"
 label_settings = SubResource("LabelSettings_tsda7")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -205,8 +219,8 @@ action_move = NodePath("SelectableActionMove")
 z_as_relative = false
 layout_mode = 0
 offset_left = 7.809476
-offset_top = -7.809476
-offset_right = 468.00247
+offset_top = 0.12881756
+offset_right = 411.433
 offset_bottom = 206.54152
 pivot_offset_ratio = Vector2(0.07, 0.92)
 mouse_filter = 2
@@ -233,7 +247,7 @@ mouse_filter = 2
 position = Vector2(-1.3015792, -0.018192241)
 skew = -0.10995579
 color = Color(0.3254902, 0.05490196, 0.26666668, 1)
-polygon = PackedVector2Array(9.9183655, 170.56073, 538.39777, -31.427673, 476.85895, 66.783875, 16.738632, 203.29791)
+polygon = PackedVector2Array(18.506912, 162.61816, 437.2751, -8.414734, 413.2286, 83.13818, 14.430656, 186.76428)
 
 [node name="Label" type="RichTextLabel" parent="CombatUI/Portrait/SelectableActions/SelectableActionHabilities" unique_id=1736096037]
 layout_mode = 1
@@ -264,15 +278,15 @@ script = ExtResource("15_4g40y")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="CombatUI/Portrait/SelectableActions/SelectableActionHabilities/Area2D" unique_id=1486941989]
 position = Vector2(191.33215, 55.967888)
-polygon = PackedVector2Array(-122.34845, 100.22162, -104.12634, 137.96735, 52.06317, 105.42792, 243.39532, 50.761536, 206.95111, -35.14264)
+polygon = PackedVector2Array(-130.70862, 89.032104, -129.70862, 128.0321, 37.29138, 96.032104, 204.29138, 51.032104, 172.29138, -29.967896)
 
 [node name="SelectableActionAttack" type="TextureRect" parent="CombatUI/Portrait/SelectableActions" unique_id=931435187 node_paths=PackedStringArray("label", "area", "polygon")]
 z_as_relative = false
 layout_mode = 0
 offset_left = -1.3015785
 offset_top = 83.30107
-offset_right = 507.61597
-offset_bottom = 278.53802
+offset_right = 450.433
+offset_bottom = 274.12885
 pivot_offset = Vector2(52.17, 144.68)
 mouse_filter = 2
 texture = ExtResource("11_0sr1d")
@@ -297,7 +311,7 @@ mouse_filter = 2
 [node name="Polygon2D" type="Polygon2D" parent="CombatUI/Portrait/SelectableActions/SelectableActionAttack/PolygonContainer" unique_id=775891609]
 skew = -0.10995579
 color = Color(0.3254902, 0.05490196, 0.26666668, 1)
-polygon = PackedVector2Array(40.348953, 134.06262, 577.7825, 36.66565, 527.13965, 119.74524, 32.53949, 166.60205, 40.348953, 145.77686, 40.348953, 145.77686)
+polygon = PackedVector2Array(43.235825, 126.90076, 503.9575, 47.420776, 445.56064, 114.82782, 38.034195, 156.07697)
 
 [node name="Label" type="RichTextLabel" parent="CombatUI/Portrait/SelectableActions/SelectableActionAttack" unique_id=672388251]
 layout_mode = 1
@@ -306,10 +320,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -154.4821
-offset_top = 18.529114
-offset_right = 218.89084
-offset_bottom = 73.52911
+offset_left = -161.7061
+offset_top = 10.413635
+offset_right = 211.66682
+offset_bottom = 65.41363
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.1350299
@@ -325,16 +339,16 @@ script = ExtResource("11_d3mnv")
 script = ExtResource("15_4g40y")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="CombatUI/Portrait/SelectableActions/SelectableActionAttack/Area2D" unique_id=1744211721]
-position = Vector2(192.84006, 58.777283)
-polygon = PackedVector2Array(-134.50793, 68.037476, -143.8793, 90.94531, 76.58685, 92.20581, 291.34744, 72.68225, 300.74017, -18.38739)
+position = Vector2(202.73459, 59.82776)
+polygon = PackedVector2Array(-116.10547, 50.050476, -125.10547, 92.050476, -11.105469, 88.050476, 226.89453, 63.050476, 235.89453, -14.949524)
 
 [node name="SelectableActionMove" type="TextureRect" parent="CombatUI/Portrait/SelectableActions" unique_id=211994369 node_paths=PackedStringArray("label", "area", "polygon")]
 z_as_relative = false
 layout_mode = 0
-offset_left = 35.142643
-offset_top = 206.95111
-offset_right = 460.7591
-offset_bottom = 393.07697
+offset_left = 66.85962
+offset_top = 204.1286
+offset_right = 431.15
+offset_bottom = 369.30634
 pivot_offset_ratio = Vector2(0, 0.31)
 mouse_filter = 2
 texture = ExtResource("12_ovcn6")
@@ -352,17 +366,17 @@ anchor_left = -0.031000001
 anchor_top = 0.275
 anchor_right = -0.031000001
 anchor_bottom = 0.275
-offset_left = 13.194111
-offset_top = -69.40674
-offset_right = 614.52374
-offset_bottom = 137.21896
+offset_left = -13.481046
+offset_top = -65.56787
+offset_right = 486.90826
+offset_bottom = 118.43213
 pivot_offset_ratio = Vector2(0, 0.41)
 mouse_filter = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="CombatUI/Portrait/SelectableActions/SelectableActionMove/PolygonContainer" unique_id=392407343]
 skew = -0.10995579
 color = Color(0.3254902, 0.05490196, 0.26666668, 1)
-polygon = PackedVector2Array(-26.27739, 61.5459, 459.2231, 91.82556, 413.56577, 152.06189, -35.07611, 94.28308)
+polygon = PackedVector2Array(-26.622337, 52.137146, 438.84482, 84.33154, 376.44156, 142.6839, -43.71357, 80.30725)
 
 [node name="Label" type="RichTextLabel" parent="CombatUI/Portrait/SelectableActions/SelectableActionMove" unique_id=2142731033]
 layout_mode = 1
@@ -371,13 +385,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.2237
-offset_top = -64.00967
-offset_right = 146.49872
-offset_bottom = -9.009666
+offset_left = -147.14519
+offset_top = -55.58889
+offset_right = 149.57722
+offset_bottom = -0.5888901
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 0.13545763
+rotation = 0.12914988
 mouse_filter = 2
 theme = SubResource("Theme_0j7ox")
 bbcode_enabled = true
@@ -391,17 +405,17 @@ script = ExtResource("15_4g40y")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="CombatUI/Portrait/SelectableActions/SelectableActionMove/Area2D" unique_id=1264799783]
 position = Vector2(192.84006, 58.777283)
-polygon = PackedVector2Array(-173.05602, -15.999573, -162.90372, 28.428467, 216.37653, 99.58063, 191.38617, -8.710754)
+polygon = PackedVector2Array(-173.05602, -15.999573, -163.54968, 16.400452, 155.45032, 81.40045, 138.45032, -10.599548)
 
 [node name="Control3" type="Control" parent="CombatUI/Portrait" unique_id=720415296]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -0.16021729
-offset_top = -145.77686
-offset_right = 214.6004
-offset_bottom = 6.1035156e-05
+offset_left = 13.426605
+offset_top = -166.0
+offset_right = 228.18723
+offset_bottom = -20.223083
 grow_horizontal = 0
 
 [node name="Control2" type="Control" parent="CombatUI/Portrait/Control3" unique_id=273970464]
@@ -482,3 +496,8 @@ visible = false
 position = Vector2(129.32825, 68.29054)
 scale = Vector2(0.20866632, 0.20866632)
 texture = ExtResource("17_6uyk7")
+
+[connection signal="character_changed" from="CombatUI" to="CombatUI/NameContainer" method="on_character_changed"]
+[connection signal="character_changed" from="CombatUI" to="CombatUI/Portrait/Control3/Control2/GuiWeaponMarker" method="on_character_changed"]
+[connection signal="character_changed" from="CombatUI" to="CombatUI/Portrait/Control3/GuiActionsContainer" method="on_character_changed"]
+[connection signal="character_changed" from="CombatUI" to="CombatUI/Portrait/HealthContainer" method="on_character_changed"]

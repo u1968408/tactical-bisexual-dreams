@@ -1,12 +1,35 @@
+class_name GuiActionsContainer
 extends Sprite2D
 
 @export var actions: Array[Sprite2D]
 
-var _current_actions
+var current_actions: int:
+	get:
+		return _current_actions
+	set(value):
+		var new: int = clampi(value, 0, len(actions))
+		for action_idx in range(len(actions)):
+			if action_idx < new:
+				actions[action_idx].visible = true
+
+var _current_actions: int
+var _character: Character
 
 
-func _ready() -> void:
-	replenish()
+func on_character_changed(character: Character) -> void:
+	if _character != null and _character.actions_changed.is_connected(set_current_actions):
+		_character.actions_changed.disconnect(set_current_actions)
+	_character = character
+	if _character == null:
+		return
+
+	set_current_actions(_character.current_actions)
+	if _character.actions_changed.is_connected(set_current_actions):
+		_character.actions_changed.connect(set_current_actions)
+
+
+func set_current_actions(current: int):
+	current_actions = current
 
 
 func replenish():

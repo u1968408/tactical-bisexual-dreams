@@ -41,7 +41,7 @@ var _current_internal_state: UnitSubState:
 
 func enter() -> void:
 	super()
-	combat_ui.active = true
+	combat_ui.character_selected(current_character)
 	combat_ui.current_action = CombatUtils.Actions.MOVE
 	can_interact = true
 
@@ -49,7 +49,7 @@ func enter() -> void:
 func exit():
 	super()
 	internal_state_machine.setCurrentState(null)
-	combat_ui.active = false
+	combat_ui.character_unselected()
 	current_character = null
 
 

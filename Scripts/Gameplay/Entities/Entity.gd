@@ -2,12 +2,13 @@
 extends Area3D
 
 signal state_changed(state: EntityState)
+signal actions_changed(current: int)
 
 enum LookDirection {
 	UP_LEFT,
+	DOWN_RIGHT,
 	UP_RIGHT,
 	DOWN_LEFT,
-	DOWN_RIGHT,
 }
 
 enum EntityState {
@@ -16,11 +17,20 @@ enum EntityState {
 	ATTACKING,
 }
 
+const MAX_ACTIONS: int = 3
+
 @export var animation: AnimationController
 @export var movement: EntityMovementController
 @export var weapons: Weapons
 @export var stats: Stats
 @export var attack: AttackController
+
+var current_actions: int:
+	get:
+		return _current_acctions
+	set(value):
+		_current_acctions = clampi(value, 0, MAX_ACTIONS)
+		actions_changed.emit(_current_acctions)
 
 var current_state: EntityState = EntityState.IDLE:
 	get:
@@ -66,6 +76,8 @@ var board_position: Vector2i:
 	get:
 		return Board.world_to_tile_id(global_position)
 
+var _current_acctions: int = MAX_ACTIONS
+
 @onready var _camera: CameraController = get_viewport().get_camera_3d()
 
 
@@ -82,6 +94,10 @@ func move(path: PackedVector2Array):
 	board.set_solid(end, true)
 
 	movement.set_new_path(path)
+
+
+func reset_turn():
+	current_actions = MAX_ACTIONS
 
 
 func _on_move_end():

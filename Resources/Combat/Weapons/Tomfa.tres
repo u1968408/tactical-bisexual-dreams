@@ -7,6 +7,5 @@
 script = ExtResource("1_5fpto")
 name = "Tomfa"
 sprite = ExtResource("2_wx3ne")
-attack_range = 2
-type = 1
+type = 2
 metadata/_custom_type_script = "uid://qwgjm4qg73lk"
