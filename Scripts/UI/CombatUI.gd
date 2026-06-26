@@ -19,12 +19,12 @@ var character: Character:
 			portrait.texture = value.character_data.portrait
 			print("Emited changed to character %s" % [value.name])
 
-var active: bool = false:
+var active: bool:
 	get:
-		return active
+		return _active
 	set(value):
-		active = value
-		if not active:
+		_active = value
+		if not _active:
 			current_action = CombatUtils.Actions.NONE
 			_animate_out()
 		else:
@@ -37,11 +37,11 @@ var current_action: CombatUtils.Actions = CombatUtils.Actions.NONE:
 		if value == current_action:
 			return
 		selectable_actions.select_action(value)
-		print("Seting action %s [%s]" % [value, CombatUtils.Actions.find_key(value)])
 		current_action = value
 		action_changed.emit(value)
 
 var _character: Character
+var _active: bool = false
 
 @onready var _character_name_pos: Vector2 = character_name.position
 
@@ -57,13 +57,12 @@ func character_selected(selected_character: Character):
 	if selected_character == null:
 		character_unselected()
 		return
-	active = true
 	character = selected_character
+	active = true
 
 
 func character_unselected():
 	active = false
-	character = null
 
 
 func _animate_in():
@@ -83,8 +82,11 @@ func _animate_out():
 	tween.tween_property(selectable_actions, "scale", Vector2.ZERO, 0.15)
 	tween.tween_property(portrait, "scale", Vector2.ZERO, 0.15)
 	tween.tween_property(character_name, "global_position", new_pos_name, 0.15)
-	tween.finished.connect(func(): visible = false)
+	tween.finished.connect(_on_out_finished)
 
+func _on_out_finished():
+	visible = false
+	character = null
 
 func _on_change_direction(direction: int) -> void:
 	if not active:
@@ -93,7 +95,6 @@ func _on_change_direction(direction: int) -> void:
 		selectable_actions.current_index + direction, 0, len(selectable_actions.actions)
 	)
 	current_action = selectable_actions.actions[new_index].type
-	print("Changed to %s" % current_action)
 
 
 func _on_change_by_id(id: int) -> void:

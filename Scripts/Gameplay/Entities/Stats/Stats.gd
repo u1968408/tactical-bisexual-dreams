@@ -81,8 +81,6 @@ var _modifiers: Array[Modifier] = []
 
 func _ready() -> void:
 	_current_health = max_health
-	var mod := Modifier.new(StatType.DEXTERITY, 50)
-	_modifiers.append(mod)
 
 
 static func calculate_add(base: int, modifier: int) -> int:

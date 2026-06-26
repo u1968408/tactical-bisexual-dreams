@@ -16,7 +16,6 @@ func enter():
 func exit():
 	super()
 	_indicator.queue_free()
-	print("Exited Free Select")
 
 
 func on_mouse_move(_screen_position: Vector2, tile_position: Vector3):

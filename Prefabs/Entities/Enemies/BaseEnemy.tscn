@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://ccjwa58wtd00e" path="res://Scripts/Gameplay/Entities/Components/AnimationController.gd" id="5_te7ac"]
 [ext_resource type="Script" uid="uid://q04sdv4u4m31" path="res://Scripts/Gameplay/Entities/Components/AttackController.gd" id="6_mps0a"]
 [ext_resource type="Script" uid="uid://b43tkeosjs6ca" path="res://Scripts/Gameplay/Entities/Components/EntityMovementController.gd" id="7_el8pn"]
-[ext_resource type="Script" uid="uid://c0f744ec8kdw5" path="res://Scripts/Sprites/GeneralSprite.gd" id="9_g3fso"]
 [ext_resource type="SpriteFrames" uid="uid://bvegrdtpjml7q" path="res://Resources/Combat/Weapons/BatSpriteFrames.tres" id="10_2ynqj"]
 [ext_resource type="Script" uid="uid://wrc6rds4h67q" path="res://Scripts/Gameplay/Entities/Components/Weapons.gd" id="10_sv84x"]
 
@@ -47,12 +46,10 @@ script = ExtResource("7_el8pn")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.9, 0)
 modulate = Color(1, 0.22352941, 0.40784314, 1)
 texture_filter = 0
-script = ExtResource("9_g3fso")
 
-[node name="Weapons" type="Node3D" parent="." unique_id=234906197 node_paths=PackedStringArray("weapon_sprite")]
+[node name="Weapons" type="Node3D" parent="." unique_id=234906197]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 script = ExtResource("10_sv84x")
-weapon_sprite = NodePath("WeaponSprite")
 
 [node name="AnimationController" type="Node" parent="Weapons" unique_id=1431912696 node_paths=PackedStringArray("sprite")]
 script = ExtResource("5_te7ac")
@@ -64,7 +61,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.9, 0)
 texture_filter = 0
 sprite_frames = ExtResource("10_2ynqj")
 animation = &"attack_b"
-script = ExtResource("9_g3fso")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=711148975]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6645608, -1.6104562)

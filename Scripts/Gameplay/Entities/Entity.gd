@@ -19,7 +19,6 @@ enum EntityState {
 
 const MAX_ACTIONS: int = 3
 
-@export var animation: AnimationController
 @export var movement: EntityMovementController
 @export var weapons: Weapons
 @export var stats: Stats
@@ -94,6 +93,26 @@ func move(path: PackedVector2Array):
 	board.set_solid(end, true)
 
 	movement.set_new_path(path)
+
+
+func look_at_direction(target_position: Vector3):
+	var direction: Vector3 = (target_position - global_position)
+	direction.y = 0
+	direction = direction.normalized()
+	if direction.length() < 0.01:
+		return
+	var look_dir: Entity.LookDirection = Entity.LookDirection.DOWN_LEFT
+	if absf(direction.x) > absf(direction.z):
+		if signf(direction.x) == -1:
+			look_dir = Entity.LookDirection.UP_LEFT
+		if signf(direction.x) == 1:
+			look_dir = Entity.LookDirection.DOWN_RIGHT
+	else:
+		if signf(direction.z) == -1:
+			look_dir = Entity.LookDirection.UP_RIGHT
+		if signf(direction.z) == 1:
+			look_dir = Entity.LookDirection.DOWN_LEFT
+	look_direction = look_dir
 
 
 func reset_turn():

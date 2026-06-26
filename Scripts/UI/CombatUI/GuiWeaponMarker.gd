@@ -25,7 +25,7 @@ func on_character_changed(character: Character) -> void:
 		return
 	_change_weapon(_character.weapons.equiped)
 	if not _character.weapons.weapon_changed.is_connected(_change_weapon):
-		_character.actions_changed.connect(_change_weapon)
+		_character.weapons.weapon_changed.connect(_change_weapon)
 
 
 func _ready() -> void:
@@ -36,7 +36,6 @@ func _change_weapon(weapon: Weapon):
 	_disable_all()
 	var weapon_type = weapon.type if weapon != null else Weapon.WTypes.NONE
 	var sprite: Sprite2D = _get_sprite(weapon_type)
-	print("Changed weapon to %s with sprite %s" %[ weapon, sprite])
 	if sprite == null:
 		visible = false
 		return

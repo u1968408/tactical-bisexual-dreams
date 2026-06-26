@@ -41,11 +41,7 @@ func _physics_process(delta: float) -> void:
 
 	entity.global_position = next
 
-	var direction := target - current
-	direction.y = 0
-
-	if direction.length() > 0.01:
-		_update_snapped_rotation(direction.normalized())
+	entity.look_at_direction(target)
 
 	if next.distance_to(target) <= arrive_distance:
 		entity.global_position = target
@@ -58,18 +54,3 @@ func _physics_process(delta: float) -> void:
 func _finish() -> void:
 	_state = MoveState.IDLE
 	movement_ended.emit()
-
-
-func _update_snapped_rotation(direction: Vector3) -> void:
-	var look_dir: Entity.LookDirection = Entity.LookDirection.DOWN_LEFT
-	if absf(direction.x) > absf(direction.z):
-		if signf(direction.x) == -1:
-			look_dir = Entity.LookDirection.UP_LEFT
-		if signf(direction.x) == 1:
-			look_dir = Entity.LookDirection.DOWN_RIGHT
-	else:
-		if signf(direction.z) == -1:
-			look_dir = Entity.LookDirection.UP_RIGHT
-		if signf(direction.z) == 1:
-			look_dir = Entity.LookDirection.DOWN_LEFT
-	entity.look_direction = look_dir

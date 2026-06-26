@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://0f0qkhhw1e00" path="res://Scripts/Gameplay/Player/UnitSelectedStates/AttackSubState.gd" id="11_vpa4f"]
 [ext_resource type="Script" uid="uid://b5vq55l6wy0eo" path="res://Scripts/Gameplay/Player/UnitSelectedStates/HabilitiesSubState.gd" id="14_27m4o"]
 [ext_resource type="PackedScene" uid="uid://bpgoxly8bjaxs" path="res://Prefabs/GUI/CombatInterface/CombatInterface.tscn" id="17_27m4o"]
-[ext_resource type="PackedScene" uid="uid://cry8xil11bh4d" path="res://Prefabs/Entities/Enemies/BaseEnemy.tscn" id="20_vpa4f"]
+[ext_resource type="PackedScene" uid="uid://ctymfk4u86vgo" path="res://Prefabs/Entities/Characters/Taro.tscn" id="18_i2bkh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_38cb2"]
 size = Vector3(5, 5, 5)
@@ -157,11 +157,13 @@ compositor = SubResource("Compositor_are4x")
 [node name="Board" parent="." unique_id=1831510831 instance=ExtResource("4_ef7dr")]
 unique_name_in_owner = true
 
-[node name="Lyra" parent="." unique_id=309159948 groups=["Entity"] instance=ExtResource("5_ef7dr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+[node name="Characters" type="Node3D" parent="." unique_id=166918982]
 
-[node name="Miley" parent="." unique_id=1950339442 instance=ExtResource("20_vpa4f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+[node name="Taro" parent="Characters" unique_id=458918070 instance=ExtResource("18_i2bkh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
+
+[node name="Lyra" parent="Characters" unique_id=309159948 groups=["Entity"] instance=ExtResource("5_ef7dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="PlayerController" type="Node" parent="." unique_id=1527753692 node_paths=PackedStringArray("state_machine", "initial_state")]
 script = ExtResource("6_1i6e8")

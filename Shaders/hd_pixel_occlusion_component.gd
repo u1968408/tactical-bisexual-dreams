@@ -1,4 +1,3 @@
-@tool
 class_name HDPixelOcclusionComponent
 extends Node
 
@@ -12,23 +11,43 @@ extends Node
 @export var depth_bias_uniform_name := "depth_bias"
 
 @export var pixel_size := 4:
+	get:
+		return _pixel_size
 	set(value):
-		pixel_size = max(value, 1)
+		_pixel_size = max(value, 1)
 		_apply_shader_params()
 
 @export var depth_bias := 0.001:
+	get:
+		return _depth_bias
 	set(value):
-		depth_bias = max(value, 0.0)
+		_depth_bias = max(value, 0.0)
 		_apply_shader_params()
 
 var _target: Node = null
 var _runtime_material: ShaderMaterial = null
-
+var _pixel_size: int = 4
+var _depth_bias: float = 0.001
+var _last_texture: Texture2D = null
 
 func _ready() -> void:
 	if auto_apply_on_ready:
 		apply_to_parent()
 
+func _process(_delta: float) -> void:
+	if _target == null or _runtime_material == null:
+		return
+
+	var tex: Texture2D = null
+
+	if _target is Sprite3D:
+		tex = _target.texture
+	elif _target is AnimatedSprite3D:
+		tex = _get_animated_sprite_3d_texture(_target)
+
+	if tex != _last_texture:
+		_last_texture = tex
+		_runtime_material.set_shader_parameter(texture_uniform_name, tex)
 
 func apply_to_parent() -> void:
 	_target = get_parent()
@@ -45,7 +64,9 @@ func apply_to_parent() -> void:
 		push_warning("HDPixelOcclusionComponent: base_material is not assigned.")
 		return
 
-	_runtime_material = base_material.duplicate() if duplicate_material_per_instance else base_material
+	_runtime_material = (
+		base_material.duplicate() if duplicate_material_per_instance else base_material
+	)
 
 	# Sprite3D and AnimatedSprite3D inherit from GeometryInstance3D,
 	# so they expose material_override.
@@ -89,7 +110,7 @@ func _update_texture() -> void:
 	elif _target is Sprite3D:
 		tex = _get_sprite_3d_texture(_target)
 
-	# Set even when null so stale textures are not kept accidentally.
+	_last_texture = tex
 	_runtime_material.set_shader_parameter(texture_uniform_name, tex)
 
 

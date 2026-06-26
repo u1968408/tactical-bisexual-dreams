@@ -7,7 +7,8 @@ render_mode
 	depth_test_disabled,
 	cull_disabled,
 	fog_disabled,
-	shadows_disabled;
+	shadows_disabled,
+	skip_vertex_transform;
 
 uniform sampler2D sprite_texture : source_color, filter_nearest;
 uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_nearest;
@@ -15,14 +16,12 @@ uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_nearest;
 uniform int pixel_size : hint_range(1, 64, 1) = 4;
 uniform float alpha_cutoff : hint_range(0.0, 1.0, 0.01) = 0.01;
 uniform float depth_bias : hint_range(0.0, 1.0, 0.001) = 0.001;
-
 uniform int debug_mode : hint_range(0, 3, 1) = 0;
 
 vec2 get_pixelized_screen_uv(vec2 uv) {
 	vec2 viewport_size = vec2(textureSize(DEPTH_TEXTURE, 0));
 	float safe_pixel_size = max(float(pixel_size), 1.0);
 	vec2 pixel_count = max(viewport_size / safe_pixel_size, vec2(1.0));
-
 	return (floor(uv * pixel_count) + vec2(0.5)) / pixel_count;
 }
 
@@ -30,8 +29,26 @@ float linearize_depth(float raw_depth, vec2 screen_uv, mat4 inv_projection_matri
 	vec3 ndc = vec3(screen_uv * 2.0 - 1.0, raw_depth);
 	vec4 view = inv_projection_matrix * vec4(ndc, 1.0);
 	view.xyz /= view.w;
-
 	return -view.z;
+}
+
+void vertex() {
+	vec3 world_pos = (MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0)).xyz;
+
+	vec3 cam_right = normalize(INV_VIEW_MATRIX[0].xyz);
+	vec3 cam_up = normalize(INV_VIEW_MATRIX[1].xyz);
+
+	vec3 scale = vec3(
+		length(MODEL_MATRIX[0].xyz),
+		length(MODEL_MATRIX[1].xyz),
+		length(MODEL_MATRIX[2].xyz)
+	);
+
+	vec3 billboard_world = world_pos
+		+ cam_right * VERTEX.x * scale.x
+		+ cam_up * VERTEX.y * scale.y;
+
+	POSITION = PROJECTION_MATRIX * VIEW_MATRIX * vec4(billboard_world, 1.0);
 }
 
 void fragment() {

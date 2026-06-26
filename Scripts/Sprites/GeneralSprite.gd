@@ -1,22 +1,11 @@
-extends AnimatedSprite3D
+extends Sprite3D
 
 const HD_PIXEL_OCCLUSION_COMPONENT := preload("uid://bjkyx1wmow4yy")
 const HD_PIXEL_MATERIAL := preload("uid://175fxtajyqlu")
 
-@onready var _camera: Camera3D = get_viewport().get_camera_3d()
-
 
 func _ready() -> void:
 	_add_hd_pixel_occlusion_component()
-
-
-func _process(_delta: float) -> void:
-	if _camera == null:
-		_camera = get_viewport().get_camera_3d()
-		if _camera == null:
-			return
-
-	look_at(_camera.global_position, Vector3.UP, true)
 
 
 func _add_hd_pixel_occlusion_component() -> void:
@@ -42,13 +31,13 @@ func _apply_environment_values_to_component(component: Node) -> void:
 
 	if "pixel_size" in effect:
 		component.pixel_size = effect.pixel_size
-
 	if "sprite_depth_bias" in effect:
 		component.depth_bias = effect.sprite_depth_bias
 	elif "depth_bias" in effect:
 		component.depth_bias = effect.depth_bias
 	else:
 		component.depth_bias = 0.001
+
 
 func _get_edge_pixel_compositor_effect() -> Object:
 	var environment := get_tree().get_first_node_in_group("world_environment") as WorldEnvironment

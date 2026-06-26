@@ -48,7 +48,6 @@ func get_path_for_tile(tile: Tile) -> PackedVector2Array:
 
 
 func generate_tiles_arround_position(center: Vector2i, radius: int) -> void:
-	print("Creating movement at center %s" % center)
 	_center = center
 	_radius = radius
 	var min_tile := Vector2i(center.x - radius, center.y - radius)

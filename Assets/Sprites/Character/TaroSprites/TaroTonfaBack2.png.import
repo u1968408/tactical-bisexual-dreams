@@ -2,20 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c71lvi7n0hryc"
-path="res://.godot/imported/GUI_LyraPortrait.png-e7b82b6ca1d80a5aeccc35327a5cdfa0.ctex"
+uid="uid://ceva8rwdpkl15"
+path.s3tc="res://.godot/imported/TaroTonfaBack2.png-e81cbd4dd2bf2ff51967a15c5b817388.s3tc.ctex"
+path.etc2="res://.godot/imported/TaroTonfaBack2.png-e81cbd4dd2bf2ff51967a15c5b817388.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Assets/UI/CombatUI/GUI_LyraPortrait.png"
-dest_files=["res://.godot/imported/GUI_LyraPortrait.png-e7b82b6ca1d80a5aeccc35327a5cdfa0.ctex"]
+source_file="res://Assets/Sprites/Character/TaroSprites/TaroTonfaBack2.png"
+dest_files=["res://.godot/imported/TaroTonfaBack2.png-e81cbd4dd2bf2ff51967a15c5b817388.s3tc.ctex", "res://.godot/imported/TaroTonfaBack2.png-e81cbd4dd2bf2ff51967a15c5b817388.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +25,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

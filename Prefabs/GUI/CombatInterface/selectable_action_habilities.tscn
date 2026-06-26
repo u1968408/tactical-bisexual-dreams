@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://rspty557srlf"]
 
 [ext_resource type="Texture2D" uid="uid://cqvs63flwvhu0" path="res://Assets/UI/CombatUI/GUI_SelectableAction_3.png" id="1_jbe6n"]
-[ext_resource type="Script" uid="uid://biv5gu5wttr7" path="res://Scripts/UI/CombatUI/gui_selectable_action.gd" id="2_g6r6f"]
+[ext_resource type="Script" uid="uid://biv5gu5wttr7" path="res://Scripts/UI/CombatUI/GuiSelectableAction.gd" id="2_g6r6f"]
 [ext_resource type="FontFile" uid="uid://bt7re43gkjgxt" path="res://Assets/UI/Fonts/MAROLA.TTF" id="3_vu842"]
 [ext_resource type="FontFile" uid="uid://cqxoffgr1prfi" path="res://Assets/UI/Fonts/arial_narrow_7.ttf" id="4_ij7rw"]
-[ext_resource type="Script" uid="uid://cmxg46con15px" path="res://Scripts/UI/CombatUI/gui_selectable_action_label.gd" id="5_uaacn"]
-[ext_resource type="Script" uid="uid://h1hq6r6pwafx" path="res://Scripts/UI/CombatUI/gui_selectable_action_area.gd" id="6_jbe6n"]
+[ext_resource type="Script" uid="uid://cmxg46con15px" path="res://Scripts/UI/CombatUI/GuiSelectableActionLabel.gd" id="5_uaacn"]
+[ext_resource type="Script" uid="uid://h1hq6r6pwafx" path="res://Scripts/UI/CombatUI/GuiSelectableActionArea.gd" id="6_jbe6n"]
 
 [sub_resource type="Theme" id="Theme_prn3n"]
 default_font = ExtResource("4_ij7rw")
