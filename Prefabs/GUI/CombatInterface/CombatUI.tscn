@@ -1,0 +1,813 @@
+[gd_scene format=3 uid="uid://cuwqumqgnjfxs"]
+
+[ext_resource type="Script" uid="uid://bbbk4plp4befm" path="res://Scripts/UI/CombatUI.gd" id="1_yeute"]
+[ext_resource type="Texture2D" uid="uid://bfwq1j5yc38t7" path="res://Assets/UI/CombatUI/GUI_CharacterNameCombat.png" id="2_3ha0h"]
+[ext_resource type="Script" uid="uid://ff36knh1cr4m" path="res://Scripts/UI/CombatUI/GuiNameContainer.gd" id="3_tyryh"]
+[ext_resource type="FontFile" uid="uid://bt7re43gkjgxt" path="res://Assets/UI/Fonts/MAROLA.TTF" id="4_6cwkg"]
+[ext_resource type="FontFile" uid="uid://cqxoffgr1prfi" path="res://Assets/UI/Fonts/arial_narrow_7.ttf" id="5_7xihs"]
+[ext_resource type="Texture2D" uid="uid://c71lvi7n0hryc" path="res://Assets/UI/Portraits/LyraPortrait.png" id="6_i5hpx"]
+[ext_resource type="Script" uid="uid://dk0b6rampq3oc" path="res://Scripts/UI/CombatUI/GuiHealthContainer.gd" id="7_diegf"]
+[ext_resource type="Texture2D" uid="uid://dxwi78adso4po" path="res://Assets/UI/CombatUI/GUI_HealthContainer.png" id="8_uhaa8"]
+[ext_resource type="Texture2D" uid="uid://dmflgdr7lskp4" path="res://Assets/UI/CombatUI/GUI_HealthBar.png" id="9_5oyva"]
+[ext_resource type="Script" uid="uid://dnh3y3fnob4yq" path="res://Scripts/UI/CombatUI/GuiSelectableActions.gd" id="10_cvbml"]
+[ext_resource type="Texture2D" uid="uid://cqvs63flwvhu0" path="res://Assets/UI/CombatUI/GUI_SelectableAction_3.png" id="11_y6ary"]
+[ext_resource type="Script" uid="uid://biv5gu5wttr7" path="res://Scripts/UI/CombatUI/GuiSelectableAction.gd" id="12_eb4ys"]
+[ext_resource type="Script" uid="uid://cmxg46con15px" path="res://Scripts/UI/CombatUI/GuiDancingLabel.gd" id="13_dp4ak"]
+[ext_resource type="Script" uid="uid://h1hq6r6pwafx" path="res://Scripts/UI/CombatUI/GuiSelectableActionArea.gd" id="14_fnwul"]
+[ext_resource type="Texture2D" uid="uid://bt0nkdgtd7uoe" path="res://Assets/UI/CombatUI/GUI_SelectableAction_2.png" id="15_aeu3g"]
+[ext_resource type="Texture2D" uid="uid://6yx4ghabaps6" path="res://Assets/UI/CombatUI/GUI_SelectableAction_1.png" id="16_1dbhs"]
+[ext_resource type="Texture2D" uid="uid://dxcqft3fl1qcv" path="res://Assets/UI/CombatUI/GUI_WeaponMarker.png" id="17_inw5k"]
+[ext_resource type="Script" uid="uid://beli8xhrtp0xt" path="res://Scripts/UI/CombatUI/GuiWeaponMarker.gd" id="18_elysa"]
+[ext_resource type="Texture2D" uid="uid://c2mlimee68i56" path="res://Assets/UI/CombatUI/GUI_Baston.png" id="19_75xxg"]
+[ext_resource type="Texture2D" uid="uid://dj65wevs33c71" path="res://Assets/UI/CombatUI/GUI_Bate.png" id="20_1lyp3"]
+[ext_resource type="Texture2D" uid="uid://excdi0t7jwms" path="res://Assets/UI/CombatUI/GUI_Tomfa.png" id="21_48xay"]
+[ext_resource type="Texture2D" uid="uid://05xl60la7w6p" path="res://Assets/UI/CombatUI/GUI_ActionsContainer.png" id="22_gmweq"]
+[ext_resource type="Script" uid="uid://cwe7wr0s4jgb5" path="res://Scripts/UI/CombatUI/GuiActionsContainer.gd" id="23_15nel"]
+[ext_resource type="Texture2D" uid="uid://c30o7ovcrr1fe" path="res://Assets/UI/CombatUI/GUI_ActionMarker_1.png" id="24_kxibh"]
+[ext_resource type="Texture2D" uid="uid://bg63wv4t4uru1" path="res://Assets/UI/CombatUI/GUI_ActionMarker_2.png" id="25_h3kt2"]
+[ext_resource type="Texture2D" uid="uid://dlfxm7amhnn8t" path="res://Assets/UI/CombatUI/GUI_ActionMarker_3.png" id="26_cgt81"]
+[ext_resource type="Texture2D" uid="uid://cxg40c58f2eli" path="res://Assets/UI/CombatUI/GUI_HabilitiesContainer.png" id="27_6cwkg"]
+[ext_resource type="Script" uid="uid://dyx43km3b8f1h" path="res://Scripts/UI/CombatUI/GuiHabilitiesContainer.gd" id="27_7xihs"]
+[ext_resource type="Script" uid="uid://edtplchgylke" path="res://Scripts/UI/CombatUI/GuiStatsContainer.gd" id="27_w2hw5"]
+[ext_resource type="Texture2D" uid="uid://boircffmisjf" path="res://Assets/UI/CombatUI/GUI_HabilityMarker.png" id="28_7xihs"]
+[ext_resource type="PackedScene" uid="uid://cwkto28q0ioay" path="res://Prefabs/GUI/CombatInterface/StatContainer.tscn" id="28_kwdg3"]
+[ext_resource type="Texture2D" uid="uid://b6pyvjmdbv6y5" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Mor.png" id="29_5uu1q"]
+[ext_resource type="Script" uid="uid://0cwiijfpqgn4" path="res://Scripts/UI/CombatUI/GuiSelectableHability.gd" id="29_diegf"]
+[ext_resource type="Texture2D" uid="uid://0f6dbg3aku4s" path="res://Assets/UI/CombatUI/GUI_HabilityDescription.png" id="29_i5hpx"]
+[ext_resource type="Texture2D" uid="uid://c2gof5oochw4w" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Vit.png" id="30_viw3i"]
+[ext_resource type="Texture2D" uid="uid://8hglq8yf22la" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Res.png" id="31_8lic6"]
+[ext_resource type="Texture2D" uid="uid://b47ebxf6qv144" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Fue.png" id="32_ch22y"]
+[ext_resource type="Texture2D" uid="uid://b7dh2obbp0o6r" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Des.png" id="33_v63a5"]
+[ext_resource type="Texture2D" uid="uid://b211a0scns44" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Pre.png" id="34_73xph"]
+
+[sub_resource type="Theme" id="Theme_bh3rc"]
+default_font = ExtResource("5_7xihs")
+default_font_size = 17
+RichTextLabel/colors/default_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+RichTextLabel/font_sizes/normal_font_size = 36
+RichTextLabel/fonts/normal_font = ExtResource("4_6cwkg")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5pdpn"]
+font = ExtResource("4_6cwkg")
+font_size = 33
+font_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tsda7"]
+font_size = 33
+
+[sub_resource type="Theme" id="Theme_prn3n"]
+default_font = ExtResource("5_7xihs")
+default_font_size = 17
+RichTextLabel/colors/default_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+RichTextLabel/font_sizes/normal_font_size = 36
+RichTextLabel/fonts/normal_font = ExtResource("4_6cwkg")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_d3mnv"]
+
+[sub_resource type="Theme" id="Theme_4g40y"]
+default_font = ExtResource("5_7xihs")
+default_font_size = 17
+RichTextLabel/colors/default_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+RichTextLabel/font_sizes/normal_font_size = 36
+RichTextLabel/fonts/normal_font = ExtResource("4_6cwkg")
+
+[sub_resource type="Theme" id="Theme_0j7ox"]
+default_font = ExtResource("5_7xihs")
+default_font_size = 17
+RichTextLabel/colors/default_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+RichTextLabel/font_sizes/normal_font_size = 36
+RichTextLabel/fonts/normal_font = ExtResource("4_6cwkg")
+
+[sub_resource type="LabelSettings" id="LabelSettings_0sr1d"]
+font_size = 25
+
+[node name="CombatUI" type="Control" unique_id=1738784004 node_paths=PackedStringArray("portrait", "character_name", "selectable_actions", "actions_container", "stats_container", "weapon_container", "habilites_container")]
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -1080.0
+offset_right = 1920.0
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0, 1)
+mouse_filter = 2
+script = ExtResource("1_yeute")
+portrait = NodePath("Portrait")
+character_name = NodePath("NameContainer")
+selectable_actions = NodePath("Portrait/GuiSelectableActions")
+actions_container = NodePath("Portrait/GuiActionsContainer")
+stats_container = NodePath("StatsContainer")
+weapon_container = NodePath("Portrait/GuiWeaponContainer")
+habilites_container = NodePath("GuiHabilitiesContainer")
+
+[node name="NameContainer" type="TextureRect" parent="." unique_id=2104941868 node_paths=PackedStringArray("label")]
+z_index = 5
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.020000001
+anchor_top = 0.88900006
+anchor_right = 0.156
+anchor_bottom = 0.95800006
+offset_left = 0.5999985
+offset_top = -0.12005615
+offset_right = 0.47998047
+offset_bottom = 0.35998535
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_3ha0h")
+expand_mode = 2
+script = ExtResource("3_tyryh")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="NameContainer" unique_id=515636113]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.5
+offset_top = -17.5
+offset_right = 130.5
+offset_bottom = 30.505493
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_bh3rc")
+text = "PLACEHOLDER"
+label_settings = SubResource("LabelSettings_5pdpn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GuiHabilitiesContainer" type="Control" parent="." unique_id=452386822 node_paths=PackedStringArray("hability_select_container", "hability_containers", "description_container", "description")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1586.0
+offset_top = 27.0
+offset_right = -913.9999
+offset_bottom = 493.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("27_7xihs")
+hability_select_container = NodePath("HabilitySelect")
+hability_containers = [NodePath("HabilitySelect/SelectableHability"), NodePath("HabilitySelect/SelectableHability2"), NodePath("HabilitySelect/SelectableHability3"), NodePath("HabilitySelect/SelectableHability4")]
+description_container = NodePath("DescriptionContainer")
+description = NodePath("DescriptionContainer/Description")
+
+[node name="DescriptionContainer" type="TextureRect" parent="GuiHabilitiesContainer" unique_id=315528630]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -309.5
+offset_top = 225.0
+offset_right = 309.5
+offset_bottom = 458.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0)
+texture = ExtResource("29_i5hpx")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Description" type="RichTextLabel" parent="GuiHabilitiesContainer/DescriptionContainer" unique_id=1993288666]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = 29.0
+offset_right = -70.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed velit nulla. Donec porttitor nunc placerat, porta nibh eget, ornare ligula. Praesent consectetur luctus facilisis. In tristique risus nulla, sit amet efficitur mi maximus eleifend. Morbi justo felis, porta tincidunt mi eget, luctus vestibulum nisi."
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="HabilitySelect" type="TextureRect" parent="GuiHabilitiesContainer" unique_id=1258729854]
+layout_mode = 0
+offset_left = 17.0
+offset_top = -6.0
+offset_right = 665.8446
+offset_bottom = 210.0
+pivot_offset_ratio = Vector2(0.5, 0)
+mouse_filter = 2
+texture = ExtResource("27_6cwkg")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SelectableHability" type="Control" parent="GuiHabilitiesContainer/HabilitySelect" unique_id=542088426 node_paths=PackedStringArray("label", "selected_texture")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -153.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("29_diegf")
+font_color_normal = Color(0.3254902, 0.05490196, 0.26666668, 1)
+label = NodePath("Label")
+selected_texture = NodePath("SelectedTexture")
+metadata/_custom_type_script = "uid://0cwiijfpqgn4"
+
+[node name="SelectedTexture" type="TextureRect" parent="GuiHabilitiesContainer/HabilitySelect/SelectableHability" unique_id=832206584]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_right = 28.155396
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0, 0.5)
+mouse_filter = 2
+texture = ExtResource("28_7xihs")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="GuiHabilitiesContainer/HabilitySelect/SelectableHability" unique_id=937049028]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 7.0
+offset_right = 607.0
+offset_bottom = 55.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 22
+text = "Placeholder de Habilidad mu mu larga"
+scroll_active = false
+autowrap_mode = 2
+vertical_alignment = 1
+script = ExtResource("13_dp4ak")
+metadata/_custom_type_script = "uid://cmxg46con15px"
+
+[node name="SelectableHability2" type="Control" parent="GuiHabilitiesContainer/HabilitySelect" unique_id=1992607329 node_paths=PackedStringArray("label", "selected_texture")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = 50.0
+offset_right = 29.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("29_diegf")
+font_color_normal = Color(0.3254902, 0.05490196, 0.26666668, 1)
+label = NodePath("Label")
+selected_texture = NodePath("SelectedTexture")
+metadata/_custom_type_script = "uid://0cwiijfpqgn4"
+
+[node name="SelectedTexture" type="TextureRect" parent="GuiHabilitiesContainer/HabilitySelect/SelectableHability2" unique_id=2131335538]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 6.9999924
+offset_right = -22.521484
+offset_bottom = -12.262062
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.010848019
+pivot_offset_ratio = Vector2(0, 0.5)
+mouse_filter = 2
+texture = ExtResource("28_7xihs")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="GuiHabilitiesContainer/HabilitySelect/SelectableHability2" unique_id=1430920485]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 3.0
+offset_right = 621.0
+offset_bottom = 51.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Placeholder de Habilidad mu mu larga"
+scroll_active = false
+autowrap_mode = 2
+vertical_alignment = 1
+script = ExtResource("13_dp4ak")
+metadata/_custom_type_script = "uid://cmxg46con15px"
+
+[node name="SelectableHability3" type="Control" parent="GuiHabilitiesContainer/HabilitySelect" unique_id=1135484409 node_paths=PackedStringArray("label", "selected_texture")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 94.0
+offset_right = 14.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("29_diegf")
+font_color_normal = Color(0.3254902, 0.05490196, 0.26666668, 1)
+label = NodePath("Label")
+selected_texture = NodePath("SelectedTexture")
+metadata/_custom_type_script = "uid://0cwiijfpqgn4"
+
+[node name="SelectedTexture" type="TextureRect" parent="GuiHabilitiesContainer/HabilitySelect/SelectableHability3" unique_id=437742143]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_right = -21.844604
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0, 0.5)
+mouse_filter = 2
+texture = ExtResource("28_7xihs")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="GuiHabilitiesContainer/HabilitySelect/SelectableHability3" unique_id=1651044061]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 9.0
+offset_right = 620.0
+offset_bottom = 57.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Placeholder de Habilidad mu mu larga"
+scroll_active = false
+autowrap_mode = 2
+vertical_alignment = 1
+script = ExtResource("13_dp4ak")
+metadata/_custom_type_script = "uid://cmxg46con15px"
+
+[node name="SelectableHability4" type="Control" parent="GuiHabilitiesContainer/HabilitySelect" unique_id=426577176 node_paths=PackedStringArray("label", "selected_texture")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = 151.0
+offset_right = -6.8446045
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("29_diegf")
+font_color_normal = Color(0.3254902, 0.05490196, 0.26666668, 1)
+label = NodePath("Label")
+selected_texture = NodePath("SelectedTexture")
+metadata/_custom_type_script = "uid://0cwiijfpqgn4"
+
+[node name="SelectedTexture" type="TextureRect" parent="GuiHabilitiesContainer/HabilitySelect/SelectableHability4" unique_id=685958341]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_right = 41.155396
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0, 0.5)
+mouse_filter = 2
+texture = ExtResource("28_7xihs")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="GuiHabilitiesContainer/HabilitySelect/SelectableHability4" unique_id=1033644736]
+layout_mode = 0
+offset_left = 58.0
+offset_top = -2.0
+offset_right = 617.0
+offset_bottom = 46.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Placeholder de Habilidad mu mu larga"
+scroll_active = false
+autowrap_mode = 2
+vertical_alignment = 1
+script = ExtResource("13_dp4ak")
+metadata/_custom_type_script = "uid://cmxg46con15px"
+
+[node name="Portrait" type="TextureRect" parent="." unique_id=2038766826]
+z_index = 4
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 61.0
+offset_top = -342.0
+offset_right = 309.5734
+offset_bottom = -93.999756
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 2
+texture = ExtResource("6_i5hpx")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="GuiHealthContainer" type="Control" parent="Portrait" unique_id=152057757 node_paths=PackedStringArray("health_label", "health_bar")]
+anchors_preset = 0
+offset_left = 18.42685
+offset_top = -147.0
+offset_right = 246.20322
+offset_bottom = -20.746826
+mouse_filter = 2
+script = ExtResource("7_diegf")
+health_label = NodePath("Label")
+health_bar = NodePath("HealthProgressBar")
+
+[node name="HealthProgressBar" type="TextureProgressBar" parent="Portrait/GuiHealthContainer" unique_id=1585059828]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.492386
+offset_top = 19.36316
+offset_right = 665.5076
+offset_bottom = 368.36316
+grow_horizontal = 2
+scale = Vector2(0.2528489, 0.2528489)
+max_value = 1.0
+step = 0.01
+value = 1.0
+stretch_margin_left = 248
+stretch_margin_top = 292
+stretch_margin_right = 355
+stretch_margin_bottom = 232
+texture_under = ExtResource("8_uhaa8")
+texture_progress = ExtResource("9_5oyva")
+texture_progress_offset = Vector2(34.87, 184.69)
+
+[node name="Label" type="Label" parent="Portrait/GuiHealthContainer" unique_id=1275027048]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.143402
+offset_top = 25.871033
+offset_right = -6.143402
+offset_bottom = 66.87103
+grow_horizontal = 2
+rotation = -0.076519966
+theme = SubResource("Theme_bh3rc")
+text = "999"
+label_settings = SubResource("LabelSettings_tsda7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GuiSelectableActions" type="Control" parent="Portrait" unique_id=165239459 node_paths=PackedStringArray("action_attack", "action_habilites", "action_move")]
+layout_mode = 1
+anchor_left = 0.52900004
+anchor_top = 0.504
+anchor_right = 0.52900004
+anchor_bottom = 0.504
+offset_left = -33.580902
+offset_top = -187.97672
+offset_right = 602.8914
+offset_bottom = 188.17969
+pivot_offset_ratio = Vector2(0.05, 0.6)
+mouse_filter = 1
+script = ExtResource("10_cvbml")
+action_attack = NodePath("SelectableActionAttack")
+action_habilites = NodePath("SelectableActionHabilities")
+action_move = NodePath("SelectableActionMove")
+
+[node name="SelectableActionHabilities" type="TextureRect" parent="Portrait/GuiSelectableActions" unique_id=1703643119 node_paths=PackedStringArray("label", "area", "polygon")]
+z_as_relative = false
+layout_mode = 0
+offset_left = 7.809476
+offset_top = 0.12881756
+offset_right = 411.433
+offset_bottom = 206.54152
+pivot_offset_ratio = Vector2(0.07, 0.92)
+mouse_filter = 2
+texture = ExtResource("11_y6ary")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("12_eb4ys")
+type = 3
+label = NodePath("Label")
+area = NodePath("Area2D")
+polygon = NodePath("PolygonContainer")
+
+[node name="PolygonContainer" type="Control" parent="Portrait/GuiSelectableActions/SelectableActionHabilities" unique_id=1361449457]
+layout_mode = 1
+anchor_top = 0.75000006
+anchor_bottom = 0.75000006
+offset_top = -146.4277
+offset_right = 654.6944
+offset_bottom = 48.809113
+pivot_offset_ratio = Vector2(0.04, 0.94)
+mouse_filter = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="Portrait/GuiSelectableActions/SelectableActionHabilities/PolygonContainer" unique_id=932658240]
+position = Vector2(-1.3015792, -0.018192241)
+skew = -0.10995579
+color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+polygon = PackedVector2Array(18.506912, 162.61816, 437.2751, -8.414734, 413.2286, 83.13818, 14.430656, 186.76428)
+
+[node name="Label" type="RichTextLabel" parent="Portrait/GuiSelectableActions/SelectableActionHabilities" unique_id=371441957]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.87488
+offset_top = 43.8077
+offset_right = 181.76791
+offset_bottom = 98.8077
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.370171
+mouse_filter = 2
+theme = SubResource("Theme_prn3n")
+bbcode_enabled = true
+text = "Habilidad"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_d3mnv")]
+script = ExtResource("13_dp4ak")
+
+[node name="Area2D" type="Area2D" parent="Portrait/GuiSelectableActions/SelectableActionHabilities" unique_id=1129919664]
+priority = 1
+script = ExtResource("14_fnwul")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Portrait/GuiSelectableActions/SelectableActionHabilities/Area2D" unique_id=1413693255]
+position = Vector2(191.33215, 55.967888)
+polygon = PackedVector2Array(-130.70862, 89.032104, -129.70862, 128.0321, 37.29138, 96.032104, 204.29138, 51.032104, 172.29138, -29.967896)
+
+[node name="SelectableActionAttack" type="TextureRect" parent="Portrait/GuiSelectableActions" unique_id=380471129 node_paths=PackedStringArray("label", "area", "polygon")]
+z_as_relative = false
+layout_mode = 0
+offset_left = -1.3015785
+offset_top = 83.30107
+offset_right = 450.433
+offset_bottom = 274.12885
+pivot_offset = Vector2(52.17, 144.68)
+mouse_filter = 2
+texture = ExtResource("15_aeu3g")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("12_eb4ys")
+type = 2
+label = NodePath("Label")
+area = NodePath("Area2D")
+polygon = NodePath("PolygonContainer")
+
+[node name="PolygonContainer" type="Control" parent="Portrait/GuiSelectableActions/SelectableActionAttack" unique_id=72440121]
+layout_mode = 1
+anchor_top = 0.75000006
+anchor_bottom = 0.75000006
+offset_top = -146.42772
+offset_right = 654.6944
+offset_bottom = 48.809097
+pivot_offset_ratio = Vector2(0, 0.75)
+mouse_filter = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="Portrait/GuiSelectableActions/SelectableActionAttack/PolygonContainer" unique_id=1118388071]
+skew = -0.10995579
+color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+polygon = PackedVector2Array(43.235825, 126.90076, 503.9575, 47.420776, 445.56064, 114.82782, 38.034195, 156.07697)
+
+[node name="Label" type="RichTextLabel" parent="Portrait/GuiSelectableActions/SelectableActionAttack" unique_id=934306847]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.7061
+offset_top = 10.413635
+offset_right = 211.66682
+offset_bottom = 65.41363
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.1350299
+mouse_filter = 2
+theme = SubResource("Theme_4g40y")
+bbcode_enabled = true
+text = "Atacar"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_dp4ak")
+
+[node name="Area2D" type="Area2D" parent="Portrait/GuiSelectableActions/SelectableActionAttack" unique_id=1655604806]
+script = ExtResource("14_fnwul")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Portrait/GuiSelectableActions/SelectableActionAttack/Area2D" unique_id=1066764311]
+position = Vector2(202.73459, 59.82776)
+polygon = PackedVector2Array(-116.10547, 50.050476, -125.10547, 92.050476, -11.105469, 88.050476, 226.89453, 63.050476, 235.89453, -14.949524)
+
+[node name="SelectableActionMove" type="TextureRect" parent="Portrait/GuiSelectableActions" unique_id=547093182 node_paths=PackedStringArray("label", "area", "polygon")]
+z_as_relative = false
+layout_mode = 0
+offset_left = 66.85962
+offset_top = 204.1286
+offset_right = 431.15
+offset_bottom = 369.30634
+pivot_offset_ratio = Vector2(0, 0.31)
+mouse_filter = 2
+texture = ExtResource("16_1dbhs")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("12_eb4ys")
+type = 1
+label = NodePath("Label")
+area = NodePath("Area2D")
+polygon = NodePath("PolygonContainer")
+
+[node name="PolygonContainer" type="Control" parent="Portrait/GuiSelectableActions/SelectableActionMove" unique_id=1991948802]
+layout_mode = 1
+anchor_left = -0.031000001
+anchor_top = 0.275
+anchor_right = -0.031000001
+anchor_bottom = 0.275
+offset_left = -13.481046
+offset_top = -65.56787
+offset_right = 486.90826
+offset_bottom = 118.43213
+pivot_offset_ratio = Vector2(0, 0.41)
+mouse_filter = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="Portrait/GuiSelectableActions/SelectableActionMove/PolygonContainer" unique_id=130142972]
+skew = -0.10995579
+color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+polygon = PackedVector2Array(-26.622337, 52.137146, 438.84482, 84.33154, 376.44156, 142.6839, -43.71357, 80.30725)
+
+[node name="Label" type="RichTextLabel" parent="Portrait/GuiSelectableActions/SelectableActionMove" unique_id=1075594629]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.14519
+offset_top = -55.58889
+offset_right = 149.57722
+offset_bottom = -0.5888901
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.12914988
+mouse_filter = 2
+theme = SubResource("Theme_0j7ox")
+bbcode_enabled = true
+text = "Mover"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_dp4ak")
+
+[node name="Area2D" type="Area2D" parent="Portrait/GuiSelectableActions/SelectableActionMove" unique_id=1656808203]
+script = ExtResource("14_fnwul")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Portrait/GuiSelectableActions/SelectableActionMove/Area2D" unique_id=1919723008]
+position = Vector2(192.84006, 58.777283)
+polygon = PackedVector2Array(-173.05602, -15.999573, -163.54968, 16.400452, 155.45032, 81.40045, 138.45032, -10.599548)
+
+[node name="GuiActionsContainer" type="Control" parent="Portrait" unique_id=1866958717 node_paths=PackedStringArray("actions")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -9.573395
+offset_top = -147.0
+offset_right = 180.42657
+offset_bottom = 3.0
+grow_horizontal = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("23_15nel")
+actions = [NodePath("GuiActionMarker1"), NodePath("GuiActionMarker2"), NodePath("GuiActionMarker3")]
+
+[node name="GuiActionsBackground" type="Sprite2D" parent="Portrait/GuiActionsContainer" unique_id=1190168332]
+position = Vector2(98.1597, 70.74603)
+scale = Vector2(0.21262348, 0.2126235)
+texture = ExtResource("22_gmweq")
+
+[node name="Label2" type="Label" parent="Portrait/GuiActionsContainer" unique_id=1932978502]
+layout_mode = 1
+offset_left = 46.999996
+offset_top = 75.0
+offset_right = 137.0
+offset_bottom = 102.0
+rotation = -0.70017016
+scale = Vector2(0.79215723, 0.87405413)
+theme = SubResource("Theme_bh3rc")
+text = "Acciones"
+label_settings = SubResource("LabelSettings_0sr1d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GuiActionMarker1" type="Sprite2D" parent="Portrait/GuiActionsContainer" unique_id=1812306134]
+position = Vector2(57.15927, 114.54755)
+scale = Vector2(0.19962882, 0.19962882)
+texture = ExtResource("24_kxibh")
+
+[node name="GuiActionMarker2" type="Sprite2D" parent="Portrait/GuiActionsContainer" unique_id=894419809]
+position = Vector2(93.293274, 95.113525)
+scale = Vector2(0.20866632, 0.20866632)
+texture = ExtResource("25_h3kt2")
+
+[node name="GuiActionMarker3" type="Sprite2D" parent="Portrait/GuiActionsContainer" unique_id=377109876]
+position = Vector2(129.32825, 68.29053)
+scale = Vector2(0.20866632, 0.20866632)
+texture = ExtResource("26_cgt81")
+
+[node name="GuiWeaponContainer" type="Control" parent="Portrait" unique_id=737182427 node_paths=PackedStringArray("sprite_tonfa", "sprite_staff", "sprite_bat")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 189.13986
+offset_top = -233.68213
+offset_right = 260.7267
+offset_bottom = -113.93683
+grow_horizontal = 0
+script = ExtResource("18_elysa")
+sprite_tonfa = NodePath("GuiWeaponMarker/GuiTonfa")
+sprite_staff = NodePath("GuiWeaponMarker/GuiBaston")
+sprite_bat = NodePath("GuiWeaponMarker/GuiBaston")
+
+[node name="GuiWeaponMarker" type="Sprite2D" parent="Portrait/GuiWeaponContainer" unique_id=1837297214]
+position = Vector2(37.74578, 59.87266)
+scale = Vector2(0.19203715, 0.19203715)
+texture = ExtResource("17_inw5k")
+
+[node name="GuiBaston" type="Sprite2D" parent="Portrait/GuiWeaponContainer/GuiWeaponMarker" unique_id=493547525]
+visible = false
+position = Vector2(-30.943398, 0.9455557)
+texture = ExtResource("19_75xxg")
+
+[node name="GuiBate" type="Sprite2D" parent="Portrait/GuiWeaponContainer/GuiWeaponMarker" unique_id=1882132457]
+visible = false
+position = Vector2(-23.219812, -0.99225354)
+texture = ExtResource("20_1lyp3")
+
+[node name="GuiTonfa" type="Sprite2D" parent="Portrait/GuiWeaponContainer/GuiWeaponMarker" unique_id=2097347300]
+visible = false
+position = Vector2(-7.5978336, -11.406905)
+texture = ExtResource("21_48xay")
+
+[node name="StatsContainer" type="VBoxContainer" parent="." unique_id=2104254687]
+layout_mode = 0
+offset_left = -513.0
+offset_top = 48.0
+offset_right = -72.0
+offset_bottom = 516.0
+mouse_filter = 0
+script = ExtResource("27_w2hw5")
+
+[node name="StatContainer" parent="StatsContainer" unique_id=237564544 instance=ExtResource("28_kwdg3")]
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 2
+icon = ExtResource("29_5uu1q")
+
+[node name="StatContainer2" parent="StatsContainer" unique_id=270165628 instance=ExtResource("28_kwdg3")]
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 2
+icon = ExtResource("30_viw3i")
+type = 3
+
+[node name="StatContainer3" parent="StatsContainer" unique_id=458437905 instance=ExtResource("28_kwdg3")]
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 2
+icon = ExtResource("31_8lic6")
+type = 5
+
+[node name="StatContainer4" parent="StatsContainer" unique_id=1155108464 instance=ExtResource("28_kwdg3")]
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 2
+icon = ExtResource("32_ch22y")
+type = 2
+
+[node name="StatContainer5" parent="StatsContainer" unique_id=1489873303 instance=ExtResource("28_kwdg3")]
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 2
+icon = ExtResource("33_v63a5")
+type = 1
+
+[node name="StatContainer6" parent="StatsContainer" unique_id=2034912934 instance=ExtResource("28_kwdg3")]
+layout_mode = 2
+size_flags_vertical = 6
+mouse_filter = 2
+icon = ExtResource("34_73xph")
+type = 4
+
+[connection signal="character_changed" from="." to="NameContainer" method="on_character_changed"]
+[connection signal="character_changed" from="." to="Portrait/GuiHealthContainer" method="on_character_changed"]
+[connection signal="character_changed" from="." to="Portrait/GuiActionsContainer" method="on_character_changed"]
+[connection signal="character_changed" from="." to="Portrait/GuiWeaponContainer" method="on_character_changed"]
+[connection signal="character_changed" from="." to="GuiHabilitiesContainer" method="_on_character_changed"]
+[connection signal="character_changed" from="." to="StatsContainer" method="_on_combat_ui_character_changed"]

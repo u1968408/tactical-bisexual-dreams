@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bpgoxly8bjaxs"]
+
+[ext_resource type="Script" uid="uid://c6tbqligdghm4" path="res://Scripts/UI/UIController.gd" id="1_ph7c8"]
+[ext_resource type="PackedScene" uid="uid://cuwqumqgnjfxs" path="res://Prefabs/GUI/CombatInterface/CombatUI.tscn" id="2_o5t7o"]
+
+[node name="PlayerInterface" type="CanvasLayer" unique_id=1424462046 node_paths=PackedStringArray("combat_ui")]
+layer = 1025
+script = ExtResource("1_ph7c8")
+combat_ui = NodePath("CombatUI")
+
+[node name="CombatUI" parent="." unique_id=1738784004 instance=ExtResource("2_o5t7o")]
+anchors_preset = -1
+anchor_top = 0.0050000004
+anchor_right = 1.0
+offset_top = -5.4000006
+offset_right = 0.0

@@ -1,24 +1,31 @@
 class_name StateMachine
 extends Node
 
-var _currentState: State
-
-## Getter for the current State in the State machine. Change it via [method setCurrentState].
+## Getter for the current State in the State machine. Change it via [method set_current_state].
 var state: State:
 	get:
-		return _currentState
+		return _current_state
+
+var _current_state: State
+
 
 ## Use this async function for changing the State.
 ## Will call [method State.Exit] for the previous State
 ## and [method State.Enter] for the new one.
-func setCurrentState(newState: State) -> void:
-	if _currentState == newState:
+func set_current_state(new_state: State) -> void:
+	if _current_state == new_state:
 		return
 
-	if _currentState:
-		await _currentState.exit()
+	if _current_state:
+		await _current_state.exit()
 
-	_currentState = newState
-	
-	if _currentState:
-		await _currentState.enter()
+	_current_state = new_state
+
+	if _current_state:
+		await _current_state.enter()
+
+func reset_state() -> void:
+	if _current_state == null:
+		return
+	await _current_state.exit()
+	await _current_state.enter()

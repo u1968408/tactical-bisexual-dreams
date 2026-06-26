@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b43tkeosjs6ca" path="res://Scripts/Gameplay/Entities/Components/EntityMovementController.gd" id="7_hw56i"]
 [ext_resource type="Script" uid="uid://cjjkmjuptrrp8" path="res://Scripts/Gameplay/Entities/Characters/HabilityHandler.gd" id="8_po2ih"]
 [ext_resource type="Script" uid="uid://wrc6rds4h67q" path="res://Scripts/Gameplay/Entities/Components/Weapons.gd" id="9_wcmsd"]
+[ext_resource type="Script" uid="uid://bx8g6oiuxv1at" path="res://Scripts/Gameplay/Entities/Characters/Habilities/HabilityCreateWeapon.gd" id="10_so4w8"]
 [ext_resource type="Resource" uid="uid://cl5rrcf53k7g4" path="res://Resources/Combat/Weapons/Tomfa.tres" id="11_4l738"]
 [ext_resource type="Texture2D" uid="uid://cpvhi0becxbsd" path="res://Assets/Sprites/Character/LyraSprites/LyraStandFront.png" id="15_45nm5"]
 [ext_resource type="Texture2D" uid="uid://lcyjg27l1orj" path="res://Assets/Sprites/Character/LyraSprites/LyraStandBack.png" id="16_6djmj"]
@@ -309,6 +310,26 @@ base_stats = ExtResource("6_hw56i")
 
 [node name="Habilities" type="Node" parent="." unique_id=516948897]
 script = ExtResource("8_po2ih")
+
+[node name="CreateWeapon" type="Node" parent="Habilities" unique_id=59332581]
+script = ExtResource("10_so4w8")
+hability_name = "Crear arma"
+description = "Crea un arma a partir de un material de una [b]casilla cercana[/b]. Se puede seleccionar el tipo de arma y el material de la casilla afectará a las estadísticas."
+
+[node name="CreateWeapon2" type="Node" parent="Habilities" unique_id=1672801504]
+script = ExtResource("10_so4w8")
+hability_name = "Crear armados"
+description = "Patata"
+
+[node name="CreateWeapon3" type="Node" parent="Habilities" unique_id=2128651704]
+script = ExtResource("10_so4w8")
+hability_name = "Darle un beso a Leah"
+description = "UwU"
+
+[node name="CreateWeapon4" type="Node" parent="Habilities" unique_id=470022156]
+script = ExtResource("10_so4w8")
+hability_name = "Lesbianismo"
+description = "Maldito capitalismo lesbofobico"
 
 [node name="Attack" type="Node" parent="." unique_id=808434641]
 script = ExtResource("6_4sbcw")

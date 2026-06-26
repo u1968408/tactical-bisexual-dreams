@@ -11,6 +11,7 @@ const ORBIT_CAMERA_ROTATION: float = TAU / 4
 @export var rotation_time: float = 0.5
 
 var _rotating: bool = false
+var _tween: Tween
 
 
 func orbit_left():
@@ -30,13 +31,15 @@ func orbit_camera(direction: OrbitDirection) -> void:
 	var start_pos := camera.global_position
 	var angle_to_rotate := ORBIT_CAMERA_ROTATION * direction
 
-	var tween := create_tween()
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_method(
+	if _tween:
+		_tween.kill()
+	_tween = create_tween()
+	_tween.set_trans(Tween.TRANS_SINE)
+	_tween.set_ease(Tween.EASE_IN_OUT)
+	_tween.tween_method(
 		_animate_orbit.bind(start_pos, center, angle_to_rotate), 0.0, 1.0, rotation_time
 	)
-	tween.finished.connect(func(): _rotating = false)
+	_tween.finished.connect(func(): _rotating = false)
 
 
 func _animate_orbit(progress: float, start_pos: Vector3, center: Vector3, total_angle: float):

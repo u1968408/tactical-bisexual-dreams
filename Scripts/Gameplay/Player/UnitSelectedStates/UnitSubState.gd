@@ -35,5 +35,13 @@ func exit() -> void:
 
 @abstract func on_mouse_click() -> void
 
+
 func on_mouse_move(_p, _wp) -> void:
 	pass
+
+
+func _reset_if_possible():
+	if character.has_actions():
+		state_machine.reset_state()
+		return
+	master_state.return_to_select_state()

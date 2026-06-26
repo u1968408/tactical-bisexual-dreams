@@ -96,7 +96,7 @@ func move(path: PackedVector2Array):
 
 
 func look_at_direction(target_position: Vector3):
-	var direction: Vector3 = (target_position - global_position)
+	var direction: Vector3 = target_position - global_position
 	direction.y = 0
 	direction = direction.normalized()
 	if direction.length() < 0.01:
@@ -115,8 +115,16 @@ func look_at_direction(target_position: Vector3):
 	look_direction = look_dir
 
 
-func reset_turn():
+func reset_turn() -> void:
 	current_actions = MAX_ACTIONS
+
+
+func use_action() -> void:
+	current_actions -= 1
+
+
+func has_actions() -> int:
+	return current_actions > 0
 
 
 func _on_move_end():

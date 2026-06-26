@@ -42,13 +42,16 @@ var _current_internal_state: UnitSubState:
 func enter() -> void:
 	super()
 	combat_ui.character_selected(current_character)
-	combat_ui.current_action = CombatUtils.Actions.MOVE
+	if current_character.has_actions():
+		combat_ui.current_action = CombatUtils.Actions.MOVE
+	else:
+		combat_ui.current_action = CombatUtils.Actions.NONE
 	can_interact = true
 
 
 func exit():
 	super()
-	internal_state_machine.setCurrentState(null)
+	internal_state_machine.set_current_state(null)
 	combat_ui.character_unselected()
 	current_character = null
 
@@ -100,16 +103,16 @@ func _create_ray(from: Vector3, to: Vector3) -> void:
 
 
 func return_to_select_state():
-	state_machine.setCurrentState(free_select_state)
+	state_machine.set_current_state(free_select_state)
 
 
 func _on_combat_state_changed(state: CombatUtils.Actions):
 	match state:
 		CombatUtils.Actions.MOVE:
-			internal_state_machine.setCurrentState(move_sub_state)
+			internal_state_machine.set_current_state(move_sub_state)
 		CombatUtils.Actions.ATTACK:
-			internal_state_machine.setCurrentState(attack_sub_state)
+			internal_state_machine.set_current_state(attack_sub_state)
 		CombatUtils.Actions.HABILITIES:
-			internal_state_machine.setCurrentState(habilities_sub_state)
+			internal_state_machine.set_current_state(habilities_sub_state)
 		CombatUtils.Actions.NONE:
-			internal_state_machine.setCurrentState(null)
+			internal_state_machine.set_current_state(null)

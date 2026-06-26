@@ -6,4 +6,4 @@ extends Node
 
 
 func start_turn():
-	state_machine.setCurrentState(initial_state)
+	state_machine.set_current_state(initial_state)

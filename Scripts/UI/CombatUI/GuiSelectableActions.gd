@@ -1,9 +1,22 @@
 class_name SelectableActions
 extends Control
 
+signal action_clicked(action: CombatUtils.Actions)
+signal habilities_selected
+
 @export var action_attack: SelectableAction
 @export var action_habilites: SelectableAction
 @export var action_move: SelectableAction
+
+var enabled: bool:
+	get:
+		return _enabled
+	set(value):
+		_enabled = value
+		for action in actions:
+			if not _enabled:
+				action.unselect()
+			action.enabled = _enabled
 
 var actions: Array[SelectableAction]:
 	get:
@@ -17,15 +30,18 @@ var current_index: int:
 	get:
 		return actions.find_custom(func(act: SelectableAction): return act.is_selected)
 
+var _enabled: bool = true
+
 
 func _ready() -> void:
 	for action in actions:
-		if action == null:
-			continue
-		action.selected.connect(_on_select)
+		action.finished_animation_select.connect(_on_finished_action_animation)
 
 
 func _gui_input(event: InputEvent) -> void:
+	if not enabled:
+		return
+
 	if event is not InputEventMouseButton:
 		return
 
@@ -39,9 +55,8 @@ func _gui_input(event: InputEvent) -> void:
 	if action == null:
 		return
 
-	action.trigger_selected()
+	action_clicked.emit(action.type)
 	accept_event()
-	get_viewport().set_input_as_handled()
 
 
 func select_action(type: CombatUtils.Actions):
@@ -94,3 +109,9 @@ func _get_from_type(type: CombatUtils.Actions):
 
 func _get_others(type: CombatUtils.Actions) -> Array[SelectableAction]:
 	return actions.filter(func(x: SelectableAction): return x != null and x.type != type)
+
+
+func _on_finished_action_animation(type: CombatUtils.Actions):
+	if type == CombatUtils.Actions.HABILITIES:
+		print("emitting type: %s" % type)
+		habilities_selected.emit()

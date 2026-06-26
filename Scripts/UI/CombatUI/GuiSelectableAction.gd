@@ -1,22 +1,34 @@
 class_name SelectableAction
 extends TextureRect
 
-signal selected(action_type: CombatUtils.Actions)
+signal finished_animation_select(type: CombatUtils.Actions)
 
 const COLOR_TINT: Color = Color("#949494")
 const GROW_SIZE: Vector2 = Vector2(1.25, 1.25)
 const ANIMATION_DURATION: float = 0.10
 
 @export var type: CombatUtils.Actions
-@export var label: GuiSelectableActionLabel
+@export var label: GuiDancingLabel
 @export var area: GuiSelectableActionArea
 @export var polygon: Control
 
+var enabled: bool:
+	get:
+		return _enabled
+	set(value):
+		_enabled = value
+		area.input_pickable = _enabled
+		if not _enabled:
+			modulate = COLOR_TINT
+
 var is_selected: bool:
 	get:
-		return _selected
+		return _is_selected
 
-var _selected: bool = false
+var _is_selected: bool = false
+var _enabled: bool = true
+var _tween: Tween
+var _tween_selected: Tween
 
 
 func _ready() -> void:
@@ -41,29 +53,34 @@ func contains_viewport_point(viewport_point: Vector2) -> bool:
 	return Geometry2D.is_point_in_polygon(point_in_collision_space, col.polygon)
 
 
-func trigger_selected() -> void:
-	print("Collided with type %s" % type)
-	selected.emit(type)
-
-
 func select():
-	_selected = true
+	_is_selected = true
+	if _tween:
+		_tween.kill()
 	modulate = Color.WHITE
 	label.dance()
 	label.inverted_color()
+	_animate_selected()
 
-	var tween: Tween = create_tween()
-	tween.tween_property(polygon, "scale", Vector2.ONE, ANIMATION_DURATION)
+
+func _animate_selected():
+	var new_scale: Vector2 = Vector2.ONE if is_selected else Vector2.ZERO
+	print("Selected action %s" % type)
+	if _tween_selected:
+		_tween_selected.kill()
+	_tween_selected = create_tween()
+	_tween_selected.tween_property(polygon, "scale", new_scale, ANIMATION_DURATION)
+	if is_selected:
+		_tween_selected.tween_callback(finished_animation_select.emit.bind(type))
 
 
 func unselect():
-	_selected = false
+	_is_selected = false
 	_on_mouse_exited()
 	label.stop()
 	label.default_color()
 
-	var tween: Tween = create_tween()
-	tween.tween_property(polygon, "scale", Vector2.ZERO, ANIMATION_DURATION)
+	_animate_selected()
 
 
 func _on_mouse_entered() -> void:
@@ -74,22 +91,26 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	_animate_exit()
 
-	if not _selected:
+	if not _is_selected:
 		label.stop()
 
 
 func _animate_hover():
-	var tween: Tween = create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(self, "modulate", Color.WHITE, ANIMATION_DURATION)
-	tween.tween_property(self, "scale", GROW_SIZE, ANIMATION_DURATION)
+	if _tween:
+		_tween.kill()
+	_tween = create_tween()
+	_tween.set_parallel(true)
+	_tween.tween_property(self, "modulate", Color.WHITE, ANIMATION_DURATION)
+	_tween.tween_property(self, "scale", GROW_SIZE, ANIMATION_DURATION)
 
 
 func _animate_exit():
-	var tween: Tween = create_tween()
-	tween.set_parallel(true)
+	if _tween:
+		_tween.kill()
+	_tween = create_tween()
+	_tween.set_parallel(true)
 
-	if not _selected:
-		tween.tween_property(self, "modulate", COLOR_TINT, ANIMATION_DURATION)
+	if not _is_selected:
+		_tween.tween_property(self, "modulate", COLOR_TINT, ANIMATION_DURATION)
 
-	tween.tween_property(self, "scale", Vector2.ONE, ANIMATION_DURATION)
+	_tween.tween_property(self, "scale", Vector2.ONE, ANIMATION_DURATION)

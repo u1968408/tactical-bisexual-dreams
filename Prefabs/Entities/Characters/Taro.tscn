@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://ctymfk4u86vgo"]
 
 [ext_resource type="Script" uid="uid://c18oq240k11se" path="res://Scripts/Gameplay/Entities/Characters/Character.gd" id="1_3fwt7"]
-[ext_resource type="Texture2D" uid="uid://cpvhi0becxbsd" path="res://Assets/Sprites/Character/LyraSprites/LyraStandFront.png" id="2_e7jbn"]
 [ext_resource type="Texture2D" uid="uid://c33bwom8fgl1l" path="res://Assets/UI/Portraits/TaroPortrait.png" id="2_v5i7l"]
 [ext_resource type="Script" uid="uid://4dtjtfrhk46r" path="res://Scripts/Gameplay/Entities/Resources/SelectableCharacterData.gd" id="3_3wia3"]
 [ext_resource type="Texture2D" uid="uid://jxn8r4qdeuev" path="res://Assets/Sprites/Character/LyraSprites/LyraAttackBackTonfa1.png" id="3_n5krq"]
@@ -69,7 +68,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_e7jbn")]
+"values": [ExtResource("27_1k7d6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -333,7 +332,7 @@ pixel_size = 0.03
 billboard = 2
 texture_filter = 0
 render_priority = 1
-texture = ExtResource("2_e7jbn")
+texture = ExtResource("27_1k7d6")
 script = ExtResource("11_kfgrl")
 
 [node name="Weapons" type="Node3D" parent="." unique_id=234906197]

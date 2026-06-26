@@ -30,4 +30,4 @@ func on_mouse_click() -> void:
 		return
 	if entity is Character:
 		pick_character_state.current_character = entity
-		state_machine.setCurrentState(pick_character_state)
+		state_machine.set_current_state(pick_character_state)

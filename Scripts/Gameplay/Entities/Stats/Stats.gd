@@ -1,6 +1,7 @@
 class_name Stats
 extends Node
 
+signal stats_changed
 signal health_changed(change_value: int, new_health: int)
 
 enum StatType {
@@ -81,6 +82,7 @@ var _modifiers: Array[Modifier] = []
 
 func _ready() -> void:
 	_current_health = max_health
+	base_stats.stats_changed.connect(func(): stats_changed.emit())
 
 
 static func calculate_add(base: int, modifier: int) -> int:
@@ -97,14 +99,49 @@ static func get_multiplier(modifier: int) -> float:
 	return multiplier
 
 
+static func get_stat_name(type: StatType) -> String:
+	match type:
+		StatType.MORALE:
+			return "Moral"
+		StatType.DEXTERITY:
+			return "Destreza"
+		StatType.FORCE:
+			return "Fuerza"
+		StatType.VITALITY:
+			return "Vitalidad"
+		StatType.PRECISION:
+			return "Presición"
+		StatType.RESISTANCE:
+			return "Resistencia"
+	return ""
+
+
+func get_stat_value(type: StatType) -> int:
+	match type:
+		StatType.MORALE:
+			return morale
+		StatType.DEXTERITY:
+			return dexterity
+		StatType.FORCE:
+			return force
+		StatType.PRECISION:
+			return precision
+		StatType.RESISTANCE:
+			return resistance
+	# StatType.VITALITY
+	return base_stats.vitality
+
+
 func add_modifier(modifier: Modifier) -> void:
 	_modifiers.append(modifier)
+	stats_changed.emit()
 
 
 func delete_modifier(modifier: Modifier) -> void:
 	var idx := _modifiers.find(modifier)
 	if idx >= 0:
 		_modifiers.remove_at(idx)
+	stats_changed.emit()
 
 
 func _get_modifiers_of_type(type: StatType) -> Array[Modifier]:

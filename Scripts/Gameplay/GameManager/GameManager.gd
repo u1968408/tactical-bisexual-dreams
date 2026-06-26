@@ -13,4 +13,4 @@ func _ready() -> void:
 
 
 func start_round() -> void:
-	state_machine.setCurrentState(initial_state)
+	state_machine.set_current_state(initial_state)

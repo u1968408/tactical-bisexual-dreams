@@ -1,5 +1,5 @@
 class_name HabilityHandler
-extends Node
+extends EntityNode
 
 var habilities: Array[Hability]:
 	get:

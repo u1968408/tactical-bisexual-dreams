@@ -1,4 +1,5 @@
-extends Sprite2D
+class_name GuiWeaponMarker
+extends Control
 
 @export var sprite_ranged: Sprite2D
 @export var sprite_tonfa: Sprite2D

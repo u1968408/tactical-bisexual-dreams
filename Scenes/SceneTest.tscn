@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bayflys76kf3u" path="res://Scripts/Gameplay/Camera/CameraOrbit.gd" id="2_ef7dr"]
 [ext_resource type="PackedScene" uid="uid://c86f5ayqtp8vm" path="res://Prefabs/Gameplay/board.tscn" id="4_ef7dr"]
 [ext_resource type="Script" uid="uid://hpd080a38nd5" path="res://Shaders/edge_pixel_compositor_effect.gd" id="4_su6wu"]
-[ext_resource type="PackedScene" uid="uid://on4fn7kuuxsh" path="res://Prefabs/Entities/Characters/lyra.tscn" id="5_ef7dr"]
+[ext_resource type="PackedScene" uid="uid://on4fn7kuuxsh" path="res://Prefabs/Entities/Characters/Lyra.tscn" id="5_ef7dr"]
 [ext_resource type="Script" uid="uid://8dkrt7ju5ecf" path="res://Scripts/Gameplay/Player/PlayerController.gd" id="6_1i6e8"]
 [ext_resource type="Script" uid="uid://wtf1oixmwnkx" path="res://Scripts/Gameplay/GameManager/GameManager.gd" id="6_wt016"]
 [ext_resource type="Script" uid="uid://c6jingcvddxsk" path="res://Scripts/Common/State Machine/StateMachine.gd" id="7_rwmut"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://creph5k0ip82m" path="res://Scripts/Gameplay/Player/UnitSelectedStates/MoveSubState.gd" id="10_3mb6f"]
 [ext_resource type="Script" uid="uid://0f0qkhhw1e00" path="res://Scripts/Gameplay/Player/UnitSelectedStates/AttackSubState.gd" id="11_vpa4f"]
 [ext_resource type="Script" uid="uid://b5vq55l6wy0eo" path="res://Scripts/Gameplay/Player/UnitSelectedStates/HabilitiesSubState.gd" id="14_27m4o"]
-[ext_resource type="PackedScene" uid="uid://bpgoxly8bjaxs" path="res://Prefabs/GUI/CombatInterface/CombatInterface.tscn" id="17_27m4o"]
+[ext_resource type="PackedScene" uid="uid://bpgoxly8bjaxs" path="res://Prefabs/GUI/CombatInterface/PlayerInterface.tscn" id="17_27m4o"]
 [ext_resource type="PackedScene" uid="uid://ctymfk4u86vgo" path="res://Prefabs/Entities/Characters/Taro.tscn" id="18_i2bkh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_38cb2"]
