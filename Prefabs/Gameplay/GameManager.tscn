@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bqdlcu4jup2ar"]
+
+[ext_resource type="Script" uid="uid://wtf1oixmwnkx" path="res://Scripts/Gameplay/GameManager/GameManager.gd" id="1_1jws4"]
+[ext_resource type="Script" uid="uid://c6jingcvddxsk" path="res://Scripts/Common/State Machine/StateMachine.gd" id="2_3t4ij"]
+[ext_resource type="Script" uid="uid://bi03m5l68reow" path="res://Scripts/Gameplay/GameManager/States/PlayerTurnState.gd" id="3_8sx7y"]
+[ext_resource type="Script" uid="uid://8dkrt7ju5ecf" path="res://Scripts/Gameplay/Player/PlayerController.gd" id="4_rfg4i"]
+[ext_resource type="Script" uid="uid://f6xptvqwsdhu" path="res://Scripts/Gameplay/Player/States/FreeSelectPlayerState.gd" id="5_8s5us"]
+[ext_resource type="Script" uid="uid://b1np0wydmnee" path="res://Scripts/Gameplay/Player/States/UnitSelectedState.gd" id="6_nnmel"]
+[ext_resource type="Script" uid="uid://creph5k0ip82m" path="res://Scripts/Gameplay/Player/UnitSelectedStates/MoveSubState.gd" id="7_vsk8w"]
+[ext_resource type="Script" uid="uid://0f0qkhhw1e00" path="res://Scripts/Gameplay/Player/UnitSelectedStates/AttackSubState.gd" id="8_xy1hl"]
+[ext_resource type="Script" uid="uid://b5vq55l6wy0eo" path="res://Scripts/Gameplay/Player/UnitSelectedStates/HabilitiesSubState.gd" id="9_8dic2"]
+
+[node name="GameManager" type="Node" unique_id=536167165 node_paths=PackedStringArray("state_machine", "initial_state", "player_controller")]
+script = ExtResource("1_1jws4")
+state_machine = NodePath("GameStateMachine")
+initial_state = NodePath("GameStateMachine/PlayerTurnState")
+player_controller = NodePath("PlayerController")
+
+[node name="GameStateMachine" type="Node" parent="." unique_id=152749267]
+script = ExtResource("2_3t4ij")
+
+[node name="PlayerTurnState" type="Node" parent="GameStateMachine" unique_id=1293065569]
+script = ExtResource("3_8sx7y")
+
+[node name="EnemyTurn" type="Node" parent="GameStateMachine" unique_id=1907567271]
+
+[node name="PlayerController" type="Node" parent="." unique_id=1656965536 node_paths=PackedStringArray("state_machine", "initial_state")]
+script = ExtResource("4_rfg4i")
+state_machine = NodePath("PlayerStateMachine")
+initial_state = NodePath("PlayerStateMachine/FreeSelect")
+
+[node name="PlayerStateMachine" type="Node" parent="PlayerController" unique_id=1468792544]
+script = ExtResource("2_3t4ij")
+
+[node name="FreeSelect" type="Node" parent="PlayerController/PlayerStateMachine" unique_id=1731615782 node_paths=PackedStringArray("pick_character_state")]
+script = ExtResource("5_8s5us")
+pick_character_state = NodePath("../UnitSelected")
+
+[node name="UnitSelected" type="Node" parent="PlayerController/PlayerStateMachine" unique_id=2000931977 node_paths=PackedStringArray("free_select_state", "ui_controller", "internal_state_machine", "move_sub_state", "attack_sub_state", "habilities_sub_state")]
+script = ExtResource("6_nnmel")
+free_select_state = NodePath("../FreeSelect")
+selected_tile_color = Color(0.77888036, 0.87298, 0.1661934, 1)
+ui_controller = NodePath("")
+tile_collision_layer = 512
+internal_state_machine = NodePath("UnitStateMachine")
+move_sub_state = NodePath("UnitStateMachine/UnitMoveState")
+attack_sub_state = NodePath("UnitStateMachine/UnitAttackState")
+habilities_sub_state = NodePath("UnitStateMachine/UnitHabilitiesState")
+
+[node name="UnitStateMachine" type="Node" parent="PlayerController/PlayerStateMachine/UnitSelected" unique_id=437606951]
+script = ExtResource("2_3t4ij")
+
+[node name="UnitMoveState" type="Node" parent="PlayerController/PlayerStateMachine/UnitSelected/UnitStateMachine" unique_id=1495779109]
+script = ExtResource("7_vsk8w")
+base_tile_color = Color(0, 0.5529412, 0.7607843, 1)
+
+[node name="UnitAttackState" type="Node" parent="PlayerController/PlayerStateMachine/UnitSelected/UnitStateMachine" unique_id=1517903850]
+script = ExtResource("8_xy1hl")
+base_tile_color = Color(0.84313726, 0, 0.2, 1)
+
+[node name="UnitHabilitiesState" type="Node" parent="PlayerController/PlayerStateMachine/UnitSelected/UnitStateMachine" unique_id=157178462]
+script = ExtResource("9_8dic2")

@@ -52,6 +52,10 @@ font = ExtResource("4_6cwkg")
 font_size = 33
 font_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
 
+[sub_resource type="FontVariation" id="FontVariation_i5hpx"]
+base_font = ExtResource("5_7xihs")
+variation_embolden = 0.33
+
 [sub_resource type="LabelSettings" id="LabelSettings_tsda7"]
 font_size = 33
 
@@ -187,9 +191,11 @@ offset_bottom = -54.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/bold_font = SubResource("FontVariation_i5hpx")
 theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
 bbcode_enabled = true
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed velit nulla. Donec porttitor nunc placerat, porta nibh eget, ornare ligula. Praesent consectetur luctus facilisis. In tristique risus nulla, sit amet efficitur mi maximus eleifend. Morbi justo felis, porta tincidunt mi eget, luctus vestibulum nisi."
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. [b]Curabitur sed velit nulla.[/b] Donec porttitor nunc placerat, porta nibh eget, ornare ligula. Praesent consectetur luctus facilisis. In tristique risus nulla, sit amet efficitur mi maximus eleifend. Morbi justo felis, porta tincidunt mi eget, luctus vestibulum nisi."
 fit_content = true
 scroll_active = false
 autowrap_mode = 2
@@ -806,8 +812,8 @@ icon = ExtResource("34_73xph")
 type = 4
 
 [connection signal="character_changed" from="." to="NameContainer" method="on_character_changed"]
+[connection signal="character_changed" from="." to="GuiHabilitiesContainer" method="_on_character_changed"]
 [connection signal="character_changed" from="." to="Portrait/GuiHealthContainer" method="on_character_changed"]
 [connection signal="character_changed" from="." to="Portrait/GuiActionsContainer" method="on_character_changed"]
 [connection signal="character_changed" from="." to="Portrait/GuiWeaponContainer" method="on_character_changed"]
-[connection signal="character_changed" from="." to="GuiHabilitiesContainer" method="_on_character_changed"]
 [connection signal="character_changed" from="." to="StatsContainer" method="_on_combat_ui_character_changed"]

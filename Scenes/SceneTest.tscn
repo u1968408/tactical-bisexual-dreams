@@ -6,15 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c86f5ayqtp8vm" path="res://Prefabs/Gameplay/board.tscn" id="4_ef7dr"]
 [ext_resource type="Script" uid="uid://hpd080a38nd5" path="res://Shaders/edge_pixel_compositor_effect.gd" id="4_su6wu"]
 [ext_resource type="PackedScene" uid="uid://on4fn7kuuxsh" path="res://Prefabs/Entities/Characters/Lyra.tscn" id="5_ef7dr"]
-[ext_resource type="Script" uid="uid://8dkrt7ju5ecf" path="res://Scripts/Gameplay/Player/PlayerController.gd" id="6_1i6e8"]
-[ext_resource type="Script" uid="uid://wtf1oixmwnkx" path="res://Scripts/Gameplay/GameManager/GameManager.gd" id="6_wt016"]
-[ext_resource type="Script" uid="uid://c6jingcvddxsk" path="res://Scripts/Common/State Machine/StateMachine.gd" id="7_rwmut"]
-[ext_resource type="Script" uid="uid://f6xptvqwsdhu" path="res://Scripts/Gameplay/Player/States/FreeSelectPlayerState.gd" id="8_hnlv6"]
-[ext_resource type="Script" uid="uid://bi03m5l68reow" path="res://Scripts/Gameplay/GameManager/States/PlayerTurnState.gd" id="8_rwmut"]
-[ext_resource type="Script" uid="uid://b1np0wydmnee" path="res://Scripts/Gameplay/Player/States/UnitSelectedState.gd" id="9_0raw2"]
-[ext_resource type="Script" uid="uid://creph5k0ip82m" path="res://Scripts/Gameplay/Player/UnitSelectedStates/MoveSubState.gd" id="10_3mb6f"]
-[ext_resource type="Script" uid="uid://0f0qkhhw1e00" path="res://Scripts/Gameplay/Player/UnitSelectedStates/AttackSubState.gd" id="11_vpa4f"]
-[ext_resource type="Script" uid="uid://b5vq55l6wy0eo" path="res://Scripts/Gameplay/Player/UnitSelectedStates/HabilitiesSubState.gd" id="14_27m4o"]
+[ext_resource type="PackedScene" uid="uid://bqdlcu4jup2ar" path="res://Prefabs/Gameplay/GameManager.tscn" id="8_1i6e8"]
+[ext_resource type="PackedScene" uid="uid://d3y2ghm2ut3k2" path="res://Assets/3D/TBD_Caja2.glb" id="10_oo7tc"]
 [ext_resource type="PackedScene" uid="uid://bpgoxly8bjaxs" path="res://Prefabs/GUI/CombatInterface/PlayerInterface.tscn" id="17_27m4o"]
 [ext_resource type="PackedScene" uid="uid://ctymfk4u86vgo" path="res://Prefabs/Entities/Characters/Taro.tscn" id="18_i2bkh"]
 
@@ -165,55 +158,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
 [node name="Lyra" parent="Characters" unique_id=309159948 groups=["Entity"] instance=ExtResource("5_ef7dr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
-[node name="PlayerController" type="Node" parent="." unique_id=1527753692 node_paths=PackedStringArray("state_machine", "initial_state")]
-script = ExtResource("6_1i6e8")
-state_machine = NodePath("StateMachine")
-initial_state = NodePath("StateMachine/FreeSelect")
-
-[node name="StateMachine" type="Node" parent="PlayerController" unique_id=573513746]
-script = ExtResource("7_rwmut")
-
-[node name="FreeSelect" type="Node" parent="PlayerController/StateMachine" unique_id=1298106777 node_paths=PackedStringArray("pick_character_state")]
-script = ExtResource("8_hnlv6")
-pick_character_state = NodePath("../UnitSelected")
-
-[node name="UnitSelected" type="Node" parent="PlayerController/StateMachine" unique_id=248801109 node_paths=PackedStringArray("free_select_state", "ui_controller", "internal_state_machine", "move_sub_state", "attack_sub_state", "habilities_sub_state")]
-script = ExtResource("9_0raw2")
-free_select_state = NodePath("../FreeSelect")
-selected_tile_color = Color(0.77888036, 0.87298, 0.1661934, 1)
-ui_controller = NodePath("../../../Interface")
-tile_collision_layer = 512
-internal_state_machine = NodePath("UnitStateMachine")
-move_sub_state = NodePath("UnitStateMachine/UnitMoveState")
-attack_sub_state = NodePath("UnitStateMachine/UnitAttackState")
-habilities_sub_state = NodePath("UnitStateMachine/UnitHabilitiesState")
-
-[node name="UnitStateMachine" type="Node" parent="PlayerController/StateMachine/UnitSelected" unique_id=542945428]
-script = ExtResource("7_rwmut")
-
-[node name="UnitMoveState" type="Node" parent="PlayerController/StateMachine/UnitSelected/UnitStateMachine" unique_id=682598189]
-script = ExtResource("10_3mb6f")
-base_tile_color = Color(0, 0.5529412, 0.7607843, 1)
-
-[node name="UnitAttackState" type="Node" parent="PlayerController/StateMachine/UnitSelected/UnitStateMachine" unique_id=657233247]
-script = ExtResource("11_vpa4f")
-base_tile_color = Color(0.84313726, 0, 0.2, 1)
-
-[node name="UnitHabilitiesState" type="Node" parent="PlayerController/StateMachine/UnitSelected/UnitStateMachine" unique_id=469696169]
-script = ExtResource("14_27m4o")
-
-[node name="GameManager" type="Node" parent="." unique_id=303842425 node_paths=PackedStringArray("state_machine", "initial_state", "player_controller")]
-script = ExtResource("6_wt016")
-state_machine = NodePath("StateMachine")
-initial_state = NodePath("StateMachine/PlayerTurnState")
-player_controller = NodePath("../PlayerController")
-
-[node name="StateMachine" type="Node" parent="GameManager" unique_id=839341672]
-script = ExtResource("7_rwmut")
-
-[node name="PlayerTurnState" type="Node" parent="GameManager/StateMachine" unique_id=2130421802]
-script = ExtResource("8_rwmut")
-
-[node name="EnemyTurn" type="Node" parent="GameManager/StateMachine" unique_id=231899746]
+[node name="GameManager" parent="." unique_id=536167165 instance=ExtResource("8_1i6e8")]
 
 [node name="Interface" parent="." unique_id=1580611022 instance=ExtResource("17_27m4o")]
+
+[node name="TBD_Caja2" parent="." unique_id=1566702704 instance=ExtResource("10_oo7tc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.82, 0, -55.41316)

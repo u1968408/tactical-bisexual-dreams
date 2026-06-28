@@ -3,7 +3,6 @@ extends PlayerBaseState
 
 @export var free_select_state: FreeSelectPlayerState
 @export var selected_tile_color: Color
-@export var ui_controller: UIController
 @export_flags_3d_physics var tile_collision_layer: int
 @export_category("Sub State machine")
 @export var internal_state_machine: StateMachine
@@ -12,9 +11,12 @@ extends PlayerBaseState
 @export var attack_sub_state: AttackSubState
 @export var habilities_sub_state: HabilitiesSubState
 
-
 var current_character: Character
 var can_interact: bool = true
+
+var ui_controller: UIController:
+	get:
+		return UIController.instance
 
 var combat_ui: CombatUI:
 	get:
