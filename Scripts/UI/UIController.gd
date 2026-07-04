@@ -4,7 +4,8 @@ extends CanvasLayer
 static var instance: UIController
 
 @export var combat_ui: CombatUI
+@export var player_ui: PlayerUI
 
 
-func _ready() -> void:
+func _init() -> void:
 	instance = self

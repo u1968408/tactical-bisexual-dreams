@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://wtf1oixmwnkx" path="res://Scripts/Gameplay/GameManager/GameManager.gd" id="1_1jws4"]
 [ext_resource type="Script" uid="uid://c6jingcvddxsk" path="res://Scripts/Common/State Machine/StateMachine.gd" id="2_3t4ij"]
 [ext_resource type="Script" uid="uid://bi03m5l68reow" path="res://Scripts/Gameplay/GameManager/States/PlayerTurnState.gd" id="3_8sx7y"]
+[ext_resource type="Script" uid="uid://c223jsrftdvy4" path="res://Scripts/Gameplay/GameManager/States/EnemyTurnState.gd" id="4_3t4ij"]
 [ext_resource type="Script" uid="uid://8dkrt7ju5ecf" path="res://Scripts/Gameplay/Player/PlayerController.gd" id="4_rfg4i"]
 [ext_resource type="Script" uid="uid://f6xptvqwsdhu" path="res://Scripts/Gameplay/Player/States/FreeSelectPlayerState.gd" id="5_8s5us"]
 [ext_resource type="Script" uid="uid://b1np0wydmnee" path="res://Scripts/Gameplay/Player/States/UnitSelectedState.gd" id="6_nnmel"]
@@ -19,10 +20,13 @@ player_controller = NodePath("PlayerController")
 [node name="GameStateMachine" type="Node" parent="." unique_id=152749267]
 script = ExtResource("2_3t4ij")
 
-[node name="PlayerTurnState" type="Node" parent="GameStateMachine" unique_id=1293065569]
+[node name="PlayerTurnState" type="Node" parent="GameStateMachine" unique_id=1293065569 node_paths=PackedStringArray("next_state")]
 script = ExtResource("3_8sx7y")
+next_state = NodePath("../EnemyTurn")
 
-[node name="EnemyTurn" type="Node" parent="GameStateMachine" unique_id=1907567271]
+[node name="EnemyTurn" type="Node" parent="GameStateMachine" unique_id=1907567271 node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_3t4ij")
+next_state = NodePath("../PlayerTurnState")
 
 [node name="PlayerController" type="Node" parent="." unique_id=1656965536 node_paths=PackedStringArray("state_machine", "initial_state")]
 script = ExtResource("4_rfg4i")
@@ -36,11 +40,10 @@ script = ExtResource("2_3t4ij")
 script = ExtResource("5_8s5us")
 pick_character_state = NodePath("../UnitSelected")
 
-[node name="UnitSelected" type="Node" parent="PlayerController/PlayerStateMachine" unique_id=2000931977 node_paths=PackedStringArray("free_select_state", "ui_controller", "internal_state_machine", "move_sub_state", "attack_sub_state", "habilities_sub_state")]
+[node name="UnitSelected" type="Node" parent="PlayerController/PlayerStateMachine" unique_id=2000931977 node_paths=PackedStringArray("free_select_state", "internal_state_machine", "move_sub_state", "attack_sub_state", "habilities_sub_state")]
 script = ExtResource("6_nnmel")
 free_select_state = NodePath("../FreeSelect")
 selected_tile_color = Color(0.77888036, 0.87298, 0.1661934, 1)
-ui_controller = NodePath("")
 tile_collision_layer = 512
 internal_state_machine = NodePath("UnitStateMachine")
 move_sub_state = NodePath("UnitStateMachine/UnitMoveState")

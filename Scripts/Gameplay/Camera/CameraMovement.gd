@@ -6,7 +6,7 @@ extends CameraComponent
 
 var _direction: Vector2 = Vector2.ZERO
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if _direction == Vector2.ZERO:
 		return
 	var aspect := camera.viewport_aspect

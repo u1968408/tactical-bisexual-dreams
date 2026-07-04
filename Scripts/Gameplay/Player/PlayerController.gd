@@ -7,3 +7,7 @@ extends Node
 
 func start_turn():
 	state_machine.set_current_state(initial_state)
+
+
+func end_turn():
+	state_machine.set_current_state(null)

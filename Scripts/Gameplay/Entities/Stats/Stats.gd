@@ -21,7 +21,7 @@ var health: int:
 	get:
 		return _current_health
 	set(value):
-		var new_health := clampi(health + value, 0, max_health)
+		var new_health := clampi(value, 0, max_health)
 		var change: int = new_health - _current_health
 		if change == 0:
 			return

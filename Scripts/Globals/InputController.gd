@@ -12,6 +12,8 @@ signal combat_ui_direction(direction: int)
 signal combat_ui_by_id(id: int)
 #endregion
 
+var can_move_camera: bool = true
+
 var _last_mouse_screen_pos: Vector2 = Vector2.ZERO
 @onready var _camera: CameraController = get_viewport().get_camera_3d()
 
@@ -45,9 +47,19 @@ func _process(delta: float) -> void:
 
 #endregion
 
+static func as_mouse_click(event: InputEvent) -> InputEventMouseButton:
+	if event is not InputEventMouseButton:
+		return null
+
+	var evt := event as InputEventMouseButton
+	if evt.button_index != MOUSE_BUTTON_LEFT or not evt.is_released():
+		return null
+	return evt
 
 #region Private Methods
 func _handler_input_camera(_delta: float) -> void:
+	if not can_move_camera:
+		return
 	if Input.is_action_pressed("camera_orbit_left"):
 		camera_orbit.emit(CameraOrbit.OrbitDirection.LEFT)
 	if Input.is_action_pressed("camera_orbit_right"):

@@ -12,6 +12,7 @@ func _get_state_machine() -> StateMachine:
 	push_error("El pare de %s no és una StateMachine (parent: %s)." % [name, parent.name])
 	return null
 
+
 func enter():
 	add_listeners()
 

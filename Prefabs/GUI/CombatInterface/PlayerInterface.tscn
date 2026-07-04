@@ -2,11 +2,25 @@
 
 [ext_resource type="Script" uid="uid://c6tbqligdghm4" path="res://Scripts/UI/UIController.gd" id="1_ph7c8"]
 [ext_resource type="PackedScene" uid="uid://cuwqumqgnjfxs" path="res://Prefabs/GUI/CombatInterface/CombatUI.tscn" id="2_o5t7o"]
+[ext_resource type="FontFile" uid="uid://bt7re43gkjgxt" path="res://Assets/UI/Fonts/MAROLA.TTF" id="3_m0wih"]
+[ext_resource type="Script" uid="uid://loajgvwgq1o" path="res://Scripts/UI/PlayerUI.gd" id="3_q70dk"]
+[ext_resource type="Script" uid="uid://cnr1mo1lij3nf" path="res://Scripts/UI/PlayerUI/GuiTurnMessage.gd" id="5_o1dq8"]
 
-[node name="PlayerInterface" type="CanvasLayer" unique_id=1424462046 node_paths=PackedStringArray("combat_ui")]
+[sub_resource type="LabelSettings" id="LabelSettings_q70dk"]
+font = ExtResource("3_m0wih")
+font_size = 32
+font_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o1dq8"]
+font = ExtResource("3_m0wih")
+font_size = 119
+font_color = Color(1, 1, 1, 0.5176471)
+
+[node name="PlayerInterface" type="CanvasLayer" unique_id=1424462046 node_paths=PackedStringArray("combat_ui", "player_ui")]
 layer = 1025
 script = ExtResource("1_ph7c8")
 combat_ui = NodePath("CombatUI")
+player_ui = NodePath("PlayerUI")
 
 [node name="CombatUI" parent="." unique_id=1738784004 instance=ExtResource("2_o5t7o")]
 anchors_preset = -1
@@ -14,3 +28,94 @@ anchor_top = 0.0050000004
 anchor_right = 1.0
 offset_top = -5.4000006
 offset_right = 0.0
+
+[node name="PlayerUI" type="Control" parent="." unique_id=1568405349 node_paths=PackedStringArray("pass_turn", "turn_message")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_q70dk")
+pass_turn = NodePath("PassTurnButton")
+turn_message = NodePath("TurnMessage")
+
+[node name="PassTurnButton" type="Label" parent="PlayerUI" unique_id=1539646176]
+visible = false
+z_index = 2
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = -130.99994
+offset_right = -28.787598
+offset_bottom = -73.34857
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.46838504
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 0
+text = "Pasar"
+label_settings = SubResource("LabelSettings_q70dk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Polygon2D2" type="Polygon2D" parent="PlayerUI/PassTurnButton" unique_id=193566425]
+z_index = 1
+z_as_relative = false
+position = Vector2(-664.72406, -902.2618)
+rotation = 0.46838504
+scale = Vector2(0.5759494, 0.5052356)
+color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+polygon = PackedVector2Array(1762.1099, 997.35236, 1835.033, 1082.4612, 2052.066, 947.8704, 2006.9229, 864.7409)
+
+[node name="Polygon2D" type="Polygon2D" parent="PlayerUI/PassTurnButton" unique_id=1404605448]
+z_index = 1
+z_as_relative = false
+position = Vector2(-678.5045, -907.99866)
+rotation = 0.46838504
+scale = Vector2(0.5759494, 0.5052356)
+polygon = PackedVector2Array(1762.1099, 997.35236, 1835.033, 1082.4612, 2052.066, 947.8704, 2006.9229, 864.7409)
+
+[node name="TurnMessage" type="Control" parent="PlayerUI" unique_id=884492171 node_paths=PackedStringArray("label")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 705.0
+offset_top = -101.0
+offset_right = 318.0
+offset_bottom = -299.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1.37, -1.73)
+mouse_filter = 2
+script = ExtResource("5_o1dq8")
+label = NodePath("Label")
+
+[node name="Polygon2D" type="Polygon2D" parent="PlayerUI/TurnMessage" unique_id=1390494370]
+position = Vector2(-492, 80)
+color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+polygon = PackedVector2Array(855, -80, 492, -77, 2025, 772, 2010, 534)
+
+[node name="Label" type="Label" parent="PlayerUI/TurnMessage" unique_id=1555339231]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 366.0
+offset_top = 36.000008
+offset_right = -63.0
+offset_bottom = -646.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.49228022
+text = "PLAYER TURN"
+label_settings = SubResource("LabelSettings_o1dq8")
+horizontal_alignment = 1
+vertical_alignment = 1

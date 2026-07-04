@@ -38,6 +38,10 @@ var _move_animation: String:
 	get:
 		return "walk" + _look_suffix
 
+var _hurt_animation: String:
+	get:
+		return "hit" + _look_suffix
+
 var _weapon_type: Weapon.WTypes:
 	set(value):
 		match value:
@@ -82,6 +86,8 @@ func _on_state_changed(state: Entity.EntityState) -> void:
 			anim = _idle_animation
 		Entity.EntityState.ATTACKING:
 			anim = _attack_animation
+		Entity.EntityState.HURT:
+			anim = _hurt_animation
 
 	if not has_animation(anim):
 		print("Entity %s doesn't have animation %s" % [_entity.name, anim])

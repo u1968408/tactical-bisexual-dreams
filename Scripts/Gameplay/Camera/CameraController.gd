@@ -37,7 +37,6 @@ var mouse_look_position: Vector3:
 #endregion
 
 
-
 #region Overrides
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -60,4 +59,20 @@ func _exit_tree() -> void:
 			InputController.camera_orbit.disconnect(orbit.orbit_camera)
 		if InputController.camera_moved.is_connected(movement.on_camera_direction_changed):
 			InputController.camera_moved.disconnect(movement.on_camera_direction_changed)
+
+
 #endregion
+
+
+func pan_to(pos: Vector2):
+	InputController.can_move_camera = false
+	var pos3: Vector3 = Vector3(pos.x, 0.0, pos.y)
+	var tween: Tween = create_tween()
+	var offset: Vector3 = pos3 - look_point
+	var new_pos: Vector3 = Vector3(
+		position.x + offset.x,
+		position.y,
+		position.z + offset.z,
+	)
+	tween.tween_property(self, "position", new_pos, 0.3)
+	tween.tween_callback(func(): InputController.can_move_camera = true)

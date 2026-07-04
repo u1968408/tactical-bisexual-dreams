@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bgpyg0ktse8cs"]
+
+[ext_resource type="PackedScene" uid="uid://d3y2ghm2ut3k2" path="res://Assets/3D/TBD_Caja2.glb" id="1_kje1f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kje1f"]
+size = Vector3(5.55223, 15.920441, 2.5570679)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s6j4g"]
+size = Vector3(43.46252, 17.845184, 12.577789)
+
+[node name="Caja" type="Area3D" unique_id=766914901]
+collision_layer = 24
+collision_mask = 0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1491010144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52496576, 7.7323093, 8.412267)
+shape = SubResource("BoxShape3D_kje1f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=87288417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.52252, 0)
+shape = SubResource("BoxShape3D_s6j4g")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1430826468]
+transform = Transform3D(1, 0, 0, 0, -0.14345811, 0.9896564, 0, -0.9896564, -0.14345811, 0.6795311, 5.1680493, 9.717789)
+light_color = Color(0.8319268, 0.8858149, 0.7165579, 1)
+light_energy = 13.677
+light_indirect_energy = 0.693
+light_volumetric_fog_energy = 1.41
+spot_range = 12.895429
+spot_angle = 47.731533
+
+[node name="TBD_Caja2" parent="." unique_id=1566702704 instance=ExtResource("1_kje1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -34.074013)

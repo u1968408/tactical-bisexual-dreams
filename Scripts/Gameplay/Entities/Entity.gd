@@ -15,6 +15,7 @@ enum EntityState {
 	IDLE,
 	MOVING,
 	ATTACKING,
+	HURT,
 }
 
 const MAX_ACTIONS: int = 3

@@ -11,6 +11,9 @@ var active: bool:
 		return _active
 	set(value):
 		_active = value
+		for cont in hability_containers:
+			if cont.referenced_hability != null:
+				cont.active = _active
 		_animate()
 
 var _character: Character
@@ -25,7 +28,6 @@ func _ready() -> void:
 	for container in hability_containers:
 		container.clicked_hability.connect(_on_hability_selected)
 		container.should_show_description.connect(_on_show_description)
-
 
 func _on_hability_selected(hability: Hability) -> void:
 	hability._execute()

@@ -8,7 +8,16 @@ signal should_show_description(description: String)
 @export var label: GuiDancingLabel
 @export var selected_texture: TextureRect
 
-var active: bool = false
+var active: bool = false:
+	get:
+		return _active
+	set(value):
+		_active = value
+		if _active:
+			scale = Vector2.ONE
+		else:
+			scale = Vector2.ZERO
+
 var referenced_hability: Hability
 
 var description:
@@ -17,9 +26,10 @@ var description:
 
 var _tween: Tween
 var _is_hovering: bool = false
-
+var _active: bool = false
 
 func _ready() -> void:
+	mouse_filter = Control.MOUSE_FILTER_STOP
 	selected_texture.scale = Vector2.ZERO
 	_recalculate_color()
 	mouse_entered.connect(_on_mouse_entered)
@@ -45,7 +55,6 @@ func reset() -> void:
 
 
 func set_hability(hability: Hability) -> void:
-	active = true
 	label.set_new_text(hability.hability_name)
 	referenced_hability = hability
 
@@ -57,7 +66,8 @@ func _on_mouse_entered():
 	_is_hovering = true
 	_animate()
 	_recalculate_color()
-	should_show_description.emit(referenced_hability.description)
+	if referenced_hability:
+		should_show_description.emit(referenced_hability.description)
 
 
 func _on_mouse_exited():

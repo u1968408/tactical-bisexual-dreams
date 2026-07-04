@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://deyvvdcs7265"]
+
+[ext_resource type="Script" uid="uid://b3t8q0x1l4oey" path="res://Scripts/Gameplay/GameObjects/StreetLight.gd" id="1_bbf44"]
+[ext_resource type="PackedScene" uid="uid://dwpw781cf60ph" path="res://Prefabs/GameObjects/street_light_model.tscn" id="1_rh25m"]
+[ext_resource type="PackedScene" uid="uid://c3l6flpjiiv3h" path="res://Prefabs/GameObjects/street_light_model_broken.tscn" id="3_bbf44"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7odli"]
+size = Vector3(0.15, 2.5, 0.15)
+
+[node name="StreetLight" type="Area3D" unique_id=425182137 node_paths=PackedStringArray("enable_when_intact", "enable_when_destroyed")]
+collision_layer = 15
+collision_mask = 9
+script = ExtResource("1_bbf44")
+enable_when_intact = [NodePath("StreetLight"), NodePath("SpotLight3D")]
+enable_when_destroyed = [NodePath("StreetLightBroken")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=992132466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.358007, 0)
+shape = SubResource("BoxShape3D_7odli")
+
+[node name="StreetLight" parent="." unique_id=148627297 instance=ExtResource("1_rh25m")]
+
+[node name="StreetLightBroken" parent="." unique_id=971619617 instance=ExtResource("3_bbf44")]
+transform = Transform3D(-0.99723595, 0, -0.07429986, 0, 1, 0, 0.07429986, 0, -0.99723595, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1958801488]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=257188228]
+transform = Transform3D(1, 0, 0, 0, -0.024781117, 0.9996929, 0, -0.9996929, -0.024781117, 0, 3.9724197, 0)
+light_energy = 7.39
+spot_range = 10.799
+spot_attenuation = 0.43
+spot_angle = 49.218746

@@ -119,6 +119,7 @@ combat_select_down={
 3d_physics/layer_2="enemies"
 3d_physics/layer_3="characters"
 3d_physics/layer_4="terrain"
+3d_physics/layer_5="disapearable"
 3d_physics/layer_9="indicator"
 3d_physics/layer_10="Tile"
 
@@ -130,3 +131,46 @@ combat_select_down={
 
 textures/canvas_textures/default_texture_filter=0
 textures/vram_compression/import_etc2_astc=true
+
+[shader_globals]
+
+cloud_contrast={
+"type": "float",
+"value": 0.0
+}
+cloud_scale={
+"type": "float",
+"value": 0.0
+}
+cloud_speed={
+"type": "float",
+"value": 0.0
+}
+cloud_threshold={
+"type": "float",
+"value": 0.0
+}
+cloud_world_y={
+"type": "float",
+"value": 0.0
+}
+cloud_noise={
+"type": "sampler2D",
+"value": "res://Assets/Dylearn/Textures and Materials/Cloud_Noise.tres"
+}
+cloud_direction={
+"type": "vec2",
+"value": Vector2(0, 0)
+}
+light_direction={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+cloud_shadow_min={
+"type": "float",
+"value": 0.2
+}
+cloud_diverge_angle={
+"type": "float",
+"value": 10.0
+}

@@ -1,0 +1,448 @@
+[gd_scene format=3 uid="uid://cx3b5qmrr01lb"]
+
+[ext_resource type="Script" uid="uid://cs5s5cpeix3gb" path="res://Scripts/Gameplay/Entities/Enemies/Enemy.gd" id="1_gh383"]
+[ext_resource type="Texture2D" uid="uid://cgksiarclbpdx" path="res://Assets/Sprites/Enemies/Dummy/TestDummy.png" id="2_dliq8"]
+[ext_resource type="PackedScene" uid="uid://6rmftfncs2aq" path="res://Prefabs/Entities/entity_collision.tscn" id="2_lu3iq"]
+[ext_resource type="Texture2D" uid="uid://dxwi78adso4po" path="res://Assets/UI/CombatUI/GUI_HealthContainer.png" id="2_pgiht"]
+[ext_resource type="Texture2D" uid="uid://dmflgdr7lskp4" path="res://Assets/UI/CombatUI/GUI_HealthBar.png" id="3_6yyxn"]
+[ext_resource type="Script" uid="uid://3eg3vuyo47a3" path="res://Scripts/Gameplay/Entities/Stats/Stats.gd" id="3_vuxjv"]
+[ext_resource type="Script" uid="uid://l7rn4omn7v5b" path="res://Scripts/Gameplay/Entities/Components/EntityHealthContainer.gd" id="4_6yyxn"]
+[ext_resource type="Texture2D" uid="uid://b60i4hl7v388g" path="res://Assets/Sprites/Enemies/Dummy/TestDummyBack.png" id="5_y8rgf"]
+[ext_resource type="Script" uid="uid://q04sdv4u4m31" path="res://Scripts/Gameplay/Entities/Components/AttackController.gd" id="6_10vvd"]
+[ext_resource type="Script" uid="uid://b43tkeosjs6ca" path="res://Scripts/Gameplay/Entities/Components/EntityMovementController.gd" id="7_tmecc"]
+[ext_resource type="Script" uid="uid://wrc6rds4h67q" path="res://Scripts/Gameplay/Entities/Components/Weapons.gd" id="8_1n2hl"]
+[ext_resource type="Script" uid="uid://b221r2nol8ung" path="res://Scripts/Gameplay/Entities/Stats/BaseStats.gd" id="8_6yyxn"]
+[ext_resource type="Texture2D" uid="uid://jxn8r4qdeuev" path="res://Assets/Sprites/Character/LyraSprites/LyraAttackBackTonfa1.png" id="10_6yyxn"]
+[ext_resource type="Texture2D" uid="uid://i1hvishp0bre" path="res://Assets/Sprites/Character/LyraSprites/LyraAttackBackTonfa2.png" id="11_y7aom"]
+[ext_resource type="Texture2D" uid="uid://efjh23svprhm" path="res://Assets/Sprites/Character/LyraSprites/LyraAttackBackTonfa3.png" id="12_y8rgf"]
+[ext_resource type="Texture2D" uid="uid://bdc0ec63yt3qe" path="res://Assets/Sprites/Character/LyraSprites/LyraAttackTonfa1.png" id="13_owu34"]
+[ext_resource type="Texture2D" uid="uid://dekcccdi6dm5i" path="res://Assets/Sprites/Character/LyraSprites/LyraAttackTonfa2.png" id="14_unx2g"]
+[ext_resource type="Texture2D" uid="uid://df6y8e7ugscte" path="res://Assets/Sprites/Character/LyraSprites/LyraAttackTonfa3.png" id="15_sgyjm"]
+[ext_resource type="Texture2D" uid="uid://laktjsc0rn8s" path="res://Assets/Sprites/Character/LyraSprites/TonfaLyra1.png" id="16_bhpgo"]
+[ext_resource type="Texture2D" uid="uid://ct73vbf5fvt1" path="res://Assets/Sprites/Character/LyraSprites/TonfaLyra2.png" id="17_rapih"]
+[ext_resource type="Texture2D" uid="uid://c3mhf1lek6s6h" path="res://Assets/Sprites/Character/LyraSprites/TonfaLyra3.png" id="18_htoym"]
+[ext_resource type="Texture2D" uid="uid://cyyqo1ed8deyn" path="res://Assets/Sprites/Character/LyraSprites/TonfaLyraBack1.png" id="19_qn7ae"]
+[ext_resource type="Texture2D" uid="uid://c7snriim45xp2" path="res://Assets/Sprites/Character/LyraSprites/TonfaLyraBack2.png" id="20_nice5"]
+[ext_resource type="Texture2D" uid="uid://cqu3e1eli76mb" path="res://Assets/Sprites/Character/LyraSprites/TonfaLyraBack3.png" id="21_5lac6"]
+[ext_resource type="Texture2D" uid="uid://bg0bqlpnggmog" path="res://Assets/Sprites/Enemies/Dummy/TestDummyHIT.png" id="21_k2ffi"]
+[ext_resource type="Texture2D" uid="uid://ca25506gowfm5" path="res://Assets/Sprites/Character/LyraSprites/LyraBackWalk1.png" id="23_82b0w"]
+[ext_resource type="Texture2D" uid="uid://bkw1k4nvlrc0e" path="res://Assets/Sprites/Character/LyraSprites/LyraBackWalk2.png" id="24_jeycu"]
+[ext_resource type="Texture2D" uid="uid://dyu4sucxld4f6" path="res://Assets/Sprites/Enemies/Dummy/TestDummyHITBack.png" id="24_owu34"]
+[ext_resource type="Texture2D" uid="uid://bx2swu5t5yhed" path="res://Assets/Sprites/Character/LyraSprites/LyraBackWalk3.png" id="25_pnopw"]
+[ext_resource type="Texture2D" uid="uid://dyovxnuk5wjgr" path="res://Assets/Sprites/Character/LyraSprites/LyraBackWalk4.png" id="26_68p3k"]
+[ext_resource type="Texture2D" uid="uid://dtbfymyebs4r2" path="res://Assets/Sprites/Character/LyraSprites/LyraWalk1.png" id="27_piko5"]
+[ext_resource type="Texture2D" uid="uid://yqwhsngmn88p" path="res://Assets/Sprites/Character/LyraSprites/LyraWalk2.png" id="28_3mmu0"]
+[ext_resource type="Texture2D" uid="uid://pqgnw7v1juk3" path="res://Assets/Sprites/Character/LyraSprites/LyraWalk3.png" id="29_8bt5u"]
+[ext_resource type="Texture2D" uid="uid://um7qjgl36n85" path="res://Assets/Sprites/Character/LyraSprites/LyraWalk4.png" id="30_n88br"]
+[ext_resource type="Script" uid="uid://qbe452och48a" path="res://Scripts/Gameplay/Entities/Components/EntityAnimationPlayer.gd" id="31_r8uto"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pgiht"]
+font_size = 23
+outline_size = 13
+outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+
+[sub_resource type="Resource" id="Resource_y7aom"]
+script = ExtResource("8_6yyxn")
+morale = 10
+vitality = 50
+resistance = 10
+metadata/_custom_type_script = "uid://b221r2nol8ung"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xcnmv"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="Animation" id="Animation_6djmj"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vjtho"]
+resource_name = "attack_b"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_6yyxn"), ExtResource("11_y7aom"), ExtResource("12_y8rgf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons/WeaponSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0009999999, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_obcy4"]
+resource_name = "attack_b_b"
+
+[sub_resource type="Animation" id="Animation_1tkyn"]
+resource_name = "attack_b_f"
+
+[sub_resource type="Animation" id="Animation_oh4u2"]
+resource_name = "attack_t_f_2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("13_owu34"), ExtResource("14_unx2g"), ExtResource("15_sgyjm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons/WeaponSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("16_bhpgo"), ExtResource("17_rapih"), ExtResource("18_htoym")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapons/WeaponSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_ar2kl"]
+resource_name = "attack_s_b"
+
+[sub_resource type="Animation" id="Animation_gx3vn"]
+resource_name = "attack_s_f"
+
+[sub_resource type="Animation" id="Animation_67kt5"]
+resource_name = "attack_t_b"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_6yyxn"), ExtResource("11_y7aom"), ExtResource("12_y8rgf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons/WeaponSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("19_qn7ae"), ExtResource("20_nice5"), ExtResource("21_5lac6"), null]
+}
+
+[sub_resource type="Animation" id="Animation_jtxc8"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("13_owu34"), ExtResource("14_unx2g"), ExtResource("15_sgyjm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons/WeaponSprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("16_bhpgo"), ExtResource("17_rapih"), ExtResource("18_htoym"), null]
+}
+
+[sub_resource type="Animation" id="Animation_k2ffi"]
+resource_name = "hurt_b"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_y8rgf"), ExtResource("24_owu34"), ExtResource("5_y8rgf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 0.63122886, 0.66151696, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dliq8"]
+resource_name = "hurt_f"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_dliq8"), ExtResource("21_k2ffi"), ExtResource("2_dliq8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 0.6313726, 0.6627451, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c0lsn"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_y8rgf")]
+}
+
+[sub_resource type="Animation" id="Animation_cauc2"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dliq8")]
+}
+
+[sub_resource type="Animation" id="Animation_y7k4w"]
+length = 0.6666667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("23_82b0w"), ExtResource("24_jeycu"), ExtResource("25_pnopw"), ExtResource("26_68p3k")]
+}
+
+[sub_resource type="Animation" id="Animation_133hv"]
+resource_name = "Walk"
+length = 0.6666667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("27_piko5"), ExtResource("28_3mmu0"), ExtResource("29_8bt5u"), ExtResource("30_n88br")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k2ffi"]
+_data = {
+&"RESET": SubResource("Animation_6djmj"),
+&"attack_b": SubResource("Animation_vjtho"),
+&"attack_b_b": SubResource("Animation_obcy4"),
+&"attack_b_f": SubResource("Animation_1tkyn"),
+&"attack_f": SubResource("Animation_oh4u2"),
+&"attack_s_b": SubResource("Animation_ar2kl"),
+&"attack_s_f": SubResource("Animation_gx3vn"),
+&"attack_t_b": SubResource("Animation_67kt5"),
+&"attack_t_f": SubResource("Animation_jtxc8"),
+&"hit_b": SubResource("Animation_k2ffi"),
+&"hit_f": SubResource("Animation_dliq8"),
+&"idle_b": SubResource("Animation_c0lsn"),
+&"idle_f": SubResource("Animation_cauc2"),
+&"walk_b": SubResource("Animation_y7k4w"),
+&"walk_f": SubResource("Animation_133hv")
+}
+
+[node name="Dummy" type="Area3D" unique_id=216388398 node_paths=PackedStringArray("movement", "weapons", "stats", "attack") groups=["Entity"]]
+collision_layer = 4
+script = ExtResource("1_gh383")
+movement = NodePath("Movement")
+weapons = NodePath("Weapons")
+stats = NodePath("Stats")
+attack = NodePath("Attack")
+metadata/_custom_type_script = "uid://cs5s5cpeix3gb"
+
+[node name="HealthPosition" type="Node3D" parent="." unique_id=1410560605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1013224, 0)
+
+[node name="EntityHealthContainer" type="Control" parent="." unique_id=1814949335 node_paths=PackedStringArray("health_label", "health_bar", "health_position", "entity")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -61.0
+offset_top = -37.0
+offset_right = 63.0
+offset_bottom = 30.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("4_6yyxn")
+health_label = NodePath("Label")
+health_bar = NodePath("TextureProgressBar")
+health_position = NodePath("../HealthPosition")
+entity = NodePath("..")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="EntityHealthContainer" unique_id=1919242635]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -247.0
+offset_top = -194.0
+offset_right = 387.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+pivot_offset_ratio = Vector2(0.395, 0.685)
+value = 100.0
+texture_under = ExtResource("2_pgiht")
+texture_progress = ExtResource("3_6yyxn")
+texture_progress_offset = Vector2(37.175, 185.43)
+
+[node name="Label" type="Label" parent="EntityHealthContainer" unique_id=503479292]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 4.0
+offset_right = -53.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "999"
+label_settings = SubResource("LabelSettings_pgiht")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharacterSprite" type="Sprite3D" parent="." unique_id=611855142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15758264, 0)
+centered = false
+offset = Vector2(-64, 0)
+pixel_size = 0.03
+billboard = 2
+texture_filter = 0
+texture = ExtResource("5_y8rgf")
+
+[node name="CharacterCollision" parent="." unique_id=285415630 instance=ExtResource("2_lu3iq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="Stats" type="Node" parent="." unique_id=740003460]
+script = ExtResource("3_vuxjv")
+base_stats = SubResource("Resource_y7aom")
+
+[node name="Attack" type="Node" parent="." unique_id=808434641]
+script = ExtResource("6_10vvd")
+
+[node name="Movement" type="Node" parent="." unique_id=436469242]
+script = ExtResource("7_tmecc")
+
+[node name="Weapons" type="Node3D" parent="." unique_id=234906197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+script = ExtResource("8_1n2hl")
+
+[node name="WeaponSprite" type="Sprite3D" parent="Weapons" unique_id=1413269199]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.9, 0)
+centered = false
+offset = Vector2(-64, 0)
+pixel_size = 0.03
+billboard = 2
+texture_filter = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=711148975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6645608, -1.6104562)
+visible = false
+mesh = SubResource("CapsuleMesh_xcnmv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1259101820 node_paths=PackedStringArray("character_sprite", "weapon_sprite")]
+libraries/ = SubResource("AnimationLibrary_k2ffi")
+script = ExtResource("31_r8uto")
+character_sprite = NodePath("../CharacterSprite")
+weapon_sprite = NodePath("../Weapons/WeaponSprite")

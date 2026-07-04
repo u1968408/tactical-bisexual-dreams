@@ -14,6 +14,9 @@ static var instance: Board
 @export_flags_3d_physics var terrain_collision_layer: int
 @export_flags_3d_physics var entities_collision_layer: int
 
+@export var _min := Vector2i(-10, -10)
+@export var _max := Vector2i(10, 10)
+
 ## La coordenada mínima de la regió del tauler.
 var min_tile: Vector2i:
 	get:
@@ -23,9 +26,6 @@ var min_tile: Vector2i:
 var max_tile: Vector2i:
 	get:
 		return _max
-
-var _min := Vector2i(-10, -10)
-var _max := Vector2i(10, 10)
 var _astar := AStarGrid2D.new()
 var _tile_shape_rid: RID = _create_tile_rid()
 var _tile_extents := Vector3(TILE_SIZE.x * 0.9, TILE_HEIGHT, TILE_SIZE.y * 0.9)
@@ -160,12 +160,6 @@ func _get_collisions_in_area(query_id: Vector2i, include_entities: bool = true) 
 		return colliders
 	for result in results:
 		var collider: Node3D = result.collider
-		print(
-			(
-				"Casting area on %s (%s) and colliding with %s"
-				% [query_id, query.transform.origin, collider.name]
-			)
-		)
 		colliders.append(collider)
 	return colliders
 
