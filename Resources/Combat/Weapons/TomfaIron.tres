@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://cldbr3u8bopgs"]
+
+[ext_resource type="Script" uid="uid://bbjnci56jxj1a" path="res://Scripts/Gameplay/Entities/Stats/Modifiers/Modifier.gd" id="1_161m8"]
+[ext_resource type="Script" uid="uid://qwgjm4qg73lk" path="res://Scripts/Weapon.gd" id="2_75em2"]
+
+[sub_resource type="Resource" id="Resource_fnm02"]
+script = ExtResource("1_161m8")
+_type = 1
+_value = 2
+metadata/_custom_type_script = "uid://bbjnci56jxj1a"
+
+[resource]
+script = ExtResource("2_75em2")
+name = "Tomfa de hierro"
+material = 1
+damage = 20
+type = 2
+modifiers = Array[ExtResource("1_161m8")]([SubResource("Resource_fnm02")])
+metadata/_custom_type_script = "uid://qwgjm4qg73lk"

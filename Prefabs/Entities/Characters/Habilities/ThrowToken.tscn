@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://f7i0lyko6pgi"]
+
+[ext_resource type="Script" uid="uid://b1k6xatkdofj2" path="res://Scripts/Gameplay/Entities/Characters/Habilities/HabilityThrowToken.gd" id="1_32amx"]
+[ext_resource type="Script" uid="uid://cisjbgu2fbmf2" path="res://Scripts/Gameplay/Entities/Characters/HabilitySettings/HabilityRangeSettings.gd" id="2_01uve"]
+[ext_resource type="Script" uid="uid://bfts3nswdbcxc" path="res://Scripts/Gameplay/GameObjects/Token.gd" id="3_crv2r"]
+
+[sub_resource type="Resource" id="Resource_au26p"]
+script = ExtResource("2_01uve")
+hability_range = 5
+apply_modifier = true
+range_modifier = 1
+distance_type = 1
+create_tiles_on_solid = false
+hability_name = "Lanzar Token"
+description = "Puedes lanzar un Token para teletransportarte mas tarde."
+metadata/_custom_type_script = "uid://cisjbgu2fbmf2"
+
+[sub_resource type="Curve3D" id="Curve3D_j8y1s"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 1.1649525, 0, 0, 0, 0, 0, 0, 0, -6.4378824, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32amx"]
+albedo_color = Color(0.8235294, 0.5294118, 0.2509804, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_d2kto"]
+material = SubResource("StandardMaterial3D_32amx")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oqn17"]
+size = Vector3(0.8, 0.532959, 0.8)
+
+[node name="ThrowToken" type="Node" unique_id=255771458 node_paths=PackedStringArray("token_model", "marker_object", "path", "path_follow")]
+script = ExtResource("1_32amx")
+token_model = NodePath("Token")
+marker_object = NodePath("Marker3D")
+path = NodePath("Path3D")
+path_follow = NodePath("Path3D/PathFollow3D")
+settings = SubResource("Resource_au26p")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=731876162]
+curve = SubResource("Curve3D_j8y1s")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1429168702]
+transform = Transform3D(-4.371139e-08, -0.17806102, 0.98401946, 0, 0.98401946, 0.17806102, -1, 7.783295e-09, -4.3012857e-08, -6.4378824, -9.313226e-10, 0)
+progress = 6.542433
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=151084820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.540407, -0.54721403)
+
+[node name="Token" type="Area3D" parent="." unique_id=1683363226 node_paths=PackedStringArray("mesh")]
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("3_crv2r")
+mesh = NodePath("MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Token" unique_id=2061549579]
+mesh = SubResource("SphereMesh_d2kto")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Token" unique_id=1292541675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010264516, 0)
+shape = SubResource("BoxShape3D_oqn17")

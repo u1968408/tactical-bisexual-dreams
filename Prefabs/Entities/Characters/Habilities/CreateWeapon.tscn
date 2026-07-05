@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://pp6ss0utrui1"]
+
+[ext_resource type="Script" uid="uid://bx8g6oiuxv1at" path="res://Scripts/Gameplay/Entities/Characters/Habilities/HabilityCreateWeapon.gd" id="1_yei1t"]
+[ext_resource type="Script" uid="uid://orlnaasr838q" path="res://Scripts/UI/HabilitieUI/GuiSelectableWeapons.gd" id="2_75gqb"]
+[ext_resource type="Script" uid="uid://cisjbgu2fbmf2" path="res://Scripts/Gameplay/Entities/Characters/HabilitySettings/HabilityRangeSettings.gd" id="2_dn10x"]
+[ext_resource type="Texture2D" uid="uid://dxcqft3fl1qcv" path="res://Assets/UI/CombatUI/GUI_WeaponMarker.png" id="3_dn10x"]
+[ext_resource type="Script" uid="uid://pwu4jjs88dtf" path="res://Scripts/UI/HabilitieUI/GuiSelectableWeaponType.gd" id="4_sa5an"]
+[ext_resource type="Texture2D" uid="uid://excdi0t7jwms" path="res://Assets/UI/CombatUI/GUI_Tomfa.png" id="5_3fsu7"]
+[ext_resource type="Texture2D" uid="uid://dj65wevs33c71" path="res://Assets/UI/CombatUI/GUI_Bate.png" id="6_8pca7"]
+[ext_resource type="Texture2D" uid="uid://c2mlimee68i56" path="res://Assets/UI/CombatUI/GUI_Baston.png" id="7_rqdr0"]
+
+[sub_resource type="Resource" id="Resource_sa5an"]
+script = ExtResource("2_dn10x")
+distance_type = 1
+collide_with = 32
+hability_name = "Crear arma"
+description = "Crea un arma a partir de un material de una [b]casilla cercana[/b]. Se puede seleccionar el tipo de arma y el material de la casilla afectará a las estadísticas y modificadores del arma."
+metadata/_custom_type_script = "uid://cisjbgu2fbmf2"
+
+[node name="CreateWeapon" type="Node" unique_id=2028653412 node_paths=PackedStringArray("weapons_ui")]
+script = ExtResource("1_yei1t")
+weapons_ui = NodePath("GuiSelectableWeapons")
+settings = SubResource("Resource_sa5an")
+
+[node name="GuiSelectableWeapons" type="Control" parent="." unique_id=207731463 node_paths=PackedStringArray("selectable_weapons")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = 485.0
+offset_right = 21.0
+offset_bottom = 485.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_75gqb")
+selectable_weapons = [NodePath("SelectableWeaponType"), NodePath("SelectableWeaponType2"), NodePath("SelectableWeaponType3")]
+
+[node name="Node2D" type="Node2D" parent="GuiSelectableWeapons" unique_id=1814080877]
+position = Vector2(-770, -1296)
+rotation = -0.39956626
+
+[node name="Node2D2" type="Node2D" parent="GuiSelectableWeapons" unique_id=336858055]
+position = Vector2(-3, -1392.9999)
+rotation = 0.21615252
+
+[node name="Node2D3" type="Node2D" parent="GuiSelectableWeapons" unique_id=39306692]
+position = Vector2(667, -1289)
+rotation = 0.7333121
+
+[node name="SelectableWeaponType" type="TextureRect" parent="GuiSelectableWeapons" unique_id=816033181 node_paths=PackedStringArray("start_position_node")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -182.0
+offset_right = -62.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.39956626
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 0
+texture = ExtResource("3_dn10x")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("4_sa5an")
+start_position_node = NodePath("../Node2D")
+type = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="GuiSelectableWeapons/SelectableWeaponType" unique_id=1865159175]
+position = Vector2(49.477417, 96.64194)
+rotation = -0.13256544
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("5_3fsu7")
+
+[node name="SelectableWeaponType2" type="TextureRect" parent="GuiSelectableWeapons" unique_id=906822788 node_paths=PackedStringArray("start_position_node")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -241.0
+offset_right = 67.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.21615253
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 0
+texture = ExtResource("3_dn10x")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("4_sa5an")
+start_position_node = NodePath("../Node2D2")
+type = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="GuiSelectableWeapons/SelectableWeaponType2" unique_id=1306416845]
+position = Vector2(53.162918, 101.50131)
+rotation = 0.07496771
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("6_8pca7")
+
+[node name="SelectableWeaponType3" type="TextureRect" parent="GuiSelectableWeapons" unique_id=1377020135 node_paths=PackedStringArray("start_position_node")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 74.0
+offset_top = -181.0
+offset_right = 194.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7333121
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 0
+texture = ExtResource("3_dn10x")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("4_sa5an")
+start_position_node = NodePath("../Node2D3")
+type = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="GuiSelectableWeapons/SelectableWeaponType3" unique_id=760585262]
+position = Vector2(50.856873, 98.81529)
+rotation = 0.22601587
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("7_rqdr0")

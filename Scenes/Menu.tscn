@@ -1,0 +1,1142 @@
+[gd_scene format=3 uid="uid://8tt2a05wd1w6"]
+
+[ext_resource type="Texture2D" uid="uid://uxmbynpfvan7" path="res://Assets/UI/ConceptArt/LYRAconcept.png" id="1_s2c3o"]
+[ext_resource type="Texture2D" uid="uid://c8umij2i5bqfb" path="res://Assets/UI/ConceptArt/ConceptArtSilueta_LYRA.png" id="2_ma218"]
+[ext_resource type="Texture2D" uid="uid://dhxydfrnelfoa" path="res://Assets/UI/ConceptArt/SOPHIEconcept.png" id="3_idohh"]
+[ext_resource type="Texture2D" uid="uid://uspjaklsmu5h" path="res://Assets/UI/ConceptArt/ConceptArtSilueta_SOPHIE.png" id="3_wfhf6"]
+[ext_resource type="Texture2D" uid="uid://bc48gxqrcljao" path="res://Assets/UI/ConceptArt/TAROconcept.png" id="4_wfhf6"]
+[ext_resource type="Texture2D" uid="uid://bfi7fum13qt4b" path="res://Assets/UI/ConceptArt/ConceptArtSilueta_TARO.png" id="5_3jcrr"]
+[ext_resource type="Script" uid="uid://cmxg46con15px" path="res://Scripts/UI/CombatUI/GuiDancingLabel.gd" id="8_3jcrr"]
+[ext_resource type="Script" uid="uid://dvdn3q7vc0k5x" path="res://Scripts/UI/Menu/MainMenu.gd" id="8_a8aa6"]
+[ext_resource type="PackedScene" uid="uid://dl42bldfntnk1" path="res://Prefabs/Gameplay/Camera.tscn" id="8_ab40c"]
+[ext_resource type="FontFile" uid="uid://bt7re43gkjgxt" path="res://Assets/UI/Fonts/MAROLA.TTF" id="8_aobxe"]
+[ext_resource type="Script" uid="uid://dd8ahhv8x14y0" path="res://Scripts/UI/Menu/MenuLoadGame.gd" id="8_sjh0l"]
+[ext_resource type="Texture2D" uid="uid://dm3gykunbiv4k" path="res://Assets/UI/Icons/family-tree.png" id="11_qki4b"]
+[ext_resource type="Texture2D" uid="uid://ypt342634sg1" path="res://Assets/UI/Icons/paint-brush.png" id="12_byewe"]
+[ext_resource type="Texture2D" uid="uid://c0osngpomskcn" path="res://Assets/UI/Icons/sideswipe.png" id="13_byewe"]
+
+[sub_resource type="Environment" id="Environment_3jcrr"]
+background_mode = 1
+background_color = Color(0.89618903, 0.88807464, 0.93760866, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8aa6"]
+font_size = 33
+font_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x0ao6"]
+font_size = 46
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t8p2w"]
+font = ExtResource("8_aobxe")
+font_size = 166
+
+[sub_resource type="LabelSettings" id="LabelSettings_dsmso"]
+font = ExtResource("8_aobxe")
+font_size = 94
+font_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_krje8"]
+font = ExtResource("8_aobxe")
+font_size = 94
+
+[sub_resource type="Animation" id="Animation_aobxe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Taro/Taro:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sophie/Sophie:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lyra/Lyra:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.39046884, 7.8008213)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Taro/TaroSilueta:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3264042, 0.050708726, 0.26711738, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sophie/SophieSilueta:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3264042, 0.050708726, 0.26711738, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Lyra/LyraSilueta:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3264042, 0.050708726, 0.26711738, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera3D:fov")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/MainMenu/LoadGame:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(762, -1392)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/MainMenu/Creditos/Polygon2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1370, 38)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/MainMenu/Creditos/Polygon2D2:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1254, 244)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CanvasLayer/MainMenu/BackButton:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-152, -146)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Taro:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.5396442, 0, 3.4106169)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Sophie:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5133362, 0, 1.0555792)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Lyra:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.0830173, 0, 4.0076876)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CanvasLayer/MainMenu/ControlsMain/Credits:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(104, 56)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CanvasLayer/MainMenu/ControlsMain/Exit:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1428, 907)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("CanvasLayer/MainMenu/ControlsMain/Play:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(832, 49)]
+}
+
+[sub_resource type="Animation" id="Animation_wfhf6"]
+resource_name = "credits"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Taro/Taro:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sophie/Sophie:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lyra/Lyra:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.39046884, 7.8008213), Vector3(-0.7222967, 1.2096641, 8.139408)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.32601, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Taro/TaroSilueta:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.3254902, 0.050980393, 0.26666668, 0), Color(0.25882354, 0.4392157, 0.5372549, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sophie/SophieSilueta:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.3254902, 0.050980393, 0.26666668, 0), Color(0.25882354, 0.4392157, 0.5372549, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Lyra/LyraSilueta:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.3254902, 0.050980393, 0.26666668, 0), Color(0.25882354, 0.4392157, 0.5372549, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera3D:fov")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75.0, 19.2]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/MainMenu/Creditos/Polygon2D:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1370, 38), Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CanvasLayer/MainMenu/Creditos/Polygon2D2:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1254, 244), Vector2(39, 239)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/MainMenu/BackButton:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-161, -147), Vector2(38, 31)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CanvasLayer/MainMenu/ControlsMain/Play:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.21434686),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(832, 49), Vector2(779, -412)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("CanvasLayer/MainMenu/ControlsMain/Credits:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.21434686),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(104, 56), Vector2(51, -405)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CanvasLayer/MainMenu/ControlsMain/Exit:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.21434686),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1428, 907), Vector2(1967, 1163)]
+}
+
+[sub_resource type="Animation" id="Animation_dsmso"]
+resource_name = "main_appear"
+length = 0.46666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Taro/Taro:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sophie/Sophie:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lyra/Lyra:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.46666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.0613606, 7.8008213), Vector3(0, 0.39046884, 7.8008213)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.519602, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Taro/TaroSilueta:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3254902, 0.050980393, 0.26666668, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sophie/SophieSilueta:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3254902, 0.050980393, 0.26666668, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Lyra/LyraSilueta:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.3254902, 0.050980393, 0.26666668, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/MainMenu/LoadGame:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(762, -1392)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Taro:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.5396442, -2.6400027, 3.4106169), Vector3(3.5396442, 0, 3.4106169)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sophie:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5133362, -2.6400027, 1.0555792), Vector3(-1.5133362, 0, 1.0555792)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Lyra:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-3.0830173, -2.6400027, 4.0076876), Vector3(-3.0830173, 0, 4.0076876)]
+}
+
+[sub_resource type="Animation" id="Animation_ab40c"]
+resource_name = "start_game"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Taro/Taro:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sophie/Sophie:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lyra/Lyra:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.39046884, 7.8008213), Vector3(2.1326027, 0.9769347, 6.201372)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.062099326, 0.36955005, 0.27105704)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Taro/TaroSilueta:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.3254902, 0.050980393, 0.26666668, 0), Color(0.3254902, 0.05490196, 0.26666668, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sophie/SophieSilueta:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.3254902, 0.050980393, 0.26666668, 0), Color(0.3254902, 0.05490196, 0.26666668, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Lyra/LyraSilueta:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.3254902, 0.050980393, 0.26666668, 0), Color(0.3254902, 0.05490196, 0.26666668, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/MainMenu/LoadGame:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(762, -1392), Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/MainMenu/BackButton:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-152, -146), Vector2(0, 9)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Camera3D:fov")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CanvasLayer/MainMenu/ControlsMain/Exit:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.06666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1428, 907), Vector2(1967, 1163)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CanvasLayer/MainMenu/ControlsMain/Credits:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(104, 56), Vector2(51, -405)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("CanvasLayer/MainMenu/ControlsMain/Play:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(832, 49), Vector2(153, -735)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjh0l"]
+_data = {
+&"RESET": SubResource("Animation_aobxe"),
+&"credits": SubResource("Animation_wfhf6"),
+&"main_appear": SubResource("Animation_dsmso"),
+&"start_game": SubResource("Animation_ab40c")
+}
+
+[node name="Menu" type="Node3D" unique_id=1310919688]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1947377793]
+environment = SubResource("Environment_3jcrr")
+
+[node name="Lyra" type="Node3D" parent="." unique_id=1203574124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0830173, 0, 4.0076876)
+
+[node name="LyraSilueta" type="Sprite3D" parent="Lyra" unique_id=1079341139]
+modulate = Color(0.3264042, 0.050708726, 0.26711738, 0)
+pixel_size = 0.001
+billboard = 2
+render_priority = 2
+texture = ExtResource("2_ma218")
+
+[node name="Lyra" type="Sprite3D" parent="Lyra" unique_id=277155492]
+pixel_size = 0.001
+billboard = 2
+render_priority = 1
+texture = ExtResource("1_s2c3o")
+
+[node name="Sophie" type="Node3D" parent="." unique_id=507933884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5133362, 0, 1.0555792)
+
+[node name="SophieSilueta" type="Sprite3D" parent="Sophie" unique_id=1795108226]
+modulate = Color(0.3264042, 0.050708726, 0.26711738, 0)
+pixel_size = 0.001
+billboard = 2
+render_priority = 2
+texture = ExtResource("3_wfhf6")
+
+[node name="Sophie" type="Sprite3D" parent="Sophie" unique_id=996857268]
+pixel_size = 0.001
+billboard = 2
+render_priority = 1
+texture = ExtResource("3_idohh")
+
+[node name="Taro" type="Node3D" parent="." unique_id=886111923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5396442, 0, 3.4106169)
+
+[node name="TaroSilueta" type="Sprite3D" parent="Taro" unique_id=681062368]
+modulate = Color(0.3264042, 0.050708726, 0.26711738, 0)
+pixel_size = 0.001
+billboard = 2
+render_priority = 2
+texture = ExtResource("5_3jcrr")
+
+[node name="Taro" type="Sprite3D" parent="Taro" unique_id=1677583899]
+pixel_size = 0.001
+billboard = 2
+render_priority = 1
+texture = ExtResource("4_wfhf6")
+
+[node name="Camera3D" parent="." unique_id=325706270 instance=ExtResource("8_ab40c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39046884, 7.8008213)
+projection = 0
+in_game = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=321616724]
+
+[node name="MainMenu" type="Control" parent="CanvasLayer" unique_id=1174900029 node_paths=PackedStringArray("player", "back_button", "credits", "exit", "play")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_a8aa6")
+player = NodePath("../../AnimationPlayer")
+back_button = NodePath("BackButton")
+credits = NodePath("ControlsMain/Credits")
+exit = NodePath("ControlsMain/Exit")
+play = NodePath("ControlsMain/Play")
+
+[node name="LoadGame" type="Control" parent="CanvasLayer/MainMenu" unique_id=1526435050 node_paths=PackedStringArray("buttons")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 762.0
+offset_top = -1392.0
+offset_right = 762.00244
+offset_bottom = -1392.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_sjh0l")
+buttons = [NodePath("Polygon2D/Label"), NodePath("Polygon2D/Label2"), NodePath("Polygon2D/Label3")]
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/MainMenu/LoadGame" unique_id=424576747]
+color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+polygon = PackedVector2Array(1274, -105, 711, 1270, 907, 1243, 2112, -76)
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/MainMenu/LoadGame/Polygon2D" unique_id=675104948]
+offset_left = 1175.0
+offset_top = 96.0
+offset_right = 1804.0
+offset_bottom = 324.0
+theme_override_fonts/normal_font = ExtResource("8_aobxe")
+theme_override_font_sizes/normal_font_size = 68
+bbcode_enabled = true
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_3jcrr")
+metadata/_custom_type_script = "uid://cmxg46con15px"
+
+[node name="Label2" type="RichTextLabel" parent="CanvasLayer/MainMenu/LoadGame/Polygon2D" unique_id=128446761]
+offset_left = 1057.0
+offset_top = 282.0
+offset_right = 1686.0
+offset_bottom = 510.0
+theme_override_fonts/normal_font = ExtResource("8_aobxe")
+theme_override_font_sizes/normal_font_size = 68
+bbcode_enabled = true
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_3jcrr")
+metadata/_custom_type_script = "uid://cmxg46con15px"
+
+[node name="Label3" type="RichTextLabel" parent="CanvasLayer/MainMenu/LoadGame/Polygon2D" unique_id=143512391]
+offset_left = 928.0
+offset_top = 488.0
+offset_right = 1557.0
+offset_bottom = 716.0
+theme_override_fonts/normal_font = ExtResource("8_aobxe")
+theme_override_font_sizes/normal_font_size = 68
+bbcode_enabled = true
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_3jcrr")
+metadata/_custom_type_script = "uid://cmxg46con15px"
+
+[node name="Creditos" type="Control" parent="CanvasLayer/MainMenu" unique_id=826857327]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/MainMenu/Creditos" unique_id=313782333]
+position = Vector2(-1370, 38)
+color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+polygon = PackedVector2Array(653, 354, 671, 466, 1209, 468, 1247, 310)
+
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/MainMenu/Creditos/Polygon2D" unique_id=112736425]
+position = Vector2(-19, 11)
+polygon = PackedVector2Array(664, 357, 678, 472, 1209, 468, 1247, 310)
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/Creditos/Polygon2D" unique_id=1636298348]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 700.0
+offset_top = 382.0
+offset_right = 1047.0
+offset_bottom = 418.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Programadora y directora"
+label_settings = SubResource("LabelSettings_a8aa6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/MainMenu/Creditos/Polygon2D" unique_id=1138292493]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 703.0
+offset_top = 414.0
+offset_right = 1050.0
+offset_bottom = 464.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Diana Rossi"
+label_settings = SubResource("LabelSettings_x0ao6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FamilyTree" type="Sprite2D" parent="CanvasLayer/MainMenu/Creditos/Polygon2D" unique_id=2126621628]
+modulate = Color(0.25882354, 0.4392157, 0.5372549, 1)
+position = Vector2(1130, 406.99997)
+scale = Vector2(0.08593744, 0.08593744)
+texture = ExtResource("11_qki4b")
+
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/MainMenu/Creditos" unique_id=68524159]
+position = Vector2(1254, 244)
+color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+polygon = PackedVector2Array(728, 310, 730, 425, 1287, 448, 1247, 310)
+
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/MainMenu/Creditos/Polygon2D2" unique_id=927379241]
+position = Vector2(15, 11)
+polygon = PackedVector2Array(735, 318, 735, 423, 1293, 451, 1247, 310)
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/Creditos/Polygon2D2" unique_id=312532463]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 786.0
+offset_top = 338.0
+offset_right = 1133.0
+offset_bottom = 374.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Artista"
+label_settings = SubResource("LabelSettings_a8aa6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/MainMenu/Creditos/Polygon2D2" unique_id=1763713238]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 792.0
+offset_top = 375.0
+offset_right = 1139.0
+offset_bottom = 425.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Iván Alcubierre"
+label_settings = SubResource("LabelSettings_x0ao6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FamilyTree" type="Sprite2D" parent="CanvasLayer/MainMenu/Creditos/Polygon2D2" unique_id=1108238762]
+modulate = Color(0.25882354, 0.4392157, 0.5372549, 1)
+position = Vector2(1210, 393.99997)
+scale = Vector2(0.08593744, 0.08593744)
+texture = ExtResource("12_byewe")
+
+[node name="BackButton" type="Control" parent="CanvasLayer/MainMenu" unique_id=1204677704]
+layout_mode = 1
+anchors_preset = 0
+offset_left = -152.0
+offset_top = -146.0
+offset_right = -8.0
+offset_bottom = -26.0
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/MainMenu/BackButton" unique_id=1954346452]
+color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+polygon = PackedVector2Array(39, 29, 43, 97, 93, 93, 110, 14)
+
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/MainMenu/BackButton" unique_id=1308815462]
+position = Vector2(6, 6)
+polygon = PackedVector2Array(39, 29, 43, 93, 93, 93, 110, 14)
+
+[node name="Sideswipe" type="Sprite2D" parent="CanvasLayer/MainMenu/BackButton" unique_id=1017934537]
+modulate = Color(0.3254902, 0.05490196, 0.26666668, 1)
+position = Vector2(72, 64)
+rotation = 0.7981064
+scale = Vector2(0.058593754, 0.058593754)
+texture = ExtResource("13_byewe")
+
+[node name="ControlsMain" type="Control" parent="CanvasLayer/MainMenu" unique_id=864660076]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Play" type="Control" parent="CanvasLayer/MainMenu/ControlsMain" unique_id=1047822879]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 49.0
+offset_right = 538.9994
+offset_bottom = 306.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/MainMenu/ControlsMain/Play" unique_id=1875744712]
+position = Vector2(201, -112)
+color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+polygon = PackedVector2Array(-147, 113, -211, 297, 451, 325, 397, 114)
+
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/MainMenu/ControlsMain/Play" unique_id=604409973]
+position = Vector2(228, -90)
+color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+polygon = PackedVector2Array(-147, 113, -233, 322, 400, 324, 353, 119)
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/ControlsMain/Play" unique_id=1527736537]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 32.0
+offset_right = 363.0
+offset_bottom = 140.0
+text = "Jugar"
+label_settings = SubResource("LabelSettings_t8p2w")
+
+[node name="Credits" type="Control" parent="CanvasLayer/MainMenu/ControlsMain" unique_id=1059796501]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -856.0
+offset_top = 56.0
+offset_right = -279.0
+offset_bottom = 223.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/MainMenu/ControlsMain/Credits" unique_id=77048894]
+position = Vector2(206, -103)
+color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+polygon = PackedVector2Array(-147, 113, -234, 242, 329, 237, 339, 119)
+
+[node name="Polygon2D2" type="Polygon2D" parent="CanvasLayer/MainMenu/ControlsMain/Credits" unique_id=1490134256]
+position = Vector2(228, -90)
+polygon = PackedVector2Array(-147, 113, -200, 246, 335, 240, 327, 122)
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/ControlsMain/Credits" unique_id=1611784094]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 32.0
+offset_right = 363.0
+offset_bottom = 140.0
+text = "Creditos"
+label_settings = SubResource("LabelSettings_dsmso")
+
+[node name="Exit" type="Control" parent="CanvasLayer/MainMenu/ControlsMain" unique_id=135733862]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 468.0
+offset_top = 907.0
+offset_right = 926.9984
+offset_bottom = 1073.9998
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/MainMenu/ControlsMain/Exit" unique_id=1343648409]
+position = Vector2(201, -112)
+color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+polygon = PackedVector2Array(-147, 113, -153, 254, 243, 249, 247, 120)
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/ControlsMain/Exit" unique_id=217516381]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 32.0
+offset_right = 363.0
+offset_bottom = 140.0
+text = "Salir"
+label_settings = SubResource("LabelSettings_krje8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1985854039]
+libraries/ = SubResource("AnimationLibrary_sjh0l")
+autoplay = &"main_appear"

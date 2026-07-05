@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dl42bldfntnk1"]
+
+[ext_resource type="Script" uid="uid://7rt6q1ax1ok3" path="res://Scripts/Gameplay/Camera/CameraController.gd" id="1_edhuo"]
+[ext_resource type="Script" uid="uid://cnld0ts52m8nq" path="res://Scripts/Gameplay/Camera/CameraMovement.gd" id="2_37huy"]
+[ext_resource type="Script" uid="uid://bayflys76kf3u" path="res://Scripts/Gameplay/Camera/CameraOrbit.gd" id="3_rct80"]
+[ext_resource type="Script" uid="uid://0lmsscas8jwn" path="res://Scripts/Gameplay/Camera/DisapearShapeCast.gd" id="4_ys1md"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_su6wu"]
+size = Vector3(0.87, 1.47, 56.101593)
+
+[node name="Camera3D" type="Camera3D" unique_id=325706270 node_paths=PackedStringArray("orbit", "movement")]
+transform = Transform3D(0.7071068, -0.29883626, 0.6408564, 0, 0.9063078, 0.42261827, -0.7071068, -0.29883626, 0.6408564, 0, 0, 0)
+projection = 1
+size = 8.0
+near = 0.003
+script = ExtResource("1_edhuo")
+orbit = NodePath("OrbitCamera")
+movement = NodePath("CameraMovement")
+
+[node name="CameraMovement" type="Node" parent="." unique_id=1703190019]
+script = ExtResource("2_37huy")
+speed = 35.0
+
+[node name="OrbitCamera" type="Node" parent="." unique_id=1612966741]
+script = ExtResource("3_rct80")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2128269568]
+visible = false
+collision_layer = 24
+collision_mask = 24
+script = ExtResource("4_ys1md")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=325894474]
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, -5.9604645e-08, 1, 0, -5.2452087e-06, -42.09942)
+shape = SubResource("BoxShape3D_su6wu")
+debug_color = Color(0, 0.6, 0.69803923, 1)

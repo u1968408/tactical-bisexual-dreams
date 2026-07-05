@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://di1ogwmqsk44w"]
+
+[ext_resource type="Script" uid="uid://bbjnci56jxj1a" path="res://Scripts/Gameplay/Entities/Stats/Modifiers/Modifier.gd" id="1_ilhyh"]
+[ext_resource type="Script" uid="uid://qwgjm4qg73lk" path="res://Scripts/Weapon.gd" id="2_a0gb3"]
+
+[sub_resource type="Resource" id="Resource_ilhyh"]
+script = ExtResource("1_ilhyh")
+_type = 5
+_value = 2
+metadata/_custom_type_script = "uid://bbjnci56jxj1a"
+
+[resource]
+script = ExtResource("2_a0gb3")
+name = "Bastón de defensa"
+material = 1
+attack_range = 2
+type = 4
+modifiers = Array[ExtResource("1_ilhyh")]([SubResource("Resource_ilhyh")])
+metadata/_custom_type_script = "uid://qwgjm4qg73lk"

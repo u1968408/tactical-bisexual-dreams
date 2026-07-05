@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bnfj8jt8n53lx"]
+
+[ext_resource type="Script" uid="uid://dnoe3uqy0nvtr" path="res://Scripts/Gameplay/Entities/Characters/Habilities/HabilityTeleportToToken.gd" id="1_p0aib"]
+[ext_resource type="Script" uid="uid://b4356aqfe6u12" path="res://Scripts/Gameplay/Entities/Characters/HabilitySettings/HabilityEntitiesSettings.gd" id="2_j250j"]
+
+[sub_resource type="Resource" id="Resource_pdmra"]
+script = ExtResource("2_j250j")
+collide_with = 64
+create_tiles_on_solid = false
+hability_name = "Teletransportarse a Token"
+description = "Seleccionas un token previamente lanzado y el personaje se teletransporta al mismo."
+metadata/_custom_type_script = "uid://b4356aqfe6u12"
+
+[node name="TeleportToToken" type="Node" unique_id=68479187]
+script = ExtResource("1_p0aib")
+settings = SubResource("Resource_pdmra")

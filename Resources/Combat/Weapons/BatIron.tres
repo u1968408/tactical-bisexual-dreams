@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://ydime7ti8jbl"]
+
+[ext_resource type="Script" uid="uid://bbjnci56jxj1a" path="res://Scripts/Gameplay/Entities/Stats/Modifiers/Modifier.gd" id="1_g6rgb"]
+[ext_resource type="Script" uid="uid://qwgjm4qg73lk" path="res://Scripts/Weapon.gd" id="2_23pot"]
+
+[resource]
+script = ExtResource("2_23pot")
+name = "Bate de hierro"
+material = 1
+damage = 25
+metadata/_custom_type_script = "uid://qwgjm4qg73lk"
