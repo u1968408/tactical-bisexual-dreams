@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://bq17dmqps7w6c"]
 
-[ext_resource type="Script" uid="uid://cnld0ts52m8nq" path="res://Scripts/Gameplay/Camera/CameraMovement.gd" id="1_7odli"]
-[ext_resource type="Script" uid="uid://7rt6q1ax1ok3" path="res://Scripts/Gameplay/Camera/CameraController.gd" id="1_fh13u"]
-[ext_resource type="Script" uid="uid://bayflys76kf3u" path="res://Scripts/Gameplay/Camera/CameraOrbit.gd" id="2_ef7dr"]
-[ext_resource type="Script" uid="uid://0lmsscas8jwn" path="res://Scripts/Gameplay/Camera/DisapearShapeCast.gd" id="4_3mb6f"]
+[ext_resource type="PackedScene" uid="uid://dl42bldfntnk1" path="res://Prefabs/Gameplay/Camera.tscn" id="1_bswdm"]
 [ext_resource type="PackedScene" uid="uid://c86f5ayqtp8vm" path="res://Prefabs/Gameplay/board.tscn" id="4_ef7dr"]
 [ext_resource type="PackedScene" uid="uid://bgpyg0ktse8cs" path="res://Prefabs/GameObjects/caja_building.tscn" id="4_i2bkh"]
 [ext_resource type="Script" uid="uid://hpd080a38nd5" path="res://Shaders/edge_pixel_compositor_effect.gd" id="4_su6wu"]
@@ -12,12 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://bqdlcu4jup2ar" path="res://Prefabs/Gameplay/GameManager.tscn" id="8_1i6e8"]
 [ext_resource type="Script" uid="uid://c8qhdajk1fqtn" path="res://Assets/Dylearn/Scripts/LightDirection.gd" id="10_27m4o"]
 [ext_resource type="PackedScene" uid="uid://cx3b5qmrr01lb" path="res://Prefabs/Entities/Enemies/Dummy.tscn" id="11_nd2tj"]
+[ext_resource type="PackedScene" uid="uid://qmubrmem7flo" path="res://Prefabs/Entities/Characters/Sophie.tscn" id="12_61ssm"]
 [ext_resource type="PackedScene" uid="uid://bpgoxly8bjaxs" path="res://Prefabs/GUI/CombatInterface/PlayerInterface.tscn" id="17_27m4o"]
 [ext_resource type="PackedScene" uid="uid://deyvvdcs7265" path="res://Prefabs/GameObjects/street_light.tscn" id="18_3mb6f"]
 [ext_resource type="PackedScene" uid="uid://ctymfk4u86vgo" path="res://Prefabs/Entities/Characters/Taro.tscn" id="18_i2bkh"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_su6wu"]
-size = Vector3(0.87, 1.47, 56.101593)
 
 [sub_resource type="QuadMesh" id="QuadMesh_gtfm6"]
 size = Vector2(100, 100)
@@ -51,32 +46,16 @@ compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_5x74
 
 [node name="TestScene" type="Node3D" unique_id=1096462511]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1751747485 node_paths=PackedStringArray("orbit", "movement")]
-transform = Transform3D(0.7071068, -0.29883626, 0.6408564, 0, 0.9063078, 0.42261827, -0.7071068, -0.29883626, 0.6408564, 50, 35, 50)
-projection = 1
-size = 8.0
-near = 0.003
-script = ExtResource("1_fh13u")
-orbit = NodePath("OrbitCamera")
-movement = NodePath("CameraMovement")
+[node name="Bounds" type="Node3D" parent="." unique_id=1475268018]
 
-[node name="CameraMovement" type="Node" parent="Camera3D" unique_id=1425471049]
-script = ExtResource("1_7odli")
-speed = 35.0
+[node name="Min" type="Marker3D" parent="Bounds" unique_id=1044274327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -6)
 
-[node name="OrbitCamera" type="Node" parent="Camera3D" unique_id=1827563547]
-script = ExtResource("2_ef7dr")
+[node name="Max" type="Marker3D" parent="Bounds" unique_id=672735624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 16)
 
-[node name="Area3D" type="Area3D" parent="Camera3D" unique_id=1984658692]
-visible = false
-collision_layer = 24
-collision_mask = 24
-script = ExtResource("4_3mb6f")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Area3D" unique_id=1177179768]
-transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, -5.9604645e-08, 1, 0, -5.2452087e-06, -42.09942)
-shape = SubResource("BoxShape3D_su6wu")
-debug_color = Color(0, 0.6, 0.69803923, 1)
+[node name="Camera3D" parent="." unique_id=325706270 instance=ExtResource("1_bswdm")]
+transform = Transform3D(0.70710677, -0.29883623, 0.6408563, 0, 0.90630776, 0.42261827, -0.70710677, -0.29883623, 0.6408563, 50, 35, 50)
 
 [node name="Meshes" type="Node3D" parent="." unique_id=1868508758]
 
@@ -90,20 +69,32 @@ mesh = SubResource("QuadMesh_gtfm6")
 [node name="GrassSurface" parent="Meshes" unique_id=2030544707 instance=ExtResource("6_4gdn3")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.805, -0.1, 3.398)
 
+[node name="GrassSurface2" parent="Meshes" unique_id=86215563 instance=ExtResource("6_4gdn3")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19.195, -0.1, 3.398)
+
+[node name="GrassSurface3" parent="Meshes" unique_id=421614328 instance=ExtResource("6_4gdn3")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 30.805, -0.1, 3.398)
+
+[node name="GrassSurface4" parent="Meshes" unique_id=631639063 instance=ExtResource("6_4gdn3")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.805, -0.1, 23.398)
+
+[node name="GrassSurface5" parent="Meshes" unique_id=1517395344 instance=ExtResource("6_4gdn3")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19.195, -0.1, 23.398)
+
+[node name="GrassSurface6" parent="Meshes" unique_id=12852909 instance=ExtResource("6_4gdn3")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 30.805, -0.1, 23.398)
+
 [node name="StreetLight" parent="Meshes" unique_id=425182137 instance=ExtResource("18_3mb6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.32779264, -2)
 
 [node name="StreetLight2" parent="Meshes" unique_id=191568547 instance=ExtResource("18_3mb6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.32779264, -2)
-destroyed = true
 
 [node name="StreetLight3" parent="Meshes" unique_id=1271571144 instance=ExtResource("18_3mb6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.328, 6)
-destroyed = true
 
 [node name="StreetLight4" parent="Meshes" unique_id=1313282057 instance=ExtResource("18_3mb6f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.328, 13)
-destroyed = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.328, 6)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1808289651]
 transform = Transform3D(0.58183485, -0.7643366, 0.2779535, 0.40187597, 0.56730926, 0.71878797, -0.70708144, -0.30651307, 0.63724864, 0, 28.713509, -1.0001659)
@@ -122,9 +113,12 @@ _max = Vector2i(18, 13)
 [node name="Enemies" type="Node3D" parent="." unique_id=1669899664]
 
 [node name="BaseEnemy" parent="Enemies" unique_id=216388398 instance=ExtResource("11_nd2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0, 2)
 
 [node name="Characters" type="Node3D" parent="." unique_id=166918982]
+
+[node name="Sophie" parent="Characters" unique_id=1950339442 instance=ExtResource("12_61ssm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
 
 [node name="Taro" parent="Characters" unique_id=458918070 groups=["Entity", "character"] instance=ExtResource("18_i2bkh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)

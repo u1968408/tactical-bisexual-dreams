@@ -43,9 +43,7 @@ outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
 
 [sub_resource type="Resource" id="Resource_y7aom"]
 script = ExtResource("8_6yyxn")
-morale = 10
 vitality = 50
-resistance = 10
 metadata/_custom_type_script = "uid://b221r2nol8ung"
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xcnmv"]
@@ -343,7 +341,9 @@ _data = {
 }
 
 [node name="Dummy" type="Area3D" unique_id=216388398 node_paths=PackedStringArray("movement", "weapons", "stats", "attack") groups=["Entity"]]
-collision_layer = 4
+collision_layer = 2
+collision_mask = 0
+monitoring = false
 script = ExtResource("1_gh383")
 movement = NodePath("Movement")
 weapons = NodePath("Weapons")

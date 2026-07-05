@@ -4,6 +4,7 @@ extends Camera3D
 
 @export var orbit: CameraOrbit
 @export var movement: CameraMovement
+@export var in_game: bool = true
 
 #region Properties
 
@@ -40,6 +41,8 @@ var mouse_look_position: Vector3:
 #region Overrides
 func _ready() -> void:
 	if Engine.is_editor_hint():
+		return
+	if not in_game:
 		return
 	InputController.camera_orbit.connect(orbit.orbit_camera)
 	InputController.camera_moved.connect(movement.on_camera_direction_changed)

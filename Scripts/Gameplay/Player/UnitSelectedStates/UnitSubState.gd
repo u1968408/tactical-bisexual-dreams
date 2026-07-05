@@ -36,7 +36,7 @@ func exit() -> void:
 @abstract func on_mouse_click() -> void
 
 
-func on_mouse_move(_p, _wp) -> void:
+func on_mouse_move(_screen_position: Vector2, _world_position: Vector3) -> void:
 	pass
 
 

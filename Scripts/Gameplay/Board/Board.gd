@@ -26,14 +26,29 @@ var min_tile: Vector2i:
 var max_tile: Vector2i:
 	get:
 		return _max
+
+var region: Rect2:
+	get:
+		var width := max_tile.x - min_tile.x + 1
+		var height := max_tile.y - min_tile.y + 1
+		return Rect2(
+			min_tile.x,
+			min_tile.y,
+			width,
+			height,
+		)
+
 var _astar := AStarGrid2D.new()
 var _tile_shape_rid: RID = _create_tile_rid()
 var _tile_extents := Vector3(TILE_SIZE.x * 0.9, TILE_HEIGHT, TILE_SIZE.y * 0.9)
 var _debug_mode: bool = false
 
 
-func _ready() -> void:
+func _init() -> void:
 	instance = self
+
+
+func _ready() -> void:
 	_initialize_terrain()
 	_set_terrain_tiles()
 
@@ -51,20 +66,41 @@ func _exit_tree() -> void:
 
 
 ## Converteix una posició del món 3D a un identificador de cel·la basat en el terra de la divisió.
-## [br][br]Aquesta és una alternativa més directa a [method PositionOnBoard]
-## per a càlculs de graella estàndard.
-static func world_to_tile_id(world_pos: Vector3) -> Vector2i:
+static func world_to_tile_id_floor(world_pos: Vector3) -> Vector2i:
 	var local_x := world_pos.x
 	var local_z := world_pos.z
-	return Vector2i(floor(local_x / TILE_SIZE.x), floor(local_z / TILE_SIZE.y))
+	return Vector2i(floori(local_x / TILE_SIZE.x), floori(local_z / TILE_SIZE.y))
+
+
+static func world_to_tile_id_rounded(world_pos: Vector3) -> Vector2i:
+	var local_x := world_pos.x
+	var local_z := world_pos.z
+	return Vector2i(roundi(local_x / TILE_SIZE.x), roundi(local_z / TILE_SIZE.y))
 
 
 static func manhathan_distance(pos1: Vector2i, pos2: Vector2i) -> int:
 	return absi(pos1.x - pos2.x) + absi(pos1.y - pos2.y)
 
 
-func set_solid(tile_id: Vector2i, solid: bool):
+static func chebyshev_distance(pos1: Vector2i, pos2: Vector2i) -> int:
+	return maxi(abs(pos1.x - pos2.x), abs(pos1.y - pos2.y))
+
+
+func set_solid(tile_id: Vector2i, solid: bool) -> void:
 	_astar.set_point_solid(tile_id, solid)
+
+
+func is_solid(tile_id: Vector2i) -> bool:
+	return _astar.is_point_solid(tile_id)
+
+
+func is_outside(tile_id: Vector2i) -> bool:
+	return not _astar.is_in_boundsv(tile_id)
+
+
+func is_position_outside(pos: Vector3):
+	var pos2: Vector2 = Vector2(pos.x, pos.z)
+	return not region.has_point(pos2)
 
 
 func is_tile_walkable(tile_id: Vector2i) -> bool:
@@ -104,7 +140,7 @@ func get_world_position(id: Vector2i, use_corner: bool = false) -> Vector3:
 ## [br][b]Retorna:[/b] Un [Vector3] amb la posició alineada o [code]null[/code] si està
 ## fora del tauler.
 func position_matched_to_tile(other_position: Vector3, use_corner: bool = false) -> Variant:
-	var tile_id := world_to_tile_id(other_position)
+	var tile_id := world_to_tile_id_floor(other_position)
 	if not _astar.is_in_bounds(tile_id.x, tile_id.y):
 		return null
 	var recalculated_pos := get_world_position(tile_id, use_corner)
@@ -112,14 +148,7 @@ func position_matched_to_tile(other_position: Vector3, use_corner: bool = false)
 
 
 func _initialize_terrain() -> void:
-	var width := max_tile.x - min_tile.x + 1
-	var height := max_tile.y - min_tile.y + 1
-	_astar.region = Rect2i(
-		min_tile.x,
-		min_tile.y,
-		width,
-		height,
-	)
+	_astar.region = Rect2i(region)
 	_astar.cell_shape = AStarGrid2D.CELL_SHAPE_SQUARE
 	_astar.cell_size = TILE_SIZE
 	_astar.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
@@ -134,7 +163,9 @@ func _get_tile_ids() -> Vector2iIterator:
 
 func _set_terrain_tiles() -> void:
 	for current_id: Vector2i in _get_tile_ids():
-		if _get_collisions_in_area(current_id).is_empty():
+		var collision_mask: int = terrain_collision_layer + entities_collision_layer
+		var collisions = get_collisions_in_area(current_id, collision_mask)
+		if collisions.is_empty():
 			continue
 		_astar.set_point_solid(current_id, true)
 
@@ -144,11 +175,9 @@ func _debug_draw_tile(tile_id: Vector2i) -> void:
 	DebugDraw3D.draw_box(pos, Quaternion.IDENTITY, _tile_extents, Color(0, 0, 0, 0), false, 0)
 
 
-func _get_collisions_in_area(query_id: Vector2i, include_entities: bool = true) -> Array[Node3D]:
+func get_collisions_in_area(query_id: Vector2i, collision_mask: int) -> Array[Node3D]:
 	var query := PhysicsShapeQueryParameters3D.new()
-	query.collision_mask = terrain_collision_layer
-	if include_entities:
-		query.collision_mask += entities_collision_layer
+	query.collision_mask = collision_mask
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	query.shape_rid = _tile_shape_rid

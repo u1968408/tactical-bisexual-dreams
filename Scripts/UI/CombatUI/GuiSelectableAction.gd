@@ -65,7 +65,6 @@ func select():
 
 func _animate_selected():
 	var new_scale: Vector2 = Vector2.ONE if is_selected else Vector2.ZERO
-	print("Selected action %s" % type)
 	if _tween_selected:
 		_tween_selected.kill()
 	_tween_selected = create_tween()

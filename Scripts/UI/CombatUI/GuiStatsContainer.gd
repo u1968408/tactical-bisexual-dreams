@@ -90,5 +90,6 @@ func _on_combat_ui_character_changed(character: Character) -> void:
 
 func _set_current_stats():
 	for container in stats:
-		var current_value = _character.stats.get_stat_value(container.type)
-		container.set_value(current_value)
+		var current_value: int = _character.stats.get_stat_value(container.type)
+		var base_value: int = _character.stats.base_stats.get_stat_value(container.type)
+		container.set_values(current_value, base_value)

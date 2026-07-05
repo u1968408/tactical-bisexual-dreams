@@ -9,14 +9,16 @@ func enter() -> void:
 
 func add_listeners() -> void:
 	super()
-	character.movement.movement_ended.connect(_reset_if_possible)
+	if not character.movement.movement_ended.is_connected(_reset_if_possible):
+		character.movement.movement_ended.connect(_reset_if_possible)
 
 
 func remove_listeners() -> void:
 	super()
 	if character == null:
 		return
-	character.movement.movement_ended.disconnect(_reset_if_possible)
+	if character.movement.movement_ended.is_connected(_reset_if_possible):
+		character.movement.movement_ended.disconnect(_reset_if_possible)
 
 
 func prepare_range():

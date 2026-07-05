@@ -16,7 +16,6 @@ func enemy_in():
 
 
 func _animate():
-	print("aniomation")
 	rotation_degrees = 45
 	visible = true
 	if _tween:

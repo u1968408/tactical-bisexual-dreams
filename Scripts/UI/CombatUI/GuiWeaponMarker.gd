@@ -1,6 +1,7 @@
 class_name GuiWeaponMarker
 extends Control
 
+@export var weapon_description: GuiWeaponDescription
 @export var sprite_ranged: Sprite2D
 @export var sprite_tonfa: Sprite2D
 @export var sprite_staff: Sprite2D
@@ -30,10 +31,23 @@ func on_character_changed(character: Character) -> void:
 
 
 func _ready() -> void:
+	weapon_description.visible = false
 	_change_weapon(null)
+	mouse_entered.connect(_on_mouse_enter)
+	mouse_exited.connect(_on_mouse_exit)
+
+
+func _on_mouse_enter():
+	if weapon_description.active:
+		weapon_description.visible = true
+
+
+func _on_mouse_exit():
+	weapon_description.visible = false
 
 
 func _change_weapon(weapon: Weapon):
+	weapon_description.assign_weapon(weapon)
 	_disable_all()
 	var weapon_type = weapon.type if weapon != null else Weapon.WTypes.NONE
 	var sprite: Sprite2D = _get_sprite(weapon_type)

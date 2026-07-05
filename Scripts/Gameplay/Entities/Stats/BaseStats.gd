@@ -10,7 +10,7 @@ signal stats_changed
 
 ## [b]Moral[/b]: Afecta l'efectivitat dels atacs.
 ## Augmenta la [member dexterity], la [member attack] i la [member precision].
-@export var morale: int:
+@export var morale: int = 10:
 	get:
 		return _morale
 	set(value):
@@ -18,7 +18,7 @@ signal stats_changed
 		stats_changed.emit()
 
 ## [b]Vida[/b]: Punts de salut actuals del jugador.
-@export var vitality: int:
+@export var vitality: int = 10:
 	get:
 		return _vitality
 	set(value):
@@ -26,7 +26,7 @@ signal stats_changed
 		stats_changed.emit()
 
 ## [b]Resistència[/b]: Capacitat per disminuir el dany rebut.
-@export var resistance: int:
+@export var resistance: int = 10:
 	get:
 		return _resistance
 	set(value):
@@ -34,7 +34,7 @@ signal stats_changed
 		stats_changed.emit()
 
 ## [b]Força[/b]: Determina el dany realitzat en atacs cos a cos.
-@export var force: int:
+@export var force: int = 10:
 	get:
 		return _force
 	set(value):
@@ -42,7 +42,7 @@ signal stats_changed
 		stats_changed.emit()
 
 ## [b]Destresa[/b]: Influeix en la velocitat de moviment i la probabilitat d'esquivar atacs.
-@export var dexterity: int:
+@export var dexterity: int = 10:
 	get:
 		return _dexterity
 	set(value):
@@ -50,7 +50,7 @@ signal stats_changed
 		stats_changed.emit()
 
 ## [b]Precisió[/b]: Probabilitat d'encertar i fer dany amb atacs a distància.
-@export var precision: int:
+@export var precision: int = 10:
 	get:
 		return _precision
 	set(value):
@@ -63,3 +63,19 @@ var _resistance: int = 10
 var _force: int = 10
 var _dexterity: int = 10
 var _precision: int = 10
+
+
+func get_stat_value(type: Stats.StatType) -> int:
+	match type:
+		Stats.StatType.MORALE:
+			return morale
+		Stats.StatType.DEXTERITY:
+			return dexterity
+		Stats.StatType.FORCE:
+			return force
+		Stats.StatType.PRECISION:
+			return precision
+		Stats.StatType.RESISTANCE:
+			return resistance
+	# Stats.StatType.VITALITY
+	return vitality

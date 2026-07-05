@@ -12,7 +12,7 @@ extends Tile
 
 var target_tile_id: Vector2i:
 	get:
-		return Board.world_to_tile_id(_target_position)
+		return Board.world_to_tile_id_floor(_target_position)
 
 var _target_position: Vector3 = Vector3.ZERO
 
@@ -39,11 +39,11 @@ func _on_area_exit(area: Area3D) -> void:
 
 func _recalculate_hits(_area: Area3D) -> void:
 	var areas := get_overlapping_areas()
-	if Collisions.HasTerreainInList(areas):
+	if Collisions.has_terrain_in_list(areas):
 		change_color(selected_colliding_terrain)
-	elif Collisions.HasEnemiesInList(areas):
+	elif Collisions.has_enemies_in_list(areas):
 		change_color(selected_enemy)
-	elif Collisions.HasCharactersInList(areas):
+	elif Collisions.has_characters_in_list(areas):
 		change_color(selected_ally)
 	else:
 		change_color(selected_empty_tile)

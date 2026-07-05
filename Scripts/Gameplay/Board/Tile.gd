@@ -18,19 +18,19 @@ var current_entity: Entity:
 
 var tile_position: Vector2i:
 	get:
-		return Board.world_to_tile_id(global_position)
+		return Board.world_to_tile_id_floor(global_position)
 
 var touching_terrain: bool:
 	get:
-		return Collisions.HasTerreainInList(get_overlapping_areas())
+		return Collisions.has_terrain_in_list(get_overlapping_areas())
 
 var touching_enemies: bool:
 	get:
-		return Collisions.HasEnemiesInList(get_overlapping_areas())
+		return Collisions.has_enemies_in_list(get_overlapping_areas())
 
 var touching_character: bool:
 	get:
-		return Collisions.HasCharactersInList(get_overlapping_areas())
+		return Collisions.has_characters_in_list(get_overlapping_areas())
 
 var materials: Array[StandardMaterial3D]:
 	get:
@@ -40,6 +40,13 @@ var materials: Array[StandardMaterial3D]:
 			if mat is StandardMaterial3D:
 				result.append(mat)
 		return result
+
+var destroyable_object: DestroyableObject:
+	get:
+		for area in get_overlapping_areas():
+			if area is DestroyableObject:
+				return area
+		return null
 
 var _current_entity: Entity
 

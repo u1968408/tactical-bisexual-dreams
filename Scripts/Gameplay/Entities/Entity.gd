@@ -16,6 +16,8 @@ enum EntityState {
 	MOVING,
 	ATTACKING,
 	HURT,
+	THROW,
+	TELEPORT,
 }
 
 const MAX_ACTIONS: int = 3
@@ -74,7 +76,7 @@ var board: Board:
 
 var board_position: Vector2i:
 	get:
-		return Board.world_to_tile_id(global_position)
+		return Board.world_to_tile_id_floor(global_position)
 
 var _current_acctions: int = MAX_ACTIONS
 
@@ -94,6 +96,12 @@ func move(path: PackedVector2Array):
 	board.set_solid(end, true)
 
 	movement.set_new_path(path)
+
+
+func teleport(end_position: Vector2i):
+	board.set_solid(board_position, false)
+	board.set_solid(end_position, true)
+	global_position = board.get_world_position(end_position)
 
 
 func look_at_direction(target_position: Vector3):

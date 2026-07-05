@@ -72,6 +72,16 @@ func on_mouse_move(_screen_position: Vector2, _tile_position: Vector3) -> void:
 	if not can_interact:
 		return
 	_create_ray(_camera.mouse_world_position, _camera.mouse_look_position)
+	if _current_internal_state:
+		_current_internal_state.on_mouse_move(_screen_position, _tile_position)
+
+
+func return_to_move_state():
+	if current_character.has_actions():
+		combat_ui.current_action = CombatUtils.Actions.MOVE
+	else:
+		combat_ui.current_action = CombatUtils.Actions.NONE
+		return_to_select_state()
 
 
 func on_mouse_click() -> void:
@@ -79,7 +89,8 @@ func on_mouse_click() -> void:
 		return
 	if current_tile == null:
 		return
-	_current_internal_state.on_mouse_click()
+	if _current_internal_state:
+		_current_internal_state.on_mouse_click()
 
 
 func on_mouse_secondary_click() -> void:

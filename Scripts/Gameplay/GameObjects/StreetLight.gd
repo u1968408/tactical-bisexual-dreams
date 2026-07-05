@@ -1,7 +1,7 @@
 class_name DestroyableObject
 extends Area3D
 
-@export var material_type: Materials.MaterialTypes = Materials.MaterialTypes.IRON
+@export var material_type: WeaponMaterials.MaterialTypes = WeaponMaterials.MaterialTypes.IRON
 @export var enable_when_intact: Array[Node3D]
 @export var enable_when_destroyed: Array[Node3D]
 

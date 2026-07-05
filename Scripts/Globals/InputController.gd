@@ -13,13 +13,18 @@ signal combat_ui_by_id(id: int)
 #endregion
 
 var can_move_camera: bool = true
+var can_interact: bool = true
 
 var _last_mouse_screen_pos: Vector2 = Vector2.ZERO
-@onready var _camera: CameraController = get_viewport().get_camera_3d()
+var _camera: CameraController:
+	get:
+		return get_viewport().get_camera_3d()
 
 
 #region Overrides
 func _unhandled_input(event: InputEvent) -> void:
+	if not can_interact:
+		return
 	if event is InputEventMouseMotion:
 		_last_mouse_screen_pos = event.position
 	elif event is InputEventMouseButton and not event.pressed:
@@ -47,6 +52,7 @@ func _process(delta: float) -> void:
 
 #endregion
 
+
 static func as_mouse_click(event: InputEvent) -> InputEventMouseButton:
 	if event is not InputEventMouseButton:
 		return null
@@ -55,6 +61,7 @@ static func as_mouse_click(event: InputEvent) -> InputEventMouseButton:
 	if evt.button_index != MOUSE_BUTTON_LEFT or not evt.is_released():
 		return null
 	return evt
+
 
 #region Private Methods
 func _handler_input_camera(_delta: float) -> void:
@@ -81,6 +88,8 @@ func _get_world_pointer(mouse_position: Vector2) -> Vector3:
 
 
 func _update_mouse_hover() -> void:
+	if not can_interact or not _camera:
+		return
 	var world_pointer := _get_world_pointer(_last_mouse_screen_pos)
 	var board: Board = Board.instance
 	if board == null:

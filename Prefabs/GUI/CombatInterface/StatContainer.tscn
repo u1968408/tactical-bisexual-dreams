@@ -4,13 +4,19 @@
 [ext_resource type="Script" uid="uid://521phq4mghiq" path="res://Scripts/UI/CombatUI/GuiStatContainer.gd" id="2_s1uqi"]
 [ext_resource type="Texture2D" uid="uid://b6pyvjmdbv6y5" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Mor.png" id="3_d40no"]
 
-[node name="StatContainer" type="TextureRect" unique_id=237564544 node_paths=PackedStringArray("label_type", "label_value", "icon_container")]
+[sub_resource type="LabelSettings" id="LabelSettings_tnmhs"]
+font_size = 30
+outline_size = 17
+outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+
+[node name="StatContainer" type="TextureRect" unique_id=237564544 node_paths=PackedStringArray("label_type", "label_value", "icon_container", "modified_label")]
 texture = ExtResource("1_tnmhs")
 expand_mode = 5
 script = ExtResource("2_s1uqi")
 label_type = NodePath("LabelName")
 label_value = NodePath("LabelValue")
 icon_container = NodePath("StatIcon")
+modified_label = NodePath("LabelValue/LabelModifier")
 
 [node name="StatIcon" type="TextureRect" parent="." unique_id=1551223815]
 layout_mode = 1
@@ -35,6 +41,21 @@ offset_bottom = 45.0
 theme_override_colors/font_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
 theme_override_font_sizes/font_size = 32
 text = "999"
+horizontal_alignment = 2
+
+[node name="LabelModifier" type="Label" parent="LabelValue" unique_id=268112147]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = -14.0
+offset_right = 63.0
+offset_bottom = 19.0
+grow_horizontal = 0
+text = "+99"
+label_settings = SubResource("LabelSettings_tnmhs")
+vertical_alignment = 1
 
 [node name="LabelName" type="Label" parent="." unique_id=67484556]
 layout_mode = 0

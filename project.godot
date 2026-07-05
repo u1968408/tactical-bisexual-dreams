@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Tactical Bisexual Dreams"
-run/main_scene="uid://bq17dmqps7w6c"
+run/main_scene="uid://8tt2a05wd1w6"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 InputController="*uid://bcqeudpf0d4pl"
+WeaponLibrary="*uid://d3qse2hnniikp"
 
 [debug_draw_3d]
 
@@ -120,8 +121,10 @@ combat_select_down={
 3d_physics/layer_3="characters"
 3d_physics/layer_4="terrain"
 3d_physics/layer_5="disapearable"
+3d_physics/layer_6="creation_material"
+3d_physics/layer_7="token"
 3d_physics/layer_9="indicator"
-3d_physics/layer_10="Tile"
+3d_physics/layer_10="tile"
 
 [physics]
 

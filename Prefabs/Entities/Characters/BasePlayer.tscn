@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cpvhi0becxbsd" path="res://Assets/Sprites/Character/LyraSprites/LyraStandFront.png" id="10_ps7i4"]
 [ext_resource type="Script" uid="uid://c0f744ec8kdw5" path="res://Scripts/Sprites/GeneralSprite.gd" id="11_mefc7"]
 [ext_resource type="Script" uid="uid://wrc6rds4h67q" path="res://Scripts/Gameplay/Entities/Components/Weapons.gd" id="12_2p7co"]
-[ext_resource type="Resource" uid="uid://cl5rrcf53k7g4" path="res://Resources/Combat/Weapons/Tomfa.tres" id="13_dp38p"]
+[ext_resource type="Resource" uid="uid://cl5rrcf53k7g4" path="res://Resources/Combat/Weapons/TomfaLight.tres" id="13_dp38p"]
 [ext_resource type="Texture2D" uid="uid://jxn8r4qdeuev" path="res://Assets/Sprites/Character/LyraSprites/LyraAttackBackTonfa1.png" id="14_icgs8"]
 [ext_resource type="Texture2D" uid="uid://i1hvishp0bre" path="res://Assets/Sprites/Character/LyraSprites/LyraAttackBackTonfa2.png" id="15_uoh21"]
 [ext_resource type="Texture2D" uid="uid://efjh23svprhm" path="res://Assets/Sprites/Character/LyraSprites/LyraAttackBackTonfa3.png" id="16_1k7ji"]

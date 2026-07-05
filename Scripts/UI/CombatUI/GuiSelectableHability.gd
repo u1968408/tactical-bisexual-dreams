@@ -55,7 +55,7 @@ func reset() -> void:
 
 
 func set_hability(hability: Hability) -> void:
-	label.set_new_text(hability.hability_name)
+	label.set_new_text(hability.settings.hability_name)
 	referenced_hability = hability
 
 
@@ -67,7 +67,7 @@ func _on_mouse_entered():
 	_animate()
 	_recalculate_color()
 	if referenced_hability:
-		should_show_description.emit(referenced_hability.description)
+		should_show_description.emit(referenced_hability.settings.description)
 
 
 func _on_mouse_exited():

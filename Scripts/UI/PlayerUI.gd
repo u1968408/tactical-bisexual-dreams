@@ -6,7 +6,6 @@ signal passed_turn
 const POS_TURN_HIDDEN: Vector2 = Vector2(2000.0, 809.0)
 const POS_TURN_SHOW: Vector2 = Vector2(1726.0, 949.0)
 
-
 @export var pass_turn: Control
 @export var turn_message: GuiTurnMessage
 
@@ -25,18 +24,23 @@ var _player_ui_active: bool
 
 var _tween_pass_turn: Tween
 
+
 func player_in():
 	turn_message.player_in()
 	player_ui_active = true
 
+
 func player_out():
 	player_ui_active = false
+
 
 func enemy_in():
 	turn_message.enemy_in()
 
+
 func enemy_out():
 	pass
+
 
 func _ready() -> void:
 	pass_turn.gui_input.connect(_on_pass_turn_clicked)
@@ -44,6 +48,9 @@ func _ready() -> void:
 
 
 func _on_pass_turn_clicked(event: InputEvent) -> void:
+	if not InputController.can_interact:
+		return
+
 	if event is not InputEventMouseButton:
 		return
 
@@ -51,6 +58,7 @@ func _on_pass_turn_clicked(event: InputEvent) -> void:
 	if evt.button_index != MOUSE_BUTTON_LEFT or not evt.is_released():
 		return
 	passed_turn.emit()
+
 
 func _animate_pass_turn():
 	pass_turn.visible = true

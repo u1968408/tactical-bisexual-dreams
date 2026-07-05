@@ -4,4 +4,9 @@
 
 [resource]
 script = ExtResource("1_fbvye")
+vitality = 14
+resistance = 12
+force = 12
+dexterity = 8
+precision = 8
 metadata/_custom_type_script = "uid://b221r2nol8ung"

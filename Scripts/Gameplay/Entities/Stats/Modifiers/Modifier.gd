@@ -1,5 +1,8 @@
 class_name Modifier
-extends RefCounted
+extends Resource
+
+@export var _type: Stats.StatType
+@export var _value: int
 
 var type: Stats.StatType:
 	get:
@@ -9,13 +12,12 @@ var value: int:
 	get:
 		return _value
 
-var _type: Stats.StatType
-var _value: int
 
-
-func _init(
+func create(
 	mod_type: Stats.StatType,
 	mod_value: int,
-) -> void:
-	_type = mod_type
-	_value = mod_value
+) -> Modifier:
+	var mod: Modifier = Modifier.new()
+	mod._type = mod_type
+	mod._value = mod_value
+	return mod

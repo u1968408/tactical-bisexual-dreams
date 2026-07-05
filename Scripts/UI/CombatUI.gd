@@ -35,22 +35,30 @@ var active: bool:
 		else:
 			_animate_in()
 
-var current_action: CombatUtils.Actions = CombatUtils.Actions.NONE:
+var current_action: CombatUtils.Actions:
 	get:
-		return current_action
+		return _current_action
 	set(value):
-		if value == current_action:
+		if value == _current_action:
 			return
 		if not selectable_actions.enabled:
-			current_action = CombatUtils.Actions.NONE
+			_current_action = CombatUtils.Actions.NONE
 			return
-		current_action = value
+		if (
+			_current_action == CombatUtils.Actions.HABILITIES
+			and value != CombatUtils.Actions.HABILITIES
+		):
+			_animate_selectable_actions()
+			habilites_container.active = false
+		_current_action = value
+
 		selectable_actions.select_action(value)
 		action_changed.emit(value)
 
 var _character: Character
 var _active: bool = false
 var _tween: Tween
+var _current_action: CombatUtils.Actions = CombatUtils.Actions.NONE
 
 @onready var _character_name_pos: Vector2 = character_name.position
 

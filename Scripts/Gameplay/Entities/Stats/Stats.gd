@@ -144,6 +144,10 @@ func delete_modifier(modifier: Modifier) -> void:
 	stats_changed.emit()
 
 
+func has_modifier(modifier: Modifier) -> bool:
+	return _modifiers.has(modifier)
+
+
 func _get_modifiers_of_type(type: StatType) -> Array[Modifier]:
 	return _modifiers.filter(func(mod: Modifier): return mod.type == type)
 

@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://c2gof5oochw4w" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Vit.png" id="30_viw3i"]
 [ext_resource type="Texture2D" uid="uid://8hglq8yf22la" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Res.png" id="31_8lic6"]
 [ext_resource type="Texture2D" uid="uid://b47ebxf6qv144" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Fue.png" id="32_ch22y"]
+[ext_resource type="Script" uid="uid://cb70tqiqgjgyt" path="res://Scripts/UI/CombatUI/GuiWeaponDescription.gd" id="32_diegf"]
 [ext_resource type="Texture2D" uid="uid://b7dh2obbp0o6r" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Des.png" id="33_v63a5"]
 [ext_resource type="Texture2D" uid="uid://b211a0scns44" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Pre.png" id="34_73xph"]
 
@@ -84,6 +85,18 @@ RichTextLabel/fonts/normal_font = ExtResource("4_6cwkg")
 
 [sub_resource type="LabelSettings" id="LabelSettings_0sr1d"]
 font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_diegf"]
+font_size = 24
+font_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uhaa8"]
+font_size = 24
+font_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5oyva"]
+font_size = 37
+font_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
 
 [node name="CombatUI" type="Control" unique_id=1738784004 node_paths=PackedStringArray("portrait", "character_name", "selectable_actions", "actions_container", "stats_container", "weapon_container", "habilites_container")]
 texture_filter = 3
@@ -726,7 +739,7 @@ position = Vector2(129.32825, 68.29053)
 scale = Vector2(0.20866632, 0.20866632)
 texture = ExtResource("26_cgt81")
 
-[node name="GuiWeaponContainer" type="Control" parent="Portrait" unique_id=737182427 node_paths=PackedStringArray("sprite_tonfa", "sprite_staff", "sprite_bat")]
+[node name="GuiWeaponContainer" type="Control" parent="Portrait" unique_id=737182427 node_paths=PackedStringArray("weapon_description", "sprite_tonfa", "sprite_staff", "sprite_bat")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -737,6 +750,7 @@ offset_right = 260.7267
 offset_bottom = -113.93683
 grow_horizontal = 0
 script = ExtResource("18_elysa")
+weapon_description = NodePath("GuiWeaponDesc")
 sprite_tonfa = NodePath("GuiWeaponMarker/GuiTonfa")
 sprite_staff = NodePath("GuiWeaponMarker/GuiBaston")
 sprite_bat = NodePath("GuiWeaponMarker/GuiBaston")
@@ -760,6 +774,76 @@ texture = ExtResource("20_1lyp3")
 visible = false
 position = Vector2(-7.5978336, -11.406905)
 texture = ExtResource("21_48xay")
+
+[node name="GuiWeaponDesc" type="Control" parent="Portrait/GuiWeaponContainer" unique_id=1211468142 node_paths=PackedStringArray("weapon_name", "container")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("32_diegf")
+weapon_name = NodePath("Weapon Name")
+container = NodePath("VBoxContainer")
+font_settings_desc = SubResource("LabelSettings_diegf")
+
+[node name="Polygon2D" type="Polygon2D" parent="Portrait/GuiWeaponContainer/GuiWeaponDesc" unique_id=1264676987]
+position = Vector2(35.286743, -8.317871)
+color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+polygon = PackedVector2Array(109.28674, -271.31787, 85.28674, 20.682129, 612.28674, 8.682129, 597.28674, -261.31787)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Portrait/GuiWeaponContainer/GuiWeaponDesc" unique_id=421486218]
+position = Vector2(19.286743, 11.682129)
+polygon = PackedVector2Array(109.28674, -271.31787, 85.28674, 20.682129, 612.28674, 8.682129, 597.28674, -261.31787)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Portrait/GuiWeaponContainer/GuiWeaponDesc" unique_id=1747482187]
+layout_mode = 0
+offset_left = 156.28674
+offset_top = -181.31787
+offset_right = 599.28674
+offset_bottom = 4.682129
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Portrait/GuiWeaponContainer/GuiWeaponDesc/VBoxContainer" unique_id=149365464]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Weapon Name2" type="Label" parent="Portrait/GuiWeaponContainer/GuiWeaponDesc/VBoxContainer/HBoxContainer" unique_id=711880460]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Daño"
+label_settings = SubResource("LabelSettings_uhaa8")
+
+[node name="Weapon Name3" type="Label" parent="Portrait/GuiWeaponContainer/GuiWeaponDesc/VBoxContainer/HBoxContainer" unique_id=1082044411]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "Daño"
+label_settings = SubResource("LabelSettings_uhaa8")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Portrait/GuiWeaponContainer/GuiWeaponDesc/VBoxContainer" unique_id=687212829]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Weapon Name2" type="Label" parent="Portrait/GuiWeaponContainer/GuiWeaponDesc/VBoxContainer/HBoxContainer2" unique_id=1657866237]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Daño"
+label_settings = SubResource("LabelSettings_uhaa8")
+
+[node name="Weapon Name3" type="Label" parent="Portrait/GuiWeaponContainer/GuiWeaponDesc/VBoxContainer/HBoxContainer2" unique_id=940382404]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "Daño"
+label_settings = SubResource("LabelSettings_uhaa8")
+
+[node name="Weapon Name" type="Label" parent="Portrait/GuiWeaponContainer/GuiWeaponDesc" unique_id=1002164213]
+layout_mode = 0
+offset_left = 175.28674
+offset_top = -230.31787
+offset_right = 439.28674
+offset_bottom = -189.31787
+text = "Nombre del arma"
+label_settings = SubResource("LabelSettings_5oyva")
 
 [node name="StatsContainer" type="VBoxContainer" parent="." unique_id=2104254687]
 layout_mode = 0

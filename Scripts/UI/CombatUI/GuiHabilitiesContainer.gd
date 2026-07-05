@@ -30,7 +30,8 @@ func _ready() -> void:
 		container.should_show_description.connect(_on_show_description)
 
 func _on_hability_selected(hability: Hability) -> void:
-	hability._execute()
+	active = false
+	hability.execute()
 
 
 func _reset_containers():

@@ -7,6 +7,7 @@ extends TextureRect
 @export var label_type: Label
 @export var label_value: Label
 @export var icon_container: TextureRect
+@export var modified_label: Label
 
 var stat_name: String:
 	get:
@@ -19,5 +20,15 @@ func _ready() -> void:
 	label_value.text = ""
 
 
-func set_value(value: int) -> void:
-	label_value.text = str(value)
+func set_values(value: int, base_value: int) -> void:
+	label_value.text = str(base_value)
+	set_modified(value - base_value)
+
+
+func set_modified(value: int):
+	if value > 0:
+		modified_label.text = "+%s" % value
+	elif value < 0:
+		modified_label.text = str(value)
+	else:
+		modified_label.text = ""

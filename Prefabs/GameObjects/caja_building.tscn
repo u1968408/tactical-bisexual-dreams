@@ -13,7 +13,7 @@ collision_layer = 24
 collision_mask = 0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1491010144]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52496576, 7.7323093, 8.412267)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52496576, 7.7323093, 8.010578)
 shape = SubResource("BoxShape3D_kje1f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=87288417]

@@ -42,6 +42,14 @@ var _hurt_animation: String:
 	get:
 		return "hit" + _look_suffix
 
+var _throw_animation: String:
+	get:
+		return "throw" + _look_suffix
+
+var _teleport_animation: String:
+	get:
+		return "teleport" + _look_suffix
+
 var _weapon_type: Weapon.WTypes:
 	set(value):
 		match value:
@@ -61,7 +69,6 @@ func _ready() -> void:
 	_entity.state_changed.connect(_on_state_changed)
 	_entity.weapons.weapon_changed.connect(_on_weapon_changed)
 	animation_finished.connect(_on_animation_finished)
-
 	_on_state_changed(_entity.current_state)
 	_on_weapon_changed(_entity.weapons.equiped)
 
@@ -88,7 +95,10 @@ func _on_state_changed(state: Entity.EntityState) -> void:
 			anim = _attack_animation
 		Entity.EntityState.HURT:
 			anim = _hurt_animation
-
+		Entity.EntityState.THROW:
+			anim = _throw_animation
+		Entity.EntityState.TELEPORT:
+			anim = _teleport_animation
 	if not has_animation(anim):
 		print("Entity %s doesn't have animation %s" % [_entity.name, anim])
 		return

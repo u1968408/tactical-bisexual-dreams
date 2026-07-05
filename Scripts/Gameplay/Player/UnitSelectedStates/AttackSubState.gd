@@ -14,6 +14,5 @@ func on_mouse_click() -> void:
 	if tile and tile.current_entity != null:
 		character.attack.attack(tile.current_entity)
 		character.use_action()
-		master_state.return_to_select_state()
-		return
+		_reset_if_possible()
 	print("No attack target!")
