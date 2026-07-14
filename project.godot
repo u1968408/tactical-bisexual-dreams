@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Tactical Bisexual Dreams"
+config/name="TFG TBD"
+config/description="Nombre prototipo TBD (Tactical Bisexual Dreams)"
 run/main_scene="uid://8tt2a05wd1w6"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"

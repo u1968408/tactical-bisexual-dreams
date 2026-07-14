@@ -11,8 +11,9 @@ func prepare_range() -> void:
 
 func on_mouse_click() -> void:
 	var tile := hoovered_tile
-	if tile and tile.current_entity != null:
-		character.attack.attack(tile.current_entity)
-		character.use_action()
-		_reset_if_possible()
-	print("No attack target!")
+	if not tile or tile.current_entity == null:
+		print("No attack target!")
+		return
+	character.attack.attack(tile.current_entity)
+	character.use_action()
+	_reset_if_possible()

@@ -11,6 +11,8 @@ render_mode
 	skip_vertex_transform;
 
 uniform sampler2D sprite_texture : source_color, filter_nearest;
+uniform bool has_sprite_texture = true;
+
 uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_nearest;
 
 uniform int pixel_size : hint_range(1, 64, 1) = 4;
@@ -52,6 +54,10 @@ void vertex() {
 }
 
 void fragment() {
+	if (!has_sprite_texture) {
+		discard;
+	}
+
 	vec4 tex = texture(sprite_texture, UV);
 
 	if (tex.a <= alpha_cutoff) {

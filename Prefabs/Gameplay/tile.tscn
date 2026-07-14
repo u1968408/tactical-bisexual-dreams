@@ -13,7 +13,7 @@ size = Vector3(1, 0.1, 1)
 
 [node name="Tile" type="Area3D" unique_id=887881050 node_paths=PackedStringArray("mesh")]
 collision_layer = 512
-collision_mask = 12
+collision_mask = 14
 script = ExtResource("1_5fq8l")
 mesh = NodePath("MeshInstance3D")
 

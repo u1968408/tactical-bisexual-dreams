@@ -46,11 +46,25 @@
 [ext_resource type="Texture2D" uid="uid://dwh7tagw88053" path="res://Assets/Sprites/Character/TaroSprites/TaroTonfa3.png" id="34_si3o0"]
 [ext_resource type="Script" uid="uid://qbe452och48a" path="res://Scripts/Gameplay/Entities/Components/EntityAnimationPlayer.gd" id="35_uuo6t"]
 [ext_resource type="Texture2D" uid="uid://d27863cqx3iwd" path="res://Assets/Sprites/Character/TaroSprites/TaroWalk4.png" id="35_yp272"]
+[ext_resource type="Texture2D" uid="uid://3qx2ttiaq4kx" path="res://Assets/Sprites/Character/TaroSprites/TaroTPBack1.png" id="38_oif0f"]
+[ext_resource type="Texture2D" uid="uid://dxwbsglo87s3x" path="res://Assets/Sprites/Character/TaroSprites/TaroTP1.png" id="39_d2kto"]
+[ext_resource type="Texture2D" uid="uid://cevcpm2e5uo6" path="res://Assets/Sprites/Character/TaroSprites/TaroTPBack2.png" id="39_eedwa"]
+[ext_resource type="Texture2D" uid="uid://c470tn6fnpw0l" path="res://Assets/Sprites/Character/TaroSprites/TaroTPBack3.png" id="40_7cb7c"]
 [ext_resource type="Texture2D" uid="uid://ci3b75xxo3eol" path="res://Assets/Sprites/Character/TaroSprites/TaroTossBack1.png" id="40_j8y1s"]
+[ext_resource type="Texture2D" uid="uid://crdeb00ik0k2b" path="res://Assets/Sprites/Character/TaroSprites/TaroTP2.png" id="40_oqn17"]
 [ext_resource type="Texture2D" uid="uid://bpju0vneri215" path="res://Assets/Sprites/Character/TaroSprites/TaroTossBack2.png" id="41_4pcxv"]
+[ext_resource type="Texture2D" uid="uid://ld71a6tg380c" path="res://Assets/Sprites/Character/TaroSprites/TaroTP3.png" id="41_l1apo"]
+[ext_resource type="Texture2D" uid="uid://cvdl46h2bvxbe" path="res://Assets/Sprites/Character/TaroSprites/TaroTPOutBack1.png" id="41_vq12k"]
+[ext_resource type="Texture2D" uid="uid://dlylu2m4k5lvv" path="res://Assets/Sprites/Character/TaroSprites/TaroTPOut1.png" id="42_p44gd"]
 [ext_resource type="Texture2D" uid="uid://cyl233r1l8nnj" path="res://Assets/Sprites/Character/TaroSprites/TaroTossBack3.png" id="42_si3o0"]
+[ext_resource type="Texture2D" uid="uid://c408s8c1l81k2" path="res://Assets/Sprites/Character/TaroSprites/TaroTPOutBack2.png" id="42_wqywj"]
 [ext_resource type="Texture2D" uid="uid://cnv3y3av6rouo" path="res://Assets/Sprites/Character/TaroSprites/TaroToss1.png" id="43_d0abi"]
+[ext_resource type="Texture2D" uid="uid://v212m2865sw2" path="res://Assets/Sprites/Character/TaroSprites/TaroTPOut2.png" id="43_nel0h"]
+[ext_resource type="Texture2D" uid="uid://ohjdv5ooevyd" path="res://Assets/Sprites/Character/TaroSprites/TaroTPOutBack3.png" id="43_vksp5"]
 [ext_resource type="Texture2D" uid="uid://cewvq2xfmcvrn" path="res://Assets/Sprites/Character/TaroSprites/TaroToss2.png" id="44_d7vu4"]
+[ext_resource type="Texture2D" uid="uid://cqqntoipjuvq4" path="res://Assets/Sprites/Character/TaroSprites/TaroTPOutBack4.png" id="44_ielny"]
+[ext_resource type="Texture2D" uid="uid://5jgytop3f4os" path="res://Assets/Sprites/Character/TaroSprites/TaroTPOut3.png" id="44_kjt7l"]
+[ext_resource type="Texture2D" uid="uid://7rcxn75cccdj" path="res://Assets/Sprites/Character/TaroSprites/TaroTPOut4.png" id="45_oif0f"]
 [ext_resource type="Texture2D" uid="uid://bi6bxc0deu11g" path="res://Assets/Sprites/Character/TaroSprites/TaroToss3.png" id="45_yqtyc"]
 
 [sub_resource type="Resource" id="Resource_v5i7l"]
@@ -97,18 +111,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [null]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CharacterSprite:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_vjtho"]
@@ -279,6 +281,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_si3o0"]
 resource_name = "teleport_b"
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -286,31 +289,19 @@ tracks/0/path = NodePath("CharacterSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.26666668, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("26_1k7d6")]
+"values": [ExtResource("38_oif0f"), ExtResource("39_eedwa"), ExtResource("40_7cb7c"), null, ExtResource("41_vq12k"), ExtResource("42_wqywj"), ExtResource("43_vksp5"), ExtResource("44_ielny")]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterSprite:modulate")
+tracks/1/path = NodePath("Habilities")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.4971771, 0.76666665, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0.92102414, 1.4089515, 1), Color(0, 0.9191148, 1.4088249, 0), Color(0, 0.92102414, 1.4089515, 1), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Habilities")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.5, 1),
+"times": PackedFloat32Array(0.3, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": ["teleport"],
@@ -323,6 +314,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_4pcxv"]
 resource_name = "teleport_f"
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -330,10 +322,10 @@ tracks/0/path = NodePath("CharacterSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.28267252, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("27_1k7d6")]
+"values": [ExtResource("39_d2kto"), ExtResource("40_oqn17"), ExtResource("41_l1apo"), null, ExtResource("42_p44gd"), ExtResource("43_nel0h"), ExtResource("44_kjt7l"), ExtResource("45_oif0f")]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -342,7 +334,7 @@ tracks/1/path = NodePath("Habilities")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1),
+"times": PackedFloat32Array(0.3, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": ["teleport"],

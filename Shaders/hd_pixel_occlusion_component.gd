@@ -7,6 +7,7 @@ extends Node
 
 @export_group("Shader uniforms")
 @export var texture_uniform_name := "sprite_texture"
+@export var has_texture_uniform_name := "has_sprite_texture"
 @export var pixel_size_uniform_name := "pixel_size"
 @export var depth_bias_uniform_name := "depth_bias"
 
@@ -30,9 +31,11 @@ var _pixel_size: int = 4
 var _depth_bias: float = 0.001
 var _last_texture: Texture2D = null
 
+
 func _ready() -> void:
 	if auto_apply_on_ready:
 		apply_to_parent()
+
 
 func _process(_delta: float) -> void:
 	if _target == null or _runtime_material == null:
@@ -41,13 +44,13 @@ func _process(_delta: float) -> void:
 	var tex: Texture2D = null
 
 	if _target is Sprite3D:
-		tex = _target.texture
+		tex = _get_sprite_3d_texture(_target)
 	elif _target is AnimatedSprite3D:
 		tex = _get_animated_sprite_3d_texture(_target)
 
 	if tex != _last_texture:
-		_last_texture = tex
-		_runtime_material.set_shader_parameter(texture_uniform_name, tex)
+		_set_texture(tex)
+
 
 func apply_to_parent() -> void:
 	_target = get_parent()
@@ -110,8 +113,20 @@ func _update_texture() -> void:
 	elif _target is Sprite3D:
 		tex = _get_sprite_3d_texture(_target)
 
+	_set_texture(tex)
+
+
+func _set_texture(tex: Texture2D) -> void:
+	if _runtime_material == null:
+		return
+
 	_last_texture = tex
-	_runtime_material.set_shader_parameter(texture_uniform_name, tex)
+
+	var has_texture := tex != null
+	_runtime_material.set_shader_parameter(has_texture_uniform_name, has_texture)
+
+	if has_texture:
+		_runtime_material.set_shader_parameter(texture_uniform_name, tex)
 
 
 func _get_animated_sprite_3d_texture(sprite: AnimatedSprite3D) -> Texture2D:
