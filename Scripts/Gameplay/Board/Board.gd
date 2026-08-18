@@ -172,7 +172,7 @@ func _set_terrain_tiles() -> void:
 
 func _debug_draw_tile(tile_id: Vector2i) -> void:
 	var pos := get_world_position(tile_id, true)
-	DebugDraw3D.draw_box(pos, Quaternion.IDENTITY, _tile_extents, Color(0, 0, 0, 0), false, 0)
+	DebugDraw3D.draw_box(pos, Quaternion.IDENTITY, _tile_extents, Color(1, 0, 0, 0), false, 0)
 
 
 func get_collisions_in_area(query_id: Vector2i, collision_mask: int) -> Array[Node3D]:

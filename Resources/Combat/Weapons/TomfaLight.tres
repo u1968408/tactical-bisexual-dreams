@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://qwgjm4qg73lk" path="res://Scripts/Weapon.gd" id="1_5fpto"]
 [ext_resource type="Script" uid="uid://bbjnci56jxj1a" path="res://Scripts/Gameplay/Entities/Stats/Modifiers/Modifier.gd" id="1_wx3ne"]
+[ext_resource type="Texture2D" uid="uid://bgwaeamcwtg1x" path="res://Assets/UI/Icons/sword-brandish.svg" id="2_orl5g"]
 
 [sub_resource type="Resource" id="Resource_fnm02"]
 script = ExtResource("1_wx3ne")
+_icon = ExtResource("2_orl5g")
+_modifier_name = "Tomfa ligera"
 _type = 1
 _value = 2
 metadata/_custom_type_script = "uid://bbjnci56jxj1a"
