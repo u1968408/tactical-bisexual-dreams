@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dnbhmlsioaykd"]
+
+[ext_resource type="PackedScene" uid="uid://bf5bqbhk70y5b" path="res://Prefabs/Gameplay/world_env.tscn" id="1_ctsa3"]
+[ext_resource type="Script" uid="uid://c8qhdajk1fqtn" path="res://Assets/Dylearn/Scripts/LightDirection.gd" id="2_lpihx"]
+[ext_resource type="PackedScene" uid="uid://dl42bldfntnk1" path="res://Prefabs/Gameplay/Camera.tscn" id="2_sn4qe"]
+[ext_resource type="PackedScene" uid="uid://c86f5ayqtp8vm" path="res://Prefabs/Gameplay/board.tscn" id="3_crxx5"]
+[ext_resource type="Script" uid="uid://wtf1oixmwnkx" path="res://Scripts/Gameplay/GameManager/GameManager.gd" id="4_crxx5"]
+[ext_resource type="Script" uid="uid://b6ap584nvk84w" path="res://Scripts/Common/Input/InputManager.gd" id="5_crxx5"]
+[ext_resource type="Script" uid="uid://c6jingcvddxsk" path="res://Scripts/Common/State Machine/StateMachine.gd" id="5_q525t"]
+[ext_resource type="PackedScene" uid="uid://on4fn7kuuxsh" path="res://Prefabs/Entities/Characters/Lyra.tscn" id="5_sn4qe"]
+[ext_resource type="Script" uid="uid://0daqjey3oj7t" path="res://Scenes/Demo/RoamState.gd" id="6_xvw2b"]
+[ext_resource type="Script" uid="uid://8dkrt7ju5ecf" path="res://Scripts/Gameplay/Player/PlayerController.gd" id="7_8c7yg"]
+[ext_resource type="Script" uid="uid://dgd3vsve5p74q" path="res://Scripts/Gameplay/Player/States/FreeRoamState.gd" id="8_8c7yg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_crxx5"]
+size = Vector2(20, 20)
+
+[node name="Scene001RIntro" type="Node3D" unique_id=1670210167]
+
+[node name="WorldEnv" parent="." unique_id=1086838551 instance=ExtResource("1_ctsa3")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=669057764]
+transform = Transform3D(0.6303372, 0.6571561, 0.41330492, 2.9802322e-08, -0.53238887, 0.8465, 0.7763216, -0.5335803, -0.33558452, 3.8146973e-06, 7.941105, 3.8146973e-06)
+directional_shadow_mode = 0
+script = ExtResource("2_lpihx")
+
+[node name="Camera3D" parent="." unique_id=325706270 instance=ExtResource("2_sn4qe")]
+transform = Transform3D(0.7071068, -0.29883626, 0.6408564, 0, 0.9063078, 0.42261827, -0.7071068, -0.29883626, 0.6408564, 53.07, 35, 53.07)
+
+[node name="Board" parent="." unique_id=1831510831 instance=ExtResource("3_crxx5")]
+
+[node name="Lyra" parent="." unique_id=1950339442 instance=ExtResource("5_sn4qe")]
+
+[node name="Meshes" type="Node3D" parent="." unique_id=1632728770]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Meshes" unique_id=1722626542]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_crxx5")
+
+[node name="GameManager" type="Node" parent="." unique_id=2101542155 node_paths=PackedStringArray("state_machine", "initial_state", "player_controller")]
+script = ExtResource("4_crxx5")
+state_machine = NodePath("StateMachine")
+initial_state = NodePath("StateMachine/RoamState")
+player_controller = NodePath("PlayerController")
+
+[node name="InputManager" type="Node" parent="GameManager" unique_id=120051451]
+script = ExtResource("5_crxx5")
+enabled_inputs = 7
+
+[node name="StateMachine" type="Node" parent="GameManager" unique_id=905708155]
+script = ExtResource("5_q525t")
+metadata/_custom_type_script = "uid://c6jingcvddxsk"
+
+[node name="RoamState" type="Node" parent="GameManager/StateMachine" unique_id=814373097]
+script = ExtResource("6_xvw2b")
+
+[node name="InteractState" type="Node" parent="GameManager/StateMachine" unique_id=1161519709]
+
+[node name="PlayerController" type="Node" parent="GameManager" unique_id=333159390 node_paths=PackedStringArray("state_machine", "initial_state")]
+script = ExtResource("7_8c7yg")
+state_machine = NodePath("StateMachine")
+initial_state = NodePath("StateMachine/FreeRoamState")
+metadata/_custom_type_script = "uid://8dkrt7ju5ecf"
+
+[node name="StateMachine" type="Node" parent="GameManager/PlayerController" unique_id=2021102520]
+script = ExtResource("5_q525t")
+metadata/_custom_type_script = "uid://c6jingcvddxsk"
+
+[node name="FreeRoamState" type="Node" parent="GameManager/PlayerController/StateMachine" unique_id=2137669449]
+script = ExtResource("8_8c7yg")

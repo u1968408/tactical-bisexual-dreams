@@ -12,8 +12,13 @@ func enter():
 	player_ui.enemy_in()
 	for enemy in enemies:
 		camera.pan_to(enemy.board_position)
+		await camera.pan_finished
+		camera.follow.follow(enemy)
+		print("Execuiting %s turn." % enemy.name)
 		enemy.execute_turn()
 		await enemy.turn_finished
+		print("Finished %s turn." % enemy.name)
+		camera.follow.stop_follow()
 	state_machine.set_current_state(next_state)
 
 

@@ -16,7 +16,7 @@ func add_listeners():
 
 
 func remove_listeners():
-	if character:
+	if character and character.hability_finished.is_connected(master_state.return_to_move_state):
 		character.hability_finished.disconnect(master_state.return_to_move_state)
 
 

@@ -10,8 +10,18 @@ const ORBIT_CAMERA_ROTATION: float = TAU / 4
 
 @export var rotation_time: float = 0.5
 
-var _rotating: bool = false
 var _tween: Tween
+
+
+func _ready() -> void:
+	InputController.camera_orbit.connect(orbit_camera)
+
+
+func _exit_tree() -> void:
+	if not is_instance_valid(InputController):
+		return
+	if InputController.camera_orbit.is_connected(orbit_camera):
+		InputController.camera_orbit.disconnect(orbit_camera)
 
 
 func orbit_left():
@@ -23,23 +33,31 @@ func orbit_right():
 
 
 func orbit_camera(direction: OrbitDirection) -> void:
-	if _rotating:
+	if _tween:
 		return
-	_rotating = true
+
+	InputController.lock_input(InputController.InputBlock.CAMERA_ORBIT, self)
 
 	var center := camera.look_point
 	var start_pos := camera.global_position
 	var angle_to_rotate := ORBIT_CAMERA_ROTATION * direction
 
-	if _tween:
-		_tween.kill()
 	_tween = create_tween()
 	_tween.set_trans(Tween.TRANS_SINE)
 	_tween.set_ease(Tween.EASE_IN_OUT)
 	_tween.tween_method(
-		_animate_orbit.bind(start_pos, center, angle_to_rotate), 0.0, 1.0, rotation_time
+		_animate_orbit.bind(start_pos, center, angle_to_rotate),
+		0.0,
+		1.0,
+		rotation_time,
 	)
-	_tween.finished.connect(func(): _rotating = false)
+	_tween.finished.connect(_finish_orbit)
+
+
+func _finish_orbit() -> void:
+	_tween = null
+
+	InputController.unlock_input(InputController.InputBlock.CAMERA_ORBIT, self)
 
 
 func _animate_orbit(progress: float, start_pos: Vector3, center: Vector3, total_angle: float):

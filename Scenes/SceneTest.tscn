@@ -3,46 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://dl42bldfntnk1" path="res://Prefabs/Gameplay/Camera.tscn" id="1_bswdm"]
 [ext_resource type="PackedScene" uid="uid://c86f5ayqtp8vm" path="res://Prefabs/Gameplay/board.tscn" id="4_ef7dr"]
 [ext_resource type="PackedScene" uid="uid://bgpyg0ktse8cs" path="res://Prefabs/GameObjects/caja_building.tscn" id="4_i2bkh"]
-[ext_resource type="Script" uid="uid://hpd080a38nd5" path="res://Shaders/edge_pixel_compositor_effect.gd" id="4_su6wu"]
 [ext_resource type="PackedScene" uid="uid://on4fn7kuuxsh" path="res://Prefabs/Entities/Characters/Lyra.tscn" id="5_ef7dr"]
 [ext_resource type="PackedScene" uid="uid://dwqorc2detgxa" path="res://Prefabs/GameObjects/grass_surface.tscn" id="6_4gdn3"]
-[ext_resource type="PackedScene" uid="uid://bqdlcu4jup2ar" path="res://Prefabs/Gameplay/GameManager.tscn" id="8_1i6e8"]
+[ext_resource type="PackedScene" uid="uid://bf5bqbhk70y5b" path="res://Prefabs/Gameplay/world_env.tscn" id="6_bswdm"]
+[ext_resource type="PackedScene" uid="uid://bqdlcu4jup2ar" path="res://Prefabs/Gameplay/CombatGameManager.tscn" id="8_1i6e8"]
 [ext_resource type="Script" uid="uid://c8qhdajk1fqtn" path="res://Assets/Dylearn/Scripts/LightDirection.gd" id="10_27m4o"]
 [ext_resource type="PackedScene" uid="uid://cx3b5qmrr01lb" path="res://Prefabs/Entities/Enemies/Dummy.tscn" id="11_nd2tj"]
 [ext_resource type="PackedScene" uid="uid://qmubrmem7flo" path="res://Prefabs/Entities/Characters/Sophie.tscn" id="12_61ssm"]
+[ext_resource type="PackedScene" uid="uid://s108wdrkj80i" path="res://Prefabs/Entities/Enemies/Guard.tscn" id="14_4gdn3"]
 [ext_resource type="PackedScene" uid="uid://bpgoxly8bjaxs" path="res://Prefabs/GUI/CombatInterface/PlayerInterface.tscn" id="17_27m4o"]
 [ext_resource type="PackedScene" uid="uid://deyvvdcs7265" path="res://Prefabs/GameObjects/street_light.tscn" id="18_3mb6f"]
 [ext_resource type="PackedScene" uid="uid://ctymfk4u86vgo" path="res://Prefabs/Entities/Characters/Taro.tscn" id="18_i2bkh"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_gtfm6"]
 size = Vector2(100, 100)
-
-[sub_resource type="Environment" id="Environment_gtfm6"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_740v5"]
-
-[sub_resource type="CompositorEffect" id="CompositorEffect_5x74u"]
-resource_local_to_scene = false
-resource_name = ""
-enabled = true
-effect_callback_type = 3
-access_resolved_color = false
-access_resolved_depth = false
-needs_motion_vectors = false
-needs_normal_roughness = true
-script = ExtResource("4_su6wu")
-cel_shading_enabled = true
-shadow_strength = 0.19
-highlight_strength = 0.07
-cel_bands = 10
-cel_strength = 1.0
-depth_edge_threshold = 0.17
-depth_edge_scale = 1869.0
-normal_edge_threshold = 0.627
-metadata/_custom_type_script = "uid://hpd080a38nd5"
-
-[sub_resource type="Compositor" id="Compositor_are4x"]
-compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_5x74u")])
 
 [node name="TestScene" type="Node3D" unique_id=1096462511]
 
@@ -64,6 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.344, -13)
 
 [node name="Floor" type="MeshInstance3D" parent="Meshes" unique_id=2131388196]
 transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0.025152206, -0.3193274, -0.014681339)
+visible = false
 mesh = SubResource("QuadMesh_gtfm6")
 
 [node name="GrassSurface" parent="Meshes" unique_id=2030544707 instance=ExtResource("6_4gdn3")]
@@ -101,10 +76,7 @@ transform = Transform3D(0.58183485, -0.7643366, 0.2779535, 0.40187597, 0.5673092
 directional_shadow_mode = 0
 script = ExtResource("10_27m4o")
 
-[node name="WorldEnv" type="WorldEnvironment" parent="." unique_id=1083971455 groups=["world_environment"]]
-environment = SubResource("Environment_gtfm6")
-camera_attributes = SubResource("CameraAttributesPractical_740v5")
-compositor = SubResource("Compositor_are4x")
+[node name="WorldEnv" parent="." unique_id=1086838551 instance=ExtResource("6_bswdm")]
 
 [node name="Board" parent="." unique_id=1831510831 instance=ExtResource("4_ef7dr")]
 _min = Vector2i(-6, -6)
@@ -112,7 +84,10 @@ _max = Vector2i(18, 13)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1669899664]
 
-[node name="BaseEnemy" parent="Enemies" unique_id=216388398 instance=ExtResource("11_nd2tj")]
+[node name="Guard" parent="Enemies" unique_id=261262591 instance=ExtResource("14_4gdn3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
+
+[node name="Dummy" parent="Enemies" unique_id=216388398 instance=ExtResource("11_nd2tj")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0, 2)
 
 [node name="Characters" type="Node3D" parent="." unique_id=166918982]
@@ -120,12 +95,12 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0
 [node name="Sophie" parent="Characters" unique_id=1950339442 instance=ExtResource("12_61ssm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
 
-[node name="Taro" parent="Characters" unique_id=458918070 groups=["Entity", "character"] instance=ExtResource("18_i2bkh")]
+[node name="Taro" parent="Characters" unique_id=458918070 groups=["character"] instance=ExtResource("18_i2bkh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
 
-[node name="Lyra" parent="Characters" unique_id=309159948 groups=["Entity", "character"] instance=ExtResource("5_ef7dr")]
+[node name="Lyra" parent="Characters" unique_id=309159948 groups=["character"] instance=ExtResource("5_ef7dr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
-[node name="GameManager" parent="." unique_id=536167165 instance=ExtResource("8_1i6e8")]
+[node name="GameManager" parent="." unique_id=536167165 groups=["game_manager"] instance=ExtResource("8_1i6e8")]
 
 [node name="Interface" parent="." unique_id=1580611022 instance=ExtResource("17_27m4o")]

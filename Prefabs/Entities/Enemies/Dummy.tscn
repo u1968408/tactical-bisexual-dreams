@@ -35,6 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://pqgnw7v1juk3" path="res://Assets/Sprites/Character/LyraSprites/LyraWalk3.png" id="29_8bt5u"]
 [ext_resource type="Texture2D" uid="uid://um7qjgl36n85" path="res://Assets/Sprites/Character/LyraSprites/LyraWalk4.png" id="30_n88br"]
 [ext_resource type="Script" uid="uid://qbe452och48a" path="res://Scripts/Gameplay/Entities/Components/EntityAnimationPlayer.gd" id="31_r8uto"]
+[ext_resource type="Script" uid="uid://dqehiswv8o2fu" path="res://Scripts/Gameplay/Entities/Enemies/EnemyBehaviour/EnemyBehaviour.gd" id="36_sgyjm"]
+[ext_resource type="Script" uid="uid://c6jingcvddxsk" path="res://Scripts/Common/State Machine/StateMachine.gd" id="37_bhpgo"]
+[ext_resource type="Script" uid="uid://bfr1hqrb3e80a" path="res://Scripts/Gameplay/Entities/Enemies/EnemyBehaviour/BehaviourStates/FinishBehaviourState.gd" id="38_rapih"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pgiht"]
 font_size = 23
@@ -340,11 +343,12 @@ _data = {
 &"walk_f": SubResource("Animation_133hv")
 }
 
-[node name="Dummy" type="Area3D" unique_id=216388398 node_paths=PackedStringArray("movement", "weapons", "stats", "attack") groups=["Entity"]]
+[node name="Dummy" type="Area3D" unique_id=216388398 node_paths=PackedStringArray("behaviour", "movement", "weapons", "stats", "attack") groups=["Entity"]]
 collision_layer = 2
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_gh383")
+behaviour = NodePath("Behaviour")
 movement = NodePath("Movement")
 weapons = NodePath("Weapons")
 stats = NodePath("Stats")
@@ -446,3 +450,14 @@ libraries/ = SubResource("AnimationLibrary_k2ffi")
 script = ExtResource("31_r8uto")
 character_sprite = NodePath("../CharacterSprite")
 weapon_sprite = NodePath("../Weapons/WeaponSprite")
+
+[node name="Behaviour" type="Node" parent="." unique_id=1050461045 node_paths=PackedStringArray("state_machine", "initial_state")]
+script = ExtResource("36_sgyjm")
+state_machine = NodePath("StateMachine")
+initial_state = NodePath("StateMachine/Finish")
+
+[node name="StateMachine" type="Node" parent="Behaviour" unique_id=1422898809]
+script = ExtResource("37_bhpgo")
+
+[node name="Finish" type="Node" parent="Behaviour/StateMachine" unique_id=149546967]
+script = ExtResource("38_rapih")

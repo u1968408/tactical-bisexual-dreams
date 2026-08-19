@@ -1,15 +1,14 @@
 class_name EntityAnimationPlayer
 extends AnimationPlayer
 
+signal attack_finished
+
 @export var character_sprite: Sprite3D
 @export var weapon_sprite: Sprite3D
 
 var sprites: Array[Sprite3D]:
 	get:
-		return [
-			character_sprite,
-			weapon_sprite,
-		]
+		return [character_sprite, weapon_sprite]
 
 var _look_suffix: String = "_f"
 var _weapon_suffix: String = ""
@@ -107,7 +106,11 @@ func _on_state_changed(state: Entity.EntityState) -> void:
 
 
 func _on_animation_finished(_anim_name: String) -> void:
+	var previous_state := _entity.current_state
 	_entity.current_state = Entity.EntityState.IDLE
+	if previous_state == Entity.EntityState.ATTACKING:
+		print("Finished EntityState.ATTACKING animation from %s" % _entity.name)
+		attack_finished.emit()
 
 
 func _set_flip() -> void:

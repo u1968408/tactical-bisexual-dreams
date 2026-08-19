@@ -24,7 +24,7 @@ func cancel() -> void:
 
 func clicked_tile(tile: Tile):
 	generator = null
-	InputController.can_interact = false
+	InputController.lock_input(InputController.InputBlock.BOARD_INTERACTION, self)
 	character.look_at_direction(tile.global_position)
 	character.current_state = Entity.EntityState.THROW
 
@@ -60,7 +60,7 @@ func _execute() -> void:
 func _on_finished_travel():
 	_token.finished_travel.disconnect(_on_finished_travel)
 	_token = null
-	InputController.can_interact = true
+	InputController.unlock_input(InputController.InputBlock.BOARD_INTERACTION, self)
 	finished.emit(true)
 
 

@@ -22,7 +22,9 @@ func set_current_state(new_state: State) -> void:
 	_current_state = new_state
 
 	if _current_state:
+		print("%s setting state: %s" % [get_parent().name, new_state.name])
 		await _current_state.enter()
+
 
 func reset_state() -> void:
 	if _current_state == null:

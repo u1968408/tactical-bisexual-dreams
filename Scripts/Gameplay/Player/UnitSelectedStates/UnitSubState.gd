@@ -33,6 +33,7 @@ func exit() -> void:
 
 @abstract func prepare_range() -> void
 
+
 @abstract func on_mouse_click() -> void
 
 

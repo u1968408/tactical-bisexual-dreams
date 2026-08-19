@@ -620,7 +620,6 @@ offset = Vector2(-64, 0)
 pixel_size = 0.03
 billboard = 2
 texture_filter = 0
-render_priority = 1
 texture = ExtResource("10_neo6l")
 script = ExtResource("13_b63y2")
 
@@ -634,7 +633,7 @@ offset = Vector2(-64, 0)
 pixel_size = 0.03
 billboard = 2
 texture_filter = 0
-render_priority = 2
+render_priority = 1
 script = ExtResource("13_b63y2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=711148975]

@@ -29,17 +29,17 @@ const MAX_ACTIONS: int = 3
 
 var current_actions: int:
 	get:
-		return _current_acctions
+		return _current_actions
 	set(value):
-		_current_acctions = clampi(value, 0, MAX_ACTIONS)
-		actions_changed.emit(_current_acctions)
+		_current_actions = clampi(value, 0, MAX_ACTIONS)
+		actions_changed.emit(_current_actions)
 
-var current_state: EntityState = EntityState.IDLE:
+var current_state: EntityState:
 	get:
-		return current_state
+		return _current_state
 	set(value):
-		current_state = value
-		state_changed.emit(current_state)
+		_current_state = value
+		state_changed.emit(_current_state)
 
 var global_forward: Vector3:
 	get:
@@ -47,6 +47,9 @@ var global_forward: Vector3:
 
 var look_direction_along_camera: LookDirection:
 	get:
+		var _camera: CameraController = get_viewport().get_camera_3d()
+		if _camera == null:
+			return LookDirection.UP_RIGHT
 		var local_dir: Vector3 = (
 			_camera.global_transform.basis.orthonormalized().inverse() * global_forward
 		)
@@ -78,22 +81,28 @@ var board_position: Vector2i:
 	get:
 		return Board.world_to_tile_id_floor(global_position)
 
-var _current_acctions: int = MAX_ACTIONS
+var _current_actions: int = MAX_ACTIONS
+var _current_state := EntityState.IDLE
 
-@onready var _camera: CameraController = get_viewport().get_camera_3d()
+var animation_player: EntityAnimationPlayer:
+	get:
+		for child in get_children():
+			if child is EntityAnimationPlayer:
+				return child
 
+		return null
 
 func _ready() -> void:
 	movement.movement_started.connect(_on_move_start)
 	movement.movement_ended.connect(_on_move_end)
 
 
-func move(path: PackedVector2Array):
+func move(path: PackedVector2Array, set_solid: bool = true):
 	var start := path[0]
 	var end := path[-1]
-
-	board.set_solid(start, false)
-	board.set_solid(end, true)
+	if set_solid:
+		board.set_solid(start, false)
+		board.set_solid(end, true)
 
 	movement.set_new_path(path)
 

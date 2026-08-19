@@ -24,7 +24,7 @@ func on_mouse_move(_screen_position: Vector2, tile_position: Vector3):
 
 
 func on_mouse_click() -> void:
-	var entity := _indicator._current_entity
+	var entity := _indicator.current_entity
 	print("Clicked on %s" % _indicator.target_tile_id)
 	if entity == null:
 		return

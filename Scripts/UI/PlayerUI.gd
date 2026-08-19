@@ -48,7 +48,7 @@ func _ready() -> void:
 
 
 func _on_pass_turn_clicked(event: InputEvent) -> void:
-	if not InputController.can_interact:
+	if InputController.is_input_blocked(InputController.InputBlock.BOARD_INTERACTION):
 		return
 
 	if event is not InputEventMouseButton:
@@ -68,4 +68,7 @@ func _animate_pass_turn():
 	var pos: Vector2 = POS_TURN_SHOW if player_ui_active else POS_TURN_HIDDEN
 	_tween_pass_turn.tween_property(pass_turn, "position", pos, 0.2)
 	if not player_ui_active:
-		_tween_pass_turn.finished.connect(func(): pass_turn.visible = false)
+		_tween_pass_turn.finished.connect(
+			func():
+				pass_turn.visible = false,
+		)

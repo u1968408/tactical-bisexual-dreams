@@ -112,6 +112,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [null]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_vjtho"]
 resource_name = "attack_b"
@@ -246,6 +258,62 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("32_j8y1s"), ExtResource("33_4pcxv"), ExtResource("34_si3o0"), null]
+}
+
+[sub_resource type="Animation" id="Animation_eedwa"]
+resource_name = "hit_b"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("26_1k7d6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oif0f"]
+resource_name = "hit_f"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_1k7d6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_c0lsn"]
@@ -449,6 +517,8 @@ _data = {
 &"attack_s_f": SubResource("Animation_gx3vn"),
 &"attack_t_b": SubResource("Animation_67kt5"),
 &"attack_t_f": SubResource("Animation_jtxc8"),
+&"hit_b": SubResource("Animation_eedwa"),
+&"hit_f": SubResource("Animation_oif0f"),
 &"idle_b": SubResource("Animation_c0lsn"),
 &"idle_f": SubResource("Animation_cauc2"),
 &"teleport_b": SubResource("Animation_si3o0"),
@@ -459,7 +529,7 @@ _data = {
 &"walk_f": SubResource("Animation_133hv")
 }
 
-[node name="Taro" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("habilities", "movement", "weapons", "stats", "attack")]
+[node name="Taro" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("habilities", "movement", "weapons", "stats", "attack") groups=["Entity"]]
 collision_layer = 4
 script = ExtResource("1_3fwt7")
 character_data = SubResource("Resource_v5i7l")
@@ -495,9 +565,7 @@ offset = Vector2(-64, 0)
 pixel_size = 0.03
 billboard = 2
 texture_filter = 0
-render_priority = 1
 texture = ExtResource("27_1k7d6")
-script = ExtResource("11_kfgrl")
 
 [node name="Weapons" type="Node3D" parent="." unique_id=234906197]
 script = ExtResource("12_v5i7l")
@@ -509,7 +577,7 @@ offset = Vector2(-64, 0)
 pixel_size = 0.03
 billboard = 2
 texture_filter = 0
-render_priority = 2
+render_priority = 1
 script = ExtResource("11_kfgrl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=711148975]

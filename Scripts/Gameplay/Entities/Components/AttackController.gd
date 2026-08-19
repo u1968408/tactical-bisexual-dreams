@@ -1,6 +1,8 @@
 class_name AttackController
 extends EntityNode
 
+signal attack_finished
+
 
 func attack(other: Entity):
 	entity.current_state = Entity.EntityState.ATTACKING
@@ -14,3 +16,15 @@ func attack(other: Entity):
 			% [entity.stats.damage, other.name, other.stats.health]
 		)
 	)
+	if entity.animation_player != null:
+		entity.animation_player.attack_finished.connect(
+			_on_attack_animation_finished,
+			ConnectFlags.CONNECT_ONE_SHOT,
+		)
+	else:
+		print("No animation player on %s" % entity.name)
+		_on_attack_animation_finished()
+
+
+func _on_attack_animation_finished() -> void:
+	attack_finished.emit()

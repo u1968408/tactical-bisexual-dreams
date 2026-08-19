@@ -2,9 +2,11 @@
 class_name CameraController
 extends Camera3D
 
+signal pan_finished
+
 @export var orbit: CameraOrbit
 @export var movement: CameraMovement
-@export var in_game: bool = true
+@export var follow: CameraFollow
 
 #region Properties
 
@@ -37,45 +39,23 @@ var mouse_look_position: Vector3:
 
 #endregion
 
-
 #region Overrides
-func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
-	if not in_game:
-		return
-	InputController.camera_orbit.connect(orbit.orbit_camera)
-	InputController.camera_moved.connect(movement.on_camera_direction_changed)
-
-
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		DebugDraw3D.draw_line(global_position, look_point)
 		return
 
-
-func _exit_tree() -> void:
-	if Engine.is_editor_hint():
-		return
-	if is_instance_valid(InputController):
-		if InputController.camera_orbit.is_connected(orbit.orbit_camera):
-			InputController.camera_orbit.disconnect(orbit.orbit_camera)
-		if InputController.camera_moved.is_connected(movement.on_camera_direction_changed):
-			InputController.camera_moved.disconnect(movement.on_camera_direction_changed)
-
-
 #endregion
 
-
 func pan_to(pos: Vector2):
-	InputController.can_move_camera = false
+	InputController.lock_input(InputController.InputBlock.CAMERA_MOVEMENT, self)
 	var pos3: Vector3 = Vector3(pos.x, 0.0, pos.y)
 	var tween: Tween = create_tween()
 	var offset: Vector3 = pos3 - look_point
-	var new_pos: Vector3 = Vector3(
-		position.x + offset.x,
-		position.y,
-		position.z + offset.z,
-	)
+	var new_pos: Vector3 = Vector3(position.x + offset.x, position.y, position.z + offset.z)
 	tween.tween_property(self, "position", new_pos, 0.3)
-	tween.tween_callback(func(): InputController.can_move_camera = true)
+	tween.tween_callback(_on_pan_finished)
+
+func _on_pan_finished():
+	InputController.unlock_input(InputController.InputBlock.CAMERA_MOVEMENT, self)
+	pan_finished.emit()

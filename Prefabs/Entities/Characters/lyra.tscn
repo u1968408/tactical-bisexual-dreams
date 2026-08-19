@@ -426,7 +426,7 @@ _data = {
 &"walk_f": SubResource("Animation_133hv")
 }
 
-[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("habilities", "movement", "weapons", "stats", "attack")]
+[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("habilities", "movement", "weapons", "stats", "attack") groups=["Entity"]]
 collision_layer = 4
 script = ExtResource("1_riiya")
 character_data = SubResource("Resource_45nm5")
@@ -459,7 +459,6 @@ offset = Vector2(0, 32)
 pixel_size = 0.03
 billboard = 2
 texture_filter = 0
-render_priority = 1
 texture = ExtResource("15_45nm5")
 script = ExtResource("2_riiya")
 
@@ -471,7 +470,7 @@ offset = Vector2(0, 32)
 pixel_size = 0.03
 billboard = 2
 texture_filter = 0
-render_priority = 2
+render_priority = 1
 script = ExtResource("2_riiya")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=711148975]

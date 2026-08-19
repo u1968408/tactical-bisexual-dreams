@@ -31,12 +31,7 @@ var region: Rect2:
 	get:
 		var width := max_tile.x - min_tile.x + 1
 		var height := max_tile.y - min_tile.y + 1
-		return Rect2(
-			min_tile.x,
-			min_tile.y,
-			width,
-			height,
-		)
+		return Rect2(min_tile.x, min_tile.y, width, height)
 
 var _astar := AStarGrid2D.new()
 var _tile_shape_rid: RID = _create_tile_rid()
@@ -103,13 +98,80 @@ func is_position_outside(pos: Vector3):
 	return not region.has_point(pos2)
 
 
+func is_position_inside(pos: Vector3) -> bool:
+	return region.has_point(Vector2(pos.x, pos.z))
+
+
+func get_clamped_movement(current_position: Vector3, movement: Vector3) -> Vector3:
+	var current := Vector2(current_position.x, current_position.z)
+
+	var desired := current + Vector2(movement.x, movement.z)
+
+	var clamped := Vector2(
+		clampf(desired.x, region.position.x, region.end.x),
+		clampf(desired.y, region.position.y, region.end.y),
+	)
+
+	var delta := clamped - current
+
+	return Vector3(delta.x, 0.0, delta.y)
+
+
 func is_tile_walkable(tile_id: Vector2i) -> bool:
 	return _astar.is_in_boundsv(tile_id) and not _astar.is_point_solid(tile_id)
 
 
+func get_reachable_tiles(
+	origin: Vector2i,
+	movement: int,
+	actions: int = 1,
+) -> Dictionary[Vector2i, int]:
+	var reachable: Dictionary[Vector2i, int] = { }
+	reachable.set(origin, 0)
+
+	if not _astar.is_in_boundsv(origin):
+		return reachable
+
+	var max_distance := movement * actions
+
+	var pending: Array[Vector2i] = [origin]
+	var distances: Dictionary[Vector2i, int] = { origin: 0 }
+
+	var directions: Array[Vector2i] = [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]
+
+	while not pending.is_empty():
+		var current: Vector2i = pending.pop_front()
+		var current_distance := distances[current]
+
+		if current_distance >= max_distance:
+			continue
+
+		for direction in directions:
+			var next := current + direction
+
+			if distances.has(next):
+				continue
+
+			if not is_tile_walkable(next):
+				continue
+
+			var next_distance := current_distance + 1
+
+			distances[next] = next_distance
+			reachable[next] = next_distance
+			pending.append(next)
+
+	return reachable
+
+
 func find_path(
-	origin: Vector2i, destination: Vector2i, max_distance: int = -1
+	origin: Vector2i,
+	destination: Vector2i,
+	max_distance: int = -1,
 ) -> PackedVector2Array:
+	var origin_is_solid: bool = is_solid(origin)
+	if origin_is_solid:
+		set_solid(origin, false)
 	if not _astar.is_in_boundsv(origin) or not is_tile_walkable(destination):
 		return PackedVector2Array()
 	var path := _astar.get_point_path(origin, destination)
@@ -117,6 +179,8 @@ func find_path(
 		return PackedVector2Array()
 	if max_distance > 0 and len(path) - 1 > max_distance:
 		return PackedVector2Array()
+	if origin_is_solid:
+		set_solid(origin, true)
 	return path
 
 
@@ -196,7 +260,9 @@ func get_collisions_in_area(query_id: Vector2i, collision_mask: int) -> Array[No
 func _create_tile_rid() -> RID:
 	var box_rid: RID = PhysicsServer3D.box_shape_create()
 	var half_extents := Vector3(
-		(TILE_SIZE.x * 0.9) / 2.0, TILE_HEIGHT / 2.0, (TILE_SIZE.y * 0.9) / 2.0
+		(TILE_SIZE.x * 0.9) / 2.0,
+		TILE_HEIGHT / 2.0,
+		(TILE_SIZE.y * 0.9) / 2.0,
 	)
 	PhysicsServer3D.shape_set_data(box_rid, half_extents)
 	return box_rid

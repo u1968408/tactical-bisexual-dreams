@@ -5,7 +5,7 @@ const WEAPON_DIR := "res://Resources/Combat/Weapons/"
 var all_weapons: Array[Weapon]
 
 ## Diccionari de { `Weapon.WTypes`: { `WeaponMaterials.MaterialTypes`: `Weapon` }}
-var _weapon_dict: Dictionary[int, Dictionary] = {}
+var _weapon_dict: Dictionary[int, Dictionary] = { }
 
 
 func _ready() -> void:
@@ -25,9 +25,9 @@ func _load_weapons():
 		):
 			continue
 		if not _weapon_dict.has(weapon.type):
-			_weapon_dict.set(weapon.type, {})
+			_weapon_dict.set(weapon.type, { })
 		_weapon_dict[weapon.type][weapon.material] = weapon
 
 
 func get_weapon(type: Weapon.WTypes, material: WeaponMaterials.MaterialTypes):
-	return _weapon_dict.get(type, {}).get(material, null)
+	return _weapon_dict.get(type, { }).get(material, null)

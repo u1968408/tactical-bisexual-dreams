@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bf5bqbhk70y5b"]
+
+[ext_resource type="Script" uid="uid://hpd080a38nd5" path="res://Shaders/edge_pixel_compositor_effect.gd" id="1_q641p"]
+
+[sub_resource type="Environment" id="Environment_gtfm6"]
+background_color = Color(0.6041686, 0.75501937, 0.80449975, 1)
+background_energy_multiplier = 2.5
+ambient_light_color = Color(0.74138474, 0.7413847, 0.74138457, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_740v5"]
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_5x74u"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 3
+access_resolved_color = false
+access_resolved_depth = false
+needs_motion_vectors = false
+needs_normal_roughness = true
+script = ExtResource("1_q641p")
+cel_shading_enabled = true
+shadow_strength = 0.19
+highlight_strength = 0.07
+cel_bands = 12
+cel_strength = 1.0
+depth_edge_threshold = 0.17
+depth_edge_scale = 1869.0
+normal_edge_threshold = 0.627
+metadata/_custom_type_script = "uid://hpd080a38nd5"
+
+[sub_resource type="Compositor" id="Compositor_are4x"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_5x74u")])
+
+[node name="WorldEnv" type="WorldEnvironment" unique_id=1086838551 groups=["world_environment"]]
+environment = SubResource("Environment_gtfm6")
+camera_attributes = SubResource("CameraAttributesPractical_740v5")
+compositor = SubResource("Compositor_are4x")
