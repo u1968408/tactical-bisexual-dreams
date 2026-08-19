@@ -627,7 +627,7 @@ script = ExtResource("13_b63y2")
 script = ExtResource("14_neo6l")
 equiped = ExtResource("16_s7ugc")
 
-[node name="WeaponSprite" type="Sprite3D" parent="Weapons" unique_id=1836436148]
+[node name="WeaponSprite" type="Sprite3D" parent="Weapons" unique_id=1836436148 groups=["Entity"]]
 centered = false
 offset = Vector2(-64, 0)
 pixel_size = 0.03

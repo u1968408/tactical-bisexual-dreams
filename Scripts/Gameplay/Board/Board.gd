@@ -169,18 +169,25 @@ func find_path(
 	destination: Vector2i,
 	max_distance: int = -1,
 ) -> PackedVector2Array:
-	var origin_is_solid: bool = is_solid(origin)
-	if origin_is_solid:
+	var origin_was_solid := is_solid(origin)
+
+	if origin_was_solid:
 		set_solid(origin, false)
-	if not _astar.is_in_boundsv(origin) or not is_tile_walkable(destination):
-		return PackedVector2Array()
-	var path := _astar.get_point_path(origin, destination)
+
+	var path := PackedVector2Array()
+
+	if _astar.is_in_boundsv(origin) and is_tile_walkable(destination):
+		path = _astar.get_point_path(origin, destination)
+
+	if origin_was_solid:
+		set_solid(origin, true)
+
 	if path.size() < 2:
 		return PackedVector2Array()
-	if max_distance > 0 and len(path) - 1 > max_distance:
+
+	if max_distance > 0 and path.size() - 1 > max_distance:
 		return PackedVector2Array()
-	if origin_is_solid:
-		set_solid(origin, true)
+
 	return path
 
 

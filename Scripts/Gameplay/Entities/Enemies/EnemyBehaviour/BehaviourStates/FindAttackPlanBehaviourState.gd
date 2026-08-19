@@ -17,6 +17,11 @@ func enter() -> void:
 
 	attack_plan = plan
 
+	print(
+		"Plan: actions=%d movement_actions=%d distance=%d attack_position=%s"
+		% [enemy.current_actions, plan.movement_actions, plan.distance, plan.attack_position]
+	)
+
 	if plan.movement_actions == 0:
 		state_machine.set_current_state(attack_state)
 	else:
@@ -53,7 +58,7 @@ func _get_attack_plans_for_character(
 	var plans: Array[AttackPlan] = []
 
 	for tile: Vector2i in reachable_tiles:
-		var attack_distance := Board.chebyshev_distance(tile, character.board_position)
+		var attack_distance := Board.manhathan_distance(tile, character.board_position)
 
 		if attack_distance > enemy.stats.attack_range:
 			continue
