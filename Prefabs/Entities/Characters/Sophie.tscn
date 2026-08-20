@@ -67,6 +67,9 @@
 [ext_resource type="Texture2D" uid="uid://cvlg2wwjevn45" path="res://Assets/Sprites/Character/Sophie/SophieWalk2.png" id="61_lgb01"]
 [ext_resource type="Texture2D" uid="uid://2scxcr27o4co" path="res://Assets/Sprites/Character/Sophie/SophieWalk3.png" id="62_6d2am"]
 [ext_resource type="Texture2D" uid="uid://cihfyfqbiwdey" path="res://Assets/Sprites/Character/Sophie/SophieWalk4.png" id="63_21l43"]
+[ext_resource type="Script" uid="uid://l7rn4omn7v5b" path="res://Scripts/Gameplay/Entities/Components/EntityHealthContainer.gd" id="68_7nqvl"]
+[ext_resource type="Texture2D" uid="uid://dxwi78adso4po" path="res://Assets/UI/CombatUI/GUI_HealthContainer.png" id="69_b75o6"]
+[ext_resource type="Texture2D" uid="uid://dmflgdr7lskp4" path="res://Assets/UI/CombatUI/GUI_HealthBar.png" id="70_iaiuo"]
 
 [sub_resource type="Resource" id="Resource_v5i7l"]
 script = ExtResource("3_s2awo")
@@ -352,6 +355,50 @@ tracks/1/keys = {
 "values": [ExtResource("34_6d2am"), ExtResource("35_21l43"), ExtResource("36_8jek4"), null]
 }
 
+[sub_resource type="Animation" id="Animation_t8cn2"]
+resource_name = "hit_b"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("47_23d8r")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.16666667, 0.23333333, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3428g"]
+resource_name = "hit_f"
+length = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666666, 0.16666666, 0.23333332, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_c0lsn"]
 loop_mode = 1
 tracks/0/type = "value"
@@ -563,6 +610,8 @@ _data = {
 &"attack_s_f": SubResource("Animation_gx3vn"),
 &"attack_t_b": SubResource("Animation_67kt5"),
 &"attack_t_f": SubResource("Animation_jtxc8"),
+&"hit_b": SubResource("Animation_t8cn2"),
+&"hit_f": SubResource("Animation_3428g"),
 &"idle_b": SubResource("Animation_c0lsn"),
 &"idle_f": SubResource("Animation_cauc2"),
 &"teleport_b": SubResource("Animation_si3o0"),
@@ -572,6 +621,11 @@ _data = {
 &"walk_b": SubResource("Animation_y7k4w"),
 &"walk_f": SubResource("Animation_133hv")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_t8cn2"]
+font_size = 23
+outline_size = 13
+outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
 
 [node name="Sophie" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("habilities", "movement", "weapons", "stats", "attack")]
 collision_layer = 4
@@ -621,7 +675,6 @@ pixel_size = 0.03
 billboard = 2
 texture_filter = 0
 texture = ExtResource("10_neo6l")
-script = ExtResource("13_b63y2")
 
 [node name="Weapons" type="Node3D" parent="." unique_id=234906197]
 script = ExtResource("14_neo6l")
@@ -646,3 +699,55 @@ libraries/ = SubResource("AnimationLibrary_mta3l")
 script = ExtResource("52_a7pue")
 character_sprite = NodePath("../CharacterSprite")
 weapon_sprite = NodePath("../Weapons/WeaponSprite")
+
+[node name="EntityHealthContainer" type="Control" parent="." unique_id=1968844772 node_paths=PackedStringArray("health_label", "health_bar", "health_position", "entity")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -61.0
+offset_top = -37.0
+offset_right = 63.0
+offset_bottom = 30.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("68_7nqvl")
+health_label = NodePath("Label")
+health_bar = NodePath("TextureProgressBar")
+health_position = NodePath("../HealthPosition")
+entity = NodePath("..")
+show_only_when_damaged = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="EntityHealthContainer" unique_id=877743413]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -247.0
+offset_top = -194.0
+offset_right = 387.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+pivot_offset_ratio = Vector2(0.395, 0.685)
+value = 100.0
+texture_under = ExtResource("69_b75o6")
+texture_progress = ExtResource("70_iaiuo")
+texture_progress_offset = Vector2(37.175, 185.43)
+
+[node name="Label" type="Label" parent="EntityHealthContainer" unique_id=1914538453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 4.0
+offset_right = -53.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "999"
+label_settings = SubResource("LabelSettings_t8cn2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthPosition" type="Node3D" parent="." unique_id=1311555845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3916962, 0)

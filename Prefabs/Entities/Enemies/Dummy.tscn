@@ -413,7 +413,7 @@ offset = Vector2(-64, 0)
 pixel_size = 0.03
 billboard = 2
 texture_filter = 0
-texture = ExtResource("5_y8rgf")
+texture = ExtResource("2_dliq8")
 
 [node name="CharacterCollision" parent="." unique_id=285415630 instance=ExtResource("2_lu3iq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -427,6 +427,17 @@ script = ExtResource("6_10vvd")
 
 [node name="Movement" type="Node" parent="." unique_id=436469242]
 script = ExtResource("7_tmecc")
+
+[node name="Behaviour" type="Node" parent="." unique_id=1050461045 node_paths=PackedStringArray("state_machine", "initial_state")]
+script = ExtResource("36_sgyjm")
+state_machine = NodePath("StateMachine")
+initial_state = NodePath("StateMachine/Finish")
+
+[node name="StateMachine" type="Node" parent="Behaviour" unique_id=1422898809]
+script = ExtResource("37_bhpgo")
+
+[node name="Finish" type="Node" parent="Behaviour/StateMachine" unique_id=149546967]
+script = ExtResource("38_rapih")
 
 [node name="Weapons" type="Node3D" parent="." unique_id=234906197]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
@@ -450,14 +461,3 @@ libraries/ = SubResource("AnimationLibrary_k2ffi")
 script = ExtResource("31_r8uto")
 character_sprite = NodePath("../CharacterSprite")
 weapon_sprite = NodePath("../Weapons/WeaponSprite")
-
-[node name="Behaviour" type="Node" parent="." unique_id=1050461045 node_paths=PackedStringArray("state_machine", "initial_state")]
-script = ExtResource("36_sgyjm")
-state_machine = NodePath("StateMachine")
-initial_state = NodePath("StateMachine/Finish")
-
-[node name="StateMachine" type="Node" parent="Behaviour" unique_id=1422898809]
-script = ExtResource("37_bhpgo")
-
-[node name="Finish" type="Node" parent="Behaviour/StateMachine" unique_id=149546967]
-script = ExtResource("38_rapih")

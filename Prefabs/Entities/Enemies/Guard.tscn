@@ -32,7 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://m5dms8yivncd" path="res://Assets/Sprites/Enemies/Guard/Guarda1AttackBat3.png" id="18_75hde"]
 [ext_resource type="Texture2D" uid="uid://laktjsc0rn8s" path="res://Assets/Sprites/Character/LyraSprites/TonfaLyra1.png" id="18_fcx8h"]
 [ext_resource type="Texture2D" uid="uid://ct73vbf5fvt1" path="res://Assets/Sprites/Character/LyraSprites/TonfaLyra2.png" id="19_3a06s"]
-[ext_resource type="Resource" uid="uid://ydime7ti8jbl" path="res://Resources/Combat/Weapons/BatIron.tres" id="19_7cmpy"]
+[ext_resource type="Script" uid="uid://bbjnci56jxj1a" path="res://Scripts/Gameplay/Entities/Stats/Modifiers/Modifier.gd" id="19_p3d1d"]
+[ext_resource type="Script" uid="uid://qwgjm4qg73lk" path="res://Scripts/Weapon.gd" id="20_4ll4w"]
 [ext_resource type="Texture2D" uid="uid://c3mhf1lek6s6h" path="res://Assets/Sprites/Character/LyraSprites/TonfaLyra3.png" id="20_sckjm"]
 [ext_resource type="Texture2D" uid="uid://by6idclivlt00" path="res://Assets/Sprites/Enemies/Guard/Guarda1AttackBackTonfa2.png" id="24_mmiwi"]
 [ext_resource type="Texture2D" uid="uid://bfrbuhgmvhrou" path="res://Assets/Sprites/Enemies/Guard/Guarda1AttackBackTonfa3.png" id="25_xfj14"]
@@ -64,8 +65,14 @@ outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
 
 [sub_resource type="Resource" id="Resource_y7aom"]
 script = ExtResource("8_75hde")
-vitality = 50
+force = 8
 metadata/_custom_type_script = "uid://b221r2nol8ung"
+
+[sub_resource type="Resource" id="Resource_5jx4a"]
+script = ExtResource("20_4ll4w")
+name = "Arma Simple"
+damage = 5
+metadata/_custom_type_script = "uid://qwgjm4qg73lk"
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xcnmv"]
 radius = 0.1
@@ -165,10 +172,10 @@ tracks/0/path = NodePath("Weapons/WeaponSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16766667, 0.33433336),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [ExtResource("16_3uvsa"), ExtResource("17_t550o"), ExtResource("18_75hde")]
+"values": []
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -177,10 +184,10 @@ tracks/1/path = NodePath("CharacterSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.16766667, 0.33433336),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": []
+"values": [ExtResource("16_3uvsa"), ExtResource("17_t550o"), ExtResource("18_75hde")]
 }
 
 [sub_resource type="Animation" id="Animation_oh4u2"]
@@ -320,10 +327,10 @@ tracks/0/path = NodePath("CharacterSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("27_jv8nv"), ExtResource("27_jv8nv"), ExtResource("27_jv8nv")]
+"values": [ExtResource("27_jv8nv")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -332,10 +339,10 @@ tracks/1/path = NodePath("CharacterSprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.06666667, 0.16666667, 0.23333333, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 0.63122886, 0.66151696, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_dliq8"]
@@ -360,10 +367,10 @@ tracks/1/path = NodePath("CharacterSprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 0.6313726, 0.6627451, 1), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0, 0.06666666, 0.16666666, 0.23333332, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_c0lsn"]
@@ -566,7 +573,7 @@ script = ExtResource("17_5jx4a")
 [node name="Weapons" type="Node3D" parent="." unique_id=234906197]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 script = ExtResource("11_cl0mv")
-equiped = ExtResource("19_7cmpy")
+equiped = SubResource("Resource_5jx4a")
 
 [node name="WeaponSprite" type="Sprite3D" parent="Weapons" unique_id=1413269199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

@@ -28,7 +28,14 @@ visible = false
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=257188228]
 transform = Transform3D(1, 0, 0, 0, -0.024781117, 0.9996929, 0, -0.9996929, -0.024781117, 0, 3.9724197, 0)
-light_energy = 7.39
-spot_range = 10.799
+light_energy = 2.143
+spot_range = 11.756
 spot_attenuation = 0.43
-spot_angle = 49.218746
+spot_angle = 62.82
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1518939570]
+transform = Transform3D(1, 0, 0, 0, -0.024781117, 0.9996929, 0, -0.9996929, -0.024781117, 0, 3.9724197, 0)
+light_energy = 5.326
+spot_range = 11.756
+spot_attenuation = 0.43
+spot_angle = 24.39

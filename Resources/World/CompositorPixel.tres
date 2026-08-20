@@ -1,0 +1,26 @@
+[gd_resource type="Compositor" format=3 uid="uid://cmsju08v8uppk"]
+
+[ext_resource type="Script" uid="uid://hpd080a38nd5" path="res://Shaders/edge_pixel_compositor_effect.gd" id="1_tch72"]
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_5x74u"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 3
+access_resolved_color = false
+access_resolved_depth = false
+needs_motion_vectors = false
+needs_normal_roughness = true
+script = ExtResource("1_tch72")
+cel_shading_enabled = true
+shadow_strength = 0.19
+highlight_strength = 0.07
+cel_bands = 10
+cel_strength = 1.0
+depth_edge_threshold = 0.17
+depth_edge_scale = 1869.0
+normal_edge_threshold = 0.627
+metadata/_custom_type_script = "uid://hpd080a38nd5"
+
+[resource]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_5x74u")])
