@@ -456,7 +456,7 @@ _data = {
 &"walk_f": SubResource("Animation_133hv")
 }
 
-[node name="Guard" type="Area3D" unique_id=216388398 node_paths=PackedStringArray("behaviour", "movement", "weapons", "stats", "attack") groups=["Entity"]]
+[node name="Guard" type="Area3D" unique_id=216388398 node_paths=PackedStringArray("behaviour", "movement", "weapons", "stats", "attack", "interface_anchor") groups=["Entity"]]
 collision_layer = 2
 collision_mask = 0
 monitoring = false
@@ -466,12 +466,13 @@ movement = NodePath("Movement")
 weapons = NodePath("Weapons")
 stats = NodePath("Stats")
 attack = NodePath("Attack")
+interface_anchor = NodePath("InterfacePosition")
 metadata/_custom_type_script = "uid://cs5s5cpeix3gb"
 
-[node name="HealthPosition" type="Node3D" parent="." unique_id=1410560605]
+[node name="InterfacePosition" type="Node3D" parent="." unique_id=1410560605]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3916962, 0)
 
-[node name="EntityHealthContainer" type="Control" parent="." unique_id=1814949335 node_paths=PackedStringArray("health_label", "health_bar", "health_position", "entity")]
+[node name="EntityHealthContainer" type="Control" parent="." unique_id=1814949335 node_paths=PackedStringArray("health_label", "health_bar", "entity")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -61.0
@@ -482,7 +483,6 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("2_1hbbx")
 health_label = NodePath("Label")
 health_bar = NodePath("TextureProgressBar")
-health_position = NodePath("../HealthPosition")
 entity = NodePath("..")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="EntityHealthContainer" unique_id=1919242635]

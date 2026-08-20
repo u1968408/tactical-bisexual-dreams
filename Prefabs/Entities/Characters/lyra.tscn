@@ -62,7 +62,6 @@
 [ext_resource type="Script" uid="uid://l7rn4omn7v5b" path="res://Scripts/Gameplay/Entities/Components/EntityHealthContainer.gd" id="60_jo7lt"]
 [ext_resource type="Texture2D" uid="uid://dxwi78adso4po" path="res://Assets/UI/CombatUI/GUI_HealthContainer.png" id="61_sp8kn"]
 [ext_resource type="Texture2D" uid="uid://dmflgdr7lskp4" path="res://Assets/UI/CombatUI/GUI_HealthBar.png" id="62_3lvqp"]
-[ext_resource type="Script" uid="uid://gijdem7bkpxr" path="res://Scripts/Gameplay/Entities/Components/AttackResultFeedback.gd" id="63_sp8kn"]
 
 [sub_resource type="Resource" id="Resource_45nm5"]
 script = ExtResource("3_po2ih")
@@ -505,7 +504,7 @@ font_size = 23
 outline_size = 13
 outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
 
-[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("habilities", "movement", "weapons", "stats", "attack") groups=["Entity"]]
+[node name="Lyra" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("habilities", "movement", "weapons", "stats", "attack", "interface_anchor") groups=["Entity"]]
 collision_layer = 4
 script = ExtResource("1_riiya")
 character_data = SubResource("Resource_45nm5")
@@ -514,9 +513,13 @@ movement = NodePath("Movement")
 weapons = NodePath("Weapons")
 stats = NodePath("Stats")
 attack = NodePath("Attack")
+interface_anchor = NodePath("InterfacePosition")
 
 [node name="CharacterCollision" parent="." unique_id=285415630 instance=ExtResource("4_lml3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="InterfacePosition" type="Node3D" parent="." unique_id=241921913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3916962, 0)
 
 [node name="Stats" type="Node" parent="." unique_id=740003460]
 script = ExtResource("5_ie3kb")
@@ -562,7 +565,7 @@ script = ExtResource("37_7hrsr")
 character_sprite = NodePath("../CharacterSprite")
 weapon_sprite = NodePath("../Weapons/WeaponSprite")
 
-[node name="EntityHealthContainer" type="Control" parent="." unique_id=1772968160 node_paths=PackedStringArray("health_label", "health_bar", "health_position", "entity")]
+[node name="EntityHealthContainer" type="Control" parent="." unique_id=1772968160 node_paths=PackedStringArray("health_label", "health_bar", "entity")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -61.0
@@ -573,7 +576,6 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("60_jo7lt")
 health_label = NodePath("Label")
 health_bar = NodePath("TextureProgressBar")
-health_position = NodePath("../HealthPosition")
 entity = NodePath("..")
 show_only_when_damaged = true
 
@@ -610,13 +612,3 @@ text = "999"
 label_settings = SubResource("LabelSettings_ahdoq")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="HealthPosition" type="Node3D" parent="." unique_id=241921913]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3916962, 0)
-
-[node name="AttackResultFeedback" type="Control" parent="." unique_id=144736246]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("63_sp8kn")

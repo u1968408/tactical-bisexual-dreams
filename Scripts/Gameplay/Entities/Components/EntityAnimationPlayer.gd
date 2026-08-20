@@ -84,6 +84,7 @@ func _on_weapon_changed(weapon: Weapon) -> void:
 
 func _on_state_changed(state: Entity.EntityState) -> void:
 	var anim := ""
+	var should_stop := false
 
 	match state:
 		Entity.EntityState.MOVING:
@@ -92,8 +93,10 @@ func _on_state_changed(state: Entity.EntityState) -> void:
 			anim = _idle_animation
 		Entity.EntityState.ATTACKING:
 			anim = _attack_animation
+			should_stop = true
 		Entity.EntityState.HURT:
 			anim = _hurt_animation
+			should_stop = true
 		Entity.EntityState.THROW:
 			anim = _throw_animation
 		Entity.EntityState.TELEPORT:
@@ -101,6 +104,9 @@ func _on_state_changed(state: Entity.EntityState) -> void:
 	if not has_animation(anim):
 		print("Entity %s doesn't have animation %s" % [_entity.name, anim])
 		return
+
+	if should_stop:
+		stop()
 
 	play(anim)
 

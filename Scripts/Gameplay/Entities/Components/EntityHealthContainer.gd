@@ -2,10 +2,8 @@ class_name CharacterHealthContainer
 
 extends Control
 
-
 @export var health_label: Label
 @export var health_bar: TextureProgressBar
-@export var health_position: Node3D
 @export var entity: Entity
 
 @export_group("Visibility")
@@ -14,20 +12,15 @@ extends Control
 @export var fade_in_duration: float = 0.15
 @export var fade_out_duration: float = 0.5
 
-
 var _health: int:
 	set(value):
 		print("setting health to %s" % value)
 		health_bar.value = value
 		health_label.text = str(value)
 
-
 var _max_health: int:
 	set(value):
 		health_bar.max_value = value
-
-
-@onready var camera: Camera3D = get_viewport().get_camera_3d()
 
 var _hide_timer: Timer
 var _fade_tween: Tween
@@ -44,7 +37,6 @@ func _ready() -> void:
 	if show_only_when_damaged:
 		modulate.a = 0.0
 
-
 		_hide_timer = Timer.new()
 		_hide_timer.one_shot = true
 		_hide_timer.timeout.connect(_fade_out)
@@ -55,12 +47,7 @@ func _process(_delta: float) -> void:
 	if modulate.a <= 0.0:
 		return
 
-	var screen_pos := camera.unproject_position(
-		health_position.global_position
-	)
-
-	global_position = screen_pos
-	global_position += Vector2(-get_rect().size.x / 2, 0)
+	global_position = entity.interface_position + Vector2(-get_rect().size.x / 2, 0)
 
 
 func _set_current_health(change_value: int, new_health: int) -> void:
@@ -82,12 +69,7 @@ func _show_for_damage() -> void:
 	_fade_tween = create_tween()
 	_fade_tween.set_trans(Tween.TRANS_QUAD)
 	_fade_tween.set_ease(Tween.EASE_OUT)
-	_fade_tween.tween_property(
-		self,
-		"modulate:a",
-		1.0,
-		fade_in_duration
-	)
+	_fade_tween.tween_property(self, "modulate:a", 1.0, fade_in_duration)
 
 
 func _fade_out() -> void:
@@ -97,9 +79,4 @@ func _fade_out() -> void:
 	_fade_tween = create_tween()
 	_fade_tween.set_trans(Tween.TRANS_QUAD)
 	_fade_tween.set_ease(Tween.EASE_IN)
-	_fade_tween.tween_property(
-		self,
-		"modulate:a",
-		0.0,
-		fade_out_duration
-	)
+	_fade_tween.tween_property(self, "modulate:a", 0.0, fade_out_duration)

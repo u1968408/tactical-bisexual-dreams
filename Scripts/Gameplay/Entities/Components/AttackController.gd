@@ -3,14 +3,14 @@ extends EntityNode
 
 signal attack_finished
 
-@export var attack_result_feedback_scene: PackedScene
-
-var attack_result_feedback: AttackResultFeedback
+@export var attack_result_feedback_scene: PackedScene = preload("uid://b1vaccvspk6rf")
 
 
-func _ready() -> void:
-	attack_result_feedback = attack_result_feedback_scene.instantiate()
-	entity.add_child(attack_result_feedback)
+func _show_result(result: AttackResult) -> void:
+	var attack_result_feedback: AttackResultFeedback = attack_result_feedback_scene.instantiate()
+	result.damaged_entity.add_child(attack_result_feedback)
+	attack_result_feedback.global_position = result.damaged_entity.interface_position
+	attack_result_feedback.show_result(result)
 
 
 func get_attack_preview(other: Entity) -> AttackPreview:
@@ -40,7 +40,7 @@ func attack(other: Entity):
 	else:
 		print("Attack missed %s" % other.name)
 
-	attack_result_feedback.show_result(result)
+	_show_result(result)
 
 	if entity.animation_player != null:
 		entity.animation_player.attack_finished.connect(
@@ -59,14 +59,11 @@ func resolve_attack(other: Entity) -> AttackResult:
 	var hit := roll <= hit_chance
 
 	if not hit:
-		return AttackResult.new(false, 0)
+		return AttackResult.new(false, 0, other)
 
-	var damage := Stats.calculate_damage_after_resistance(
-		entity.stats.damage,
-		other.stats.resistance,
-	)
+	var damage := other.stats.calculate_damage_after_resistance(entity.stats.damage)
 
-	return AttackResult.new(true, damage)
+	return AttackResult.new(true, damage, other)
 
 
 func _on_attack_animation_finished() -> void:

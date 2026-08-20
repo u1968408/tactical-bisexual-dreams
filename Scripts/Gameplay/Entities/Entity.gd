@@ -26,6 +26,16 @@ const MAX_ACTIONS: int = 3
 @export var weapons: Weapons
 @export var stats: Stats
 @export var attack: AttackController
+@export var interface_anchor: Node3D
+
+var interface_position: Vector2:
+	get:
+		var current_frame := Engine.get_process_frames()
+
+		if _interface_position_frame != current_frame:
+			_update_interface_position(current_frame)
+
+		return _interface_position
 
 var current_actions: int:
 	get:
@@ -83,6 +93,8 @@ var board_position: Vector2i:
 
 var _current_actions: int = MAX_ACTIONS
 var _current_state := EntityState.IDLE
+var _interface_position: Vector2
+var _interface_position_frame: int = -1
 
 var animation_player: EntityAnimationPlayer:
 	get:
@@ -91,6 +103,7 @@ var animation_player: EntityAnimationPlayer:
 				return child
 
 		return null
+
 
 func _ready() -> void:
 	movement.movement_started.connect(_on_move_start)
@@ -151,3 +164,15 @@ func _on_move_end():
 
 func _on_move_start():
 	current_state = EntityState.MOVING
+
+
+func _update_interface_position(frame: int) -> void:
+	_interface_position_frame = frame
+
+	var camera := get_viewport().get_camera_3d()
+
+	if camera == null or interface_anchor == null:
+		_interface_position = Vector2.ZERO
+		return
+
+	_interface_position = camera.unproject_position(interface_anchor.global_position)

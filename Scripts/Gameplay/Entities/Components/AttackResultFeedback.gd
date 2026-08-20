@@ -2,11 +2,11 @@ class_name AttackResultFeedback
 extends Control
 
 
-@onready var miss_feedback: Control = $MissFeedback
-@onready var damage_popup: Control = $DamagePopup
+@export var miss_feedback: Control
+@export var damage_popup: Control
+@export var damage_label: Label
 
-
-func show_result(result: AttackResult) -> void:
+func show_result( result: AttackResult) -> void:
 	if result.hit:
 		_show_damage(result.damage)
 	else:
@@ -40,14 +40,15 @@ func _show_miss() -> void:
 	)
 
 	await tween.finished
-	miss_feedback.visible = false
+	queue_free()
+
 
 
 func _show_damage(amount: int) -> void:
 	damage_popup.visible = true
 	miss_feedback.visible = false
 
-	damage_popup.get_node("Label").text = "-%d" % amount
+	damage_label.text = "-%d" % amount
 
 	damage_popup.modulate.a = 1.0
 
@@ -76,4 +77,4 @@ func _show_damage(amount: int) -> void:
 	)
 
 	await tween.finished
-	damage_popup.visible = false
+	queue_free()

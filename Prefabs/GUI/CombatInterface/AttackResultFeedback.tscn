@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://b1vaccvspk6rf"]
+
+[ext_resource type="Script" uid="uid://gijdem7bkpxr" path="res://Scripts/Gameplay/Entities/Components/AttackResultFeedback.gd" id="1_pfxoi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sp8kn"]
+font_size = 23
+outline_size = 29
+outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(3, -2)
+stacked_shadow_0/color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+stacked_shadow_0/outline_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_3lvqp"]
+font_size = 26
+font_color = Color(0.78431374, 0.2, 0.27058825, 1)
+outline_size = 2
+outline_color = Color(0.78431374, 0.2, 0.27058825, 1)
+
+[node name="AttackResultFeedback" type="Control" unique_id=596675686 node_paths=PackedStringArray("miss_feedback", "damage_popup", "damage_label")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_pfxoi")
+miss_feedback = NodePath("MissFeedback")
+damage_popup = NodePath("DamagePopup")
+damage_label = NodePath("DamagePopup/Label")
+
+[node name="MissFeedback" type="Label" parent="." unique_id=1796077801]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = 34.0
+offset_right = -237.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "¡Esquivado!"
+label_settings = SubResource("LabelSettings_sp8kn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamagePopup" type="Control" parent="." unique_id=362452395]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.0
+offset_top = 23.0
+offset_right = -307.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Polygon2D2" type="Polygon2D" parent="DamagePopup" unique_id=1949178763]
+position = Vector2(-47, -30)
+color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+polygon = PackedVector2Array(15, 4, 55, 68, 101, 2)
+
+[node name="Polygon2D" type="Polygon2D" parent="DamagePopup" unique_id=554447777]
+position = Vector2(-57, -24)
+polygon = PackedVector2Array(15, 4, 55, 68, 101, 2)
+
+[node name="Label" type="Label" parent="DamagePopup" unique_id=1636510685]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -16.0
+offset_right = 52.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "-99"
+label_settings = SubResource("LabelSettings_3lvqp")
+horizontal_alignment = 1
+vertical_alignment = 1
