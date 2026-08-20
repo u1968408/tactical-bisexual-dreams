@@ -627,7 +627,7 @@ font_size = 23
 outline_size = 13
 outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
 
-[node name="Sophie" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("habilities", "movement", "weapons", "stats", "attack")]
+[node name="Sophie" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("habilities", "movement", "weapons", "stats", "attack") groups=["Entity"]]
 collision_layer = 4
 script = ExtResource("1_mta3l")
 character_data = SubResource("Resource_v5i7l")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c3fkxmrogde1l"]
+
+[ext_resource type="PackedScene" uid="uid://s108wdrkj80i" path="res://Prefabs/Entities/Enemies/Guard.tscn" id="1_3pfwk"]
+[ext_resource type="Script" uid="uid://bbjnci56jxj1a" path="res://Scripts/Gameplay/Entities/Stats/Modifiers/Modifier.gd" id="2_h1cw8"]
+[ext_resource type="Script" uid="uid://qwgjm4qg73lk" path="res://Scripts/Weapon.gd" id="3_ly0vw"]
+
+[sub_resource type="Resource" id="Resource_dchqb"]
+script = ExtResource("3_ly0vw")
+name = "Bate Simple"
+damage = 5
+metadata/_custom_type_script = "uid://qwgjm4qg73lk"
+
+[node name="Guard" unique_id=216388398 instance=ExtResource("1_3pfwk")]
+
+[node name="Weapons" parent="." index="8" unique_id=234906197]
+equiped = SubResource("Resource_dchqb")
