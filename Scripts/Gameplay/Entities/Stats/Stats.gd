@@ -15,6 +15,8 @@ enum StatType {
 
 const DEX_FOR_TILE: int = 2
 const VIT_FOR_HP: int = 5
+const TRIANGLE_WEAPON_BONUS: int = 15
+
 @export var base_stats: BaseStats
 
 var health: int:
@@ -82,7 +84,10 @@ var _modifiers: Array[Modifier] = []
 
 func _ready() -> void:
 	_current_health = max_health
-	base_stats.stats_changed.connect(func(): stats_changed.emit())
+	base_stats.stats_changed.connect(
+		func():
+			stats_changed.emit(),
+	)
 
 
 static func calculate_add(base: int, modifier: int) -> int:
@@ -114,6 +119,56 @@ static func get_stat_name(type: StatType) -> String:
 		StatType.RESISTANCE:
 			return "Resistencia"
 	return ""
+
+
+func calculate_damage_after_resistance(raw_damage: int) -> int:
+	return int(raw_damage * 20.0 / (resistance + 10))
+
+
+func calculate_hit_chance(attacker: Entity) -> int:
+	var weapon_bonus := _calculate_weapon_bonus(attacker)
+
+	return clampi(70 + 2 * (attacker.stats.force - dexterity) + weapon_bonus, 20, 100)
+
+
+func _calculate_weapon_bonus(attacker: Entity) -> int:
+	var attacker_weapon: Weapon = attacker.weapons.equiped
+	var defender_weapon: Weapon = _entity.weapons.equiped
+
+	# Defender unarmed
+	if defender_weapon == null or defender_weapon.type == Weapon.WTypes.RANGED:
+		if attacker_weapon == null:
+			return 0
+		return TRIANGLE_WEAPON_BONUS
+
+	# Defender has a melee weapon, but attacker is unarmed.
+	if attacker_weapon == null:
+		return -TRIANGLE_WEAPON_BONUS
+
+	# Same weapon type.
+	if attacker_weapon.type == defender_weapon.type:
+		return 0
+
+	match attacker_weapon.type:
+		Weapon.WTypes.SHORT:
+			if defender_weapon.type == Weapon.WTypes.LARGE:
+				return TRIANGLE_WEAPON_BONUS
+			if defender_weapon.type == Weapon.WTypes.BALANCED:
+				return -TRIANGLE_WEAPON_BONUS
+
+		Weapon.WTypes.BALANCED:
+			if defender_weapon.type == Weapon.WTypes.SHORT:
+				return TRIANGLE_WEAPON_BONUS
+			if defender_weapon.type == Weapon.WTypes.LARGE:
+				return -TRIANGLE_WEAPON_BONUS
+
+		Weapon.WTypes.LARGE:
+			if defender_weapon.type == Weapon.WTypes.BALANCED:
+				return TRIANGLE_WEAPON_BONUS
+			if defender_weapon.type == Weapon.WTypes.SHORT:
+				return -TRIANGLE_WEAPON_BONUS
+
+	return 0
 
 
 func get_stat_value(type: StatType) -> int:
@@ -149,7 +204,10 @@ func has_modifier(modifier: Modifier) -> bool:
 
 
 func _get_modifiers_of_type(type: StatType) -> Array[Modifier]:
-	return _modifiers.filter(func(mod: Modifier): return mod.type == type)
+	return _modifiers.filter(
+		func(mod: Modifier):
+			return mod.type == type,
+	)
 
 
 func _apply_modifiers(type: StatType, base_value: int) -> int:
@@ -157,4 +215,8 @@ func _apply_modifiers(type: StatType, base_value: int) -> int:
 		push_error("vitality should not be recalculated.")
 		return base_value
 	var mods := _get_modifiers_of_type(type)
-	return mods.reduce(func(accum: int, mod: Modifier): return accum + mod.value, base_value)
+	return mods.reduce(
+		func(accum: int, mod: Modifier):
+			return accum + mod.value,
+		base_value,
+	)
