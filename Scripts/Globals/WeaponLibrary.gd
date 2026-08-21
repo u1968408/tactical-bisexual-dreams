@@ -4,8 +4,15 @@ const WEAPON_DIR := "res://Resources/Combat/Weapons/"
 
 var all_weapons: Array[Weapon]
 
+
 ## Diccionari de { `Weapon.WTypes`: { `WeaponMaterials.MaterialTypes`: `Weapon` }}
 var _weapon_dict: Dictionary[int, Dictionary] = { }
+
+const WEAPON_ICONS: Dictionary[Weapon.WTypes, Texture2D] = {
+	Weapon.WTypes.SHORT: preload("uid://bu6gjgdx3b07"),
+	Weapon.WTypes.BALANCED: preload("uid://baioyky4q3nop"),
+	Weapon.WTypes.LARGE: preload("uid://d2rleai3dide1"),
+}
 
 
 func _ready() -> void:
@@ -31,3 +38,7 @@ func _load_weapons():
 
 func get_weapon(type: Weapon.WTypes, material: WeaponMaterials.MaterialTypes):
 	return _weapon_dict.get(type, { }).get(material, null)
+
+
+func get_weapon_icon(type: Weapon.WTypes) -> Texture2D:
+	return WEAPON_ICONS.get(type, null)

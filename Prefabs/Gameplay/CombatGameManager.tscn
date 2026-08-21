@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://creph5k0ip82m" path="res://Scripts/Gameplay/Player/UnitSelectedStates/MoveSubState.gd" id="9_w52co"]
 [ext_resource type="Script" uid="uid://0f0qkhhw1e00" path="res://Scripts/Gameplay/Player/UnitSelectedStates/AttackSubState.gd" id="10_px2l2"]
 [ext_resource type="Script" uid="uid://b5vq55l6wy0eo" path="res://Scripts/Gameplay/Player/UnitSelectedStates/HabilitiesSubState.gd" id="11_nwe2c"]
+[ext_resource type="PackedScene" uid="uid://chkr4f5kkjxky" path="res://Prefabs/GUI/CombatInterface/AttackPreviewContainer.tscn" id="11_obyyt"]
 
 [node name="GameManager" type="Node" unique_id=536167165 node_paths=PackedStringArray("state_machine", "initial_state", "player_controller")]
 script = ExtResource("1_8o6i4")
@@ -64,6 +65,7 @@ base_tile_color = Color(0, 0.5529412, 0.7607843, 1)
 
 [node name="UnitAttackState" type="Node" parent="PlayerController/PlayerStateMachine/UnitSelected/UnitStateMachine" unique_id=1517903850]
 script = ExtResource("10_px2l2")
+preview_container_scene = ExtResource("11_obyyt")
 base_tile_color = Color(0.84313726, 0, 0.2, 1)
 
 [node name="UnitHabilitiesState" type="Node" parent="PlayerController/PlayerStateMachine/UnitSelected/UnitStateMachine" unique_id=157178462]

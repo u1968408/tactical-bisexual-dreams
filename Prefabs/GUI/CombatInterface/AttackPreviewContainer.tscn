@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://chkr4f5kkjxky"]
+
+[ext_resource type="Script" uid="uid://erssybh8gs6k" path="res://Scripts/UI/CombatUI/AttackPreviewContainer.gd" id="1_gklwi"]
+[ext_resource type="Texture2D" uid="uid://baioyky4q3nop" path="res://Assets/UI/Icons/IconBat.png" id="2_v1i6q"]
+[ext_resource type="FontFile" uid="uid://bt7re43gkjgxt" path="res://Assets/UI/Fonts/MAROLA.TTF" id="3_wsnf7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8kxk"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+skew = Vector2(-0.225, 0)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh7u1"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.25882354, 0.4392157, 0.5372549, 0)
+draw_center = false
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvnyr"]
+content_margin_left = 4.0
+bg_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ybn1h"]
+font = ExtResource("3_wsnf7")
+font_size = 40
+shadow_size = 19
+shadow_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n602q"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+skew = Vector2(0.225, 0)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7ifk"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huvle"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_soa3m"]
+font_size = 37
+
+[sub_resource type="LabelSettings" id="LabelSettings_gklwi"]
+font_size = 37
+font_color = Color(1, 1, 1, 0.6509804)
+
+[node name="AttackPreviewContainer" type="Control" unique_id=2080730098 node_paths=PackedStringArray("wpn_attacker", "wpn_defender", "label_probability", "label_damage")]
+layout_mode = 3
+pivot_offset_ratio = Vector2(0.5, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_gklwi")
+wpn_attacker = NodePath("VBoxContainer/HBoxContainer/PanelContainer2/WeaponAttacker")
+wpn_defender = NodePath("VBoxContainer/HBoxContainer/PanelContainer/WeaponDef")
+label_probability = NodePath("VBoxContainer/PanelContainer2/PanelContainer/CenterContainer/VBoxContainer/Label")
+label_damage = NodePath("VBoxContainer/PanelContainer2/PanelContainer/CenterContainer/VBoxContainer/Label3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1254063901]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.0
+offset_top = 11.0
+offset_right = 101.0
+offset_bottom = 161.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1700897227]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1028301718]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i8kxk")
+
+[node name="WeaponAttacker" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelContainer2" unique_id=704781319]
+layout_mode = 2
+texture = ExtResource("2_v1i6q")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1837566768]
+z_index = -1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dh7u1")
+
+[node name="PanelContainer4" type="PanelContainer" parent="VBoxContainer/HBoxContainer/PanelContainer3" unique_id=856676251]
+z_index = -1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lvnyr")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer3/PanelContainer4" unique_id=51642783]
+layout_mode = 2
+text = "VS"
+label_settings = SubResource("LabelSettings_ybn1h")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=798103286]
+custom_minimum_size = Vector2(60, 13.745)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n602q")
+
+[node name="WeaponDef" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelContainer" unique_id=632559916]
+layout_mode = 2
+texture = ExtResource("2_v1i6q")
+expand_mode = 4
+stretch_mode = 5
+flip_h = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer" unique_id=1826650878]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u7ifk")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/PanelContainer2" unique_id=359508534]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_huvle")
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/PanelContainer2/PanelContainer" unique_id=1840215962]
+layout_mode = 2
+
+[node name="VBoxContainer" type="GridContainer" parent="VBoxContainer/PanelContainer2/PanelContainer/CenterContainer" unique_id=1670076800]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer2/PanelContainer/CenterContainer/VBoxContainer" unique_id=1682499272]
+layout_mode = 2
+text = "26"
+label_settings = SubResource("LabelSettings_soa3m")
+
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainer2/PanelContainer/CenterContainer/VBoxContainer" unique_id=516279415]
+layout_mode = 2
+text = "%"
+label_settings = SubResource("LabelSettings_gklwi")
+
+[node name="Label3" type="Label" parent="VBoxContainer/PanelContainer2/PanelContainer/CenterContainer/VBoxContainer" unique_id=266914549]
+layout_mode = 2
+text = "25"
+label_settings = SubResource("LabelSettings_soa3m")
+
+[node name="Label4" type="Label" parent="VBoxContainer/PanelContainer2/PanelContainer/CenterContainer/VBoxContainer" unique_id=1955350622]
+layout_mode = 2
+text = "DMG"
+label_settings = SubResource("LabelSettings_gklwi")

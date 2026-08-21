@@ -13,10 +13,10 @@ func _show_result(result: AttackResult) -> void:
 	attack_result_feedback.show_result(result)
 
 
-func get_attack_preview(other: Entity) -> AttackPreview:
-	var final_damage: int = other.stats.calculate_damage_after_resistance(entity.stats.damage)
+func get_attack_preview(defender: Entity) -> AttackPreview:
+	var final_damage: int = defender.stats.calculate_damage_after_resistance(entity.stats.damage)
 
-	var hit_chance: int = other.stats.calculate_hit_chance(entity)
+	var hit_chance: int = defender.stats.calculate_hit_chance(entity)
 
 	return AttackPreview.new(hit_chance, final_damage)
 
