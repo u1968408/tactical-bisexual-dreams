@@ -1,90 +1,90 @@
-[gd_scene format=3 uid="uid://cuwqumqgnjfxs"]
+[gd_scene format=3 uid="uid://bklv5qsimv38t"]
 
-[ext_resource type="Script" uid="uid://bbbk4plp4befm" path="res://Scripts/UI/CombatUI.gd" id="1_yeute"]
-[ext_resource type="Texture2D" uid="uid://bfwq1j5yc38t7" path="res://Assets/UI/CombatUI/GUI_CharacterNameCombat.png" id="2_3ha0h"]
-[ext_resource type="Script" uid="uid://ff36knh1cr4m" path="res://Scripts/UI/CombatUI/GuiNameContainer.gd" id="3_tyryh"]
-[ext_resource type="FontFile" uid="uid://bt7re43gkjgxt" path="res://Assets/UI/Fonts/MAROLA.TTF" id="4_6cwkg"]
-[ext_resource type="FontFile" uid="uid://cqxoffgr1prfi" path="res://Assets/UI/Fonts/arial_narrow_7.ttf" id="5_7xihs"]
-[ext_resource type="Texture2D" uid="uid://c71lvi7n0hryc" path="res://Assets/UI/Portraits/LyraPortrait.png" id="6_i5hpx"]
-[ext_resource type="Script" uid="uid://dk0b6rampq3oc" path="res://Scripts/UI/CombatUI/GuiHealthContainer.gd" id="7_diegf"]
-[ext_resource type="Texture2D" uid="uid://dxwi78adso4po" path="res://Assets/UI/CombatUI/GUI_HealthContainer.png" id="8_uhaa8"]
-[ext_resource type="Texture2D" uid="uid://dmflgdr7lskp4" path="res://Assets/UI/CombatUI/GUI_HealthBar.png" id="9_5oyva"]
-[ext_resource type="Script" uid="uid://dnh3y3fnob4yq" path="res://Scripts/UI/CombatUI/GuiSelectableActions.gd" id="10_cvbml"]
-[ext_resource type="Texture2D" uid="uid://cqvs63flwvhu0" path="res://Assets/UI/CombatUI/GUI_SelectableAction_3.png" id="11_y6ary"]
-[ext_resource type="Script" uid="uid://biv5gu5wttr7" path="res://Scripts/UI/CombatUI/GuiSelectableAction.gd" id="12_eb4ys"]
-[ext_resource type="Script" uid="uid://cmxg46con15px" path="res://Scripts/UI/CombatUI/GuiDancingLabel.gd" id="13_dp4ak"]
-[ext_resource type="Script" uid="uid://h1hq6r6pwafx" path="res://Scripts/UI/CombatUI/GuiSelectableActionArea.gd" id="14_fnwul"]
-[ext_resource type="Texture2D" uid="uid://bt0nkdgtd7uoe" path="res://Assets/UI/CombatUI/GUI_SelectableAction_2.png" id="15_aeu3g"]
-[ext_resource type="Texture2D" uid="uid://6yx4ghabaps6" path="res://Assets/UI/CombatUI/GUI_SelectableAction_1.png" id="16_1dbhs"]
-[ext_resource type="Texture2D" uid="uid://dxcqft3fl1qcv" path="res://Assets/UI/CombatUI/GUI_WeaponMarker.png" id="17_inw5k"]
-[ext_resource type="Script" uid="uid://beli8xhrtp0xt" path="res://Scripts/UI/CombatUI/GuiWeaponMarker.gd" id="18_elysa"]
-[ext_resource type="Texture2D" uid="uid://c2mlimee68i56" path="res://Assets/UI/CombatUI/GUI_Baston.png" id="19_75xxg"]
-[ext_resource type="Texture2D" uid="uid://dj65wevs33c71" path="res://Assets/UI/CombatUI/GUI_Bate.png" id="20_1lyp3"]
-[ext_resource type="Texture2D" uid="uid://excdi0t7jwms" path="res://Assets/UI/CombatUI/GUI_Tomfa.png" id="21_48xay"]
-[ext_resource type="Texture2D" uid="uid://05xl60la7w6p" path="res://Assets/UI/CombatUI/GUI_ActionsContainer.png" id="22_gmweq"]
-[ext_resource type="Script" uid="uid://cwe7wr0s4jgb5" path="res://Scripts/UI/CombatUI/GuiActionsContainer.gd" id="23_15nel"]
-[ext_resource type="Texture2D" uid="uid://c30o7ovcrr1fe" path="res://Assets/UI/CombatUI/GUI_ActionMarker_1.png" id="24_kxibh"]
-[ext_resource type="Texture2D" uid="uid://bg63wv4t4uru1" path="res://Assets/UI/CombatUI/GUI_ActionMarker_2.png" id="25_h3kt2"]
-[ext_resource type="Texture2D" uid="uid://dlfxm7amhnn8t" path="res://Assets/UI/CombatUI/GUI_ActionMarker_3.png" id="26_cgt81"]
-[ext_resource type="Texture2D" uid="uid://cxg40c58f2eli" path="res://Assets/UI/CombatUI/GUI_HabilitiesContainer.png" id="27_6cwkg"]
-[ext_resource type="Script" uid="uid://dyx43km3b8f1h" path="res://Scripts/UI/CombatUI/GuiHabilitiesContainer.gd" id="27_7xihs"]
-[ext_resource type="Script" uid="uid://edtplchgylke" path="res://Scripts/UI/CombatUI/GuiStatsContainer.gd" id="27_w2hw5"]
-[ext_resource type="Texture2D" uid="uid://boircffmisjf" path="res://Assets/UI/CombatUI/GUI_HabilityMarker.png" id="28_7xihs"]
-[ext_resource type="PackedScene" uid="uid://cwkto28q0ioay" path="res://Prefabs/GUI/CombatInterface/StatContainer.tscn" id="28_kwdg3"]
-[ext_resource type="Texture2D" uid="uid://b6pyvjmdbv6y5" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Mor.png" id="29_5uu1q"]
-[ext_resource type="Script" uid="uid://0cwiijfpqgn4" path="res://Scripts/UI/CombatUI/GuiSelectableHability.gd" id="29_diegf"]
-[ext_resource type="Texture2D" uid="uid://0f6dbg3aku4s" path="res://Assets/UI/CombatUI/GUI_HabilityDescription.png" id="29_i5hpx"]
-[ext_resource type="Texture2D" uid="uid://c2gof5oochw4w" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Vit.png" id="30_viw3i"]
-[ext_resource type="Texture2D" uid="uid://8hglq8yf22la" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Res.png" id="31_8lic6"]
-[ext_resource type="Texture2D" uid="uid://b47ebxf6qv144" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Fue.png" id="32_ch22y"]
-[ext_resource type="Script" uid="uid://cb70tqiqgjgyt" path="res://Scripts/UI/CombatUI/GuiWeaponDescription.gd" id="32_diegf"]
-[ext_resource type="Texture2D" uid="uid://b7dh2obbp0o6r" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Des.png" id="33_v63a5"]
-[ext_resource type="Texture2D" uid="uid://b211a0scns44" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Pre.png" id="34_73xph"]
-[ext_resource type="Script" uid="uid://cmbek1ihcm32n" path="res://Scripts/UI/CombatUI/ModifierTooltip.gd" id="41_cvbml"]
-[ext_resource type="Script" uid="uid://d33dtqu8hbrpd" path="res://Scripts/UI/CombatUI/ModifiersContainer.gd" id="41_uhaa8"]
-[ext_resource type="PackedScene" uid="uid://dm23ldp5mfi36" path="res://Prefabs/GUI/CombatInterface/ModifierContainer.tscn" id="42_5oyva"]
+[ext_resource type="Script" uid="uid://bbbk4plp4befm" path="res://Scripts/UI/CombatUI.gd" id="1_qupvo"]
+[ext_resource type="Texture2D" uid="uid://bfwq1j5yc38t7" path="res://Assets/UI/CombatUI/GUI_CharacterNameCombat.png" id="2_eu6j5"]
+[ext_resource type="Script" uid="uid://ff36knh1cr4m" path="res://Scripts/UI/CombatUI/GuiNameContainer.gd" id="3_yo33u"]
+[ext_resource type="FontFile" uid="uid://bt7re43gkjgxt" path="res://Assets/UI/Fonts/MAROLA.TTF" id="4_5gwya"]
+[ext_resource type="FontFile" uid="uid://cqxoffgr1prfi" path="res://Assets/UI/Fonts/arial_narrow_7.ttf" id="5_wl8fs"]
+[ext_resource type="Script" uid="uid://dyx43km3b8f1h" path="res://Scripts/UI/CombatUI/GuiHabilitiesContainer.gd" id="6_atlvc"]
+[ext_resource type="Texture2D" uid="uid://0f6dbg3aku4s" path="res://Assets/UI/CombatUI/GUI_HabilityDescription.png" id="7_d02dp"]
+[ext_resource type="Texture2D" uid="uid://cxg40c58f2eli" path="res://Assets/UI/CombatUI/GUI_HabilitiesContainer.png" id="8_sln5n"]
+[ext_resource type="Script" uid="uid://0cwiijfpqgn4" path="res://Scripts/UI/CombatUI/GuiSelectableHability.gd" id="9_va8jq"]
+[ext_resource type="Texture2D" uid="uid://boircffmisjf" path="res://Assets/UI/CombatUI/GUI_HabilityMarker.png" id="10_7cxok"]
+[ext_resource type="Script" uid="uid://cmxg46con15px" path="res://Scripts/UI/CombatUI/GuiDancingLabel.gd" id="11_t243d"]
+[ext_resource type="Texture2D" uid="uid://c71lvi7n0hryc" path="res://Assets/UI/Portraits/LyraPortrait.png" id="12_n77ue"]
+[ext_resource type="Script" uid="uid://dk0b6rampq3oc" path="res://Scripts/UI/CombatUI/GuiHealthContainer.gd" id="13_2a5ke"]
+[ext_resource type="Texture2D" uid="uid://dxwi78adso4po" path="res://Assets/UI/CombatUI/GUI_HealthContainer.png" id="14_6qvhb"]
+[ext_resource type="Texture2D" uid="uid://dmflgdr7lskp4" path="res://Assets/UI/CombatUI/GUI_HealthBar.png" id="15_gjmkf"]
+[ext_resource type="Script" uid="uid://dnh3y3fnob4yq" path="res://Scripts/UI/CombatUI/GuiSelectableActions.gd" id="16_s016p"]
+[ext_resource type="Texture2D" uid="uid://cqvs63flwvhu0" path="res://Assets/UI/CombatUI/GUI_SelectableAction_3.png" id="17_e4dlw"]
+[ext_resource type="Script" uid="uid://biv5gu5wttr7" path="res://Scripts/UI/CombatUI/GuiSelectableAction.gd" id="18_um7ln"]
+[ext_resource type="Script" uid="uid://h1hq6r6pwafx" path="res://Scripts/UI/CombatUI/GuiSelectableActionArea.gd" id="19_dbvkp"]
+[ext_resource type="Texture2D" uid="uid://bt0nkdgtd7uoe" path="res://Assets/UI/CombatUI/GUI_SelectableAction_2.png" id="20_tkoxn"]
+[ext_resource type="Texture2D" uid="uid://6yx4ghabaps6" path="res://Assets/UI/CombatUI/GUI_SelectableAction_1.png" id="21_xg2ug"]
+[ext_resource type="Script" uid="uid://cwe7wr0s4jgb5" path="res://Scripts/UI/CombatUI/GuiActionsContainer.gd" id="22_d42f7"]
+[ext_resource type="Texture2D" uid="uid://05xl60la7w6p" path="res://Assets/UI/CombatUI/GUI_ActionsContainer.png" id="23_spilc"]
+[ext_resource type="Texture2D" uid="uid://c30o7ovcrr1fe" path="res://Assets/UI/CombatUI/GUI_ActionMarker_1.png" id="24_wngjw"]
+[ext_resource type="Texture2D" uid="uid://bg63wv4t4uru1" path="res://Assets/UI/CombatUI/GUI_ActionMarker_2.png" id="25_ibfdd"]
+[ext_resource type="Texture2D" uid="uid://dlfxm7amhnn8t" path="res://Assets/UI/CombatUI/GUI_ActionMarker_3.png" id="26_ybyaa"]
+[ext_resource type="Script" uid="uid://beli8xhrtp0xt" path="res://Scripts/UI/CombatUI/GuiWeaponMarker.gd" id="27_f53ko"]
+[ext_resource type="Texture2D" uid="uid://dxcqft3fl1qcv" path="res://Assets/UI/CombatUI/GUI_WeaponMarker.png" id="28_gdred"]
+[ext_resource type="Texture2D" uid="uid://c2mlimee68i56" path="res://Assets/UI/CombatUI/GUI_Baston.png" id="29_vm4ot"]
+[ext_resource type="Texture2D" uid="uid://dj65wevs33c71" path="res://Assets/UI/CombatUI/GUI_Bate.png" id="30_xpdu7"]
+[ext_resource type="Texture2D" uid="uid://excdi0t7jwms" path="res://Assets/UI/CombatUI/GUI_Tomfa.png" id="31_illt8"]
+[ext_resource type="Script" uid="uid://cb70tqiqgjgyt" path="res://Scripts/UI/CombatUI/GuiWeaponDescription.gd" id="32_6hjoi"]
+[ext_resource type="Script" uid="uid://edtplchgylke" path="res://Scripts/UI/CombatUI/GuiStatsContainer.gd" id="33_wxgp1"]
+[ext_resource type="PackedScene" uid="uid://cwkto28q0ioay" path="res://Prefabs/GUI/CombatInterface/StatContainer.tscn" id="34_f8247"]
+[ext_resource type="Texture2D" uid="uid://b6pyvjmdbv6y5" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Mor.png" id="35_d78y5"]
+[ext_resource type="Texture2D" uid="uid://c2gof5oochw4w" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Vit.png" id="36_6k78f"]
+[ext_resource type="Texture2D" uid="uid://8hglq8yf22la" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Res.png" id="37_ewnj5"]
+[ext_resource type="Texture2D" uid="uid://b47ebxf6qv144" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Fue.png" id="38_jenr5"]
+[ext_resource type="Texture2D" uid="uid://b7dh2obbp0o6r" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Des.png" id="39_ryfv6"]
+[ext_resource type="Texture2D" uid="uid://b211a0scns44" path="res://Assets/UI/CombatUI/GUI_CombatIcon_Pre.png" id="40_pgypf"]
+[ext_resource type="Script" uid="uid://cmbek1ihcm32n" path="res://Scripts/UI/CombatUI/ModifierTooltip.gd" id="41_12or5"]
+[ext_resource type="Script" uid="uid://d33dtqu8hbrpd" path="res://Scripts/UI/CombatUI/ModifiersContainer.gd" id="42_t2k1k"]
+[ext_resource type="PackedScene" uid="uid://dm23ldp5mfi36" path="res://Prefabs/GUI/CombatInterface/ModifierContainer.tscn" id="43_3xvac"]
 
 [sub_resource type="Theme" id="Theme_bh3rc"]
-default_font = ExtResource("5_7xihs")
+default_font = ExtResource("5_wl8fs")
 default_font_size = 17
 RichTextLabel/colors/default_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
 RichTextLabel/font_sizes/normal_font_size = 36
-RichTextLabel/fonts/normal_font = ExtResource("4_6cwkg")
+RichTextLabel/fonts/normal_font = ExtResource("4_5gwya")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5pdpn"]
-font = ExtResource("4_6cwkg")
+font = ExtResource("4_5gwya")
 font_size = 33
 font_color = Color(0.3254902, 0.05490196, 0.26666668, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_i5hpx"]
-base_font = ExtResource("5_7xihs")
+base_font = ExtResource("5_wl8fs")
 variation_embolden = 0.33
 
 [sub_resource type="LabelSettings" id="LabelSettings_tsda7"]
 font_size = 33
 
 [sub_resource type="Theme" id="Theme_prn3n"]
-default_font = ExtResource("5_7xihs")
+default_font = ExtResource("5_wl8fs")
 default_font_size = 17
 RichTextLabel/colors/default_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
 RichTextLabel/font_sizes/normal_font_size = 36
-RichTextLabel/fonts/normal_font = ExtResource("4_6cwkg")
+RichTextLabel/fonts/normal_font = ExtResource("4_5gwya")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_d3mnv"]
 
 [sub_resource type="Theme" id="Theme_4g40y"]
-default_font = ExtResource("5_7xihs")
+default_font = ExtResource("5_wl8fs")
 default_font_size = 17
 RichTextLabel/colors/default_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
 RichTextLabel/font_sizes/normal_font_size = 36
-RichTextLabel/fonts/normal_font = ExtResource("4_6cwkg")
+RichTextLabel/fonts/normal_font = ExtResource("4_5gwya")
 
 [sub_resource type="Theme" id="Theme_0j7ox"]
-default_font = ExtResource("5_7xihs")
+default_font = ExtResource("5_wl8fs")
 default_font_size = 17
 RichTextLabel/colors/default_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
 RichTextLabel/font_sizes/normal_font_size = 36
-RichTextLabel/fonts/normal_font = ExtResource("4_6cwkg")
+RichTextLabel/fonts/normal_font = ExtResource("4_5gwya")
 
 [sub_resource type="LabelSettings" id="LabelSettings_0sr1d"]
 font_size = 25
@@ -112,7 +112,7 @@ offset_right = 1920.0
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0, 1)
 mouse_filter = 2
-script = ExtResource("1_yeute")
+script = ExtResource("1_qupvo")
 portrait = NodePath("Portrait")
 character_name = NodePath("NameContainer")
 selectable_actions = NodePath("Portrait/GuiSelectableActions")
@@ -136,9 +136,9 @@ offset_bottom = 0.35998535
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("2_3ha0h")
+texture = ExtResource("2_eu6j5")
 expand_mode = 2
-script = ExtResource("3_tyryh")
+script = ExtResource("3_yo33u")
 label = NodePath("Label")
 
 [node name="Label" type="Label" parent="NameContainer" unique_id=515636113]
@@ -174,7 +174,7 @@ offset_bottom = 493.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("27_7xihs")
+script = ExtResource("6_atlvc")
 hability_select_container = NodePath("HabilitySelect")
 hability_containers = [NodePath("HabilitySelect/SelectableHability"), NodePath("HabilitySelect/SelectableHability2"), NodePath("HabilitySelect/SelectableHability3"), NodePath("HabilitySelect/SelectableHability4")]
 description_container = NodePath("DescriptionContainer")
@@ -191,7 +191,7 @@ offset_right = 309.5
 offset_bottom = 458.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0)
-texture = ExtResource("29_i5hpx")
+texture = ExtResource("7_d02dp")
 expand_mode = 3
 stretch_mode = 5
 
@@ -225,7 +225,7 @@ offset_right = 665.8446
 offset_bottom = 210.0
 pivot_offset_ratio = Vector2(0.5, 0)
 mouse_filter = 2
-texture = ExtResource("27_6cwkg")
+texture = ExtResource("8_sln5n")
 expand_mode = 3
 stretch_mode = 5
 
@@ -237,7 +237,7 @@ anchor_bottom = 1.0
 offset_bottom = -153.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("29_diegf")
+script = ExtResource("9_va8jq")
 font_color_normal = Color(0.3254902, 0.05490196, 0.26666668, 1)
 label = NodePath("Label")
 selected_texture = NodePath("SelectedTexture")
@@ -254,7 +254,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0, 0.5)
 mouse_filter = 2
-texture = ExtResource("28_7xihs")
+texture = ExtResource("10_7cxok")
 expand_mode = 5
 stretch_mode = 5
 
@@ -270,7 +270,7 @@ text = "Placeholder de Habilidad mu mu larga"
 scroll_active = false
 autowrap_mode = 2
 vertical_alignment = 1
-script = ExtResource("13_dp4ak")
+script = ExtResource("11_t243d")
 metadata/_custom_type_script = "uid://cmxg46con15px"
 
 [node name="SelectableHability2" type="Control" parent="GuiHabilitiesContainer/HabilitySelect" unique_id=1992607329 node_paths=PackedStringArray("label", "selected_texture")]
@@ -284,7 +284,7 @@ offset_right = 29.0
 offset_bottom = -103.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("29_diegf")
+script = ExtResource("9_va8jq")
 font_color_normal = Color(0.3254902, 0.05490196, 0.26666668, 1)
 label = NodePath("Label")
 selected_texture = NodePath("SelectedTexture")
@@ -304,7 +304,7 @@ grow_vertical = 2
 rotation = 0.010848019
 pivot_offset_ratio = Vector2(0, 0.5)
 mouse_filter = 2
-texture = ExtResource("28_7xihs")
+texture = ExtResource("10_7cxok")
 expand_mode = 5
 stretch_mode = 5
 
@@ -320,7 +320,7 @@ text = "Placeholder de Habilidad mu mu larga"
 scroll_active = false
 autowrap_mode = 2
 vertical_alignment = 1
-script = ExtResource("13_dp4ak")
+script = ExtResource("11_t243d")
 metadata/_custom_type_script = "uid://cmxg46con15px"
 
 [node name="SelectableHability3" type="Control" parent="GuiHabilitiesContainer/HabilitySelect" unique_id=1135484409 node_paths=PackedStringArray("label", "selected_texture")]
@@ -334,7 +334,7 @@ offset_right = 14.0
 offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("29_diegf")
+script = ExtResource("9_va8jq")
 font_color_normal = Color(0.3254902, 0.05490196, 0.26666668, 1)
 label = NodePath("Label")
 selected_texture = NodePath("SelectedTexture")
@@ -351,7 +351,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0, 0.5)
 mouse_filter = 2
-texture = ExtResource("28_7xihs")
+texture = ExtResource("10_7cxok")
 expand_mode = 5
 stretch_mode = 5
 
@@ -367,7 +367,7 @@ text = "Placeholder de Habilidad mu mu larga"
 scroll_active = false
 autowrap_mode = 2
 vertical_alignment = 1
-script = ExtResource("13_dp4ak")
+script = ExtResource("11_t243d")
 metadata/_custom_type_script = "uid://cmxg46con15px"
 
 [node name="SelectableHability4" type="Control" parent="GuiHabilitiesContainer/HabilitySelect" unique_id=426577176 node_paths=PackedStringArray("label", "selected_texture")]
@@ -381,7 +381,7 @@ offset_right = -6.8446045
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("29_diegf")
+script = ExtResource("9_va8jq")
 font_color_normal = Color(0.3254902, 0.05490196, 0.26666668, 1)
 label = NodePath("Label")
 selected_texture = NodePath("SelectedTexture")
@@ -398,7 +398,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0, 0.5)
 mouse_filter = 2
-texture = ExtResource("28_7xihs")
+texture = ExtResource("10_7cxok")
 expand_mode = 5
 stretch_mode = 5
 
@@ -414,7 +414,7 @@ text = "Placeholder de Habilidad mu mu larga"
 scroll_active = false
 autowrap_mode = 2
 vertical_alignment = 1
-script = ExtResource("13_dp4ak")
+script = ExtResource("11_t243d")
 metadata/_custom_type_script = "uid://cmxg46con15px"
 
 [node name="Portrait" type="TextureRect" parent="." unique_id=2038766826]
@@ -431,7 +431,7 @@ offset_bottom = -93.999756
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 1)
 mouse_filter = 2
-texture = ExtResource("6_i5hpx")
+texture = ExtResource("12_n77ue")
 expand_mode = 2
 stretch_mode = 5
 
@@ -442,7 +442,7 @@ offset_top = -147.0
 offset_right = 246.20322
 offset_bottom = -20.746826
 mouse_filter = 2
-script = ExtResource("7_diegf")
+script = ExtResource("13_2a5ke")
 health_label = NodePath("Label")
 health_bar = NodePath("HealthProgressBar")
 
@@ -464,8 +464,8 @@ stretch_margin_left = 248
 stretch_margin_top = 292
 stretch_margin_right = 355
 stretch_margin_bottom = 232
-texture_under = ExtResource("8_uhaa8")
-texture_progress = ExtResource("9_5oyva")
+texture_under = ExtResource("14_6qvhb")
+texture_progress = ExtResource("15_gjmkf")
 texture_progress_offset = Vector2(34.87, 184.69)
 
 [node name="Label" type="Label" parent="Portrait/GuiHealthContainer" unique_id=1275027048]
@@ -497,7 +497,7 @@ offset_right = 602.8914
 offset_bottom = 188.17969
 pivot_offset_ratio = Vector2(0.05, 0.6)
 mouse_filter = 1
-script = ExtResource("10_cvbml")
+script = ExtResource("16_s016p")
 action_attack = NodePath("SelectableActionAttack")
 action_habilites = NodePath("SelectableActionHabilities")
 action_move = NodePath("SelectableActionMove")
@@ -511,10 +511,10 @@ offset_right = 411.433
 offset_bottom = 206.54152
 pivot_offset_ratio = Vector2(0.07, 0.92)
 mouse_filter = 2
-texture = ExtResource("11_y6ary")
+texture = ExtResource("17_e4dlw")
 expand_mode = 1
 stretch_mode = 5
-script = ExtResource("12_eb4ys")
+script = ExtResource("18_um7ln")
 type = 3
 label = NodePath("Label")
 area = NodePath("Area2D")
@@ -557,11 +557,11 @@ text = "Habilidad"
 horizontal_alignment = 1
 vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_d3mnv")]
-script = ExtResource("13_dp4ak")
+script = ExtResource("11_t243d")
 
 [node name="Area2D" type="Area2D" parent="Portrait/GuiSelectableActions/SelectableActionHabilities" unique_id=1129919664]
 priority = 1
-script = ExtResource("14_fnwul")
+script = ExtResource("19_dbvkp")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Portrait/GuiSelectableActions/SelectableActionHabilities/Area2D" unique_id=1413693255]
 position = Vector2(191.33215, 55.967888)
@@ -576,10 +576,10 @@ offset_right = 450.433
 offset_bottom = 274.12885
 pivot_offset = Vector2(52.17, 144.68)
 mouse_filter = 2
-texture = ExtResource("15_aeu3g")
+texture = ExtResource("20_tkoxn")
 expand_mode = 1
 stretch_mode = 5
-script = ExtResource("12_eb4ys")
+script = ExtResource("18_um7ln")
 type = 2
 label = NodePath("Label")
 area = NodePath("Area2D")
@@ -620,10 +620,10 @@ bbcode_enabled = true
 text = "Atacar"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("13_dp4ak")
+script = ExtResource("11_t243d")
 
 [node name="Area2D" type="Area2D" parent="Portrait/GuiSelectableActions/SelectableActionAttack" unique_id=1655604806]
-script = ExtResource("14_fnwul")
+script = ExtResource("19_dbvkp")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Portrait/GuiSelectableActions/SelectableActionAttack/Area2D" unique_id=1066764311]
 position = Vector2(202.73459, 59.82776)
@@ -638,10 +638,10 @@ offset_right = 431.15
 offset_bottom = 369.30634
 pivot_offset_ratio = Vector2(0, 0.31)
 mouse_filter = 2
-texture = ExtResource("16_1dbhs")
+texture = ExtResource("21_xg2ug")
 expand_mode = 1
 stretch_mode = 5
-script = ExtResource("12_eb4ys")
+script = ExtResource("18_um7ln")
 type = 1
 label = NodePath("Label")
 area = NodePath("Area2D")
@@ -685,10 +685,10 @@ bbcode_enabled = true
 text = "Mover"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("13_dp4ak")
+script = ExtResource("11_t243d")
 
 [node name="Area2D" type="Area2D" parent="Portrait/GuiSelectableActions/SelectableActionMove" unique_id=1656808203]
-script = ExtResource("14_fnwul")
+script = ExtResource("19_dbvkp")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Portrait/GuiSelectableActions/SelectableActionMove/Area2D" unique_id=1919723008]
 position = Vector2(192.84006, 58.777283)
@@ -705,13 +705,13 @@ offset_right = 180.42657
 offset_bottom = 3.0
 grow_horizontal = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-script = ExtResource("23_15nel")
+script = ExtResource("22_d42f7")
 actions = [NodePath("GuiActionMarker1"), NodePath("GuiActionMarker2"), NodePath("GuiActionMarker3")]
 
 [node name="GuiActionsBackground" type="Sprite2D" parent="Portrait/GuiActionsContainer" unique_id=1190168332]
 position = Vector2(98.1597, 70.74603)
 scale = Vector2(0.21262348, 0.2126235)
-texture = ExtResource("22_gmweq")
+texture = ExtResource("23_spilc")
 
 [node name="Label2" type="Label" parent="Portrait/GuiActionsContainer" unique_id=1932978502]
 layout_mode = 1
@@ -730,17 +730,17 @@ vertical_alignment = 1
 [node name="GuiActionMarker1" type="Sprite2D" parent="Portrait/GuiActionsContainer" unique_id=1812306134]
 position = Vector2(57.15927, 114.54755)
 scale = Vector2(0.19962882, 0.19962882)
-texture = ExtResource("24_kxibh")
+texture = ExtResource("24_wngjw")
 
 [node name="GuiActionMarker2" type="Sprite2D" parent="Portrait/GuiActionsContainer" unique_id=894419809]
 position = Vector2(93.293274, 95.113525)
 scale = Vector2(0.20866632, 0.20866632)
-texture = ExtResource("25_h3kt2")
+texture = ExtResource("25_ibfdd")
 
 [node name="GuiActionMarker3" type="Sprite2D" parent="Portrait/GuiActionsContainer" unique_id=377109876]
 position = Vector2(129.32825, 68.29053)
 scale = Vector2(0.20866632, 0.20866632)
-texture = ExtResource("26_cgt81")
+texture = ExtResource("26_ybyaa")
 
 [node name="GuiWeaponContainer" type="Control" parent="Portrait" unique_id=737182427 node_paths=PackedStringArray("weapon_description", "sprite_tonfa", "sprite_staff", "sprite_bat")]
 layout_mode = 1
@@ -752,7 +752,7 @@ offset_top = -233.68213
 offset_right = 260.7267
 offset_bottom = -113.93683
 grow_horizontal = 0
-script = ExtResource("18_elysa")
+script = ExtResource("27_f53ko")
 weapon_description = NodePath("GuiWeaponDesc")
 sprite_tonfa = NodePath("GuiWeaponMarker/GuiTonfa")
 sprite_staff = NodePath("GuiWeaponMarker/GuiBaston")
@@ -761,29 +761,29 @@ sprite_bat = NodePath("GuiWeaponMarker/GuiBaston")
 [node name="GuiWeaponMarker" type="Sprite2D" parent="Portrait/GuiWeaponContainer" unique_id=1837297214]
 position = Vector2(37.74578, 59.87266)
 scale = Vector2(0.19203715, 0.19203715)
-texture = ExtResource("17_inw5k")
+texture = ExtResource("28_gdred")
 
 [node name="GuiBaston" type="Sprite2D" parent="Portrait/GuiWeaponContainer/GuiWeaponMarker" unique_id=493547525]
 visible = false
 position = Vector2(-30.943398, 0.9455557)
-texture = ExtResource("19_75xxg")
+texture = ExtResource("29_vm4ot")
 
 [node name="GuiBate" type="Sprite2D" parent="Portrait/GuiWeaponContainer/GuiWeaponMarker" unique_id=1882132457]
 visible = false
 position = Vector2(-23.219812, -0.99225354)
-texture = ExtResource("20_1lyp3")
+texture = ExtResource("30_xpdu7")
 
 [node name="GuiTonfa" type="Sprite2D" parent="Portrait/GuiWeaponContainer/GuiWeaponMarker" unique_id=2097347300]
 visible = false
 position = Vector2(-7.5978336, -11.406905)
-texture = ExtResource("21_48xay")
+texture = ExtResource("31_illt8")
 
 [node name="GuiWeaponDesc" type="Control" parent="Portrait/GuiWeaponContainer" unique_id=1211468142 node_paths=PackedStringArray("weapon_name", "container")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-script = ExtResource("32_diegf")
+script = ExtResource("32_6hjoi")
 weapon_name = NodePath("Weapon Name")
 container = NodePath("VBoxContainer")
 font_settings_desc = SubResource("LabelSettings_diegf")
@@ -855,47 +855,47 @@ offset_top = 48.0
 offset_right = -72.0
 offset_bottom = 516.0
 mouse_filter = 0
-script = ExtResource("27_w2hw5")
+script = ExtResource("33_wxgp1")
 
-[node name="StatContainer" parent="StatsContainer" unique_id=237564544 instance=ExtResource("28_kwdg3")]
+[node name="StatContainer" parent="StatsContainer" unique_id=237564544 instance=ExtResource("34_f8247")]
 layout_mode = 2
 size_flags_vertical = 6
 mouse_filter = 2
-icon = ExtResource("29_5uu1q")
+icon = ExtResource("35_d78y5")
 
-[node name="StatContainer2" parent="StatsContainer" unique_id=270165628 instance=ExtResource("28_kwdg3")]
+[node name="StatContainer2" parent="StatsContainer" unique_id=270165628 instance=ExtResource("34_f8247")]
 layout_mode = 2
 size_flags_vertical = 6
 mouse_filter = 2
-icon = ExtResource("30_viw3i")
+icon = ExtResource("36_6k78f")
 type = 3
 
-[node name="StatContainer3" parent="StatsContainer" unique_id=458437905 instance=ExtResource("28_kwdg3")]
+[node name="StatContainer3" parent="StatsContainer" unique_id=458437905 instance=ExtResource("34_f8247")]
 layout_mode = 2
 size_flags_vertical = 6
 mouse_filter = 2
-icon = ExtResource("31_8lic6")
+icon = ExtResource("37_ewnj5")
 type = 5
 
-[node name="StatContainer4" parent="StatsContainer" unique_id=1155108464 instance=ExtResource("28_kwdg3")]
+[node name="StatContainer4" parent="StatsContainer" unique_id=1155108464 instance=ExtResource("34_f8247")]
 layout_mode = 2
 size_flags_vertical = 6
 mouse_filter = 2
-icon = ExtResource("32_ch22y")
+icon = ExtResource("38_jenr5")
 type = 2
 
-[node name="StatContainer5" parent="StatsContainer" unique_id=1489873303 instance=ExtResource("28_kwdg3")]
+[node name="StatContainer5" parent="StatsContainer" unique_id=1489873303 instance=ExtResource("34_f8247")]
 layout_mode = 2
 size_flags_vertical = 6
 mouse_filter = 2
-icon = ExtResource("33_v63a5")
+icon = ExtResource("39_ryfv6")
 type = 1
 
-[node name="StatContainer6" parent="StatsContainer" unique_id=2034912934 instance=ExtResource("28_kwdg3")]
+[node name="StatContainer6" parent="StatsContainer" unique_id=2034912934 instance=ExtResource("34_f8247")]
 layout_mode = 2
 size_flags_vertical = 6
 mouse_filter = 2
-icon = ExtResource("34_73xph")
+icon = ExtResource("40_pgypf")
 type = 4
 
 [node name="ModifierTooltip" type="PanelContainer" parent="." unique_id=211841548]
@@ -904,7 +904,7 @@ offset_left = 1890.0
 offset_top = 28.0
 offset_right = 1890.0
 offset_bottom = 74.0
-script = ExtResource("41_cvbml")
+script = ExtResource("41_12or5")
 
 [node name="ModifiersContainer" type="HBoxContainer" parent="." unique_id=759813703]
 layout_mode = 1
@@ -918,8 +918,8 @@ offset_bottom = 74.0
 grow_horizontal = 0
 theme_override_constants/separation = 12
 alignment = 2
-script = ExtResource("41_uhaa8")
-modifier_scene = ExtResource("42_5oyva")
+script = ExtResource("42_t2k1k")
+modifier_scene = ExtResource("43_3xvac")
 
 [node name="ModifierContainer" parent="ModifiersContainer" unique_id=161104619 instance_placeholder="res://Prefabs/GUI/CombatInterface/ModifierContainer.tscn"]
 layout_mode = 2

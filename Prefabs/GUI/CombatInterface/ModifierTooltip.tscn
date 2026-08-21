@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://btbq6aq5rsrfg"]
+
+[ext_resource type="Script" uid="uid://cmbek1ihcm32n" path="res://Scripts/UI/CombatUI/ModifierTooltip.gd" id="1_rww73"]
+[ext_resource type="Texture2D" uid="uid://d02bihlepg71b" path="res://Assets/UI/Icons/shattered-heart.svg" id="2_d38vw"]
+[ext_resource type="FontFile" uid="uid://bt7re43gkjgxt" path="res://Assets/UI/Fonts/MAROLA.TTF" id="3_o7nj4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7xtl"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afp5j"]
+bg_color = Color(0.3254902, 0.05490196, 0.26666668, 0.16862746)
+draw_center = false
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 0.39607844)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d38vw"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 2.0
+bg_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_detail = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_rww73"]
+font = ExtResource("3_o7nj4")
+font_size = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7nj4"]
+content_margin_left = 8.0
+content_margin_top = 0.0
+content_margin_right = 8.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_afp5j"]
+font_size = 24
+font_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fqdr3"]
+font_size = 24
+outline_size = 7
+outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+
+[node name="ModifierTooltip" type="PanelContainer" unique_id=722442314 node_paths=PackedStringArray("icon_rect", "name_label", "type_label", "value_label")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -30.0
+offset_right = 51.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k7xtl")
+script = ExtResource("1_rww73")
+icon_rect = NodePath("CenterContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/TextureRect")
+name_label = NodePath("CenterContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/ModifierName")
+type_label = NodePath("CenterContainer/PanelContainer/VBoxContainer/PanelContainer2/StatName")
+value_label = NodePath("CenterContainer/PanelContainer/VBoxContainer/PanelContainer2/StatName/StatValue")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=751842076]
+visible = false
+color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+polygon = PackedVector2Array(6, 6, 113, 5, 108, 34, 0, 33)
+
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=266696897]
+visible = false
+polygon = PackedVector2Array(-9, 31, 127, 32, 119, 60, -15, 58)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=621014676]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1964979892]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_afp5j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=2075269969]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=791650632]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d38vw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer" unique_id=1521755381]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=7020749]
+custom_minimum_size = Vector2(1.335, 14.11)
+layout_mode = 2
+texture = ExtResource("2_d38vw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="ModifierName" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer" unique_id=671423335]
+layout_mode = 2
+text = "Fatigado"
+label_settings = SubResource("LabelSettings_rww73")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1326890211]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o7nj4")
+
+[node name="StatName" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer2" unique_id=1000742669]
+layout_mode = 2
+text = "Estadística"
+label_settings = SubResource("LabelSettings_afp5j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatValue" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/PanelContainer2/StatName" unique_id=67368833]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -2.0
+offset_top = -5.0
+offset_right = 22.0
+offset_bottom = 14.0
+grow_horizontal = 0
+rotation = 0.47557497
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "+99"
+label_settings = SubResource("LabelSettings_fqdr3")
+horizontal_alignment = 1
+vertical_alignment = 1

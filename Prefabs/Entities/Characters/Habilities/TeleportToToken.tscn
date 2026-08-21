@@ -7,8 +7,8 @@
 script = ExtResource("2_j250j")
 collide_with = 64
 create_tiles_on_solid = false
-hability_name = "Teletransportarse a Token"
-description = "Seleccionas un token previamente lanzado y el personaje se teletransporta al mismo."
+hability_name = "Teletransportarse a Emblema"
+description = "Seleccionas un Emblema previamente lanzado y el personaje se teletransporta al mismo. Esta habilidad no gasta ninguna acción."
 metadata/_custom_type_script = "uid://b4356aqfe6u12"
 
 [node name="TeleportToToken" type="Node" unique_id=68479187]

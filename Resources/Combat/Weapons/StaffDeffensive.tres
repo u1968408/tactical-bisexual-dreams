@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bbjnci56jxj1a" path="res://Scripts/Gameplay/Entities/Stats/Modifiers/Modifier.gd" id="1_ilhyh"]
 [ext_resource type="Script" uid="uid://qwgjm4qg73lk" path="res://Scripts/Weapon.gd" id="2_a0gb3"]
+[ext_resource type="Texture2D" uid="uid://bgwaeamcwtg1x" path="res://Assets/UI/Icons/sword-brandish.svg" id="2_sb5wf"]
 
 [sub_resource type="Resource" id="Resource_ilhyh"]
 script = ExtResource("1_ilhyh")
+_icon = ExtResource("2_sb5wf")
+_modifier_name = "Bastón de defensa"
 _type = 5
 _value = 2
 metadata/_custom_type_script = "uid://bbjnci56jxj1a"

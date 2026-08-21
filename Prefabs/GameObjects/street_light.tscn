@@ -11,7 +11,7 @@ size = Vector3(0.15, 2.5, 0.15)
 collision_layer = 40
 collision_mask = 0
 script = ExtResource("1_bbf44")
-enable_when_intact = [NodePath("StreetLight"), NodePath("SpotLight3D")]
+enable_when_intact = [NodePath("StreetLight"), NodePath("SpotLight3D"), NodePath("SpotLight3D2")]
 enable_when_destroyed = [NodePath("StreetLightBroken")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=992132466]

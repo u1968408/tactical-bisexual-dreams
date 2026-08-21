@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dm23ldp5mfi36"]
+
+[ext_resource type="Script" uid="uid://ec55878nlm8k" path="res://Scripts/UI/CombatUI/ModifierContainer.gd" id="1_8c6h8"]
+[ext_resource type="Texture2D" uid="uid://d02bihlepg71b" path="res://Assets/UI/Icons/shattered-heart.svg" id="2_42bsp"]
+[ext_resource type="PackedScene" uid="uid://btbq6aq5rsrfg" path="res://Prefabs/GUI/CombatInterface/ModifierTooltip.tscn" id="2_aq34f"]
+
+[node name="ModifierContainer" type="ColorRect" unique_id=161104619 node_paths=PackedStringArray("icon")]
+custom_minimum_size = Vector2(46, 46)
+color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+script = ExtResource("1_8c6h8")
+icon = NodePath("CenterContainer/ModifierIcon")
+tooltip_scene = ExtResource("2_aq34f")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1381722368]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModifierIcon" type="TextureRect" parent="CenterContainer" unique_id=1295924560]
+custom_minimum_size = Vector2(38, 38)
+layout_mode = 2
+texture = ExtResource("2_42bsp")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=103281400]
+z_index = -1
+polygon = PackedVector2Array(4, -4, 49, -3, 49, 42, 6, 40)

@@ -20,4 +20,4 @@ func on_hability_animation(animation_name: String):
 		character.teleport(_pos_objective)
 	elif animation_name == "finished_teleport":
 		InputController.unlock_input(InputController.InputBlock.BOARD_INTERACTION, self)
-		finished.emit(true)
+		finished.emit(false)

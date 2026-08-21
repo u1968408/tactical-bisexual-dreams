@@ -12,6 +12,7 @@
 [sub_resource type="Resource" id="Resource_sa5an"]
 script = ExtResource("2_dn10x")
 distance_type = 1
+show_disabled_tiles = true
 collide_with = 32
 hability_name = "Crear arma"
 description = "Crea un arma a partir de un material de una [b]casilla cercana[/b]. Se puede seleccionar el tipo de arma y el material de la casilla afectará a las estadísticas y modificadores del arma."

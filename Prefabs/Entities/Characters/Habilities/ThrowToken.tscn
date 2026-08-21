@@ -11,8 +11,8 @@ apply_modifier = true
 range_modifier = 1
 distance_type = 1
 create_tiles_on_solid = false
-hability_name = "Lanzar Token"
-description = "Puedes lanzar un Token para teletransportarte mas tarde."
+hability_name = "Lanzar Emblema"
+description = "Puedes lanzar un Emblema para teletransportarte mas tarde."
 metadata/_custom_type_script = "uid://cisjbgu2fbmf2"
 
 [sub_resource type="Curve3D" id="Curve3D_j8y1s"]

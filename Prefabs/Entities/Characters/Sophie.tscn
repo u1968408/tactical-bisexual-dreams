@@ -9,11 +9,14 @@
 [ext_resource type="Script" uid="uid://cjjkmjuptrrp8" path="res://Scripts/Gameplay/Entities/Characters/HabilityHandler.gd" id="7_kdj5a"]
 [ext_resource type="Script" uid="uid://cdkswgnge7d6v" path="res://Scripts/Gameplay/Entities/Characters/Habilities/HabilityApplyModifier.gd" id="8_vxucq"]
 [ext_resource type="Script" uid="uid://bbjnci56jxj1a" path="res://Scripts/Gameplay/Entities/Stats/Modifiers/Modifier.gd" id="9_3428g"]
+[ext_resource type="Texture2D" uid="uid://56dikpcxsdhq" path="res://Assets/UI/Icons/self-love.svg" id="9_b75o6"]
 [ext_resource type="Script" uid="uid://q04sdv4u4m31" path="res://Scripts/Gameplay/Entities/Components/AttackController.gd" id="10_3olai"]
 [ext_resource type="Script" uid="uid://cisjbgu2fbmf2" path="res://Scripts/Gameplay/Entities/Characters/HabilitySettings/HabilityRangeSettings.gd" id="10_3428g"]
 [ext_resource type="Texture2D" uid="uid://dw4f2d4ivun3g" path="res://Assets/Sprites/Character/Sophie/SophieStand.png" id="10_neo6l"]
 [ext_resource type="Script" uid="uid://b43tkeosjs6ca" path="res://Scripts/Gameplay/Entities/Components/EntityMovementController.gd" id="11_02x27"]
 [ext_resource type="Texture2D" uid="uid://cv4gc3hlhtgk6" path="res://Assets/Sprites/Character/TaroSprites/TaroStand.png" id="12_g0wh8"]
+[ext_resource type="Texture2D" uid="uid://bdpsgg00gts8p" path="res://Assets/UI/Icons/knocked-out-stars.svg" id="12_iaiuo"]
+[ext_resource type="Texture2D" uid="uid://d02bihlepg71b" path="res://Assets/UI/Icons/shattered-heart.svg" id="12_t8cn2"]
 [ext_resource type="Script" uid="uid://c0f744ec8kdw5" path="res://Scripts/Sprites/GeneralSprite.gd" id="13_b63y2"]
 [ext_resource type="Script" uid="uid://wrc6rds4h67q" path="res://Scripts/Gameplay/Entities/Components/Weapons.gd" id="14_neo6l"]
 [ext_resource type="Texture2D" uid="uid://jxn8r4qdeuev" path="res://Assets/Sprites/Character/LyraSprites/LyraAttackBackTonfa1.png" id="16_3428g"]
@@ -79,13 +82,16 @@ metadata/_custom_type_script = "uid://4dtjtfrhk46r"
 
 [sub_resource type="Resource" id="Resource_si3o0"]
 script = ExtResource("6_1gm68")
-vitality = 8
+vitality = 12
+resistance = 12
 force = 8
 precision = 14
 metadata/_custom_type_script = "uid://b221r2nol8ung"
 
 [sub_resource type="Resource" id="Resource_s7ugc"]
 script = ExtResource("9_3428g")
+_icon = ExtResource("9_b75o6")
+_modifier_name = "Inspirado"
 _value = 2
 metadata/_custom_type_script = "uid://bbjnci56jxj1a"
 
@@ -93,26 +99,35 @@ metadata/_custom_type_script = "uid://bbjnci56jxj1a"
 script = ExtResource("10_3428g")
 hability_range = 5
 distance_type = 1
+show_disabled_tiles = true
+collide_with = 4
 hability_name = "Inspirar"
 description = "Sube la moral a un compañero."
+generate_on_self = true
 metadata/_custom_type_script = "uid://cisjbgu2fbmf2"
 
 [sub_resource type="Resource" id="Resource_j34ku"]
 script = ExtResource("9_3428g")
+_icon = ExtResource("12_t8cn2")
+_modifier_name = "Desalentado"
 _value = -2
 metadata/_custom_type_script = "uid://bbjnci56jxj1a"
 
 [sub_resource type="Resource" id="Resource_iaiuo"]
 script = ExtResource("10_3428g")
 hability_range = 5
-distance_type = 2
-collide_with = 6
+apply_modifier = true
+distance_type = 1
+show_disabled_tiles = true
+collide_with = 2
 hability_name = "Desalentar"
-description = "Baja la moral a un enemigo."
+description = "Reduce la moral de un enemigo."
 metadata/_custom_type_script = "uid://cisjbgu2fbmf2"
 
 [sub_resource type="Resource" id="Resource_7nqvl"]
 script = ExtResource("9_3428g")
+_icon = ExtResource("12_iaiuo")
+_modifier_name = "Fatigado"
 _type = 1
 _value = -2
 metadata/_custom_type_script = "uid://bbjnci56jxj1a"
@@ -120,9 +135,11 @@ metadata/_custom_type_script = "uid://bbjnci56jxj1a"
 [sub_resource type="Resource" id="Resource_b75o6"]
 script = ExtResource("10_3428g")
 hability_range = 5
-distance_type = 1
-collide_with = 6
-hability_name = "Sueño"
+apply_modifier = true
+distance_type = 2
+show_disabled_tiles = true
+collide_with = 2
+hability_name = "Fatigar"
 description = "Reduce la destreza de un enemigo."
 metadata/_custom_type_script = "uid://cisjbgu2fbmf2"
 
@@ -654,16 +671,21 @@ script = ExtResource("7_kdj5a")
 [node name="UpMorale" type="Node" parent="Habilities" unique_id=1732121538]
 script = ExtResource("8_vxucq")
 modifier = SubResource("Resource_s7ugc")
+hability_color = Color(0.827451, 0.90588236, 0.30980393, 1)
 settings = SubResource("Resource_3428g")
 
 [node name="DownMorale" type="Node" parent="Habilities" unique_id=1747214538]
 script = ExtResource("8_vxucq")
 modifier = SubResource("Resource_j34ku")
+hability_color = Color(0.85854435, 0.431573, 0.5152941, 1)
+generator_type = 1
 settings = SubResource("Resource_iaiuo")
 
 [node name="Sleep" type="Node" parent="Habilities" unique_id=665891722]
 script = ExtResource("8_vxucq")
 modifier = SubResource("Resource_7nqvl")
+hability_color = Color(0.5685176, 0.20638612, 0.7531244, 1)
+generator_type = 1
 settings = SubResource("Resource_b75o6")
 
 [node name="Attack" type="Node" parent="." unique_id=808434641]

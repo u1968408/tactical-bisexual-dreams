@@ -77,6 +77,10 @@ var damage: int:
 			base_damage += wpn.damage
 		return base_damage
 
+var modifiers: Array[Modifier]:
+	get:
+		return _modifiers
+
 var _current_health: int
 var _modifiers: Array[Modifier] = []
 @onready var _entity: Entity = get_parent()

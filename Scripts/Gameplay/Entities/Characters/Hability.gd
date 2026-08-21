@@ -43,7 +43,9 @@ func generate_hability_range() -> void:
 	generator.use_astar = false
 	generator.distance_type = st.distance_type
 	generator.collide_with = st.collide_with
-	generator.create_tiles_on_solid = settings.create_tiles_on_solid
+	generator.create_tiles_on_solid = st.create_tiles_on_solid
+	generator.show_disabled_tiles = st.show_disabled_tiles
+	generator.generate_on_self = st.generate_on_self
 	generator.generate_tiles_arround_position(character.board_position, st.total_range)
 
 
@@ -53,13 +55,18 @@ func generate_by_objects_in_distance() -> void:
 	generator.tile_base_color = settings.base_tile_color
 	generator.create_tiles_on_solid = st.create_tiles_on_solid
 	var collisions: Array[Area3D] = _get_collisions_radius(
-		character.board_position, st.search_radius, st.collide_with
+		character.board_position,
+		st.search_radius,
+		st.collide_with,
 	)
 	var ids: Array[Vector2i] = Array(
-		collisions.map(func(obj: Area3D): return Board.world_to_tile_id_rounded(obj.global_position)),
+		collisions.map(
+			func(obj: Area3D):
+				return Board.world_to_tile_id_rounded(obj.global_position),
+		),
 		TYPE_VECTOR2I,
 		"",
-		null
+		null,
 	)
 	generator.generate_tiles_by_ids(character.board_position, ids)
 
@@ -70,6 +77,7 @@ func cancel() -> void:
 
 @abstract func clicked_tile(tile: Tile)
 
+
 @abstract func _execute() -> void
 
 
@@ -78,7 +86,9 @@ func on_tile_hover(_tile: Tile):
 
 
 func _get_collisions_radius(
-	center: Vector2i, radius: float, collision_mask: int = -1
+	center: Vector2i,
+	radius: float,
+	collision_mask: int = -1,
 ) -> Array[Area3D]:
 	var query := PhysicsShapeQueryParameters3D.new()
 	query.collision_mask = 4294967295 if collision_mask <= 0 else collision_mask
@@ -103,6 +113,7 @@ func _create_rid(radius: float) -> RID:
 	var sphere_rid: RID = PhysicsServer3D.sphere_shape_create()
 	PhysicsServer3D.shape_set_data(sphere_rid, radius)
 	return sphere_rid
+
 
 func on_hability_animation(_animation_name: String):
 	pass

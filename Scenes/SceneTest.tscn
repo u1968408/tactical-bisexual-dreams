@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bf5bqbhk70y5b" path="res://Prefabs/Gameplay/world_env.tscn" id="6_bswdm"]
 [ext_resource type="PackedScene" uid="uid://bqdlcu4jup2ar" path="res://Prefabs/Gameplay/CombatGameManager.tscn" id="8_1i6e8"]
 [ext_resource type="Script" uid="uid://c8qhdajk1fqtn" path="res://Assets/Dylearn/Scripts/LightDirection.gd" id="10_27m4o"]
+[ext_resource type="PackedScene" uid="uid://cp6iqigdl6sbq" path="res://Prefabs/GameObjects/Floor.tscn" id="11_61ssm"]
+[ext_resource type="PackedScene" uid="uid://c2v1ses0xmt2w" path="res://Prefabs/GameObjects/Floor2.tscn" id="12_27m4o"]
 [ext_resource type="PackedScene" uid="uid://qmubrmem7flo" path="res://Prefabs/Entities/Characters/Sophie.tscn" id="12_61ssm"]
 [ext_resource type="PackedScene" uid="uid://c3fkxmrogde1l" path="res://Prefabs/Entities/Enemies/Guards/GuardWithBat.tscn" id="13_nd2tj"]
 [ext_resource type="PackedScene" uid="uid://bvd80bhuri7ws" path="res://Prefabs/Entities/Enemies/Guards/GuardWithStaff.tscn" id="14_61ssm"]
@@ -42,14 +44,20 @@ transform = Transform3D(1, 0, 0, 0, 1.1924881e-08, 1, 0, -1, 1.1924881e-08, 0.02
 visible = false
 mesh = SubResource("QuadMesh_gtfm6")
 
+[node name="Floor2" parent="Meshes" unique_id=1567964357 instance=ExtResource("11_61ssm")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 5.323657, 0, -14.586447)
+
+[node name="Floor3" parent="Meshes" unique_id=1935922541 instance=ExtResource("12_27m4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2622595, 0, 6.797377)
+
 [node name="GrassSurface" parent="Meshes" unique_id=2030544707 instance=ExtResource("6_4gdn3")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.805, -0.1, 3.398)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -10.064954, -0.1, 2.3403444)
 
 [node name="GrassSurface2" parent="Meshes" unique_id=86215563 instance=ExtResource("6_4gdn3")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19.195, -0.1, 3.398)
 
 [node name="GrassSurface3" parent="Meshes" unique_id=421614328 instance=ExtResource("6_4gdn3")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 30.805, -0.1, 3.398)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 20.755756, -0.1, 3.398)
 
 [node name="GrassSurface4" parent="Meshes" unique_id=631639063 instance=ExtResource("6_4gdn3")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 5.805, -0.1, 23.398)
@@ -85,6 +93,15 @@ _max = Vector2i(18, 13)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1669899664]
 
+[node name="Guard" parent="Enemies" unique_id=216388398 instance=ExtResource("13_nd2tj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
+
+[node name="Guard2" parent="Enemies" unique_id=2097465298 instance=ExtResource("14_61ssm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
+
+[node name="Guard3" parent="Enemies" unique_id=1162521458 instance=ExtResource("15_27m4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 8)
+
 [node name="Characters" type="Node3D" parent="." unique_id=166918982]
 
 [node name="Sophie" parent="Characters" unique_id=1950339442 instance=ExtResource("12_61ssm")]
@@ -99,12 +116,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 [node name="GameManager" parent="." unique_id=536167165 groups=["game_manager"] instance=ExtResource("8_1i6e8")]
 
 [node name="Interface" parent="." unique_id=1580611022 instance=ExtResource("17_27m4o")]
-
-[node name="Guard" parent="." unique_id=216388398 instance=ExtResource("13_nd2tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 9)
-
-[node name="Guard2" parent="." unique_id=2097465298 instance=ExtResource("14_61ssm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
-
-[node name="Guard3" parent="." unique_id=1162521458 instance=ExtResource("15_27m4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 8)

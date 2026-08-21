@@ -9,6 +9,7 @@ extends HabilitySettings
 
 @export var distance_type: Generator.DistanceType
 @export var create_tiles_on_solid: bool = true
+@export var show_disabled_tiles: bool = false
 @export_flags_3d_physics var collide_with: int = 0
 
 var total_range:
