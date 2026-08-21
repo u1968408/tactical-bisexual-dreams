@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://s108wdrkj80i"]
 
 [ext_resource type="Script" uid="uid://cs5s5cpeix3gb" path="res://Scripts/Gameplay/Entities/Enemies/Enemy.gd" id="1_bikni"]
-[ext_resource type="Script" uid="uid://l7rn4omn7v5b" path="res://Scripts/Gameplay/Entities/Components/EntityHealthContainer.gd" id="2_1hbbx"]
-[ext_resource type="Texture2D" uid="uid://dxwi78adso4po" path="res://Assets/UI/CombatUI/GUI_HealthContainer.png" id="3_jv8nv"]
-[ext_resource type="Texture2D" uid="uid://dmflgdr7lskp4" path="res://Assets/UI/CombatUI/GUI_HealthBar.png" id="4_nx5w2"]
+[ext_resource type="PackedScene" uid="uid://dnsfpil8ri5dt" path="res://Prefabs/GUI/EntityHealthContainer.tscn" id="2_rs18p"]
 [ext_resource type="Texture2D" uid="uid://cvhrnttygdbym" path="res://Assets/Sprites/Enemies/Guard/Guarda1AttackBackTonfa1.png" id="5_w1of7"]
 [ext_resource type="PackedScene" uid="uid://6rmftfncs2aq" path="res://Prefabs/Entities/entity_collision.tscn" id="6_3uvsa"]
 [ext_resource type="Script" uid="uid://3eg3vuyo47a3" path="res://Scripts/Gameplay/Entities/Stats/Stats.gd" id="7_t550o"]
@@ -57,11 +55,6 @@
 [ext_resource type="Texture2D" uid="uid://cmdxsx4qc2yjx" path="res://Assets/Sprites/Enemies/Guard/Guarda1Walk2.png" id="36_3a06s"]
 [ext_resource type="Texture2D" uid="uid://cjxvfyy3iup22" path="res://Assets/Sprites/Enemies/Guard/Guarda1Walk3.png" id="37_sckjm"]
 [ext_resource type="Texture2D" uid="uid://lkp8ljtso8qw" path="res://Assets/Sprites/Enemies/Guard/Guarda1Walk4.png" id="38_rs18p"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_pgiht"]
-font_size = 23
-outline_size = 13
-outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
 
 [sub_resource type="Resource" id="Resource_y7aom"]
 script = ExtResource("8_75hde")
@@ -472,54 +465,8 @@ metadata/_custom_type_script = "uid://cs5s5cpeix3gb"
 [node name="InterfacePosition" type="Node3D" parent="." unique_id=1410560605]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3916962, 0)
 
-[node name="EntityHealthContainer" type="Control" parent="." unique_id=1814949335 node_paths=PackedStringArray("health_label", "health_bar", "entity")]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -61.0
-offset_top = -37.0
-offset_right = 63.0
-offset_bottom = 30.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-script = ExtResource("2_1hbbx")
-health_label = NodePath("Label")
-health_bar = NodePath("TextureProgressBar")
+[node name="EntityHealthContainer" parent="." unique_id=933603522 node_paths=PackedStringArray("entity") instance=ExtResource("2_rs18p")]
 entity = NodePath("..")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="EntityHealthContainer" unique_id=1919242635]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -247.0
-offset_top = -194.0
-offset_right = 387.0
-offset_bottom = 88.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.15, 0.15)
-pivot_offset_ratio = Vector2(0.395, 0.685)
-mouse_filter = 2
-value = 100.0
-texture_under = ExtResource("3_jv8nv")
-texture_progress = ExtResource("4_nx5w2")
-texture_progress_offset = Vector2(37.175, 185.43)
-
-[node name="Label" type="Label" parent="EntityHealthContainer" unique_id=503479292]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 4.0
-offset_right = -53.0
-offset_bottom = -28.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "999"
-label_settings = SubResource("LabelSettings_pgiht")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="CharacterSprite" type="Sprite3D" parent="." unique_id=611855142]
 centered = false

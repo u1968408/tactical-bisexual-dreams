@@ -70,9 +70,7 @@
 [ext_resource type="Texture2D" uid="uid://cvlg2wwjevn45" path="res://Assets/Sprites/Character/Sophie/SophieWalk2.png" id="61_lgb01"]
 [ext_resource type="Texture2D" uid="uid://2scxcr27o4co" path="res://Assets/Sprites/Character/Sophie/SophieWalk3.png" id="62_6d2am"]
 [ext_resource type="Texture2D" uid="uid://cihfyfqbiwdey" path="res://Assets/Sprites/Character/Sophie/SophieWalk4.png" id="63_21l43"]
-[ext_resource type="Script" uid="uid://l7rn4omn7v5b" path="res://Scripts/Gameplay/Entities/Components/EntityHealthContainer.gd" id="68_7nqvl"]
-[ext_resource type="Texture2D" uid="uid://dxwi78adso4po" path="res://Assets/UI/CombatUI/GUI_HealthContainer.png" id="69_b75o6"]
-[ext_resource type="Texture2D" uid="uid://dmflgdr7lskp4" path="res://Assets/UI/CombatUI/GUI_HealthBar.png" id="70_iaiuo"]
+[ext_resource type="PackedScene" uid="uid://dnsfpil8ri5dt" path="res://Prefabs/GUI/EntityHealthContainer.tscn" id="71_b75o6"]
 
 [sub_resource type="Resource" id="Resource_v5i7l"]
 script = ExtResource("3_s2awo")
@@ -639,11 +637,6 @@ _data = {
 &"walk_f": SubResource("Animation_133hv")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_t8cn2"]
-font_size = 23
-outline_size = 13
-outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
-
 [node name="Sophie" type="Area3D" unique_id=1950339442 node_paths=PackedStringArray("habilities", "movement", "weapons", "stats", "attack", "interface_anchor") groups=["Entity"]]
 collision_layer = 4
 script = ExtResource("1_mta3l")
@@ -726,50 +719,6 @@ script = ExtResource("52_a7pue")
 character_sprite = NodePath("../CharacterSprite")
 weapon_sprite = NodePath("../Weapons/WeaponSprite")
 
-[node name="EntityHealthContainer" type="Control" parent="." unique_id=1968844772 node_paths=PackedStringArray("health_label", "health_bar", "entity")]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -61.0
-offset_top = -37.0
-offset_right = 63.0
-offset_bottom = 30.0
-pivot_offset_ratio = Vector2(0.5, 0.5)
-script = ExtResource("68_7nqvl")
-health_label = NodePath("Label")
-health_bar = NodePath("TextureProgressBar")
+[node name="EntityHealthContainer" parent="." unique_id=933603522 node_paths=PackedStringArray("entity") instance=ExtResource("71_b75o6")]
 entity = NodePath("..")
 show_only_when_damaged = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="EntityHealthContainer" unique_id=877743413]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -247.0
-offset_top = -194.0
-offset_right = 387.0
-offset_bottom = 88.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.15, 0.15)
-pivot_offset_ratio = Vector2(0.395, 0.685)
-value = 100.0
-texture_under = ExtResource("69_b75o6")
-texture_progress = ExtResource("70_iaiuo")
-texture_progress_offset = Vector2(37.175, 185.43)
-
-[node name="Label" type="Label" parent="EntityHealthContainer" unique_id=1914538453]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 4.0
-offset_right = -53.0
-offset_bottom = -28.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "999"
-label_settings = SubResource("LabelSettings_t8cn2")
-horizontal_alignment = 1
-vertical_alignment = 1

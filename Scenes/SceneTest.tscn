@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bpgoxly8bjaxs" path="res://Prefabs/GUI/CombatInterface/PlayerInterface.tscn" id="17_27m4o"]
 [ext_resource type="PackedScene" uid="uid://deyvvdcs7265" path="res://Prefabs/GameObjects/street_light.tscn" id="18_3mb6f"]
 [ext_resource type="PackedScene" uid="uid://ctymfk4u86vgo" path="res://Prefabs/Entities/Characters/Taro.tscn" id="18_i2bkh"]
+[ext_resource type="PackedScene" uid="uid://cu40ni2d8nern" path="res://Prefabs/GameObjects/Banco.tscn" id="18_vpa4f"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_gtfm6"]
 size = Vector2(100, 100)
@@ -116,3 +117,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 [node name="GameManager" parent="." unique_id=536167165 groups=["game_manager"] instance=ExtResource("8_1i6e8")]
 
 [node name="Interface" parent="." unique_id=1580611022 instance=ExtResource("17_27m4o")]
+
+[node name="Banco2" parent="." unique_id=133498973 instance=ExtResource("18_vpa4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)

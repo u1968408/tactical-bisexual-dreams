@@ -27,6 +27,8 @@ var _fade_tween: Tween
 
 
 func _ready() -> void:
+	if entity == null:
+		push_error("No s'ha connectat %s amb %s" % [self.name, get_parent().name])
 	await entity.ready
 
 	_max_health = entity.stats.max_health

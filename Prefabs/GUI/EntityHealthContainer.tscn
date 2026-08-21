@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dnsfpil8ri5dt"]
+
+[ext_resource type="Script" uid="uid://l7rn4omn7v5b" path="res://Scripts/Gameplay/Entities/Components/EntityHealthContainer.gd" id="1_5w21r"]
+[ext_resource type="Texture2D" uid="uid://dxwi78adso4po" path="res://Assets/UI/CombatUI/GUI_HealthContainer.png" id="2_7073x"]
+[ext_resource type="Texture2D" uid="uid://dmflgdr7lskp4" path="res://Assets/UI/CombatUI/GUI_HealthBar.png" id="3_y7de7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pgiht"]
+font_size = 23
+outline_size = 13
+outline_color = Color(0.25882354, 0.4392157, 0.5372549, 1)
+
+[node name="EntityHealthContainer" type="Control" unique_id=933603522 node_paths=PackedStringArray("health_label", "health_bar")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -61.0
+offset_top = -37.0
+offset_right = 63.0
+offset_bottom = 30.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+script = ExtResource("1_5w21r")
+health_label = NodePath("Label")
+health_bar = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=714313793]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -247.0
+offset_top = -194.0
+offset_right = 387.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+pivot_offset_ratio = Vector2(0.395, 0.685)
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("2_7073x")
+texture_progress = ExtResource("3_y7de7")
+texture_progress_offset = Vector2(37.175, 185.43)
+
+[node name="Label" type="Label" parent="." unique_id=112653540]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 4.0
+offset_right = -53.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "999"
+label_settings = SubResource("LabelSettings_pgiht")
+horizontal_alignment = 1
+vertical_alignment = 1
